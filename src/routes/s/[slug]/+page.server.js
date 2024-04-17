@@ -1,3 +1,4 @@
+import { API_URL } from '$env/static/private';
 /** @type {import('./$types').PageLoad} */
 export function load({ params }) {
 	return {
