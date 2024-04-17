@@ -1,7 +1,8 @@
 <footer>
     <nav>
         <ul>
-            <li><a href="/contact">Contact</a></li>
+            <li><a href="/offres">Offres d'emploi</a></li>
+            <li><a href="/s/contact">Contact</a></li>
         </ul>
     </nav>
 </footer>
