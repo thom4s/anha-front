@@ -1,10 +1,33 @@
 import { API_URL } from '$env/static/private';
-/** @type {import('./$types').PageLoad} */
-export function load({ params }) {
-	return {
-		post: {
-			title: `Title for ${params.slug} goes here`,
-			content: `Content for ${params.slug} goes here`
-		}
-	};
+
+
+
+export async function load( {param} ) {
+
+    return {
+        projets: await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                query: `
+                    {
+                        projets {
+                            nodes {
+                                excerpt
+                                id
+                                slug
+                                title
+                            }
+                        }
+                    }
+                `
+                }),
+            })
+            .then(res => res.json())
+            .then(res => {
+                console.log(res.data.projets)
+                return res.data.projets
+            }),
+
+    }
 }

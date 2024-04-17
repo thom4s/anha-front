@@ -3,10 +3,12 @@
     import Footer from "$lib/parts/Footer.svelte";
     import '$lib/scss/style.scss';
 
+    export let data;
+    $: ({menuItems} = data)
 </script>
 
 
-<Header />
+<Header {menuItems} />
 
 <main>
     <slot />

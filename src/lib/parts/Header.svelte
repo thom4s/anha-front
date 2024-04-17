@@ -1,11 +1,13 @@
+<script>
+    export let menuItems = []
+    $: console.log('menuItems: ', menuItems)
+</script>
 <header>
     <nav>
         <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/s/lagence">L'Agence</a></li>
-            <li><a href="/projets">Les Projets</a></li>
-            <li><a href="/collaborations">Les Collaborations</a></li>
-            <li><a href="/s/ecoconception">Ecoconception</a></li>
+            {#each menuItems.nodes as item}
+                <li><a href="{item.path}">{item.label}</a></li>
+            {/each}
         </ul>
     </nav>
 </header>
