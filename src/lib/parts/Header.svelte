@@ -1,6 +1,5 @@
 <script>
     export let menuItems = []
-    $: console.log('menuItems: ', menuItems)
 </script>
 <header>
     <nav>
