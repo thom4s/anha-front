@@ -8,8 +8,13 @@
 
 </script>
 
+<div class="container">
 
-{#each offres.nodes as offre }
-    <h1>{offre.title}</h1>
-    <div>{@html offre.content}</div>
-{/each}
+    <h1>Offres d'emploi</h1>
+
+    {#each offres.nodes as offre }
+        <h2>{offre.title}</h2>
+        <div>{@html offre.excerpt}</div>
+    {/each}
+
+</div>

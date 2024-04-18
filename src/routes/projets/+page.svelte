@@ -8,8 +8,13 @@
 
 </script>
 
+<div class="container">
 
-{#each projets.nodes as projet }
-    <h1>{projet.title}</h1>
-    <div>{@html projet.content}</div>
-{/each}
+    <h1>Les projets</h1>
+
+    {#each projets.nodes as projet }
+        <h2>{projet.title}</h2>
+        <div>{@html projet.excerpt}</div>
+    {/each}
+
+</div>

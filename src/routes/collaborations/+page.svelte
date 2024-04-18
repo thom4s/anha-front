@@ -9,7 +9,14 @@
 </script>
 
 
-{#each collaborations.nodes as collab }
-    <h1>{collab.title}</h1>
-    <div>{@html collab.content}</div>
-{/each}
+<div class="container">
+
+    <h1>Collaborations</h1>
+
+    {#each collaborations.nodes as collab }
+        <h2>{collab.title}</h2>
+        <div>{@html collab.excerpt}</div>
+    {/each}
+
+</div>
+
