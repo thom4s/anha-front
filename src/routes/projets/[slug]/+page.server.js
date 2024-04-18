@@ -1,9 +1,9 @@
-import { getPostBySlug } from "$lib/queries/posts"
+import { getProjetBySlug } from "$lib/queries/projets"
 
 
 export async function load( {params} ) {
 
     return {
-        post: await getPostBySlug(params.slug)
+        projet: await getProjetBySlug(params.slug)
     }
 }

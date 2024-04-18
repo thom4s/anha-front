@@ -3,7 +3,6 @@
         <nav>
             <ul>
                 <li><a href="/offres">Offres d'emploi</a></li>
-                <li><a href="/pages/contact">Contact</a></li>
             </ul>
         </nav>
     </div>

@@ -1,32 +1,9 @@
-import { API_URL } from '$env/static/private';
 
-
+import { getAllCollaborations } from "$lib/queries/collaborations"
 
 export async function load( ) {
 
     return {
-        collaborations: await fetch(API_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                query: `
-                    {
-                        collaborations {
-                            nodes {
-                                excerpt
-                                id
-                                slug
-                                title
-                            }
-                        }
-                    }
-                `
-                }),
-            })
-            .then(res => res.json())
-            .then(res => {
-                return res.data.collaborations
-            }),
-
+        collaborations: await getAllCollaborations()
     }
 }

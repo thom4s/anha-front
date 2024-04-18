@@ -1,4 +1,5 @@
 <script lang="ts">
+    import BlockPost from "$lib/parts/BlockPost.svelte";
 
     export let data: {
         posts: Promise<void>;
@@ -14,9 +15,7 @@
     <h1>Les News</h1>
 
     {#each posts.nodes as post }
-        <h1>{post.title}</h1>
-        <div>{@html post.excerpt}</div>
-        <a href="/posts/{post.slug}">En savoir plus</a>
+        <BlockPost {post} type="posts"/>
     {/each}
 
 </div>

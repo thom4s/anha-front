@@ -1,4 +1,5 @@
 <script lang="ts">
+    import BlockPost from "$lib/parts/BlockPost.svelte";
 
     export let data: {
         offres: Promise<void>;
@@ -12,9 +13,8 @@
 
     <h1>Offres d'emploi</h1>
 
-    {#each offres.nodes as offre }
-        <h2>{offre.title}</h2>
-        <div>{@html offre.excerpt}</div>
+    {#each offres.nodes as post }
+        <BlockPost {post} type="offres"/>
     {/each}
 
 </div>
