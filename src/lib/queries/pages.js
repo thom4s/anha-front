@@ -3,32 +3,27 @@ import { API_URL } from '$env/static/private';
 
 
 
-export async function getPageByTitle( title = '' ) {
+export async function getPageBySlug( uri = '' ) {
     
+    const query = `{
+    page(id: "${uri}", idType: URI) {
+        id
+        uri
+        title
+        content
+    }
+}`
+    console.log(query)
+
     const page = await fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            query: `
-                {
-                    pages(where: {title: "${title}"}) {
-                        edges {
-                            node {
-                                id
-                                content
-                                slug
-                                title
-                            }
-                        }
-                    }
-                }
-            `
-            }),
+        body: JSON.stringify({query}),
         })
         .then(res => res.json())
         .then(res => {
             console.log('res: ', res)
-            return res.data.pages.edges[0]
+            return res.data.page
         });
 
     return page;

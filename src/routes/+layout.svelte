@@ -4,11 +4,11 @@
     import '$lib/scss/style.scss';
 
     export let data;
-    $: ({menuItems} = data)
+    $: ({menuItems, menuItemsSecondary} = data)
 </script>
 
 
-<Header {menuItems} />
+<Header {menuItems} {menuItemsSecondary}/>
 
 <main>
     <slot />

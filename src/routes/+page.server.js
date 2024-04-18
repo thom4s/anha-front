@@ -1,8 +1,8 @@
-import { getPageByTitle } from "$lib/queries/pages"
+import { getPageBySlug } from "$lib/queries/pages"
 
 export async function load( ) {
 
     return {
-        homepage: await getPageByTitle('Accueil')
+        homepage: await getPageBySlug('accueil')
     }
 }

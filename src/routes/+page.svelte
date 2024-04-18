@@ -9,6 +9,7 @@
 
 </script>
 
-
-    <h1>{homepage.node.title}</h1>
-    <div>{@html homepage.node.content}</div>
+<div class="container">
+    <h1>{homepage.title}</h1>
+    <div>{@html homepage.content}</div>
+</div>

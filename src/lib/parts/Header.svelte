@@ -1,5 +1,6 @@
 <script>
     export let menuItems = []
+    export let menuItemsSecondary = []
 </script>
 <header>
     <nav>
@@ -14,7 +15,7 @@
 
     <nav>
         <ul>
-            {#each menuItems.nodes as item}
+            {#each menuItemsSecondary.nodes as item}
                 <li><a href="{item.path}">{item.label}</a></li>
             {/each}
         </ul>
