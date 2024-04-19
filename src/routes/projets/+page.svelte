@@ -17,13 +17,13 @@
     let filters = [];
 
     const filter = (e) => {
-        console.log('get that filter')
+        console.log('get that filter', e)
         filters = [e.target.innerText]
     }
 
     $: visibleProjets = filters.length > 0 ?
         projets.nodes.filter( project => {
-			return filters.includes(project.informationsProjet.savoirFaire.nodes[0].name) || filters.includes(project.informationsProjet.secteur.nodes[0].name)
+			return filters.includes(project.informationsProjet.savoirFaire?.nodes[0].name) || filters.includes(project.informationsProjet.secteur?.nodes[0].name)
 		}) : projets.nodes;
 
 </script>
@@ -58,7 +58,7 @@
             {#each visibleProjets as projet }
                 <BlockProjet {projet}/>
             {:else}
-                <p in:fade={{ delay: 300, duration: 300 }}>Aucun résultat</p>
+                <p in:fade={{ delay: 200, duration: 200 }}>Aucun résultat</p>
             {/each}
         </div>
     </div>

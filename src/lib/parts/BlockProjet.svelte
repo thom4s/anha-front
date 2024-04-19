@@ -7,18 +7,22 @@
 </script>
 
 
-<article class="block" transition:fade={{ duration: 300 }}>
+<article class="block" transition:fade={{ duration: 200 }}>
     <h2>{projet.title}</h2>
     <div>{@html projet.excerpt}</div>
 
     <p>
-        {#each projet.informationsProjet.secteur.nodes as node}
-            <span>{node.name}</span>
-        {/each}
+        {#if projet.informationsProjet.secteur }
+            {#each projet.informationsProjet.secteur.nodes as node}
+                <span>{node.name}</span>
+            {/each}
+        {/if}
         <span> - </span>
-        {#each projet.informationsProjet.savoirFaire.nodes as node}
-            <span>{node.name}</span>
-        {/each}
+        {#if projet.informationsProjet.savoirFaire }
+            {#each projet.informationsProjet.savoirFaire.nodes as node}
+                <span>{node.name}</span>
+            {/each}
+        {/if}
     </p>
     <a href="/projets/{projet.slug}">En savoir plus</a>
 </article>

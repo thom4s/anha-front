@@ -70,7 +70,7 @@ export async function getAllProjets( ) {
         body: JSON.stringify({
             query: `
                 {
-                    projets {
+                    projets(first: 5, after: "endCursorFromPreviousRequestGoesHere") {
                         nodes {
                             excerpt
                             id
@@ -101,7 +101,7 @@ export async function getAllProjets( ) {
         })
         .then(res => res.json())
         .then(res => {
-            console.log('res: ', res)
+            console.log('projets res: ', res)
             return res.data.projets
         });
 
