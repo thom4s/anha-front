@@ -1,6 +1,7 @@
 <script lang="ts">
     import BlockProjet from "$lib/parts/BlockProjet.svelte";
-
+	import { fade } from 'svelte/transition';
+    
     export let data: {
         projets: Promise<void>;
     }
@@ -31,41 +32,51 @@
 
     <h1>Les projets</h1>
 
-    <div class="filters">
+    <div class="grid">
 
-        <p class="filter">
-            {#each secteurs.nodes as t }
-                <span on:click={ (e) => filter(e) }>{t.name}</span>
+        <div class="s_4column">
+            <div class="filters">
+
+                <p class="filter">
+                    <strong>Secteurs</strong>
+                    {#each secteurs.nodes as t }
+                        <span on:click={ (e) => filter(e) } class:active={filters.includes(t.name)}>{t.name}</span>
+                    {/each}
+                </p>
+
+                <p class="filter">
+                    <strong>Savoir Faires</strong>
+                    {#each savoirfaires.nodes as t }
+                        <span on:click={ (e) => filter(e) } class:active={filters.includes(t.name)}>{t.name}</span>
+                    {/each}
+                </p>
+
+            </div>
+        </div>
+
+        <div class="s_8column">
+            {#each visibleProjets as projet }
+                <BlockProjet {projet}/>
+            {:else}
+                <p in:fade={{ delay: 300, duration: 300 }}>Aucun résultat</p>
             {/each}
-        </p>
-
-        <p class="filter">
-            {#each savoirfaires.nodes as t }
-                <span on:click={ (e) => filter(e) }>{t.name}</span>
-            {/each}
-        </p>
-
-        <p class="filter">
-            {#each filters as f }
-                <span>{f}</span>
-            {/each}
-        </p>
-
+        </div>
     </div>
-
-    {#each visibleProjets as projet }
-        <BlockProjet {projet}/>
-    {/each}
-
 </div>
 
 <style lang="scss">
     .filter {
         display: flex;
+        flex-direction: column;
         gap: 10px;
 
         span {
             cursor: pointer;
+        }
+        .active {
+            font-weight: bold;
+            position: relative;
+            left: 10px;
         }
     }
 </style>

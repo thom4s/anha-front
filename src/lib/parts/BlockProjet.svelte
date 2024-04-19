@@ -1,4 +1,5 @@
 <script>
+	import { fade } from 'svelte/transition';
 
     export let projet = {};
     export let type = '';
@@ -6,7 +7,7 @@
 </script>
 
 
-<article class="block">
+<article class="block" transition:fade={{ duration: 300 }}>
     <h2>{projet.title}</h2>
     <div>{@html projet.excerpt}</div>
 
