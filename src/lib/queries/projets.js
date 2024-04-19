@@ -30,6 +30,23 @@ export async function getProjetBySlug( slug = '' ) {
                       altText
                     }
                   }
+                  informationsProjet {
+                    secteur {
+                        nodes {
+                            id
+                            slug
+                            name
+                            taxonomyName
+                        }
+                    }
+                    savoirFaire {
+                        nodes {
+                            name
+                            slug
+                            taxonomyName
+                        }
+                    }
+                  }
                 }
               }
             `
@@ -37,6 +54,7 @@ export async function getProjetBySlug( slug = '' ) {
         })
         .then(res => res.json())
         .then(res => {
+            console.log('res: ', res)
             return res.data.projet
         });
 
@@ -58,6 +76,23 @@ export async function getAllProjets( ) {
                             id
                             slug
                             title
+                            informationsProjet {
+                                secteur {
+                                    nodes {
+                                        id
+                                        slug
+                                        name
+                                        taxonomyName
+                                    }
+                                }
+                                savoirFaire {
+                                    nodes {
+                                        name
+                                        slug
+                                        taxonomyName
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -66,6 +101,7 @@ export async function getAllProjets( ) {
         })
         .then(res => res.json())
         .then(res => {
+            console.log('res: ', res)
             return res.data.projets
         });
 
