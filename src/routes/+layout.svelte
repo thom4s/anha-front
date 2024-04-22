@@ -1,8 +1,5 @@
 <script>
     import { website } from '$lib/config/website.js'
-	import { page } from '$app/stores';
-	import { PUBLIC_CANONICAL_ORIGIN } from '$env/static/public';
-	import SeoComponent from '$lib/SEO/index.svelte';
 
     import Header from "$lib/parts/Header.svelte";
     import Footer from "$lib/parts/Footer.svelte";
@@ -31,26 +28,11 @@
     }
 </script>
 
-
 <Header {menuItems} {menuItemsSecondary}/>
-
-
-<SeoComponent
-	url={$page.url}
-	canonical_origin={PUBLIC_CANONICAL_ORIGIN}
-	data={{ 
-        title: $website.siteTitle, 
-        description: seoConfig.description, 
-        canonical_url: seoConfig.homeUrl, 
-        logo: seoConfig.logo
-    }}
-/>
-
 
 <main>
     <slot />
 </main>
-
 
 <Footer />
 
