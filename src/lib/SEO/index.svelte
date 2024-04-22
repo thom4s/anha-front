@@ -1,4 +1,7 @@
 <script>
+	// https://github.com/rodneylab/sveltekit-seo/blob/main/src/routes/contact/%2Bpage.svelte
+
+	
 	import ogSquareImageSrc from '$lib/assets/anha_logo.png';
 	import ogImageSrc from '$lib/assets/anha_logo.png';
 	import twitterImageSrc from '$lib/assets/anha_logo.png';
