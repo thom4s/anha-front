@@ -1,4 +1,7 @@
 <script lang="ts">
+    import SEO from '$lib/SEO/index.svelte';
+    import { website } from '$lib/config/website.js'
+
     import BlockPost from "$lib/parts/BlockPost.svelte";
     export let data: {
         collaborations: Promise<void>;
@@ -6,7 +9,31 @@
     $: ({collaborations} = data)
     $: console.log(collaborations)
 
+    /*
+     * SEO STUFFS
+     */
+    $: title = 'Collaborations';
+	$: metadescription = '';
+
+	const breadcrumbs = [
+		{
+			name: 'Home',
+			slug: '',
+		},
+	];
+	$: seoProps = {
+		breadcrumbs,
+		title,
+		metadescription,
+		slug: '',
+		datePublished: '2021-07-07T14:19:33.000+0100',
+		lastUpdated: '2021-07-07T14:19:33.000+0100',
+	};
+    // END SEO STUFFS
+
 </script>
+
+<SEO {...seoProps} />
 
 
 <div class="container">
