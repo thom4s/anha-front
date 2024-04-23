@@ -59,6 +59,40 @@ export async function getPageBySlug( uri = '' ) {
     return page;
 }
 
+export async function getContactPage( uri = 'contact' ) {
+    
+    const query = `{
+        page(id: "${uri}", idType: URI) {
+            id
+            uri
+            title
+            content
+            parametresFormulaire {
+                smtp {
+                  authPass
+                  authUser
+                  port
+                  secure
+                  host
+                }
+            }
+        }
+    }`
+    console.log(query)
+
+    const page = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({query}),
+        })
+        .then(res => res.json())
+        .then(res => {
+            console.log('res: ', res)
+            return res.data.page
+        });
+
+    return page;
+}
 
 export async function getAllPages( slug = '' ) {
     

@@ -1,14 +1,22 @@
-<script>
+<script lang="ts">
     import { enhance, applyAction } from '$app/forms';
     import { goto } from '$app/navigation';
-    
+    import Input from '$lib/parts/Forms/Input.svelte';
+    import Textarea from '$lib/parts/Forms/Textarea.svelte';
+
+    export let data: {
+        page: Promise<void>;
+    }
+    $: ({page} = data)
     let loading = false;
+    $: console.log(page)
 </script>
 
 
 <div class="container">
-    <h1>Contact</h1>
+    <h1>{page.title}</h1>
 
+    <div>{@html page.content}</div>
 
     <form 
         method="POST"
@@ -27,10 +35,10 @@
             };
         }}>
 
-        <input type="text" placeholder="THomas" name="name">
-        <input type="email" placeholder="nom@domaine.fr" name="mail">
-        <textarea name="message"></textarea>
-        <input type="submit" value="Envoyer">
+        <Input type="text" placeholder="Thomas" name="name" />
+        <Input type="email" placeholder="nom@domaine.fr" name="mail" />
+        <Textarea name="message" />
+        <Input type="submit" value="Envoyer" />
     </form>
 
 </div>

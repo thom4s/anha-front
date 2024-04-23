@@ -1,13 +1,11 @@
 <script>
-	import { Button, Hr, Html, Text } from 'svelte-email';
-
 	export let name = 'World';
 </script>
 
-<Html lang="en">
-	<Text>
+<html lang="fr">
+	<p>
 		Hello, {name}!
-	</Text>
-	<Hr />
-	<Button href="https://svelte.dev">Visit Svelte</Button>
-</Html>
+	</p>
+	<hr />
+	<a href="https://svelte.dev">Visit Svelte</a>
+</html>

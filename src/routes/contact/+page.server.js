@@ -1,34 +1,33 @@
 
 import nodemailer from 'nodemailer';
 import Contact from '$lib/emails/Contact.svelte';
+import { getContactPage } from "$lib/queries/pages"
 
-const transporter = nodemailer.createTransport({
-	host: 'mail.gandi.net',
-	port: 465,
-	secure: true,
-	auth: {
-		user: 'hello@thomasflorentin.net',
-		pass: 'dostoievski!tolstoi!gandi'
-	}
-});
 
+const page = await getContactPage();
 
 export async function load( {params} ) {
-
-    console.log('params, ', params)
-    
     return {
-        
+      page
     }
 }
 
-
 export const actions = {
-	contact: async ({request, locals}) => {
+	contact: async ({request}) => {
 		
         let { name, mail, message } = Object.fromEntries(await request.formData());
 
         const emailHtml = `<html><p>Hello ${name} - ${mail}</p><p>${message}</html>`;
+
+        const transporter = nodemailer.createTransport({
+          host: page.parametresFormulaire.smtp.host,
+          port: page.parametresFormulaire.smtp.port,
+          secure: true,
+          auth: {
+            user: page.parametresFormulaire.smtp.authUser,
+            pass: page.parametresFormulaire.smtp.authPass
+          }
+        });
 
         const options = {
             from: 'hello@thomasflorentin.net',
