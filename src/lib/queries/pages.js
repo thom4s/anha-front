@@ -67,15 +67,6 @@ export async function getContactPage( uri = 'contact' ) {
             uri
             title
             content
-            parametresFormulaire {
-                smtp {
-                  authPass
-                  authUser
-                  port
-                  secure
-                  host
-                }
-            }
         }
     }`
     console.log(query)

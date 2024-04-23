@@ -2,7 +2,7 @@
 
     import SEO from '$lib/SEO/index.svelte';
     import { website } from '$lib/config/website.js'
-
+    import Form from '$lib/parts/Forms/Form.svelte';
 
     import BlockPost from "$lib/parts/BlockPost.svelte";
 
@@ -11,6 +11,7 @@
     }
     $: ({offres} = data)
     $: console.log(offres)
+    let loading = false;
 
     /*
      * SEO STUFFS
@@ -48,8 +49,19 @@
 
     <h1>Offres d'emploi</h1>
 
-    {#each offres.nodes as post }
-        <BlockPost {post} type="offres"/>
-    {/each}
+    <div class="grid">
+        <div class="s_6column">
+            {#each offres.nodes as post }
+                <BlockPost {post} type="offres"/>
+            {/each}
+        </div>
+    
+        <div class="s_6column">
 
+            <h2>Postuler</h2>
+
+            <Form />
+
+        </div>
+    </div>  
 </div>

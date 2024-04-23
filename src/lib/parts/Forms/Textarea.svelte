@@ -11,6 +11,7 @@
     <label for={name}>{label}<br>
         <span class="" data-name="{name}">
             <textarea 
+                cols="40" rows="10" 
                 class="" 
                 class:input-required={required} 
                 autocomplete="name" 

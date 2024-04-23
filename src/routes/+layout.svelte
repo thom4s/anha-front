@@ -8,8 +8,8 @@
     export let data;
     $: ({menuItems, menuItemsSecondary, seoConfig } = data)
 
-    $: console.log('seoConfig: ', seoConfig)
-    $: console.log('website config: ', $website)
+    //$: console.log('seoConfig: ', seoConfig)
+    //$: console.log('website config: ', $website)
 
     $: {
         $website.author = seoConfig.seo.schema.companyName
