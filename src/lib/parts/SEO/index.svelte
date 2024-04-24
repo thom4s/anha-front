@@ -1,17 +1,20 @@
 <script>
 	// https://github.com/rodneylab/sveltekit-seo/blob/main/src/routes/contact/%2Bpage.svelte
 
-	
+    import { page } from '$app/stores';
+	import website from '$lib/config/website';
+	import { VERTICAL_LINE_ENTITY } from '$lib/constants/entities';
+
 	import ogSquareImageSrc from '$lib/assets/anha_logo.png';
 	import ogImageSrc from '$lib/assets/anha_logo.png';
 	import twitterImageSrc from '$lib/assets/anha_logo.png';
 	import featuredImageSrc from '$lib/assets/anha_logo.png';
-	
-	import website from '$lib/config/website';
-	import { VERTICAL_LINE_ENTITY } from '$lib/constants/entities';
 
 	import OpenGraph from './OpenGraph.svelte';
 	import SchemaOrg from './SchemaOrg.svelte';
+
+	$: console.log('SEO INDEX $page: ', $page)
+
 
 	const {
 		author,
@@ -30,13 +33,14 @@
 	export let article = false;
 	export let breadcrumbs = [];
 	export let entityMeta = null;
-	export let lastUpdated;
-	export let datePublished;
-	export let metadescription;
-	export let keywords;
-	export let slug;
-	export let timeToRead = 0;
-	export let title;
+
+	$: title = $page.data.page.title;
+	$: metadescription = $page.data.page.seo.metaDesc;
+	$: keywords = $page.data.page.seo.metaKeywords;
+	$: slug = $page.data.page.uri;
+	$: datePublished = $page.data.page.date;
+	$: lastUpdated = $page.data.page.modified;
+	$: timeToRead = $page.data.page.timeToRead;
 
 	const defaultAlt =
 		'Anha - From Design to Manufacture';
@@ -60,9 +64,9 @@
 		url: twitterImageSrc,
 		alt: defaultAlt,
 	};
-	const url = `${siteUrl}${slug}`;
-	const pageTitle = `${title} ${VERTICAL_LINE_ENTITY} ${siteTitle}`;
-	const openGraphProps = {
+	$: url = `${siteUrl}${slug}`;
+	$: pageTitle = `${title} ${VERTICAL_LINE_ENTITY} ${siteTitle}`;
+	$: openGraphProps = {
 		article,
 		datePublished,
 		lastUpdated,
@@ -75,7 +79,7 @@
 		url,
 		...(article ? { datePublished, lastUpdated, facebookPage, facebookAuthorPage } : {}),
 	};
-	const schemaOrgProps = {
+	$: schemaOrgProps = {
 		article,
 		author,
 		breadcrumbs,
@@ -95,7 +99,7 @@
 		linkedinProfile,
 		twitterUsername,
 	};
-	const twitterProps = {
+	$: twitterProps = {
 		article,
 		author,
 		twitterUsername,
