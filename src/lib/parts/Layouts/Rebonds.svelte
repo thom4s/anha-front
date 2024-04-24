@@ -7,5 +7,5 @@
 <h2>{titre}</h2>
 
 {#each pages as page }
-    <a href="{page.uri}">{page.title}</a>
+    <a href="/{page.uri}">{page.title}</a>
 {/each}
