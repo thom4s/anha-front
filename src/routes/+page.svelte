@@ -13,7 +13,7 @@
      * SEO STUFFS
      */
 	let title = 'Accueil';
-	let metadescription = 'Get in touch with Rodneylab, the developer of Climate SvelteKit Starter.';
+	let metadescription = '.';
 	const breadcrumbs = [
 		{
 			name: 'Home',

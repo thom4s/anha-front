@@ -1,5 +1,6 @@
 
 import { API_URL } from '$env/static/private';
+import { seo_query_string } from '$lib/utils/utils';
 
 
 export async function getCollaborationBySlug( slug = '' ) {
@@ -11,23 +12,25 @@ export async function getCollaborationBySlug( slug = '' ) {
             query: `
             {
                 collaboration(id: "${slug}", idType: SLUG) {
-                  id
-                  excerpt
-                  slug
-                  title
-                  template {
-                    templateName
-                  }
-                  content
-                  featuredImage {
-                    node {
-                      link
-                      sizes
-                      sourceUrl
-                      srcSet
-                      altText
+                    id
+                    excerpt
+                    slug
+                    title
+                    template {
+                        templateName
                     }
-                  }
+                    content
+                    featuredImage {
+                        node {
+                            link
+                            sizes
+                            sourceUrl
+                            srcSet
+                            altText
+                        }
+                    }
+                    ${seo_query_string}
+
                 }
               }
             `
@@ -56,6 +59,8 @@ export async function getAllCollaborations( ) {
                             id
                             slug
                             title
+                            ${seo_query_string}
+
                         }
                     }
                 }

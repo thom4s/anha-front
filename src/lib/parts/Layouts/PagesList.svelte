@@ -1,0 +1,12 @@
+<script>
+    export let titre = '';
+    export let pages = {};
+    $: console.log('Liste pages', pages)
+
+</script>
+
+<h2>{titre}</h2>
+
+{#each pages as page }
+    <a href="{page.uri}">{page.title}</a>
+{/each}

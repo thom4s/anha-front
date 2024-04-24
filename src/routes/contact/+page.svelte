@@ -5,7 +5,6 @@
         page: Promise<void>;
     }
     $: ({page} = data)
-
 </script>
 
 

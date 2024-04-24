@@ -1,5 +1,6 @@
 
 import { API_URL } from '$env/static/private';
+import { seo_query_string } from '$lib/utils/utils';
 
 
 
@@ -36,6 +37,8 @@ export async function getPostBySlug( slug = '' ) {
                               name
                             }
                         }
+                        ${seo_query_string}
+
                     }
                 }
             `
@@ -66,6 +69,8 @@ export async function getAllPosts( slug = '' ) {
                             id
                             slug
                             title
+                            ${seo_query_string}
+
                         }
                     }
                 }

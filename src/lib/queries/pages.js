@@ -1,22 +1,21 @@
 
 import { API_URL } from '$env/static/private';
-
+import { seo_query_string, flexible_query_string } from '$lib/utils/utils';
 
 
 export async function getHomePage () {
     const query = `{
         nodeByUri(uri: "/") {
-          __typename
-          ... on ContentType {
             id
-            name
-          }
-          ... on Page {
-            id
-            title
-          }
+            ... on Page {
+                id
+                authorDatabaseId
+                content
+                title
+                ${seo_query_string}
+            }
         }
-      }`
+    }`
     
     const page = await fetch(API_URL, {
         method: 'POST',
@@ -25,7 +24,7 @@ export async function getHomePage () {
         })
         .then(res => res.json())
         .then(res => {
-            console.log('res: ', res)
+            console.log('getHomePage res: ', res)
             return res.data.nodeByUri
         });
 
@@ -41,6 +40,8 @@ export async function getPageBySlug( uri = '' ) {
             uri
             title
             content
+            ${seo_query_string}
+            ${flexible_query_string}
         }
     }`
     console.log(query)
@@ -67,6 +68,8 @@ export async function getContactPage( uri = 'contact' ) {
             uri
             title
             content
+            ${seo_query_string}
+            ${flexible_query_string}
         }
     }`
     console.log(query)
@@ -101,6 +104,7 @@ export async function getAllPages( slug = '' ) {
                             id
                             slug
                             title
+                            ${seo_query_string}
                         }
                     }
                 }
