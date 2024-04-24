@@ -6,39 +6,18 @@
     export let data: {
         collaborations: Promise<void>;
     }
-    $: ({collaborations} = data)
+    $: ({collaborations, page} = data)
     $: console.log(collaborations)
-
-    /*
-     * SEO STUFFS
-     */
-    $: title = 'Collaborations';
-	$: metadescription = '';
-
-	const breadcrumbs = [
-		{
-			name: 'Home',
-			slug: '',
-		},
-	];
-	$: seoProps = {
-		breadcrumbs,
-		title,
-		metadescription,
-		slug: '',
-		datePublished: '2021-07-07T14:19:33.000+0100',
-		lastUpdated: '2021-07-07T14:19:33.000+0100',
-	};
-    // END SEO STUFFS
-
+    $: console.log(page)
 </script>
 
-<SEO {...seoProps} />
+
 
 
 <div class="container">
 
-    <h1>Collaborations</h1>
+    <h1>{page.title}</h1>
+    <div>{@html page.content}</div>
 
     {#each collaborations.nodes as post }
         <BlockPost {post} type="collaborations"/>

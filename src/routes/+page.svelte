@@ -6,35 +6,14 @@
     export let data: {
         homepage: Promise<void>;
     }
-    $: ({homepage} = data)
-    $: console.log('homepage: ', homepage)
-
-    /*
-     * SEO STUFFS
-     */
-	let title = 'Accueil';
-	let metadescription = '.';
-	const breadcrumbs = [
-		{
-			name: 'Home',
-			slug: '',
-		},
-	];
-	const seoProps = {
-		breadcrumbs,
-		title,
-		metadescription,
-		slug: '',
-		datePublished: '2021-07-07T14:19:33.000+0100',
-		lastUpdated: '2021-07-07T14:19:33.000+0100',
-	};
+    $: ({page} = data)
+    $: console.log('homepage: ', page)
 
 </script>
 
-<SEO {...seoProps} />
 
 <div class="container">
-    <h1>{homepage.title}</h1>
-    <div>{@html homepage.content}</div>
+    <h1>{page.title}</h1>
+    <div>{@html page.content}</div>
 </div>
 

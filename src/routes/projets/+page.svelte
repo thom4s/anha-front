@@ -5,8 +5,7 @@
     export let data: {
         projets: Promise<void>;
     }
-    $: ({projets, savoirfaires, secteurs} = data)
-    
+    $: ({page, projets, savoirfaires, secteurs} = data)
 
     $: {
         console.log('projets: ', projets)
@@ -30,7 +29,10 @@
 
 <div class="container">
 
-    <h1>Les projets</h1>
+    <div>
+        <h1>{page.title}</h1>
+        <div>{@html page.content}</div>
+    </div>
 
     <div class="grid">
 

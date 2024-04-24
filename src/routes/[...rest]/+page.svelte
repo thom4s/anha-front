@@ -1,6 +1,4 @@
 <script lang="ts">
-    import SEO from '$lib/parts/SEO/index.svelte';
-    import { website } from '$lib/config/website.js'
     import Rebonds from '$lib/parts/Layouts/Rebonds.svelte';
     import PagesList from '$lib/parts/Layouts/PagesList.svelte';
 
@@ -8,47 +6,9 @@
         page: Promise<void>;
     }
     $: ({page} = data)
-    $: console.log( 'Flexible: ', page.contenusFlexibles?.contenusFlexibles  )
-    $: console.log( 'Page SEO: ', page.seo  )
-    $: console.log( 'Page: ', page  )
-
-
-    /*
-     * SEO STUFFS
-     */
-    $: title = page.title;
-	$: metadescription = page.seo.metaDesc;
-	$: keywords = page.seo.metaKeywords;
-	$: slug = page.slug;
-
-	$: breadcrumbs = [
-		{
-			name: 'Home',
-			slug: '',
-		},
-        {
-			name: page.title,
-			slug: page.slug,
-		},
-	];
-
-	$: seoProps = {
-		breadcrumbs,
-        keywords,
-		title,
-		metadescription,
-		slug,
-		datePublished: page.date,
-		lastUpdated: page.modified,
-        timeToRead: page.seo.timeToRead
-	};
-    // END SEO STUFFS
-
-
+    // $: console.log( 'Flexible: ', page.contenusFlexibles?.contenusFlexibles  )
+    // $: console.log( 'Page: ', page  )
 </script>
-
-<SEO {...seoProps} />
-
 
 <div class="container">
     {#if page}

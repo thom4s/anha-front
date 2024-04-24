@@ -60,7 +60,7 @@
 		url: twitterImageSrc,
 		alt: defaultAlt,
 	};
-	const url = `${siteUrl}/${slug}`;
+	const url = `${siteUrl}${slug}`;
 	const pageTitle = `${title} ${VERTICAL_LINE_ENTITY} ${siteTitle}`;
 	const openGraphProps = {
 		article,
