@@ -13,6 +13,7 @@ export const seo_query_string = `
 			metaRobotsNofollow
 			metaRobotsNoindex
 			title
+			readingTime
 			opengraphTitle
 			opengraphType
 			opengraphUrl

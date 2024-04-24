@@ -1,6 +1,6 @@
 
 <script lang="ts">
-    import SEO from '$lib/SEO/index.svelte';
+    import SEO from '$lib/parts/SEO/index.svelte';
 
     export let data: {
         projet: Promise<void>;

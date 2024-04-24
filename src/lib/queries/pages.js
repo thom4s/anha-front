@@ -40,6 +40,8 @@ export async function getPageBySlug( uri = '' ) {
             uri
             title
             content
+            date
+            modified
             ${seo_query_string}
             ${flexible_query_string}
         }

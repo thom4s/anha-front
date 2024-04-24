@@ -1,5 +1,5 @@
 <script lang="ts">
-    import SEO from '$lib/SEO/index.svelte';
+    import SEO from '$lib/parts/SEO/index.svelte';
     import { website } from '$lib/config/website.js'
     import Rebonds from '$lib/parts/Layouts/Rebonds.svelte';
     import PagesList from '$lib/parts/Layouts/PagesList.svelte';
@@ -9,13 +9,17 @@
     }
     $: ({page} = data)
     $: console.log( 'Flexible: ', page.contenusFlexibles?.contenusFlexibles  )
+    $: console.log( 'Page SEO: ', page.seo  )
+    $: console.log( 'Page: ', page  )
 
 
     /*
      * SEO STUFFS
      */
     $: title = page.title;
-	$: metadescription = page.excerpt;
+	$: metadescription = page.seo.metaDesc;
+	$: keywords = page.seo.metaKeywords;
+	$: slug = page.slug;
 
 	$: breadcrumbs = [
 		{
@@ -30,11 +34,13 @@
 
 	$: seoProps = {
 		breadcrumbs,
+        keywords,
 		title,
 		metadescription,
-		slug: '',
-		datePublished: '2021-07-07T14:19:33.000+0100',
-		lastUpdated: '2021-07-07T14:19:33.000+0100',
+		slug,
+		datePublished: page.date,
+		lastUpdated: page.modified,
+        timeToRead: page.seo.timeToRead
 	};
     // END SEO STUFFS
 

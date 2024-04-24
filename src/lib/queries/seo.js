@@ -35,22 +35,22 @@ export async function getSeoSchema( ) {
                         siteName
                         siteUrl
                         logo {
-                        sourceUrl
-                        seo {
-                            canonical
-                            metaDesc
-                            metaKeywords
-                            opengraphAuthor
-                            opengraphDescription
-                            opengraphModifiedTime
-                            opengraphPublishedTime
-                            opengraphPublisher
-                            opengraphSiteName
-                            opengraphTitle
-                            opengraphType
-                            opengraphUrl
-                            title
-                        }
+                            sourceUrl
+                            seo {
+                                canonical
+                                metaDesc
+                                metaKeywords
+                                opengraphAuthor
+                                opengraphDescription
+                                opengraphModifiedTime
+                                opengraphPublishedTime
+                                opengraphPublisher
+                                opengraphSiteName
+                                opengraphTitle
+                                opengraphType
+                                opengraphUrl
+                                title
+                            }
                         }
                     }
                 }

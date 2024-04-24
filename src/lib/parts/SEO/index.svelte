@@ -33,12 +33,13 @@
 	export let lastUpdated;
 	export let datePublished;
 	export let metadescription;
+	export let keywords;
 	export let slug;
 	export let timeToRead = 0;
 	export let title;
 
 	const defaultAlt =
-		'picture of a person with long, curly hair, wearing a red had taking a picture with an analogue camera';
+		'Anha - From Design to Manufacture';
 
 	export let featuredImage = {
 		url: featuredImageSrc,
@@ -60,7 +61,7 @@
 		alt: defaultAlt,
 	};
 	const url = `${siteUrl}/${slug}`;
-	const pageTitle = `${siteTitle} ${VERTICAL_LINE_ENTITY} ${title}`;
+	const pageTitle = `${title} ${VERTICAL_LINE_ENTITY} ${siteTitle}`;
 	const openGraphProps = {
 		article,
 		datePublished,
@@ -106,6 +107,7 @@
 <svelte:head>
 	<title>{pageTitle}</title>
 	<meta name="description" content={metadescription} />
+	<meta name="keywords" content={keywords} />
 	<meta
 		name="robots"
 		content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
