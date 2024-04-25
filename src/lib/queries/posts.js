@@ -1,42 +1,23 @@
 
-import { API_URL } from '$env/static/private';
-import { seo_query_string } from '$lib/utils/utils';
+import { PUBLIC_API_URL } from "$env/static/public";
+import { seo_query_string, contentType_fields_string, basic_fields_string, featuredImage_fields_string, author_fields_string } from '$lib/utils/utils';
 
 
 
 export async function getPostBySlug( slug = '' ) {
     
-    const post = await fetch(API_URL, {
+    const post = await fetch(PUBLIC_API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
             query: `
                 {
                     post(id: ${slug}, idType: SLUG ) {
-                        id
-                        content
-                        date
-                        featuredImage {
-                            node {
-                                caption
-                                altText
-                                fileSize
-                                link
-                                sizes
-                                srcSet
-                                sourceUrl
-                            }
-                        }
-                        postId
-                        slug
-                        title
-                        author {
-                            node {
-                              name
-                            }
-                        }
+                        ${basic_fields_string}
+                        ${featuredImage_fields_string}
+                        ${author_fields_string}
+                        ${contentType_fields_string}
                         ${seo_query_string}
-
                     }
                 }
             `
@@ -53,7 +34,7 @@ export async function getPostBySlug( slug = '' ) {
 
 export async function getAllPosts( slug = '', lang = 'fr' ) {
     
-    const posts = await fetch(API_URL, {
+    const posts = await fetch(PUBLIC_API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -61,12 +42,8 @@ export async function getAllPosts( slug = '', lang = 'fr' ) {
                 {
                     posts(where: {language: ${lang} }) {
                         nodes {
-                            excerpt
-                            id
-                            slug
-                            title
+                            ${basic_fields_string}
                             ${seo_query_string}
-
                         }
                     }
                 }

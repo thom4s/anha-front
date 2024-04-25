@@ -1,58 +1,33 @@
 
-import { API_URL } from '$env/static/private';
-import { seo_query_string } from '$lib/utils/utils';
+import { PUBLIC_API_URL } from "$env/static/public";
+
+import { seo_query_string, contentType_fields_string, basic_fields_string, extended_fields_string, featuredImage_fields_string, flexible_query_string } from '$lib/utils/utils';
+
+
 
 
 export async function getProjetBySlug( slug = '', lang = 'fr' ) {
     
     console.log('slug: ', slug)
 
-    const projet = await fetch(API_URL, {
+    const query = `
+        {
+            projet(id: "${slug}", idType: SLUG) {
+                ${extended_fields_string}
+                ${featuredImage_fields_string}
+                ${seo_query_string}
+                ${flexible_query_string}
+                ${contentType_fields_string}
+            }
+        }
+    `
+    console.log('query', query)
+
+
+    const projet = await fetch(PUBLIC_API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            query: `
-            {
-                projet(id: "${slug}", idType: SLUG) {
-                  id
-                  excerpt
-                  slug
-                  title
-                  template {
-                    templateName
-                  }
-                  content
-                  featuredImage {
-                    node {
-                      link
-                      sizes
-                      sourceUrl
-                      srcSet
-                      altText
-                    }
-                  }
-                  ${seo_query_string}
-                  informationsProjet {
-                    secteur {
-                        nodes {
-                            id
-                            slug
-                            name
-                            taxonomyName
-                        }
-                    }
-                    savoirFaire {
-                        nodes {
-                            name
-                            slug
-                            taxonomyName
-                        }
-                    }
-                  }
-                }
-              }
-            `
-            }),
+        body: JSON.stringify({ query }),
         })
         .then(res => res.json())
         .then(res => {
@@ -66,43 +41,24 @@ export async function getProjetBySlug( slug = '', lang = 'fr' ) {
 
 export async function getAllProjets( ) {
     
-    const projets = await fetch(API_URL, {
+    const query = `
+        {
+            projets(first: 5, after: "endCursorFromPreviousRequestGoesHere") {
+                nodes {
+                    ${extended_fields_string}
+                    ${seo_query_string}
+                    ${contentType_fields_string}
+                    ${flexible_query_string}
+                }
+            }
+        }
+    `
+    console.log('query', query)
+
+    const projets = await fetch(PUBLIC_API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            query: `
-                {
-                    projets(first: 5, after: "endCursorFromPreviousRequestGoesHere") {
-                        nodes {
-                            excerpt
-                            id
-                            slug
-                            title
-                            uri
-                            ${seo_query_string}
-
-                            informationsProjet {
-                                secteur {
-                                    nodes {
-                                        id
-                                        slug
-                                        name
-                                        taxonomyName
-                                    }
-                                }
-                                savoirFaire {
-                                    nodes {
-                                        name
-                                        slug
-                                        taxonomyName
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            `
-            }),
+        body: JSON.stringify({ query }),
         })
         .then(res => res.json())
         .then(res => {

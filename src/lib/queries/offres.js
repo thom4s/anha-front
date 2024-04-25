@@ -1,11 +1,11 @@
 
-import { API_URL } from '$env/static/private';
+import { PUBLIC_API_URL } from "$env/static/public";
 import { seo_query_string } from '$lib/utils/utils';
 
 
 export async function getOffreBySlug( slug = '', lang = 'fr' ) {
     
-    const offre = await fetch(API_URL, {
+    const offre = await fetch(PUBLIC_API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -46,7 +46,7 @@ export async function getOffreBySlug( slug = '', lang = 'fr' ) {
 
 export async function getAllOffres( ) {
     
-    const offres = await fetch(API_URL, {
+    const offres = await fetch(PUBLIC_API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

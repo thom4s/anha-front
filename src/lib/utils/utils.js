@@ -6,6 +6,93 @@ export default function (title) {
 	return `${title} – Anha`;
 }
 
+export const basic_fields_string = `
+	id
+	slug
+	content
+	title
+	date
+	modified
+	uri
+	template {
+		templateName
+	}
+	contentType {
+		node {
+			name
+		}
+	}
+`;
+
+export const extended_fields_string = `
+	id
+	slug
+	content
+	title
+	date
+	modified
+	excerpt
+	uri
+	template {
+		templateName
+	}
+	contentType {
+		node {
+			name
+		}
+	}
+`;
+
+export const author_fields_string = `
+	author {
+		node {
+		name
+		}
+	}
+`
+
+export const taxonomies_fields_string = `
+	informationsProjet {
+		secteur {
+			nodes {
+				id
+				slug
+				name
+				taxonomyName
+			}
+		}
+		savoirFaire {
+			nodes {
+				name
+				slug
+				taxonomyName
+			}
+		}
+	}
+`
+
+export const featuredImage_fields_string = `
+	featuredImage {
+		node {
+			caption
+			altText
+			fileSize
+			link
+			sizes
+			srcSet
+			sourceUrl
+		}
+	}
+`
+
+export const contentType_fields_string = `
+	contentType {
+		node {
+			name
+		}
+	}
+`
+
 export const seo_query_string = `
 		seo {
 			metaDesc

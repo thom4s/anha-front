@@ -1,5 +1,4 @@
-import { API_URL } from '$env/static/private';
-import { lang } from '$lib/config/website';
+import { PUBLIC_API_URL } from "$env/static/public";
 import { getSeoSchema } from '$lib/queries/seo';
 import { getMenuItems, getLangs } from '$lib/queries/options';
 

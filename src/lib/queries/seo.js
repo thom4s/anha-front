@@ -1,10 +1,10 @@
 
-import { API_URL } from '$env/static/private';
+import { PUBLIC_API_URL } from "$env/static/public";
 
 
 export async function getSeoSchema( ) {
     
-    const seoConfig = await fetch(API_URL, {
+    const seoConfig = await fetch(PUBLIC_API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

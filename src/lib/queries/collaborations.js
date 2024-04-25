@@ -1,11 +1,11 @@
 
-import { API_URL } from '$env/static/private';
+import { PUBLIC_API_URL } from "$env/static/public";
 import { seo_query_string } from '$lib/utils/utils';
 
 
 export async function getCollaborationBySlug( slug = '', lang = 'fr' ) {
     
-    const collaboration = await fetch(API_URL, {
+    const collaboration = await fetch(PUBLIC_API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -47,7 +47,7 @@ export async function getCollaborationBySlug( slug = '', lang = 'fr' ) {
 
 export async function getAllCollaborations( lang = 'fr' ) {
     
-    const collaborations = await fetch(API_URL, {
+    const collaborations = await fetch(PUBLIC_API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

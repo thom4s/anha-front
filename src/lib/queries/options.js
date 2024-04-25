@@ -1,9 +1,9 @@
 
-import { API_URL } from '$env/static/private';
+import { PUBLIC_API_URL } from "$env/static/public";
 
 
 export async function getLangs( ) {
-    const langs = await fetch(API_URL, {
+    const langs = await fetch(PUBLIC_API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -29,7 +29,7 @@ export async function getLangs( ) {
 
 
 export async function getMenuItems( lang, id ) {
-    const menuItems = await fetch(API_URL, {
+    const menuItems = await fetch(PUBLIC_API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -56,7 +56,7 @@ export async function getMenuItems( lang, id ) {
 
 export async function getFormsParams( ) {
     
-    const options = await fetch(API_URL, {
+    const options = await fetch(PUBLIC_API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
