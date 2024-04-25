@@ -3,7 +3,7 @@ import { API_URL } from '$env/static/private';
 import { seo_query_string } from '$lib/utils/utils';
 
 
-export async function getProjetBySlug( slug = '' ) {
+export async function getProjetBySlug( slug = '', lang = 'fr' ) {
     
     console.log('slug: ', slug)
 
@@ -13,7 +13,7 @@ export async function getProjetBySlug( slug = '' ) {
         body: JSON.stringify({
             query: `
             {
-                projet(id: "${slug}", idType: SLUG) {
+                projet(id: "${slug}", idType: SLUG, where: {language: ${lang} }) {
                   id
                   excerpt
                   slug

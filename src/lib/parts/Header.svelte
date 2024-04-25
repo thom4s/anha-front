@@ -1,6 +1,10 @@
 <script>
+    import { lang } from "$lib/config/website";
     export let menuItems = []
     export let menuItemsSecondary = []
+
+    $: console.log( 'menuItems: ', menuItems )
+    $: console.log( 'menuItemsSecondary: ', menuItemsSecondary )
 </script>
 
 <header>
@@ -13,13 +17,16 @@
             </ul>
         </nav>
 
-        <h1><a href="/">Anha</a></h1>
+        <h1><a href="/{$lang}">Anha</a></h1>
 
         <nav>
             <ul>
                 {#each menuItemsSecondary.nodes as item}
                     <li><a href="{item.path}">{item.label}</a></li>
                 {/each}
+
+                <li><button on:click={ () => $lang = 'fr'}>FR</button></li>
+                <li><button on:click={ () => $lang = 'en'}>EN</button></li>
             </ul>
         </nav>
 

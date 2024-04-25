@@ -3,7 +3,7 @@ import { API_URL } from '$env/static/private';
 import { seo_query_string } from '$lib/utils/utils';
 
 
-export async function getOffreBySlug( slug = '' ) {
+export async function getOffreBySlug( slug = '', lang = 'fr' ) {
     
     const offre = await fetch(API_URL, {
         method: 'POST',

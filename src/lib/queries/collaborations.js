@@ -3,7 +3,7 @@ import { API_URL } from '$env/static/private';
 import { seo_query_string } from '$lib/utils/utils';
 
 
-export async function getCollaborationBySlug( slug = '' ) {
+export async function getCollaborationBySlug( slug = '', lang = 'fr' ) {
     
     const collaboration = await fetch(API_URL, {
         method: 'POST',
@@ -45,7 +45,7 @@ export async function getCollaborationBySlug( slug = '' ) {
 }
 
 
-export async function getAllCollaborations( ) {
+export async function getAllCollaborations( lang = 'fr' ) {
     
     const collaborations = await fetch(API_URL, {
         method: 'POST',
@@ -53,7 +53,7 @@ export async function getAllCollaborations( ) {
         body: JSON.stringify({
             query: `
                 {
-                    collaborations {
+                    collaborations( where: {language: ${lang.toUpperCase()} }) {
                         nodes {
                             excerpt
                             id

@@ -1,7 +1,7 @@
 
 import { API_URL } from '$env/static/private';
 import { seo_query_string, flexible_query_string } from '$lib/utils/utils';
-
+import { lang } from '$lib/config/website';
 
 export async function getHomePage () {
     const query = `{
@@ -46,7 +46,6 @@ export async function getPageBySlug( uri = '' ) {
             ${flexible_query_string}
         }
     }`
-    console.log(query)
 
     const page = await fetch(API_URL, {
         method: 'POST',
@@ -74,7 +73,6 @@ export async function getContactPage( uri = 'contact' ) {
             ${flexible_query_string}
         }
     }`
-    console.log(query)
 
     const page = await fetch(API_URL, {
         method: 'POST',
@@ -90,17 +88,15 @@ export async function getContactPage( uri = 'contact' ) {
     return page;
 }
 
-export async function getAllPages( slug = '' ) {
+export async function getAllPages( slug = '', lang = 'fr' ) {
     
-    console.log('slug: ', slug)
-
     const pages = await fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
             query: `
                 {
-                    pages {
+                    pages(where: {language: ${lang} }) {
                         nodes {
                             excerpt
                             id

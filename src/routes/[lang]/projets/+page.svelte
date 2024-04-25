@@ -7,16 +7,9 @@
     }
     $: ({page, projets, savoirfaires, secteurs} = data)
 
-    $: {
-        console.log('projets: ', projets)
-        console.log('visibleProjets: ', visibleProjets)
-        console.log('filters: ', filters)
-    }
-
     let filters = [];
 
     const filter = (e) => {
-        console.log('get that filter', e)
         filters = [e.target.innerText]
     }
 

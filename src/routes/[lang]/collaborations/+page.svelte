@@ -3,23 +3,22 @@
     import { website } from '$lib/config/website.js'
 
     import BlockPost from "$lib/parts/BlockPost.svelte";
-
     export let data: {
-        posts: Promise<void>;
-        page : Promise<void>;
+        collaborations: Promise<void>;
     }
-    $: ({page, posts} = data)
-    $: console.log(posts)
-
+    $: ({collaborations, page} = data)
 </script>
+
+
+
 
 <div class="container">
 
     <h1>{page.title}</h1>
     <div>{@html page.content}</div>
 
-    {#each posts.nodes as post }
-        <BlockPost {post} type="posts"/>
+    {#each collaborations.nodes as post }
+        <BlockPost {post} type="collaborations"/>
     {/each}
 
 </div>

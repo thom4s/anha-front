@@ -13,7 +13,7 @@
 	import OpenGraph from './OpenGraph.svelte';
 	import SchemaOrg from './SchemaOrg.svelte';
 
-	$: console.log('SEO INDEX $page: ', $page)
+	//$: console.log('SEO INDEX $page: ', $page)
 
 
 	const {
@@ -34,13 +34,13 @@
 	export let breadcrumbs = [];
 	export let entityMeta = null;
 
-	$: title = $page.data.page.title;
-	$: metadescription = $page.data.page.seo.metaDesc;
-	$: keywords = $page.data.page.seo.metaKeywords;
-	$: slug = $page.data.page.uri;
-	$: datePublished = $page.data.page.date;
-	$: lastUpdated = $page.data.page.modified;
-	$: timeToRead = $page.data.page.timeToRead;
+	$: title = $page.data.page ? $page.data.page.title : '';
+	$: metadescription = $page.data.page ? $page.data.page.seo.metaDesc : '';
+	$: keywords = $page.data.page ? $page.data.page.seo.metaKeywords : '';
+	$: slug = $page.data.page ? $page.data.page.uri : '';
+	$: datePublished = $page.data.page ? $page.data.page.date : '';
+	$: lastUpdated = $page.data.page ? $page.data.page.modified : '';
+	$: timeToRead = $page.data.page ? $page.data.page.timeToRead : '';
 
 	const defaultAlt =
 		'Anha - From Design to Manufacture';

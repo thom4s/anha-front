@@ -1,3 +1,7 @@
+<script>
+    import { lang } from "$lib/config/website";
+
+</script>
 <footer>
     <div class="container">
         <nav>

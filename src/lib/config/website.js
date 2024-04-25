@@ -21,4 +21,6 @@ export const website = writable({
 	twitterUserId: '',
 });
 
+export const lang = writable('fr');
+
 export { website as default };

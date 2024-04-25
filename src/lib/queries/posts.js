@@ -6,15 +6,13 @@ import { seo_query_string } from '$lib/utils/utils';
 
 export async function getPostBySlug( slug = '' ) {
     
-    console.log('slug: ', slug)
-
     const post = await fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
             query: `
                 {
-                    post(id: "article-un", idType: SLUG) {
+                    post(id: ${slug}, idType: SLUG ) {
                         id
                         content
                         date
@@ -53,17 +51,15 @@ export async function getPostBySlug( slug = '' ) {
 }
 
 
-export async function getAllPosts( slug = '' ) {
+export async function getAllPosts( slug = '', lang = 'fr' ) {
     
-    console.log('slug: ', slug)
-
     const posts = await fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
             query: `
                 {
-                    posts {
+                    posts(where: {language: ${lang} }) {
                         nodes {
                             excerpt
                             id

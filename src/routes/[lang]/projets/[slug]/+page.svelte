@@ -4,7 +4,6 @@
         page: Promise<void>;
     }
     $: ({page} = data)
-    $: console.log('projet: ', page)
 
 </script>
 

@@ -1,5 +1,6 @@
 <script>
-
+    import { lang } from "$lib/config/website";
+    
     export let post = {};
     export let type = '';
     

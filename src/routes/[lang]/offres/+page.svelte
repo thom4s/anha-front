@@ -10,7 +10,6 @@
         page: Promise<void>;
     }
     $: ({page, offres} = data)
-    $: console.log(offres)
 
 </script>
 

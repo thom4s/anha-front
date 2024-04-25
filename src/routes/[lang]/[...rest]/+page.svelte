@@ -6,8 +6,8 @@
         page: Promise<void>;
     }
     $: ({page} = data)
-    // $: console.log( 'Flexible: ', page.contenusFlexibles?.contenusFlexibles  )
-    // $: console.log( 'Page: ', page  )
+    $: console.log( 'Flexible: ', page.contenusFlexibles?.contenusFlexibles  )
+    $: console.log( 'Page: ', page  )
 </script>
 
 <div class="container">
@@ -18,9 +18,9 @@
         {#if page.contenusFlexibles.contenusFlexibles }
             {#each page.contenusFlexibles?.contenusFlexibles as layout}
                 {#if layout.fieldGroupName === 'ContenusFlexiblesContenusFlexiblesRebondsLayout'}
-                    <Rebonds titre={layout.titre} pages={layout.page.nodes}/>
+                    <Rebonds titre={layout.titre} pages={layout.page?.nodes}/>
                 {:else if layout.fieldGroupName === 'ContenusFlexiblesContenusFlexiblesListePagesLayout'}
-                    <PagesList titre={layout.titre} pages={layout.pages.nodes}/>
+                    <PagesList titre={layout.titre} pages={layout.pages?.nodes}/>
                 {/if}
             {/each}
         {/if}

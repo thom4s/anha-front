@@ -7,7 +7,6 @@
         page: Promise<void>;
     }
     $: ({page} = data)
-    $: console.log('post: ', page)
 
 </script>
 
