@@ -7,7 +7,7 @@
     import '$lib/scss/style.scss';
 
     export let data;
-    $: ({menuItems, menuItemsSecondary, seoConfig } = data)
+    $: ({menuItems, menuItemsSecondary, seoConfig, langs } = data)
 
     $: {
         $website.author = seoConfig.seo.schema.companyName
@@ -28,7 +28,7 @@
 
 <SEO />
 
-<Header {menuItems} {menuItemsSecondary}/>
+<Header {menuItems} {menuItemsSecondary} {langs}/>
 
 <main>
     <slot />

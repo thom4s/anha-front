@@ -13,7 +13,7 @@ export async function getProjetBySlug( slug = '', lang = 'fr' ) {
         body: JSON.stringify({
             query: `
             {
-                projet(id: "${slug}", idType: SLUG, where: {language: ${lang} }) {
+                projet(id: "${slug}", idType: SLUG) {
                   id
                   excerpt
                   slug
@@ -78,6 +78,7 @@ export async function getAllProjets( ) {
                             id
                             slug
                             title
+                            uri
                             ${seo_query_string}
 
                             informationsProjet {

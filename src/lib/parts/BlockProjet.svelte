@@ -4,6 +4,8 @@
 
     export let projet = {};
     export let type = '';
+
+    $: console.log(projet)
     
 </script>
 
@@ -25,5 +27,5 @@
             {/each}
         {/if}
     </p>
-    <a href="/projets/{projet.slug}">En savoir plus</a>
+    <a href="{projet.uri}">En savoir plus</a>
 </article>

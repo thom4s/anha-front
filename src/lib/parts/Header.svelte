@@ -1,7 +1,10 @@
 <script>
     import { lang } from "$lib/config/website";
+    import LangSwitcher from "./LangSwitcher.svelte";
+
     export let menuItems = []
     export let menuItemsSecondary = []
+    export let langs = []
 
     $: console.log( 'menuItems: ', menuItems )
     $: console.log( 'menuItemsSecondary: ', menuItemsSecondary )
@@ -25,8 +28,8 @@
                     <li><a href="{item.path}">{item.label}</a></li>
                 {/each}
 
-                <li><button on:click={ () => $lang = 'fr'}>FR</button></li>
-                <li><button on:click={ () => $lang = 'en'}>EN</button></li>
+                <LangSwitcher {langs} />
+
             </ul>
         </nav>
 

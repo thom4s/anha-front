@@ -1,6 +1,33 @@
 
 import { API_URL } from '$env/static/private';
 
+
+export async function getLangs( ) {
+    const langs = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            query: `
+                {
+                    languages {
+                        slug
+                        locale
+                        name
+                    }
+                }
+            `
+            }),
+        })
+        .then(res => res.json())
+        .then(res => {
+            console.log('res: ', res)
+            return res.data.languages
+        });
+        
+    return langs;
+}
+
+
 export async function getMenuItems( lang, id ) {
     const menuItems = await fetch(API_URL, {
         method: 'POST',
