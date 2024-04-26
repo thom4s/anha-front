@@ -1,6 +1,5 @@
 <script lang="ts">
-    import Rebonds from '$lib/parts/Layouts/Rebonds.svelte';
-    import PagesList from '$lib/parts/Layouts/PagesList.svelte';
+    import Flexibles from '$lib/parts/Flexibles.svelte';
 
     export let data: {
         page: Promise<void>;
@@ -16,13 +15,7 @@
         <div>{@html page.content}</div>
 
         {#if page.contenusFlexibles.contenusFlexibles }
-            {#each page.contenusFlexibles?.contenusFlexibles as layout}
-                {#if layout.fieldGroupName === 'ContenusFlexiblesContenusFlexiblesRebondsLayout'}
-                    <Rebonds titre={layout.titre} pages={layout.page?.nodes}/>
-                {:else if layout.fieldGroupName === 'ContenusFlexiblesContenusFlexiblesListePagesLayout'}
-                    <PagesList titre={layout.titre} pages={layout.pages?.nodes}/>
-                {/if}
-            {/each}
+            <Flexibles contenusFlexibles={page.contenusFlexibles?.contenusFlexibles}/>
         {/if}
 
     {:else}

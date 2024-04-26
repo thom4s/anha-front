@@ -7,7 +7,6 @@
         homepage: Promise<void>;
     }
     $: ({page} = data)
-    $: console.log('homepage: ', page)
 
 </script>
 

@@ -2,8 +2,8 @@
     import SEO from '$lib/parts/SEO/index.svelte';
 
     import { website } from '$lib/config/website.js'
-    import Header from "$lib/parts/Header.svelte";
-    import Footer from "$lib/parts/Footer.svelte";
+    import Header from "$lib/parts/Navigations/Header.svelte";
+    import Footer from "$lib/parts/Navigations/Footer.svelte";
     import '$lib/scss/style.scss';
 
     export let data;

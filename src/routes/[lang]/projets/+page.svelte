@@ -1,5 +1,5 @@
 <script lang="ts">
-    import BlockProjet from "$lib/parts/BlockProjet.svelte";
+    import BlockProjet from "$lib/parts/Elements/BlockProjet.svelte";
 	import { fade } from 'svelte/transition';
     
     export let data: {

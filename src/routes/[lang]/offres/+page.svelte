@@ -1,10 +1,7 @@
 <script lang="ts">
-
-    import SEO from '$lib/parts/SEO/index.svelte';
-    import { website } from '$lib/config/website.js'
     import Form from '$lib/parts/Forms/Form.svelte';
 
-    import BlockPost from "$lib/parts/BlockPost.svelte";
+    import BlockPost from "$lib/parts/Elements/BlockPost.svelte";
 
     export let data: {
         page: Promise<void>;

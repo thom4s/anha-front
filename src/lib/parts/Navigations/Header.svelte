@@ -1,13 +1,10 @@
 <script>
     import { lang } from "$lib/config/website";
-    import LangSwitcher from "./LangSwitcher.svelte";
+    import LangSwitcher from "$lib/parts/LangSwitcher.svelte";
 
     export let menuItems = []
     export let menuItemsSecondary = []
     export let langs = []
-
-    $: console.log( 'menuItems: ', menuItems )
-    $: console.log( 'menuItemsSecondary: ', menuItemsSecondary )
 </script>
 
 <header>
