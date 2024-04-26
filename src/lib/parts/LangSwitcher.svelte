@@ -11,9 +11,25 @@
 
     const switchLang = async ( lg ) => {
         let pathname = $page.url.pathname
+        pathname = pathname.replace('fr/', '');
+        pathname = pathname.replace('en/', '');
+    
         $lang = lg;
         const pageTranslated = await getTranslation(pathname, lg )
-        goto( pageTranslated.translation.uri, { invalidateAll: true} )
+        console.log( 'pageTranslated: ', pageTranslated.translation )
+
+        if( pageTranslated !== null || pageTranslated.translation.uri === null) {
+            if ( pageTranslated.translation.uri == '/' ) {
+                goto( '/fr', { invalidateAll: true } )
+            }
+            else {
+                goto( pageTranslated.translation.uri, { invalidateAll: true } )
+    
+            }
+        }
+        else {
+            goto( '/fr' + lg, { invalidateAll: true} )
+        }
     }
 </script>
 

@@ -1,6 +1,6 @@
 
+import { invalidate, invalidateAll } from "$app/navigation";
 import { PUBLIC_API_URL } from "$env/static/public";
-
 
 export async function getLangs( ) {
     const langs = await fetch(PUBLIC_API_URL, {
@@ -28,7 +28,8 @@ export async function getLangs( ) {
 }
 
 
-export async function getMenuItems( lang, id ) {
+export async function getMenuItems( lang = 'fr', id ) {
+
     const menuItems = await fetch(PUBLIC_API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

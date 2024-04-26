@@ -41,8 +41,6 @@ export async function getTranslation( uri, lang ) {
       }
     `
 
-    console.log('getTranslation query: ', query)
-
     const pageTranslated = await fetch(PUBLIC_API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -53,7 +51,7 @@ export async function getTranslation( uri, lang ) {
             console.log('getTranslation res: ', res)
             return res.data.nodeByUri
         });
-
+    
     return pageTranslated;
 }
 

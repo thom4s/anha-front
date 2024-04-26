@@ -1,7 +1,7 @@
 
 import { PUBLIC_API_URL } from "$env/static/public";
 
-import { seo_query_string, contentType_fields_string, basic_fields_string, extended_fields_string, featuredImage_fields_string, flexible_query_string } from '$lib/utils/utils';
+import { seo_query_string, contentType_fields_string, basic_fields_string, taxonomies_fields_string, extended_fields_string, featuredImage_fields_string, flexible_query_string } from '$lib/utils/utils';
 
 
 
@@ -18,6 +18,7 @@ export async function getProjetBySlug( slug = '', lang = 'fr' ) {
                 ${seo_query_string}
                 ${flexible_query_string}
                 ${contentType_fields_string}
+                ${taxonomies_fields_string}
             }
         }
     `
@@ -49,6 +50,7 @@ export async function getAllProjets( ) {
                     ${seo_query_string}
                     ${contentType_fields_string}
                     ${flexible_query_string}
+                    ${taxonomies_fields_string}
                 }
             }
         }
