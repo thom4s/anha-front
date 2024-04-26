@@ -2,13 +2,33 @@
     import { lang } from "$lib/config/website";
     export let titre = '';
     export let pages = [];
+
     $: console.log('Push News', pages)
 </script>
 
-<h2>{titre}</h2>
+<section class="module">
 
-{#if pages && pages.length > 0}
-    {#each pages as page }
-        <a href="/{page.uri}">{page.title}</a>
-    {/each}
-{/if}
+    <h2>{titre}</h2>
+
+    {#if pages && pages.length > 0}
+        {#each pages as page }
+            <a href="{page.link}">{page.title}</a>
+        {/each}
+    {/if}
+
+
+</section>
+
+<style lang="scss">
+    .module {
+        margin: 40px 0;
+    }
+    .logos {
+        display: flex;
+        gap: 20px;
+
+        img { 
+            object-fit: contain;
+        }
+    }
+</style>

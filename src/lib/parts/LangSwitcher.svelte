@@ -18,19 +18,15 @@
         const pageTranslated = await getTranslation(pathname, lg )
         console.log( 'pageTranslated: ', pageTranslated?.translation )
 
-        if( pageTranslated !== null) {
-            if (pageTranslated.translation.uri !== null) {
-                if ( pageTranslated.translation.uri == '/' ) {
-                    goto( '/fr', { invalidateAll: true } )
-                }
-                else {
-                    goto( pageTranslated.translation.uri, { invalidateAll: true } )
-                }
-            }
-        }
-        else {
+        if( pageTranslated === null || pageTranslated?.translation === null || pageTranslated?.translation?.uri == '/') {
             goto( '/fr' + lg, { invalidateAll: true} )
         }
+        else {
+            if (pageTranslated.translation.uri !== null) {
+                goto( pageTranslated.translation.uri, { invalidateAll: true } )
+            }
+        }
+
     }
 </script>
 

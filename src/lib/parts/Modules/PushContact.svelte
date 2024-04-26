@@ -1,13 +1,29 @@
 <script>
     export let titre = '';
-    export let pages = [];
-    $: console.log('Rebonds Contact', pages)
+    export let text = '';
+    export let labelDuBouton = '';
+
+    $: console.log(titre)
 </script>
 
-<h2>{titre}</h2>
+<section class="module">
+    <h2>{titre}</h2>
 
-{#if pages && pages.length > 0}
-    {#each pages as page }
-        <a href="/{page.uri}">{page.title}</a>
-    {/each}
-{/if}
+    <div>{text}</div>
+
+    <a href="/contact">{labelDuBouton}</a>
+</section>
+
+<style lang="scss">
+    .module {
+        margin: 40px 0;
+    }
+    .logos {
+        display: flex;
+        gap: 20px;
+
+        img { 
+            object-fit: contain;
+        }
+    }
+</style>

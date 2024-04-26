@@ -123,75 +123,119 @@ export const seo_query_string = `
 	`;
 
 //https://github.com/wp-graphql/wp-graphql-acf/blob/develop/docs/fields/flexible-content.md
-export const flexible_query_string = `
-	contenusFlexibles {
-		contenusFlexibles {
-		... on ContenusFlexiblesContenusFlexiblesRebondsLayout {
-			fieldGroupName
-			titre
-			page {
-				nodes {
-					... on Projet {
-					  id
-					  title
-					  uri
-					}
-					... on Offre {
-					  id
-					  title
-					  uri
-					}
-					... on Post {
-					  id
-					  title
-					  uri
-					}
-					... on Page {
-					  id
-					  title
-					  uri
-					}
-					... on Collaboration {
-					  id
-					  title
-					  uri
-					}
-				}
+export const pushContact_query_string = `
+	... on ContenusFlexiblesContenusFlexiblesPushcontactLayout {
+		__typename
+		labelDuBouton
+		text
+		titre
+	}
+`;
+
+export const references_query_string = `
+	... on ContenusFlexiblesContenusFlexiblesReferencesLayout {
+		__typename
+		titre
+		logos {
+			nodes {
+				id
+				sourceUrl(size: MEDIUM)
 			}
 		}
-		... on ContenusFlexiblesContenusFlexiblesListePagesLayout {
-			fieldGroupName
-			titre
-			pages {
-				nodes {
-					... on Projet {
-					  id
-					  title
-					  uri
-					}
-					... on Offre {
-					  id
-					  title
-					  uri
-					}
-					... on Post {
-					  id
-					  title
-					  uri
-					}
-					... on Page {
-					  id
-					  title
-					  uri
-					}
-					... on Collaboration {
-					  id
-					  title
-					  uri
-					}
+	}
+`;
+
+export const pushNews_query_string = `
+	... on ContenusFlexiblesContenusFlexiblesPushnewsLayout {
+		__typename
+		titre
+		news {
+			nodes {
+				uri
+				link
+				date
+				... on Post {
+					id
+					link
+					link
+					title
 				}
 			}
 		}
 	}
-  }
+`
+
+export const pushPages_query_string = `
+	... on ContenusFlexiblesContenusFlexiblesPushpagesLayout {
+		__typename
+		titre
+		pages {
+			nodes {
+				... on Page {
+					id
+					date
+					title
+					link
+				}
+			}
+		}
+	}
+`
+
+export const richtext_query_string = `
+	... on ContenusFlexiblesContenusFlexiblesRichtextLayout {
+		__typename
+		titre
+		contentOne
+		contentTwo
+	}
+`
+
+export const pushProjets_query_string = `
+	... on ContenusFlexiblesContenusFlexiblesPushprojetsLayout {
+		__typename
+		titre
+		projets {
+			nodes {
+				... on Projet {
+					id
+					date
+					title
+					link
+				}
+			}
+		}
+	}
+`
+
+export const tabExpertise_query_string = `
+	... on ContenusFlexiblesContenusFlexiblesTabExpertiseLayout {
+		__typename
+		contenus
+		titre
+	}
+`
+export const video_query_string = `
+	... on ContenusFlexiblesContenusFlexiblesVideoLayout {
+		__typename
+		titre
+		video
+	}
+`
+
+
+
+export const flexibleContents_query_string = `
+	contenusFlexibles {
+		contenusFlexibles {
+			${pushContact_query_string}
+			${pushNews_query_string}
+			${pushPages_query_string}
+			${pushProjets_query_string}
+			${references_query_string}
+			${richtext_query_string}
+			${tabExpertise_query_string}
+			${video_query_string}
+		}
+  	}
 `
