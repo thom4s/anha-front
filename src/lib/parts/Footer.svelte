@@ -1,12 +1,15 @@
 <script>
     import { lang } from "$lib/config/website";
+    export let menuItemsSecondary = []
 
 </script>
 <footer>
     <div class="container">
         <nav>
             <ul>
-                <li><a href="/offres">Offres d'emploi</a></li>
+                {#each menuItemsSecondary.nodes as item}
+                    <li><a href="{item.path}">{item.label}</a></li>
+                {/each}
             </ul>
         </nav>
     </div>

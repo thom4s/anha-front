@@ -34,6 +34,6 @@
     <slot />
 </main>
 
-<Footer />
+<Footer {menuItemsSecondary} />
 
 
