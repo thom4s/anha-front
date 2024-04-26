@@ -16,15 +16,16 @@
     
         $lang = lg;
         const pageTranslated = await getTranslation(pathname, lg )
-        console.log( 'pageTranslated: ', pageTranslated.translation )
+        console.log( 'pageTranslated: ', pageTranslated?.translation )
 
-        if( pageTranslated !== null || pageTranslated.translation.uri === null) {
-            if ( pageTranslated.translation.uri == '/' ) {
-                goto( '/fr', { invalidateAll: true } )
-            }
-            else {
-                goto( pageTranslated.translation.uri, { invalidateAll: true } )
-    
+        if( pageTranslated !== null) {
+            if (pageTranslated.translation.uri !== null) {
+                if ( pageTranslated.translation.uri == '/' ) {
+                    goto( '/fr', { invalidateAll: true } )
+                }
+                else {
+                    goto( pageTranslated.translation.uri, { invalidateAll: true } )
+                }
             }
         }
         else {
