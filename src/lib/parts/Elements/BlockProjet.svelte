@@ -1,6 +1,5 @@
 <script>
 	import { fade } from 'svelte/transition';
-    import { lang } from "$lib/config/website";
 
     export let projet = {};
     export let type = '';

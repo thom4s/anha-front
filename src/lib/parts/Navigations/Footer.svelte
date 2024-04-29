@@ -1,5 +1,4 @@
 <script>
-    import { lang } from "$lib/config/website";
     export let menuItemsSecondary = []
 
 </script>

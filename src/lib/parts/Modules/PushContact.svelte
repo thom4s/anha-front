@@ -2,8 +2,6 @@
     export let titre = '';
     export let text = '';
     export let labelDuBouton = '';
-
-    $: console.log(titre)
 </script>
 
 <section class="module">

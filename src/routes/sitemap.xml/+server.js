@@ -1,9 +1,9 @@
-import website from '$lib/config/website';
+import { config } from '$lib/config/website';
 import { error } from '@sveltejs/kit';
 
 export const prerender = true;
 
-const { siteUrl } = website;
+const { siteUrl } = config;
 
 const render = (pages, posts) => `<?xml version="1.0" encoding="UTF-8" ?>
 <urlset

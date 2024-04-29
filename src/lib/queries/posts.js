@@ -32,7 +32,7 @@ export async function getPostBySlug( slug = '' ) {
 }
 
 
-export async function getAllPosts( slug = '', lang = 'fr' ) {
+export async function getAllPosts( lang = 'fr' ) {
     
     const posts = await fetch(PUBLIC_API_URL, {
         method: 'POST',
@@ -40,7 +40,7 @@ export async function getAllPosts( slug = '', lang = 'fr' ) {
         body: JSON.stringify({
             query: `
                 {
-                    posts(where: {language: ${lang} }) {
+                    posts(where: {language: ${lang.toUpperCase()} }) {
                         nodes {
                             ${basic_fields_string}
                             ${seo_query_string}
@@ -52,6 +52,7 @@ export async function getAllPosts( slug = '', lang = 'fr' ) {
         })
         .then(res => res.json())
         .then(res => {
+            console.log('getAllPosts', res)
             return res.data.posts
         });
 

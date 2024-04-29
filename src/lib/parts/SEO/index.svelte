@@ -2,7 +2,7 @@
 	// https://github.com/rodneylab/sveltekit-seo/blob/main/src/routes/contact/%2Bpage.svelte
 
     import { page } from '$app/stores';
-	import website from '$lib/config/website';
+	import { config } from '$lib/config/website';
 	import { VERTICAL_LINE_ENTITY } from '$lib/constants/entities';
 
 	import ogSquareImageSrc from '$lib/assets/anha_logo.png';
@@ -28,7 +28,7 @@
 		siteUrl,
 		linkedinProfile,
 		twitterUsername,
-	} = $website;
+	} = $config;
 
 	export let article = false;
 	export let breadcrumbs = [];

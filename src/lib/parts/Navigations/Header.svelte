@@ -1,10 +1,15 @@
 <script>
-    import { lang } from "$lib/config/website";
+    import { activeLang } from "$lib/config/website";
     import LangSwitcher from "$lib/parts/LangSwitcher.svelte";
 
     export let menuItems = []
     export let menuItemsSecondary = []
     export let langs = []
+
+    $: console.log('HEADER activeLang', $activeLang)
+    $: console.log('HEADER menuItems', menuItems)
+    $: console.log('HEADER langs', langs)
+    $: console.log('HEADER menuItemsSecondary', menuItemsSecondary)
 </script>
 
 <header>
@@ -17,7 +22,7 @@
             </ul>
         </nav>
 
-        <h1><a href="/{$lang}">Anha</a></h1>
+        <h1><a href="/{$activeLang}">Anha</a></h1>
 
         <nav>
             <ul>
@@ -40,8 +45,7 @@
     header {
         margin-bottom: 80px;
         border-bottom: 1px solid;
-        padding-bottom: 40px;
-    }
+     }
 
     .container {
         display: flex;

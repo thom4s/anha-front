@@ -10,7 +10,7 @@
 
     export let contenusFlexibles = [];
 
-    $: console.log('contenusFlexibles: ', contenusFlexibles)
+    // $: console.log('contenusFlexibles: ', contenusFlexibles)
 </script>
 
 

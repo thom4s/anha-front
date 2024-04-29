@@ -1,30 +1,37 @@
 <script lang="ts">
-    import Flexibles from '$lib/parts/Flexibles.svelte';
     import Projet from '$lib/parts/Templates/Projet.svelte';
+    import News from '$lib/parts/Templates/News.svelte';
+    import Page from '$lib/parts/Templates/Page.svelte';
+
     export let data: {
         page: Promise<void>;
+        posts: Promise<void>;
+        projets: Promise<void>;
+        savoirfaires: Promise<void>;
+        secteurs: Promise<void>;
     }
-    $: ({page, projets, savoirfaires, secteurs} = data)
 
-    $: console.log( 'Flexible: ', page.contenusFlexibles?.contenusFlexibles  )
+    $: ({page, posts, projets, savoirfaires, secteurs} = data)
+
     $: console.log( 'Page: ', page  )
+
 </script>
 
 <div class="container">
     {#if page}
 
-        {#if page.template.templateName === 'Page Projets'}
+        {#if page.template.templateName === 'Projets'}
 
             <Projet {page} {projets} {savoirfaires} {secteurs} />
             
+        {:else if page.template.templateName === 'Actualités'}
+
+            <News {page} {posts} />
+
         {:else}
 
-            <h1>{page.title}</h1>
-            <div>{@html page.content}</div>
+            <Page {page} {posts} />
 
-            {#if page.contenusFlexibles.contenusFlexibles }
-                <Flexibles contenusFlexibles={page.contenusFlexibles?.contenusFlexibles}/>
-            {/if}
         {/if}
 
     {:else}

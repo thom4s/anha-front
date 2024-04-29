@@ -1,8 +1,6 @@
 <script>
     export let titre = '';
     export let logos = [];
-
-    $: console.log('logos', logos)
 </script>
 
 

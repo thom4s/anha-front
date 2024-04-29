@@ -1,9 +1,6 @@
 <script>
-    import { lang } from "$lib/config/website";
     export let titre = '';
     export let pages = [];
-
-    $: console.log('Push News', pages)
 </script>
 
 <section class="module">

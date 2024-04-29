@@ -27,23 +27,25 @@ export async function getLangs( ) {
 }
 
 
-export async function getMenuItems( lang = 'fr', id ) {
+export async function getMenuItems( lang = 'fr', id = '') {
+
+    const query = `
+        {
+            menuItems(where: {language: ${lang.toUpperCase()}, location: ${id.toUpperCase()} }) {
+                nodes {
+                    label
+                    path
+                }
+            }
+        }
+    `
+
+    console.log('getMenuItems QUERY', query)
 
     const menuItems = await fetch(PUBLIC_API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            query: `
-                {
-                    menuItems(where: {language: ${lang.toUpperCase()}, location: ${id.toUpperCase()} }) {
-                        nodes {
-                            label
-                            path
-                        }
-                    }
-                }
-            `
-            }),
+        body: JSON.stringify({query}),
         })
         .then(res => res.json())
         .then(res => {

@@ -4,7 +4,7 @@ import {
 	PUBLIC_SITE_URL,
 } from '$env/static/public';
 
-export const website = writable({
+export const config = writable({
 	author: 'Anha',
 	ogLanguage: 'fr_FR',
 	siteLanguage: 'fr-FR',
@@ -21,6 +21,4 @@ export const website = writable({
 	twitterUserId: '',
 });
 
-export const lang = writable('fr');
-
-export { website as default };
+export const activeLang = writable('fr');

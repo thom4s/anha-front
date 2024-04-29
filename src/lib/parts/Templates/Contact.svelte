@@ -4,7 +4,6 @@
     export let data: {
         page: Promise<void>;
     }
-    $: ({page} = data)
 </script>
 
 
