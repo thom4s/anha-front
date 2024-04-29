@@ -1,6 +1,6 @@
 
 import { PUBLIC_API_URL } from "$env/static/public";
-import { seo_query_string, contentType_fields_string, basic_fields_string, featuredImage_fields_string, taxonomies_fields_string, flexibleContents_query_string } from '$lib/utils/utils';
+import { seo_query_string, contentType_fields_string, basic_fields_string, featuredImage_fields_string, taxonomies_fields_string, flexibleContents_query_string } from '$lib/utils/queries';
 
 
 
@@ -93,6 +93,9 @@ export async function getPageBySlug( uri = '' ) {
             content
             date
             modified
+            template {
+                templateName
+            }
             ${seo_query_string}
             ${flexibleContents_query_string}
         }

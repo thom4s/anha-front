@@ -1,6 +1,6 @@
 
 import { PUBLIC_API_URL } from "$env/static/public";
-import { seo_query_string } from '$lib/utils/utils';
+import { seo_query_string } from '$lib/utils/queries';
 
 
 export async function getOffreBySlug( slug = '', lang = 'fr' ) {

@@ -1,6 +1,6 @@
 
 import { PUBLIC_API_URL } from "$env/static/public";
-import { seo_query_string, contentType_fields_string, basic_fields_string, featuredImage_fields_string, author_fields_string } from '$lib/utils/utils';
+import { seo_query_string, contentType_fields_string, basic_fields_string, featuredImage_fields_string, author_fields_string } from '$lib/utils/queries';
 
 
 

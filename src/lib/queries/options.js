@@ -20,7 +20,6 @@ export async function getLangs( ) {
         })
         .then(res => res.json())
         .then(res => {
-            console.log('res: ', res)
             return res.data.languages
         });
         
@@ -48,7 +47,6 @@ export async function getMenuItems( lang = 'fr', id ) {
         })
         .then(res => res.json())
         .then(res => {
-            console.log('res: ', res)
             return res.data.menuItems
         });
         

@@ -2,10 +2,10 @@
     import BlockProjet from "$lib/parts/Elements/BlockProjet.svelte";
 	import { fade } from 'svelte/transition';
     
-    export let data: {
-        projets: Promise<void>;
-    }
-    $: ({page, projets, savoirfaires, secteurs} = data)
+    export let page = {};
+    export let projets = [];
+    export let savoirfaires = [];
+    export let secteurs = [];
 
     let filters = [];
 
@@ -20,13 +20,13 @@
 
 </script>
 
-<div class="container">
 
     <div>
         <h1>{page.title}</h1>
         <div>{@html page.content}</div>
     </div>
 
+    
     <div class="grid">
 
         <div class="s_4column">
@@ -57,7 +57,8 @@
             {/each}
         </div>
     </div>
-</div>
+
+
 
 <style lang="scss">
     .filter {
