@@ -2,7 +2,7 @@ import { getSeoSchema } from '$lib/queries/seo';
 import { getMenuItems, getLangs } from '$lib/queries/options';
 
 
-export async function load( { params } ) {
+export async function load( { params, locals } ) {
 
     return {
         seoConfig: await getSeoSchema(),

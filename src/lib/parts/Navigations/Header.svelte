@@ -10,6 +10,7 @@
     $: console.log('HEADER menuItems', menuItems)
     $: console.log('HEADER langs', langs)
     $: console.log('HEADER menuItemsSecondary', menuItemsSecondary)
+    
 </script>
 
 <header>

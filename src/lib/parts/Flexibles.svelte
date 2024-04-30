@@ -10,12 +10,13 @@
 
     export let contenusFlexibles = [];
 
-    // $: console.log('contenusFlexibles: ', contenusFlexibles)
+    $: console.log('contenusFlexibles: ', contenusFlexibles)
 </script>
 
 
     {#each contenusFlexibles as layout}
-        {#if layout.__typename }
+        
+        {#if layout && layout.__typename }
 
             {#if layout.__typename === 'ContenusFlexiblesContenusFlexiblesPushcontactLayout'}
                 <PushContact titre={layout.titre} text={layout.text} labelDuBouton={layout.labelDuBouton}/>

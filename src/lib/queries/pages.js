@@ -56,9 +56,12 @@ export async function getTranslation( uri, lang ) {
 }
 
 
-export async function getHomePage () {
+export async function getHomePage ( lang = '' ) {
+
+    const uri = lang === 'en' ? '/en/homepage/' : '/'
+
     const query = `{
-        nodeByUri(uri: "/") {
+        nodeByUri(uri: "${uri}") {
             id
             ... on Page {
                 ${basic_fields_string}

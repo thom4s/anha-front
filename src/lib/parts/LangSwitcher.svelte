@@ -21,7 +21,7 @@
         console.log( 'pageTranslated: ', pageTranslated?.translation )
 
         if( pageTranslated === null || pageTranslated?.translation === null || pageTranslated?.translation?.uri == '/') {
-            goto( '/fr' + lg, { invalidateAll: true} )
+            goto( '/fr', { invalidateAll: true} )
         }
         else {
             if (pageTranslated.translation.uri !== null) {
