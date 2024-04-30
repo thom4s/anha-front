@@ -1,0 +1,18 @@
+.fl-justify {
+    display: flex;
+    justify-content: space-between;
+}
+.fl-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.fl-vcenter {
+    display: flex;
+    align-items: center;
+}
+.fl-right {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}

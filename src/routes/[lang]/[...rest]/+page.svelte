@@ -1,7 +1,9 @@
 <script lang="ts">
-    import Projet from '$lib/parts/Templates/Projet.svelte';
+    import Projets from '$lib/parts/Templates/Projets.svelte';
     import News from '$lib/parts/Templates/News.svelte';
     import Page from '$lib/parts/Templates/Page.svelte';
+    import Post from '$lib/parts/Templates/Post.svelte';
+
 
     export let data: {
         page: Promise<void>;
@@ -20,19 +22,17 @@
 <div class="container">
     {#if page}
 
-        {#if page.template.templateName === 'Projets'}
 
-            <Projet {page} {projets} {savoirfaires} {secteurs} />
-            
-        {:else if page.template.templateName === 'Actualités'}
+            {#if page.template.templateName === 'Projets'}
+                <Projets {page} {projets} {savoirfaires} {secteurs} />
+                
+            {:else if page.template.templateName === 'Actualités'}
+                <News {page} {posts} />
 
-            <News {page} {posts} />
+            {:else}
+                <Page {page} {posts} />
 
-        {:else}
-
-            <Page {page} {posts} />
-
-        {/if}
+            {/if}
 
     {:else}
         <p>No content</p>
