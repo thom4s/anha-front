@@ -2,7 +2,7 @@
 
 .container {
     width: 90%;
-    max-width: 1200px;
+    max-width: 1600px;
     margin: auto;
 }
 
@@ -14,7 +14,7 @@ Grid
     display: flex;
     flex-wrap: wrap;
     display: grid;
-    grid-template-columns: repeat($cols, minmax(0, calc(1fr - 20px) ) );
+//    grid-template-columns: repeat($cols, minmax(0, calc(1fr - 20px) ) );
     grid-template-columns: repeat($cols, 1fr);
     grid-row-gap: 40px;
     grid-column-gap: 40px;
@@ -28,7 +28,7 @@ Grid
 
 [class$='column'] {
     max-width: 100%;
-    display: block;
+    display: inline-grid;
 }
 
 
@@ -44,6 +44,10 @@ Grid
 
         .#{$suffix}_#{$i}column {
             grid-column: span #{$i};
+
+            .grid {
+                grid-template-columns: repeat($i, 1fr);
+            }
         }
     }
 }

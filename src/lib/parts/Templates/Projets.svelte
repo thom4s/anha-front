@@ -30,7 +30,7 @@
     
     <div class="grid">
 
-        <div class="s_4column">
+        <div class="s_3column">
             <div class="filters">
 
                 <p class="filter">
@@ -50,12 +50,16 @@
             </div>
         </div>
 
-        <div class="s_8column">
-            {#each visibleProjets as projet }
-                <BlockProjet {projet}/>
-            {:else}
-                <p in:fade={{ delay: 200, duration: 200 }}>Aucun résultat</p>
-            {/each}
+        <div class="s_9column ">
+            <div class="grid">
+                {#each visibleProjets as projet }
+                    <div class="m_3column">
+                        <BlockProjet {projet}/>
+                    </div>
+                {:else}
+                    <p in:fade={{ delay: 200, duration: 200 }}>Aucun résultat</p>
+                {/each}
+            </div>
         </div>
     </div>
 

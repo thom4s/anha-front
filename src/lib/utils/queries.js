@@ -84,6 +84,20 @@ export const taxonomies_fields_string = `
                 name
             }
         }
+		tax_client {
+			nodes {
+                id
+                slug
+                name
+            }
+        }
+		gallery {
+			nodes {
+				sourceUrl
+				srcSet
+				title
+			}
+		}
 	}
 `
 

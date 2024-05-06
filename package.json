@@ -33,6 +33,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"nodemailer": "^6.9.13"
+		"nodemailer": "^6.9.13",
+		"swiper": "^11.0.5"
 	}
 }

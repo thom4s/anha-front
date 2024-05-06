@@ -111,9 +111,8 @@ export async function getAllProjets( lang = 'ALL') {
             projets(first: 50, after: "endCursorFromPreviousRequestGoesHere",where: {language: ${lang.toUpperCase()}}) {
                 nodes {
                     ${extended_fields_string}
-                    ${seo_query_string}
                     ${contentType_fields_string}
-                    ${flexibleContents_query_string}
+                    ${featuredImage_fields_string}
                     ${taxonomies_fields_string}
                 }
             }
