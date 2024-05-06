@@ -7,6 +7,7 @@
     import RichText from './Modules/RichText.svelte';
     import TabExpertise from './Modules/TabExpertise.svelte';
     import Video from './Modules/Video.svelte';
+    import BlocTitreVisuelTexte from './Modules/BlocTitreVisuelTexte.svelte';
 
     export let contenusFlexibles = [];
 
@@ -41,6 +42,9 @@
 
             {:else if layout.__typename === 'ContenusFlexiblesContenusFlexiblesVideoLayout'}
                 <Video titre={layout.titre} video={layout.video} />
+
+            {:else if layout.__typename === 'ContenusFlexiblesContenusFlexiblesBlocTitreVisuelTexteLayout'}
+                <BlocTitreVisuelTexte titre={layout.titre} visuel={layout.visuel} texte={layout.texte} />
 
             {/if}
             

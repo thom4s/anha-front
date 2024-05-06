@@ -3,7 +3,7 @@
     import News from '$lib/parts/Templates/News.svelte';
     import Page from '$lib/parts/Templates/Page.svelte';
     import Post from '$lib/parts/Templates/Post.svelte';
-
+    import SplitScreen from '$lib/parts/Templates/SplitScreen.svelte';
 
     export let data: {
         page: Promise<void>;
@@ -29,6 +29,9 @@
             {:else if page.template.templateName === 'Actualités'}
                 <News {page} {posts} />
 
+            {:else if page.template.templateName === 'Modèle Sur 2 Colonnes'}
+                <SplitScreen {page} />
+                
             {:else}
                 <Page {page} {posts} />
 

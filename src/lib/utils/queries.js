@@ -252,6 +252,19 @@ export const video_query_string = `
 		video
 	}
 `
+export const BlocTitreVisuelTexte_query_string = `
+	... on ContenusFlexiblesContenusFlexiblesBlocTitreVisuelTexteLayout {
+		__typename
+		titre
+		visuel {
+			node {
+				id
+				sourceUrl
+			}
+		}
+		texte
+	}
+`
 
 
 
@@ -266,6 +279,7 @@ export const flexibleContents_query_string = `
 			${richtext_query_string}
 			${tabExpertise_query_string}
 			${video_query_string}
+			${BlocTitreVisuelTexte_query_string}
 		}
   	}
 `

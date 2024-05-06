@@ -62,6 +62,16 @@ $: console.log(prevPage, nextPage)
                 <div>
                     {@html page.content}
                 </div>
+
+                <div class="fl-justify">
+                    {#if prevPage }
+                        <a href="{prevPage.node.uri}">Prev Project - {prevPage.node.title}</a>
+                    {/if}
+                    {#if nextPage }
+                        <a href="{nextPage.node.uri}">Next Project - {nextPage.node.title}</a>
+                    {/if}
+                </div>
+                
             </div>
 
 
@@ -94,14 +104,6 @@ $: console.log(prevPage, nextPage)
     {/if}
 
     
-    <div class="fl-justify">
-        {#if prevPage }
-            <a href="{prevPage.node.uri}">Prev Project - {prevPage.node.title}</a>
-        {/if}
-        {#if nextPage }
-            <a href="{nextPage.node.uri}">Next Project - {nextPage.node.title}</a>
-        {/if}
-    </div>
 </div>
 
 
