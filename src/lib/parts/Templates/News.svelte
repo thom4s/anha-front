@@ -8,12 +8,22 @@
 
 
 <article>
-    <h1>{page.title}</h1>
-    <div>{@html page.content}</div>
 
-    {#each posts.nodes as post }
-        <BlockPost {post} type="posts"/>
-    {/each}
+    <div class="grid">
+
+        <div class="m_4column">
+            <h1>{page.title}</h1>
+            <div>{@html page.content}</div>
+        </div>
+
+        <div class="m_8column">
+            {#each posts.nodes as post }
+                <BlockPost {post} type="posts"/>
+            {/each}
+        </div>
+
+    </div>
+
 </article>
 
 

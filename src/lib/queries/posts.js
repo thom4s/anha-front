@@ -44,6 +44,13 @@ export async function getAllPosts( lang = 'fr' ) {
                         nodes {
                             ${basic_fields_string}
                             ${seo_query_string}
+                            ${featuredImage_fields_string}
+                            informationsNews {
+                                lien
+                                lieu
+                                labelDuLien
+                                date
+                            }
                         }
                     }
                 }
