@@ -1,5 +1,7 @@
 <script lang="ts">
-    import BlockPost from "$lib/parts/Elements/BlockPost.svelte";
+    import BlockCollaboration from "$lib/parts/Elements/BlockCollaboration.svelte";
+    import PushContact from "$lib/parts/Modules/PushContact.svelte";
+
     export let data: {
         collaborations: Promise<void>;
     }
@@ -11,12 +13,25 @@
 
 <div class="container">
 
-    <h1>{page.title}</h1>
-    <div>{@html page.content}</div>
+    <div class="grid">
 
-    {#each collaborations.nodes as post }
-        <BlockPost {post} type="collaborations"/>
-    {/each}
+        <div class="m_4column">
+            <h1>{page.title}</h1>
+            <div>{@html page.content}</div>
+        </div>
 
+        <div class="m_8column">
+            {#each collaborations.nodes as post }
+                <BlockCollaboration {post} type="collaborations"/>
+            {/each}
+        </div>
+
+    </div>
+
+
+    <PushContact />
+
+    
 </div>
+
 

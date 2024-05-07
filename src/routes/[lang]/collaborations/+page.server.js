@@ -1,6 +1,7 @@
 
 import { getAllCollaborations } from "$lib/queries/collaborations"
 import { getPageBySlug } from "$lib/queries/pages"
+import { formProcess } from '$lib/utils/utils.js'
 
 export async function load( ) {
 
@@ -9,3 +10,17 @@ export async function load( ) {
         page: await getPageBySlug('collaborations')
     }
 }
+
+
+/* 
+ * CONTACT FORM PARAMS & ACTIONS 
+ **/
+
+export const actions = {
+
+	contact: async ({request}) => {
+
+     return formProcess(request)    
+
+	},
+};
