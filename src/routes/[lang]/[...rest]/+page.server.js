@@ -8,20 +8,24 @@ import { getAllPosts } from "$lib/queries/posts"
 
 export async function load( {params} ) {
     
-    let projets, posts, secteurs, savoirfaires;
+    let page, projets, posts, secteurs, savoirfaires;
 
-    const page = await getPageBySlug(params.rest, params.lang)
+    page = await getPageBySlug(params.rest)
 
     if( page.template.templateName === 'Projets') {
-        projets = await getAllProjets(params.lang);
-        secteurs = await getAllTerms('secteurs');
-        savoirfaires = await getAllTerms('savoirfaires');
+      projets = await getAllProjets(params.lang);
+      secteurs = await getAllTerms('secteurs');
+      savoirfaires = await getAllTerms('savoirfaires');
     }
 
     if( page.template.templateName === 'Actualités') {
-        posts = await getAllPosts(params.lang);
-        secteurs = await getAllTerms('secteurs');
-        savoirfaires = await getAllTerms('savoirfaires');
+      posts = await getAllPosts(params.lang);
+      secteurs = await getAllTerms('secteurs');
+      savoirfaires = await getAllTerms('savoirfaires');
+    }
+
+    if( page.template.templateName === 'Modèle Savoir Faire') {
+      page = await getPageBySlug(params.rest, true)
     }
 
     return {

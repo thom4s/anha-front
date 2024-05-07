@@ -44,7 +44,6 @@
 <style lang="scss">
 
     header {
-        margin-bottom: 80px;
         border-bottom: 1px solid;
      }
 

@@ -283,3 +283,68 @@ export const flexibleContents_query_string = `
 		}
   	}
 `
+
+
+
+/*
+ * SAVOIR FAIRE
+ ******************/
+
+export const groupeBlocTitreVisuel_query_string = `
+	__typename
+		texte
+		titre
+		visuel {
+			node {
+				sourceUrl
+				srcSet
+				title
+			}
+		}
+`
+
+export const groupeBlocsProjets_query_string = `
+	__typename
+		titre
+		projets {
+			nodes {
+				... on Projet {
+					id
+					title
+				}
+			}
+		}
+`
+
+
+export const savoirfaire_query_string = `
+
+	contenusSavoirFaire {
+		leftCol {
+			titre
+			chapo
+			flexibleContents {
+				__typename
+				... on ContenusSavoirFaireLeftColFlexibleContentsBlocTitreVisuelTexteLayout {
+					${groupeBlocTitreVisuel_query_string}
+				}
+				... on ContenusSavoirFaireLeftColFlexibleContentsPushprojetsLayout {
+					${groupeBlocsProjets_query_string}
+				}
+			}
+		}
+		rightCol {
+			titre
+			chapo
+			flexibleContents {
+				__typename
+				... on ContenusSavoirFaireRightColFlexibleContentsBlocTitreVisuelTexteLayout {
+					${groupeBlocTitreVisuel_query_string}
+				}
+				... on ContenusSavoirFaireRightColFlexibleContentsPushprojetsLayout {
+					${groupeBlocsProjets_query_string}
+				}
+			}
+		}
+	}
+`

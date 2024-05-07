@@ -1,6 +1,6 @@
 
 import { PUBLIC_API_URL } from "$env/static/public";
-import { seo_query_string, contentType_fields_string, basic_fields_string, featuredImage_fields_string, taxonomies_fields_string, flexibleContents_query_string } from '$lib/utils/queries';
+import { seo_query_string, contentType_fields_string, basic_fields_string, featuredImage_fields_string, taxonomies_fields_string, flexibleContents_query_string, savoirfaire_query_string } from '$lib/utils/queries';
 
 
 
@@ -86,23 +86,44 @@ export async function getHomePage ( lang = '' ) {
 }
 
 
-export async function getPageBySlug( uri = '' ) {
-    
-    const query = `{
-        page(id: "${uri}", idType: URI) {
-            id
-            uri
-            title
-            content
-            date
-            modified
-            template {
-                templateName
+export async function getPageBySlug( uri = '', savoirfaire = false ) {
+    let query = '';
+
+    if( savoirfaire) {
+        query = `{
+            page(id: "${uri}", idType: URI) {
+                id
+                uri
+                title
+                content
+                date
+                modified
+                template {
+                    templateName
+                }
+                ${seo_query_string}
+                ${savoirfaire_query_string}
             }
-            ${seo_query_string}
-            ${flexibleContents_query_string}
-        }
-    }`
+        }`
+    }
+    else {
+        query = `{
+            page(id: "${uri}", idType: URI) {
+                id
+                uri
+                title
+                content
+                date
+                modified
+                template {
+                    templateName
+                }
+                ${seo_query_string}
+                ${flexibleContents_query_string}
+            }
+        }`
+    }
+
 
     const page = await fetch(PUBLIC_API_URL, {
         method: 'POST',

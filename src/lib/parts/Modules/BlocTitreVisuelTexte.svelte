@@ -6,8 +6,8 @@
 
 <div class="module">
     <h2>{titre}</h2>
-    <div class="vid_container">
-        <img src="{visuel.node.sourceUrl}">
+    <div class="">
+        <img src="{visuel?.node?.sourceUrl}">
     </div>
     {@html texte}
 </div>

@@ -9,12 +9,23 @@
 
 <article>
 
-    <h1>{page.title}</h1>
-    <div>{@html page.content}</div>
+    <div class="grid">
 
-    {#if page.contenusFlexibles.contenusFlexibles }
-        <Flexibles contenusFlexibles={page.contenusFlexibles?.contenusFlexibles}/>
-    {/if}
+        <div class="m_4column">
+
+        </div>
+
+        <div class="m_8column">
+            <h1>{page.title}</h1>
+            <div>{@html page.content}</div>
+    
+            {#if page.contenusFlexibles.contenusFlexibles }
+                <Flexibles contenusFlexibles={page.contenusFlexibles?.contenusFlexibles}/>
+            {/if}
+        </div>
+
+    </div>
+
 </article>
 
 
