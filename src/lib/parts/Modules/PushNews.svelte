@@ -2,6 +2,9 @@
     import BlockPost from "$lib/Parts/Elements/BlockPost.svelte";
     export let titre = '';
     export let pages = [];
+
+    $: console.log('module', pages)
+
 </script>
 
 <section class="module">

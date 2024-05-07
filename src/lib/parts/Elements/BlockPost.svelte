@@ -1,14 +1,16 @@
 <script>
     export let post = {};
     export let type = '';
+
+    $: console.log('block_post', post)
 </script>
 
 
-<article class="block_collaboration">
+<article class="block_post">
 
-    <div class="grid">
+    <div class="fl-justify gap-m">
 
-        <div class="m_4column">
+        <div class="half">
 
             <div class="bloc_texts">
                 <div class="fl-justify fl-vtop">  
@@ -29,7 +31,7 @@
             </div>
         </div>
 
-        <div class="m_4column">
+        <div class="half">
             <div class="bloc_media">
                 {#if post.informationsNews?.video}
                     {@html post.informationsNews?.video}
@@ -45,8 +47,9 @@
 
 
 <style lang="scss"> 
-.block_collaboration {
+.block_post {
     border-top: 1px solid;
+    border-bottom: 1px solid;
     padding: 20px 0;
 
     &:nth-child(2n) {
@@ -58,5 +61,8 @@
     .bloc_texts {
         direction: ltr;
     }
+}
+.half {
+    width: 50%;
 }
 </style>

@@ -1,5 +1,5 @@
 <script>
-    import BlockPost from "$lib/Parts/Elements/BlockPost.svelte";
+    import BlockPage from "$lib/Parts/Elements/BlockPage.svelte";
     export let titre = '';
     export let pages = [];
 </script>
@@ -10,7 +10,7 @@
 
     {#if pages && pages.length > 0}
         {#each pages as post }
-            <BlockPost {post} />
+            <BlockPage {post} />
         {/each}
     {/if}
 

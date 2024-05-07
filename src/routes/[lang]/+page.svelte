@@ -11,7 +11,6 @@
 
 
 <div class="container">
-    <h1>{page.title}</h1>
     <div>{@html page.content}</div>
 
     {#if page.contenusFlexibles?.contenusFlexibles }

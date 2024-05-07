@@ -1,5 +1,5 @@
 <script>
-    import Marqueeck from '@arisbh/marqueeck';
+    import Marqueeck from '@arisbh/marqueeck'; // https://marqueeck.vercel.app/docs/props
 
     export let titre = '';
     export let ligneLogos = [];

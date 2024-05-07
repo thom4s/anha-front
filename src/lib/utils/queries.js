@@ -213,6 +213,8 @@ export const pushPages_query_string = `
 					date
 					title
 					link
+					content
+					${featuredImage_fields_string}
 				}
 			}
 		}
