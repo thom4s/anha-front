@@ -4,7 +4,6 @@
     import BlockProjet from "$lib/parts/Elements/BlockProjet.svelte";
 
     import { slide } from 'svelte/transition';
-    import { clickOutside } from '$lib/utils/utils.js';
 
     import { register } from 'swiper/element/bundle';
     register();
@@ -15,8 +14,8 @@
     export let position = '';
 
     let showContent = false;
-    $: ({projets} = flexibleContents)
-$: console.log("Module Projets: ", flexibleContents)
+
+    $: console.log("Module Projets: ", flexibleContents)
 </script>
 
 
@@ -31,9 +30,7 @@ $: console.log("Module Projets: ", flexibleContents)
                 <div 
                     class="colContent" 
                     transition:slide={{ duration: 300, axis: 'x'  }} 
-                    use:clickOutside 
-                    on:click_outside={ () => showContent = false}
-                >
+                    >
 
                     <button class="close" on:click={ () => showContent = false }>Close</button>
 
@@ -74,11 +71,12 @@ $: console.log("Module Projets: ", flexibleContents)
                             {/if}
                         {/each}
                     </swiper-container>
+                    
                 </div>
                 
-            {/if}
+    {/if}
 
-        </div>
+</div>
 
 <style lang="scss">
 

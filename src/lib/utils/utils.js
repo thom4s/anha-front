@@ -25,7 +25,7 @@ export function clickOutside(node) {
 		document.removeEventListener('click', handleClick, true);
 	  }
 	}
-  }
+}
 
 
 import nodemailer from 'nodemailer';

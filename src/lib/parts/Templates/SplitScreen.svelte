@@ -14,7 +14,7 @@
 
         <div class="m_6column">
             {#if page.contenusFlexibles.contenusFlexibles }
-                <Flexibles swipered contenusFlexibles={page.contenusFlexibles?.contenusFlexibles}/>
+                <Flexibles swiped contenusFlexibles={page.contenusFlexibles?.contenusFlexibles}/>
             {/if}
         </div>
 
