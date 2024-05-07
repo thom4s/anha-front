@@ -241,6 +241,8 @@ export const pushProjets_query_string = `
 					date
 					title
 					link
+					${taxonomies_fields_string}
+					${featuredImage_fields_string}
 				}
 			}
 		}

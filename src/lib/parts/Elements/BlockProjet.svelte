@@ -64,7 +64,9 @@
         text-decoration: none;
     }
     .bloc_media {
-
+        img {
+            width: 100%;
+        }
     }
     .bloc_metadata {
 
