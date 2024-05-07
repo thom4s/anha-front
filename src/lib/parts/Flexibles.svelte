@@ -3,6 +3,7 @@
     import FlexibleLayouts from '$lib/parts/FlexibleLayouts.svelte';
     export let contenusFlexibles = [];
     export let swiped = false; 
+    export let smallContact = false;
 
     import { register } from 'swiper/element/bundle';
     register();
@@ -26,7 +27,7 @@
         {#each contenusFlexibles as layout}
             {#if layout && layout.__typename }
                 <swiper-slide class="swiper-slide">
-                    <FlexibleLayouts {layout} />
+                    <FlexibleLayouts {layout} {smallContact} />
                 </swiper-slide>
             {/if}
         {/each}
@@ -37,7 +38,7 @@
 
     {#each contenusFlexibles as layout}
         {#if layout && layout.__typename }
-            <FlexibleLayouts {layout} />
+            <FlexibleLayouts {layout} {smallContact} />
         {/if}
     {/each}
 

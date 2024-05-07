@@ -4,6 +4,10 @@
     export let titre = 'Parlons-nous';
     export let text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ultricies hendrerit enim ut fermentum.';
     export let labelDuBouton = '';
+    export let smallContact = false;
+
+    $:console.log('smallContact', smallContact)
+
 </script>
 
 <section class="module">
@@ -13,14 +17,26 @@
         <div class="m_6column">
             <h2>{titre}</h2>
 
-            <div>{text}</div>
+
+            {#if smallContact }
+
+            {:else}
+                <div>{text}</div>
+                <a href="/contact">{labelDuBouton}</a>
+            {/if}
         
-            <a href="/contact">{labelDuBouton}</a>
         </div>
 
         <div class="m_6column">
-            <Form />
+            {#if smallContact }
+                <div>{text}</div>
+                <a href="/contact">{labelDuBouton}</a>
+    
+            {:else}
+                <Form />
 
+            {/if}
+        
         </div>
     </div>
 

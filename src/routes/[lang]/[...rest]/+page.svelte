@@ -2,9 +2,9 @@
     import Projets from '$lib/parts/Templates/Projets.svelte';
     import News from '$lib/parts/Templates/News.svelte';
     import Page from '$lib/parts/Templates/Page.svelte';
-    import Post from '$lib/parts/Templates/Post.svelte';
     import SplitScreen from '$lib/parts/Templates/SplitScreen.svelte';
     import SavoirFaire from '$lib/parts/Templates/SavoirFaire.svelte';
+    import Contact from '$lib/parts/Templates/Contact.svelte';
 
     export let data: {
         page: Promise<void>;
@@ -35,7 +35,10 @@
 
             {:else if page.template.templateName === 'Modèle Savoir Faire'}
                 <SavoirFaire {page} />
-                
+
+            {:else if page.template.templateName === 'Page Contact'}
+                <Contact {page} />    
+
             {:else}
                 <Page {page} {posts} />
 

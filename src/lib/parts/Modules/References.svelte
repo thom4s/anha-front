@@ -1,16 +1,33 @@
 <script>
+    import Marqueeck from '@arisbh/marqueeck';
+
     export let titre = '';
-    export let logos = [];
+    export let ligneLogos = [];
+
+    const options1 = {
+        direction: "right",
+        speed: 30,
+        onHover: "none"
+    };
+    const options2 = {
+        direction: "left",
+        speed: 50,
+        onHover: "none"
+    };
 </script>
 
 
 <section class="module">
     <h2>{titre}</h2>
 
-    {#if logos && logos?.length > 0}
+    {#if ligneLogos && ligneLogos?.length > 0}
         <div class="logos">
-            {#each logos as logo }
-                <img src="{logo.sourceUrl}" />
+            {#each ligneLogos as ligne, i }
+                <Marqueeck class="line" {options1} >
+                    {#each ligne.logos.nodes as logo }
+                        <img src="{logo.sourceUrl}" />
+                    {/each}
+                </Marqueeck>
             {/each}
         </div>
     {/if}
@@ -21,12 +38,11 @@
     .module {
         margin: 40px 0;
     }
-    .logos {
+    .line {
         display: flex;
         gap: 20px;
-
-        img { 
-            object-fit: contain;
-        }
+    }
+    img { 
+        object-fit: contain;
     }
 </style>

@@ -11,6 +11,10 @@
     display: flex;
     align-items: center;
 }
+.fl-vtop {
+    display: flex;
+    align-items: flex-start;
+}
 .fl-right {
     display: flex;
     justify-content: right;

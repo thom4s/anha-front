@@ -166,10 +166,11 @@ export const references_query_string = `
 	... on ContenusFlexiblesContenusFlexiblesReferencesLayout {
 		__typename
 		titre
-		logos {
-			nodes {
-				id
-				sourceUrl(size: MEDIUM)
+		ligneLogos {
+			logos {
+				nodes {
+					sourceUrl(size: MEDIUM)
+				}
 			}
 		}
 	}
@@ -187,8 +188,14 @@ export const pushNews_query_string = `
 				... on Post {
 					id
 					link
-					link
 					title
+					informationsNews {
+						lien
+						lieu
+						labelDuLien
+						date
+						video
+					}
 				}
 			}
 		}

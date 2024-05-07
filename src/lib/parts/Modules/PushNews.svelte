@@ -1,4 +1,5 @@
 <script>
+    import BlockPost from "$lib/Parts/Elements/BlockPost.svelte";
     export let titre = '';
     export let pages = [];
 </script>
@@ -8,8 +9,8 @@
     <h2>{titre}</h2>
 
     {#if pages && pages.length > 0}
-        {#each pages as page }
-            <a href="{page.link}">{page.title}</a>
+        {#each pages as post }
+             <BlockPost {post} />
         {/each}
     {/if}
 

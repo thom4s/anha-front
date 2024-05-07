@@ -1,18 +1,24 @@
 <script lang="ts">
     import Form from "$lib/parts/Forms/Form.svelte";
     
-    export let data: {
-        page: Promise<void>;
-    }
+    export let page = {};
+
 </script>
 
 
 <div class="container">
-    <h1>{page.title}</h1>
 
-    <div>{@html page.content}</div>
+    <div class="grid">
+        
+        <div class="m_4column">
+            <h1>{page.title}</h1>
+            <div>{@html page.content}</div>
+        </div>
 
-    <Form />
+        <div class="m_8column">
+            <Form />
+        </div>
+    </div>
 
 </div>
 

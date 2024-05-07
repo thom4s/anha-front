@@ -1,6 +1,7 @@
 <script lang="ts">
     import BlockPost from "$lib/parts/Elements/BlockPost.svelte";
-    
+    import Flexibles from "$lib/parts/Flexibles.svelte";
+
     export let page = {};
     export let posts = [];
 
@@ -25,6 +26,10 @@
     </div>
 
 </article>
+
+{#if page.contenusFlexibles.contenusFlexibles }
+    <Flexibles smallContact contenusFlexibles={page.contenusFlexibles?.contenusFlexibles}/>
+{/if}
 
 
 <style lang="scss">

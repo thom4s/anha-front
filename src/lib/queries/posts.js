@@ -50,6 +50,7 @@ export async function getAllPosts( lang = 'fr' ) {
                                 lieu
                                 labelDuLien
                                 date
+                                video
                             }
                         }
                     }

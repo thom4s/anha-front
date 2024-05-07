@@ -11,9 +11,12 @@
         <div class="m_4column">
 
             <div class="bloc_texts">
-                <div>{post.informationsNews?.date}</div>
+                <div class="fl-justify fl-vtop">  
+                    <div>{post.informationsNews?.date}</div>
+                    <div>{@html post.informationsNews?.lieu}</div>
+                </div>
                 
-                <div>  
+                <div class="">  
                     <h2>{post.title}</h2>
                     <div>{@html post.content}</div>
                 </div>
@@ -28,7 +31,11 @@
 
         <div class="m_4column">
             <div class="bloc_media">
-                <img src="{post.featuredImage?.node?.sourceUrl}" alt="">
+                {#if post.informationsNews?.video}
+                    {@html post.informationsNews?.video}
+                {:else}
+                    <img src="{post.featuredImage?.node?.sourceUrl}" alt="">
+                {/if}
             </div>
         </div>
 

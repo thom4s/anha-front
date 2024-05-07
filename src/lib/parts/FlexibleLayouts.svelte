@@ -10,35 +10,36 @@
     import BlocTitreVisuelTexte from './Modules/BlocTitreVisuelTexte.svelte';
 
     export let layout = '';
+    export let smallContact = false;
 </script>
 
 
 
 {#if layout.__typename === 'ContenusFlexiblesContenusFlexiblesPushcontactLayout'}
-<PushContact titre={layout.titre} text={layout.text} labelDuBouton={layout.labelDuBouton}/>
+    <PushContact smallContact titre={layout.titre} text={layout.text} labelDuBouton={layout.labelDuBouton}/>
 
 {:else if layout.__typename === 'ContenusFlexiblesContenusFlexiblesPushnewsLayout'}
-<PushNews titre={layout.titre} pages={layout.news?.nodes}/>
+    <PushNews titre={layout.titre} pages={layout.news?.nodes}/>
 
 {:else if layout.__typename === 'ContenusFlexiblesContenusFlexiblesPushpagesLayout'}
-<PushPages titre={layout.titre} pages={layout.pages?.nodes}/>
+    <PushPages titre={layout.titre} pages={layout.pages?.nodes}/>
 
 {:else if layout.__typename === 'ContenusFlexiblesContenusFlexiblesPushprojetsLayout'}
-<PushProjets titre={layout.titre} pages={layout.projets?.nodes}/>
+    <PushProjets titre={layout.titre} pages={layout.projets?.nodes}/>
 
 {:else if layout.__typename === 'ContenusFlexiblesContenusFlexiblesReferencesLayout'}
-<References titre={layout.titre} logos={layout.logos?.nodes} />
+    <References titre={layout.titre} ligneLogos={layout.ligneLogos} />
 
 {:else if layout.__typename === 'ContenusFlexiblesContenusFlexiblesRichtextLayout'}
-<RichText titre={layout.titre} contentOne={layout.contentOne} contentTwo={layout.contentTwo} />
+    <RichText titre={layout.titre} contentOne={layout.contentOne} contentTwo={layout.contentTwo} />
 
 {:else if layout.__typename === 'ContenusFlexiblesContenusFlexiblesTabExpertiseLayout'}
-<TabExpertise titre={layout.titre} contenus={layout.contenus} />
+    <TabExpertise titre={layout.titre} contenus={layout.contenus} />
 
 {:else if layout.__typename === 'ContenusFlexiblesContenusFlexiblesVideoLayout'}
-<Video titre={layout.titre} video={layout.video} />
+    <Video titre={layout.titre} video={layout.video} />
 
 {:else if layout.__typename === 'ContenusFlexiblesContenusFlexiblesBlocTitreVisuelTexteLayout'}
-<BlocTitreVisuelTexte titre={layout.titre} visuel={layout.visuel} texte={layout.texte} />
+    <BlocTitreVisuelTexte titre={layout.titre} visuel={layout.visuel} texte={layout.texte} />
 
 {/if}
