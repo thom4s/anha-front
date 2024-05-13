@@ -1,6 +1,6 @@
 <script>
     import SEO from '$lib/parts/SEO/index.svelte';
-
+    
     import { config, activeLang } from '$lib/config/website.js'
     import Header from "$lib/parts/Navigations/Header.svelte";
     import Footer from "$lib/parts/Navigations/Footer.svelte";

@@ -1,11 +1,15 @@
 <script>
     import { activeLang } from "$lib/config/website";
     import LangSwitcher from "$lib/parts/LangSwitcher.svelte";
+    import { page } from '$app/stores';
 
     export let menuItemsPrimary = []
     export let menuItemsSecondary = []
     export let langs = []
     
+    $: console.log( 'pathname', $page.url.pathname)
+    $: pathname = $page.url.pathname + '/';
+
 </script>
 
 <header>
@@ -13,7 +17,9 @@
         <nav>
             <ul>
                 {#each menuItemsPrimary.nodes as item}
-                    <li><a href="{item.path}">{item.label}</a></li>
+                    <li>
+                        <a href="{item.path}" class:active={pathname == item.path}>{item.label}</a>
+                    </li>
                 {/each}
             </ul>
         </nav>
@@ -23,7 +29,9 @@
         <nav>
             <ul>
                 {#each menuItemsSecondary.nodes as item}
-                    <li><a href="{item.path}">{item.label}</a></li>
+                    <li>
+                        <a href="{item.path}" class:active={pathname == item.path}>{item.label}</a>
+                    </li>
                 {/each}
 
                 <LangSwitcher {langs} />
@@ -64,7 +72,18 @@
 
         a {
             padding: 10px;
+            text-decoration: none;
+            color: black;
+            font-weight: 400;
+
+            &:hover {
+                font-weight: bold;
+            }
         }
+    }
+
+    .active {
+        font-weight: bold;
     }
 
 </style>
