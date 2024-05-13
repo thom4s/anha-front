@@ -1,6 +1,8 @@
 <script>
     export let post = {};
     export let type = '';
+    import { register } from 'swiper/element/bundle';
+    register();
 
     $: console.log('block_post', post)
 </script>
@@ -35,6 +37,23 @@
             <div class="bloc_media">
                 {#if post.informationsNews?.video}
                     {@html post.informationsNews?.video}
+
+                {:else if post.informationsNews?.galery }
+
+                    <swiper-container 
+                        space-between="0" 
+                        slides-per-view="auto" 
+                        init="true"
+                        navigation={true}
+                        loop="true"
+                    >
+                        {#each post.informationsNews?.galery.nodes as img }
+                        <swiper-slide class="swiper-slide">
+                            <img src="{img.sourceUrl}" alt="">
+                        </swiper-slide>
+                        {/each}
+                    </swiper-container >
+
                 {:else}
                     <img src="{post.featuredImage?.node?.sourceUrl}" alt="">
                 {/if}

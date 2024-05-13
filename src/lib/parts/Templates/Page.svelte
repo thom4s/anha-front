@@ -1,5 +1,6 @@
 <script lang="ts">
     import Flexibles from '$lib/parts/Flexibles.svelte';
+    import PushContact from "$lib/parts/Modules/PushContact.svelte";
 
     export let page = {};
     export let posts = [];
@@ -27,6 +28,8 @@
     </div>
 
 </article>
+
+<PushContact />
 
 
 <style lang="scss">

@@ -51,6 +51,12 @@ export async function getAllPosts( lang = 'fr' ) {
                                 labelDuLien
                                 date
                                 video
+                                galery {
+                                    nodes {
+                                        sourceUrl
+                                        srcSet
+                                    }
+                                }
                             }
                         }
                     }

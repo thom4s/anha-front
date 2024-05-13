@@ -1,12 +1,20 @@
 <script>
-	import Form from "$lib/parts/Forms/Form.svelte";
+    import { onMount } from "svelte";
+    import { getPushContactContents } from '$lib/queries/options.js';
 
-    export let titre = 'Parlons-nous';
-    export let text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ultricies hendrerit enim ut fermentum.';
-    export let labelDuBouton = '';
+    import Form from "$lib/parts/Forms/Form.svelte";
+
+    let contents, title, label, text, lien;
+
+    onMount( async () => {
+        contents = await getPushContactContents();
+        title = contents.titre
+        label = contents.label
+        text = contents.text
+        lien = contents.lien
+    })
+
     export let smallContact = false;
-
-    $:console.log('smallContact', smallContact)
 
 </script>
 
@@ -15,22 +23,22 @@
     <div class="grid">
 
         <div class="m_6column">
-            <h2>{titre}</h2>
+            <h2>{@html title}</h2>
 
 
             {#if smallContact }
 
             {:else}
-                <div>{text}</div>
-                <a href="/contact">{labelDuBouton}</a>
+                <div>{@html text}</div>
+                <a href="{lien?.url}">{label}</a>
             {/if}
         
         </div>
 
         <div class="m_6column">
             {#if smallContact }
-                <div>{text}</div>
-                <a href="/contact">{labelDuBouton}</a>
+                <div>{@html text}</div>
+                <a href="{lien?.url}">{label}</a>
     
             {:else}
                 <Form />

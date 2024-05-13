@@ -1,7 +1,7 @@
 <script lang="ts">
     import BlockPost from "$lib/parts/Elements/BlockPost.svelte";
     import Flexibles from "$lib/parts/Flexibles.svelte";
-
+    import PushContact from "../Modules/PushContact.svelte";
     export let page = {};
     export let posts = [];
 
@@ -30,6 +30,9 @@
 {#if page.contenusFlexibles.contenusFlexibles }
     <Flexibles smallContact contenusFlexibles={page.contenusFlexibles?.contenusFlexibles}/>
 {/if}
+
+
+<PushContact />
 
 
 <style lang="scss">
