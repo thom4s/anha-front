@@ -1,4 +1,14 @@
 <script lang="ts">
+
+    import { goto, afterNavigate } from '$app/navigation';
+    import { base } from '$app/paths'
+
+    let previousPage : string = base ;
+
+    afterNavigate(({from}) => {
+        previousPage = from?.url.pathname || previousPage
+    }) 
+
     import { register } from 'swiper/element/bundle';
     register();
 
@@ -6,10 +16,7 @@
         page: Promise<void>;
     }
     $: ({page, prevPage, nextPage} = data)
-
-$: console.log(prevPage, nextPage)
 </script>
-
 
 
 <div class="container">
@@ -19,6 +26,7 @@ $: console.log(prevPage, nextPage)
 
             <div class="m_6column">
 
+                <a href="{previousPage}">Go Back</a>
                 <div class="project_title">
                     <h1>{page.title}</h1>
                 </div>

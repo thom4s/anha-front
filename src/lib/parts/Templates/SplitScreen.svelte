@@ -1,29 +1,60 @@
 <script lang="ts">
-    import Flexibles from '$lib/parts/Flexibles.svelte';
+    import FlexibleLayouts from '$lib/parts/FlexibleLayouts.svelte';
     export let page = {};
+    $: ({contenusFlexibles, stages } = page.contenusFlexibles)
+
+    $: console.log('contenusFlexibles: ', contenusFlexibles)
+    $: console.log('stages: ', stages)
 </script>
 
 
 <article>
-    <div class="grid">
 
-        <div class="m_6column">
-            <h1 class="hidden">{page.title}</h1>
-            <div>{@html page.content}</div>
-        </div>
+        <h1 class="hidden">{page.title}</h1>
 
-        <div class="m_6column">
-            {#if page.contenusFlexibles.contenusFlexibles }
-                <Flexibles swiped contenusFlexibles={page.contenusFlexibles?.contenusFlexibles}/>
-            {/if}
-        </div>
 
-    </div>
+        {#if stages }
+
+            {#each stages as stage}
+                <div class="grid">
+
+                    <div class="m_6column {stage.positionsticky}">
+                        <div class="sticky fl-center">
+                            {@html stage.stickyContent}
+
+                        </div>
+                    </div>
+
+                    <div class="m_6column">
+
+                        {#each stage.flexibleContents as layout}
+                            {#if layout && layout.__typename }
+
+                                <FlexibleLayouts {layout} />
+
+                            {/if}
+                        {/each}
+                    </div>
+
+                </div>
+            {/each}
+
+        {/if}
+
+
 </article>
 
 
 <style lang="scss">
     .hidden {
         visibility: hidden;
+    }
+    .sticky {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+    }
+    .right {
+        order: 2;
     }
 </style>

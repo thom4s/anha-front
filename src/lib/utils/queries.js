@@ -230,54 +230,111 @@ export const richtext_query_string = `
 	}
 `
 
-export const pushProjets_query_string = `
-	... on ContenusFlexiblesContenusFlexiblesPushprojetsLayout {
-		__typename
-		titre
-		projets {
-			nodes {
-				... on Projet {
-					id
-					date
-					title
-					link
-					${taxonomies_fields_string}
-					${featuredImage_fields_string}
-				}
+
+// BLOC PUSH PROJETS
+
+const string_projets = `
+	__typename
+	titre
+	projets {
+		nodes {
+			... on Projet {
+				id
+				date
+				title
+				link
+				${taxonomies_fields_string}
+				${featuredImage_fields_string}
 			}
 		}
 	}
 `
 
-export const tabExpertise_query_string = `
-	... on ContenusFlexiblesContenusFlexiblesTabExpertiseLayout {
-		__typename
-		contenus
-		titre
+export const PushProjets_query_string = `
+	... on ContenusFlexiblesContenusFlexiblesPushprojetsLayout {
+		${string_projets}
 	}
 `
+export const StagedPushProjets_query_string = `
+	... on ContenusFlexiblesStagesFlexibleContentsPushprojetsLayout {
+		${string_projets}
+	}
+`
+
+
+// BLOC Video
+
+const string_vid = `
+	__typename
+	titre
+	video
+`
+
 export const video_query_string = `
 	... on ContenusFlexiblesContenusFlexiblesVideoLayout {
-		__typename
-		titre
-		video
+		${string_vid}
 	}
 `
+export const Stagedvideo_query_string = `
+	... on ContenusFlexiblesStagesFlexibleContentsVideoLayout {
+		${string_vid}
+	}
+`
+
+
+// BLOC TITRE VISUEL TEXTE
+
+const string_tvt = `
+	__typename
+	titre
+	visuel {
+		node {
+			id
+			sourceUrl
+		}
+	}
+	texte
+`
+
 export const BlocTitreVisuelTexte_query_string = `
 	... on ContenusFlexiblesContenusFlexiblesBlocTitreVisuelTexteLayout {
-		__typename
-		titre
-		visuel {
+		${string_tvt}
+	}
+`
+export const StagedBlocTitreVisuelTexte_query_string = `
+	... on ContenusFlexiblesStagesFlexibleContentsBlocTitreVisuelTexteLayout {
+		${string_tvt}
+	}
+`
+
+
+
+// BLOC TITRE VISUEL TEXTE
+
+const string_collabs = `
+	__typename
+	collaborateurs {
+		job
+		name
+		photo {
 			node {
-				id
 				sourceUrl
 			}
 		}
-		texte
+	}
+`
+
+export const StagedCollaborateurs_query_string = `
+	... on ContenusFlexiblesStagesFlexibleContentsCollaborateursLayout {
+		${string_collabs}
 	}
 `
 
 
+
+
+
+// 
 
 export const flexibleContents_query_string = `
 	contenusFlexibles {
@@ -285,15 +342,31 @@ export const flexibleContents_query_string = `
 			${pushContact_query_string}
 			${pushNews_query_string}
 			${pushPages_query_string}
-			${pushProjets_query_string}
+			${PushProjets_query_string}
 			${references_query_string}
 			${richtext_query_string}
-			${tabExpertise_query_string}
 			${video_query_string}
 			${BlocTitreVisuelTexte_query_string}
 		}
   	}
 `
+
+export const stagedContents_query_string = `
+	contenusFlexibles {
+		stages {
+			stickyContent
+			positionsticky
+			flexibleContents {
+				${StagedBlocTitreVisuelTexte_query_string}
+				${StagedPushProjets_query_string}
+				${StagedCollaborateurs_query_string}
+			}
+		}
+  	}
+`
+
+
+
 
 
 

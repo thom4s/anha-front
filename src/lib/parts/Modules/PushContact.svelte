@@ -14,7 +14,7 @@
         lien = contents.lien
     })
 
-    export let smallContact = false;
+    export let smallContact = true;
 
 </script>
 

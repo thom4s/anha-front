@@ -39,6 +39,13 @@
 
     header {
         border-bottom: 1px solid;
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        transform: translateY(0);
+        background-color: white;
+        z-index: 9;
      }
 
     .container {
