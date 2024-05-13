@@ -2,14 +2,9 @@
     import { activeLang } from "$lib/config/website";
     import LangSwitcher from "$lib/parts/LangSwitcher.svelte";
 
-    export let menuItems = []
+    export let menuItemsPrimary = []
     export let menuItemsSecondary = []
     export let langs = []
-
-    $: console.log('HEADER activeLang', $activeLang)
-    $: console.log('HEADER menuItems', menuItems)
-    $: console.log('HEADER langs', langs)
-    $: console.log('HEADER menuItemsSecondary', menuItemsSecondary)
     
 </script>
 
@@ -17,7 +12,7 @@
     <div class="container">
         <nav>
             <ul>
-                {#each menuItems.nodes as item}
+                {#each menuItemsPrimary.nodes as item}
                     <li><a href="{item.path}">{item.label}</a></li>
                 {/each}
             </ul>
@@ -32,7 +27,6 @@
                 {/each}
 
                 <LangSwitcher {langs} />
-
             </ul>
         </nav>
 

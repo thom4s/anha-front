@@ -1,16 +1,30 @@
 <script>
+    export let menuItemsPrimary = []
     export let menuItemsSecondary = []
+    export let menuItemsFooter = []
 
 </script>
 <footer>
     <div class="container">
         <nav>
             <ul>
+                {#each menuItemsPrimary.nodes as item}
+                    <li><a href="{item.path}">{item.label}</a></li>
+                {/each}
                 {#each menuItemsSecondary.nodes as item}
                     <li><a href="{item.path}">{item.label}</a></li>
                 {/each}
             </ul>
         </nav>
+
+        <nav>
+            <ul>
+                {#each menuItemsFooter.nodes as item}
+                    <li><a href="{item.path}">{item.label}</a></li>
+                {/each}
+            </ul>
+        </nav>
+
     </div>
 </footer>
 

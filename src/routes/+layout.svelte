@@ -7,7 +7,7 @@
     import '$lib/scss/style.scss';
 
     export let data;
-    $: ({menuItems, menuItemsSecondary, seoConfig, langs, currentLang } = data)
+    $: ({menuItemsPrimary, menuItemsSecondary, menuItemsFooter, seoConfig, langs, currentLang } = data)
     
     $: $activeLang = currentLang;
 
@@ -30,12 +30,12 @@
 
 <SEO />
 
-<Header {menuItems} {menuItemsSecondary} {langs}/>
+<Header {menuItemsPrimary} {menuItemsSecondary} {langs}/>
 
 <main>
     <slot />
 </main>
 
-<Footer {menuItemsSecondary} />
+<Footer {menuItemsPrimary} {menuItemsSecondary} {menuItemsFooter} />
 
 

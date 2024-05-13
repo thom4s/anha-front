@@ -8,7 +8,8 @@ export async function load( { params, locals } ) {
         seoConfig: await getSeoSchema(),
         langs: await getLangs(),
         currentLang: params.lang,
-        menuItems: await getMenuItems(params.lang, 'primary_menu'),
-        menuItemsSecondary: await getMenuItems(params.lang, 'footer_menu')
+        menuItemsPrimary: await getMenuItems(params.lang, 'primary_menu'),
+        menuItemsSecondary: await getMenuItems(params.lang, 'secondary_menu'),
+        menuItemsFooter: await getMenuItems(params.lang, 'footer_menu')
     }
 }
