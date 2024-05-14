@@ -24,3 +24,9 @@
 .gap-m {
     gap: 40px;
 }
+
+
+.snap {
+    scroll-snap-align: start;
+    flex-direction: column;
+}

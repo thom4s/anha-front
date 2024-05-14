@@ -2,6 +2,8 @@
     import { activeLang } from "$lib/config/website";
     import LangSwitcher from "$lib/parts/LangSwitcher.svelte";
     import { page } from '$app/stores';
+	import logo from '$lib/assets/logo_anha_nb.png';
+	import logo_nobaseline from '$lib/assets/logo_anha_nobaseline.png';
 
     export let menuItemsPrimary = []
     export let menuItemsSecondary = []
@@ -24,8 +26,17 @@
             </ul>
         </nav>
 
-        <h1><a href="/{$activeLang}">Anha</a></h1>
-
+        {#if $page.url.pathname === '/fr' || $page.url.pathname === '/en' }
+            <h1>
+                <a href="/{$activeLang}" class="brand_logo">
+                    <img src="{logo_nobaseline}" alt="logo" />
+                </a>
+            </h1>
+        {:else}
+            <a href="/{$activeLang}" class="brand_logo">
+                <img src="{logo}" alt="logo"/>
+            </a>
+        {/if}
         <nav>
             <ul>
                 {#each menuItemsSecondary.nodes as item}
@@ -61,6 +72,11 @@
         align-items: center;
         justify-content: space-between;
         gap: 40px;
+    }
+
+    .brand_logo {
+        display: inline-block;
+        max-width: 200px;
     }
 
     ul {

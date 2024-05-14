@@ -5,10 +5,10 @@
 	import { config } from '$lib/config/website';
 	import { VERTICAL_LINE_ENTITY } from '$lib/constants/entities';
 
-	import ogSquareImageSrc from '$lib/assets/anha_logo.png';
-	import ogImageSrc from '$lib/assets/anha_logo.png';
-	import twitterImageSrc from '$lib/assets/anha_logo.png';
-	import featuredImageSrc from '$lib/assets/anha_logo.png';
+	import ogSquareImageSrc from '$lib/assets/logo_anha_nb.png';
+	import ogImageSrc from '$lib/assets/logo_anha_nb.png';
+	import twitterImageSrc from '$lib/assets/logo_anha_nb.png';
+	import featuredImageSrc from '$lib/assets/logo_anha_nb.png';
 
 	import OpenGraph from './OpenGraph.svelte';
 	import SchemaOrg from './SchemaOrg.svelte';

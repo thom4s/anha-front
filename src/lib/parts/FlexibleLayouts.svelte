@@ -33,10 +33,12 @@
     <PushProjets titre={layout.titre} pages={layout.projets?.nodes} />
 
 {:else if layout.__typename === 'ContenusFlexiblesStagesFlexibleContentsPushprojetsLayout'}
-    {#each layout.projets?.nodes as projet }
-        <BlockProjet {projet} />
-    {/each}
-
+    <div class="snap">
+        {#each layout.projets?.nodes as projet }
+            <BlockProjet {projet} />
+        {/each}
+    </div>
+    
 {:else if layout.__typename === 'ContenusFlexiblesContenusFlexiblesReferencesLayout'}
     <References titre={layout.titre} ligneLogos={layout.ligneLogos} />
 

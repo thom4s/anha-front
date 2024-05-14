@@ -4,7 +4,7 @@
     export let texte = '';
 </script>
 
-<div class="module fl-center">
+<div class="module fl-center snap">
     <h2>{titre}</h2>
     <div class="">
         <img src="{visuel?.node?.sourceUrl}">
@@ -17,8 +17,5 @@
     .module {
         margin: 40px 0;
         height: 100vh;
-        scroll-snap-align: start;
-        flex-direction: column;
     }
-
 </style>

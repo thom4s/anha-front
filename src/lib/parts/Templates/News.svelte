@@ -1,7 +1,7 @@
 <script lang="ts">
     import BlockPost from "$lib/parts/Elements/BlockPost.svelte";
     import Flexibles from "$lib/parts/Flexibles.svelte";
-    import PushContact from "../Modules/PushContact.svelte";
+    import PushContact from "$lib/parts/Modules/PushContact.svelte";
     export let page = {};
     export let posts = [];
 

@@ -20,7 +20,7 @@
 
 <section class="module">
 
-    <div class="grid">
+    <div class="grid container">
 
         <div class="m_6column">
             <h2>{@html title}</h2>
