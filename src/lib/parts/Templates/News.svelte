@@ -1,42 +1,13 @@
 <script lang="ts">
     import BlockPost from "$lib/parts/Elements/BlockPost.svelte";
     import PushContact from "$lib/parts/Modules/PushContact.svelte";
-    import { getAllPosts } from "$lib/queries/posts";
+    import Pagination from "../Navigations/Pagination.svelte";
+
     export let page = {};
     export let posts = [];
 
     $: console.log('News posts: ', posts)
 
-    let firstPaginationStep = true;
-    let lastPaginationStep = false;
-
-    const getPrevPosts = async () => {
-        const firstPost = posts.edges[0];
-        const firstPostCursor = firstPost.cursor;
-        const prevPosts = await getAllPosts('fr', 'last', 'before', firstPostCursor)
-        console.log('prevPosts:', prevPosts);
-        if(prevPosts ) {
-            firstPaginationStep = true
-            return prevPosts;
-        }
-        else {
-            firstPaginationStep = false
-        }
-    }
-    const getNextPosts = async () => {
-        const lastPost = posts.edges.at(-1);
-        const lastPostCursor = lastPost.cursor;
-        const nextPosts = await getAllPosts('fr', 'first', 'after', lastPostCursor)
-        console.log('nextPosts:', nextPosts);
-        if(nextPosts ) {
-            firstPaginationStep = false
-            return nextPosts;
-        }
-        else {
-            firstPaginationStep = false
-            lastPaginationStep = true
-        }
-    }
 
 </script>
 
@@ -55,24 +26,7 @@
                 <BlockPost post={post.node} type="posts"/>
             {/each}
 
-            <div class="pagination">
-                <button 
-                    class="prev" 
-                    disabled={firstPaginationStep}
-                    on:click={ async () => {
-                        posts = await getPrevPosts();
-                    }}
-                >Prev</button>
-                
-                <button 
-                    class="prev"
-                    disabled={lastPaginationStep}
-                    on:click={ async () => {
-                        posts = await getNextPosts();
-
-                    }}
-                >Next</button>
-            </div>
+            <Pagination bind:posts={posts} pageInfo={posts.pageInfo} />
         </div>
 
     </div>

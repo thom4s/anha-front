@@ -21,19 +21,28 @@
         {#if layout && layout.__typename }
 
             <section id="{`r${i+1}`}">
-                {#if layout.__typename === 'ContenusSavoirFaireLeftColFlexibleContentsBlocTitreVisuelTexteLayout'}
+                {#if 
+                    layout.__typename === 'ContenusSavoirFaireLeftColFlexibleContentsBlocTitreVisuelTexteLayout' 
+                    || layout.__typename === 'ContenusSavoirFaireRightColFlexibleContentsBlocTitreVisuelTexteLayout' }
+
                     <BlocTitreVisuelTexte titre={layout.titre} visuel={layout.visuel} texte={layout.texte} /> 
+                
                 {/if}
 
 
-                {#if layout.__typename === 'ContenusSavoirFaireLeftColFlexibleContentsPushprojetsLayout'}
-                        {layout.titre}
+                {#if 
+                    layout.__typename === 'ContenusSavoirFaireLeftColFlexibleContentsPushprojetsLayout' 
+                    || layout.__typename === 'ContenusSavoirFaireRightColFlexibleContentsPushprojetsLayout' }
+
+                        <h2 class="h2">{layout.titre}</h2>
+
                         {#if layout.projets?.nodes && layout.projets?.nodes.length > 0}
                             {#each layout.projets.nodes as projet}
                                 <BlockProjet projet={projet}/>
                             {/each}
                         {/if}
                 {/if}
+
             </section>
 
         {/if}

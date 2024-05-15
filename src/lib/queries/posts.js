@@ -41,7 +41,13 @@ export async function getAllPosts( lang = 'fr', direction = "first", position = 
             query: `
                 {
                     posts( ${direction}: 2, ${position}: "${cursor}", where: {language: ${lang.toUpperCase()} }) {
-
+                        pageInfo {
+                            startCursor
+                            endCursor
+                            hasNextPage
+                            hasPreviousPage
+                            total
+                        }
                         edges {
                             cursor
                             node {

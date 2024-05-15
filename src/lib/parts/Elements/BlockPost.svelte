@@ -9,6 +9,7 @@
     let fullscreen = false;
     let fullScreenContent = '';
     let fullScreenType = '';
+    
 </script>
 
 

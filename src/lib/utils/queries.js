@@ -405,15 +405,15 @@ export const groupeBlocTitreVisuel_query_string = `
 
 export const groupeBlocsProjets_query_string = `
 	__typename
-		titre
-		projets {
-			nodes {
-				... on Projet {
-					id
-					title
-				}
+	titre
+	projets {
+		nodes {
+			... on Projet {
+				id
+				title
 			}
 		}
+	}
 `
 
 
