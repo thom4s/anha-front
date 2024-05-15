@@ -1,5 +1,7 @@
 <script>
     import FullScreen from '$lib/parts/Modules/FullScreen.svelte';
+    import arrowfull from '$lib/assets/svg/arrowfull.svg';
+
     import { fade } from 'svelte/transition';
     export let post = {};
     export let type = '';
@@ -44,6 +46,7 @@
 
                     <div 
                         class="trigger"
+                        aria-roledescription=""
                         on:click={ () => {
                             fullscreen = true;
                             fullScreenContent = post.informationsNews?.video;
@@ -116,5 +119,6 @@
     }
     img:hover {
         cursor: zoom-in;
+        cursor: url('$lib/assets/svg/arrowfull.svg'), auto;
     }
 </style>

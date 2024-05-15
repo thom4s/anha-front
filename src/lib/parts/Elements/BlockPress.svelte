@@ -1,26 +1,25 @@
-@ -1,48 +0,0 @@
 <script>
     export let post = {};
     export let type = '';
 </script>
 
 
-<article class="block_collaboration">
+<article class="block_press">
 
     <div class="grid">
 
         <div class="m_4column">
 
-            <div>{post.informationsCollaboration.date}</div>
+            <div>{post.informationsPress?.date}</div>
             
             <div>  
                 <h2>{post.title}</h2>
                 <div>{@html post.excerpt}</div>
             </div>
             
-            {#if post.informationsCollaboration.lien }
-                <a href="{post.informationsCollaboration.lien}">
-                    {post.informationsCollaboration.label}
+            {#if post.informationsPress?.lien }
+                <a href="{post.informationsPress?.lien}">
+                    {post.informationsPress?.label}
                 </a>
             {/if}
         </div>
@@ -35,7 +34,7 @@
 
 
 <style lang="scss"> 
-.block_collaboration {
+.block_press {
     border-top: 1px solid;
     padding: 20px 0;
 

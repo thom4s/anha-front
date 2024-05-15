@@ -4,7 +4,7 @@
     import { config, activeLang } from '$lib/config/website.js'
     import Header from "$lib/parts/Navigations/Header.svelte";
     import Footer from "$lib/parts/Navigations/Footer.svelte";
-    import '$lib/scss/style.scss';
+    import '$lib/assets/scss/style.scss';
 
     export let data;
     $: ({menuItemsPrimary, menuItemsSecondary, menuItemsFooter, seoConfig, langs, currentLang } = data)

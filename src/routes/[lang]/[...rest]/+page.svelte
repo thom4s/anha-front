@@ -5,6 +5,7 @@
     import SplitScreen from '$lib/parts/Templates/SplitScreen.svelte';
     import Contact from '$lib/parts/Templates/Contact.svelte';
 	import Expertise from '$lib/parts/Templates/Expertise.svelte';
+	import Presse from '$lib/parts/Templates/Presse.svelte';
 
     export let data: {
         page: Promise<void>;
@@ -38,6 +39,9 @@
 
             {:else if page.template.templateName === 'Page Contact'}
                 <Contact {page} />    
+
+            {:else if page.template.templateName === 'Page Presse'}
+                <Presse {page} {posts} />
 
             {:else}
                 <Page {page} {posts} />
