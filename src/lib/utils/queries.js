@@ -256,7 +256,7 @@ export const PushProjets_query_string = `
 	}
 `
 export const StagedPushProjets_query_string = `
-	... on ContenusFlexiblesStagesFlexibleContentsPushprojetsLayout {
+	... on ContenusFlexiblesStagedStagesFlexibleContentsPushprojetsLayout {
 		${string_projets}
 	}
 `
@@ -276,7 +276,7 @@ export const video_query_string = `
 	}
 `
 export const Stagedvideo_query_string = `
-	... on ContenusFlexiblesStagesFlexibleContentsVideoLayout {
+	... on ContenusFlexiblesStagedStagesFlexibleContentsVideoLayout {
 		${string_vid}
 	}
 `
@@ -302,7 +302,7 @@ export const BlocTitreVisuelTexte_query_string = `
 	}
 `
 export const StagedBlocTitreVisuelTexte_query_string = `
-	... on ContenusFlexiblesStagesFlexibleContentsBlocTitreVisuelTexteLayout {
+	... on ContenusFlexiblesStagedStagesFlexibleContentsBlocTitreVisuelTexteLayout {
 		${string_tvt}
 	}
 `
@@ -325,16 +325,29 @@ const string_collabs = `
 `
 
 export const StagedCollaborateurs_query_string = `
-	... on ContenusFlexiblesStagesFlexibleContentsCollaborateursLayout {
+	... on ContenusFlexiblesStagedStagesFlexibleContentsCollaborateursLayout {
 		${string_collabs}
 	}
 `
 
 
+export const hpCover_Query_string = `
+	... on ContenusFlexiblesContenusFlexiblesHpCoverLayout {
+		__typename
+		cover_text
+		left_title
+		right_title
+		cover_img {
+			node {
+				sourceUrl
+				srcSet
+			}
+		}
+	}
+`
 
 
-
-// 
+// FLEXIBLE CONTENTS
 
 export const flexibleContents_query_string = `
 	contenusFlexibles {
@@ -347,12 +360,15 @@ export const flexibleContents_query_string = `
 			${richtext_query_string}
 			${video_query_string}
 			${BlocTitreVisuelTexte_query_string}
+			${hpCover_Query_string}
 		}
   	}
 `
 
+
+// STAGED CONTENTS
 export const stagedContents_query_string = `
-	contenusFlexibles {
+	contenusFlexiblesStaged {
 		stages {
 			stickyContent
 			positionsticky

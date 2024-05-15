@@ -1,5 +1,6 @@
 <script>
     import FullScreen from '$lib/parts/Modules/FullScreen.svelte';
+    import { fade } from 'svelte/transition';
     export let post = {};
     export let type = '';
     import { register } from 'swiper/element/bundle';
@@ -8,12 +9,10 @@
     let fullscreen = false;
     let fullScreenContent = '';
     let fullScreenType = '';
-
-    $: console.log('block_post', post)
 </script>
 
 
-<article class="block_post">
+<article class="block_post" transition:fade={{ duration: 200 }}>
 
     <div class="fl-justify gap-m">
 

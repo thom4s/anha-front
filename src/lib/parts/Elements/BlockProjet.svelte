@@ -2,10 +2,7 @@
 	import { fade } from 'svelte/transition';
 
     export let projet = {};
-    export let type = '';
-
-    $: console.log(projet)
-    
+    export let type = '';    
 </script>
 
 

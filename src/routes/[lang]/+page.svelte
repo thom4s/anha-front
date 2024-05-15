@@ -1,6 +1,7 @@
 
 <script lang="ts">
     import Flexibles from "$lib/parts/Flexibles.svelte";
+	import PushContact from "$lib/parts/Modules/PushContact.svelte";
 
     export let data: {
         homepage: Promise<void>;
@@ -10,8 +11,7 @@
 </script>
 
 
-<div class="container">
-    <div>{@html page.content}</div>
+<div class="">
 
     {#if page.contenusFlexibles?.contenusFlexibles }
         <Flexibles contenusFlexibles={page.contenusFlexibles?.contenusFlexibles}/>
@@ -19,3 +19,12 @@
 
 </div>
 
+
+<PushContact />
+
+
+<style lang="scss">
+    .container {
+        padding-top: 100px;
+    }
+</style>

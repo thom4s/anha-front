@@ -6,8 +6,8 @@
 
     export let langs = []
 
-    $: console.log('LangSwitcher activeLang: ', $activeLang)
-    $: console.log('page: ', $page)
+    //$: console.log('LangSwitcher activeLang: ', $activeLang)
+    //$: console.log('page: ', $page)
 
     const switchLang = async ( lg ) => {
         console.log( 'switchLang: ', lg )

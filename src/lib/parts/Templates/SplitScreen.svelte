@@ -1,10 +1,7 @@
 <script lang="ts">
     import FlexibleLayouts from '$lib/parts/FlexibleLayouts.svelte';
     export let page = {};
-    $: ({contenusFlexibles, stages } = page.contenusFlexibles)
-
-    $: console.log('contenusFlexibles: ', contenusFlexibles)
-    $: console.log('stages: ', stages)
+    $: ({stages } = page.contenusFlexiblesStaged)
 </script>
 
 

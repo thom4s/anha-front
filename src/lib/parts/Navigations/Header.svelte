@@ -4,6 +4,7 @@
     import { page } from '$app/stores';
 	import logo from '$lib/assets/logo_anha_nb.png';
 	import logo_nobaseline from '$lib/assets/logo_anha_nobaseline.png';
+    import { onMount } from "svelte";
 
     export let menuItemsPrimary = []
     export let menuItemsSecondary = []
@@ -12,9 +13,62 @@
     $: console.log( 'pathname', $page.url.pathname)
     $: pathname = $page.url.pathname + '/';
 
+
+  // VARIABLES
+
+  onMount(() => {
+
+
+    const masthead = document.getElementById('masthead');
+
+
+        let didScroll;
+        let lastScrollTop = 0;
+        let delta = 20;
+
+        const documentIsScrolling = function () {
+            didScroll = true;
+
+            // Handle menu
+            setInterval(function() {
+                if (didScroll) {
+                    handleScrollForMenu();
+                    didScroll = false;
+                }
+            }, 250);
+
+        }
+
+        const handleScrollForMenu = function () {
+            var st = window.scrollY;
+
+            // Make sure they scroll more than delta
+            if(Math.abs(lastScrollTop - st) <= delta)
+                return;
+            
+            if( st < 150 ) {
+                //console.log('documentIsScrolling BACKTOTHETOP');
+                masthead.classList.remove('out');
+            }
+            else if (st > lastScrollTop ){
+                //console.log('documentIsScrolling DOWN');
+                masthead.classList.add('out');
+            } 
+            else {
+                //console.log('documentIsScrolling UP');
+                masthead.classList.remove('out');
+            }
+
+            lastScrollTop = st;
+        }
+
+        document.addEventListener("scroll", documentIsScrolling, false);
+
+    });
+
 </script>
 
-<header>
+<header id="masthead">
     <div class="container">
         <nav>
             <ul>
@@ -65,6 +119,9 @@
         transform: translateY(0);
         background-color: white;
         z-index: 9;
+        transition: transform .2s;
+
+
      }
 
     .container {
@@ -101,5 +158,7 @@
     .active {
         font-weight: bold;
     }
+
+
 
 </style>

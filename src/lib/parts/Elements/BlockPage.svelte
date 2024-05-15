@@ -1,7 +1,6 @@
 <script>
     export let post = {};
 
-    $: console.log('block_page', post)
 </script>
 
 

@@ -1,22 +1,22 @@
 <script lang="ts">
     import ExpertiseItem from '$lib/parts/Modules/ExpertiseItem.svelte';
-
+    import PushContact from '../Modules/PushContact.svelte';
+    
     import { onMount } from "svelte";
 
     onMount(() => {
 
-        const sections = document.querySelectorAll('.left section, .right section');
-            
+        const sections = document.querySelectorAll('.left-sections section, .right-sections  section');
+        
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-
+    
                     // Get next section
                     const id = entry.target.id;
                     const currentSec = document.getElementById(`${id}`);
-                    console.log('intere', currentSec);
                     // currentSec.scrollIntoView({ behavior: "smooth", block: "start" })
-
+    
                     // Scroll to next section
                     window.scrollTo({
                         top: currentSec.offsetTop,
@@ -29,7 +29,7 @@
             rootMargin: `0px`,
             threshold: 0.1
         });
-
+    
         sections.forEach((el) => observer.observe(el));
 
     });
@@ -50,83 +50,89 @@
 
     <div class="wrapper" class:overflow={!productionVisible && !designVisible}>
 
-        <div class="left">
-
-            <button class="top" on:click={() => {designVisible = !designVisible}}>
-                {leftCol.titre}
-            </button>
-
-            <div class="left-sections" class:active={productionVisible}>
-                <ExpertiseItem chapo={rightCol.chapo} flexibleContents={rightCol.flexibleContents}/>
-            </div>
-
+        <div class="btn-container">
+            <button class="btn" on:click={() => {designVisible = !designVisible}}>{leftCol.titre}</button>
+            <button class="btn" on:click={() => {productionVisible = !productionVisible}}>{rightCol.titre}</button>
         </div>
 
-        <div class="right">
 
-            <button class="top" on:click={() => {productionVisible = !productionVisible}}>
-                {rightCol.titre}
-            </button>
-
-            <div class="right-sections" class:active={designVisible}>
-                <ExpertiseItem chapo={leftCol.chapo} flexibleContents={leftCol.flexibleContents}/>
-            </div>
-
+        <div class="sec-container">
+                <div class="left-sections" class:active={productionVisible}>
+                    <ExpertiseItem chapo={rightCol.chapo} flexibleContents={rightCol.flexibleContents}/>
+                </div>
+    
+                <div class="right-sections" class:active={designVisible}>
+                    <ExpertiseItem chapo={leftCol.chapo} flexibleContents={leftCol.flexibleContents}/>
+                </div>
         </div>
+
     </div>
 
 </article>
 
+<PushContact />
+
 
 <style lang="scss">
 
-.wrapper {
-        display: flex;
-        position: relative;
-        overflow-x: hidden;
-    }
     .wrapper.overflow {
         height: 100vh;
         overflow: hidden;
     }
 
-    .left, .right {
-        width: 50%;
-        position: relative;
-    }
-
-    .left .top, .right .top {
-        all: unset;
-        display: block;
-        background-color: black;
-        width: inherit;
-        position: fixed;
+    .btn-container {
+        display: flex;
         height: 100vh;
-        font-size: 80px;
-        font-weight: bold;
-        text-align: center;
-        cursor: pointer;
-        color: white;
+        width: 100%;
+        position: sticky;
+        top: 0;
     }
+        .btn {
+            all: unset;
+            display: block;
+            width: 50%;
+            height: 100%;
+            font-size: 80px;
+            cursor: pointer;
+            text-align: center;
+            background-color: #000000;
+            color: white;
 
-    .left-sections, .right-sections {
-        background-color: #808080;
-        position: relative;
-        z-index: 5;
-        transition: 0.3s;
+            &:hover {
+                font-style: italic;
+            }
+        }
+
+    .sec-container {
+        display: flex;
+        margin-top: -100vh;
+        overflow: hidden;
     }
+        .left-sections, .right-sections {
+            background-color: white;
+            position: relative;
+            z-index: 5;
+            width: 50%;
+            transition: 0.3s ease-in-out;
+            transform: translateX(0);
+        }
         .left-sections {
             transform: translateX(-100%);
         }
         .right-sections {
             transform: translateX(100%);
         }
+        .left-sections.active, .right-sections.active {
+            transform: translateX(0);
+        }
 
-    .left-sections.active, .right-sections.active {
-        transform: translateX(0);
-    }
+        section {
+            padding: 50px;
+            height: 100vh;
+            /* scroll-snap-align: center; */
+        }
+        section:nth-child(even) {
+            background-color: #2a2a2a;
+        }
 
-    .right section:nth-child(even) {
-        background-color: #2a2a2a;
-    }
 </style>

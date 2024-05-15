@@ -10,6 +10,7 @@
     import BlocTitreVisuelTexte from '$lib/parts/Modules/BlocTitreVisuelTexte.svelte';
     import BlockProjet from '$lib/parts/Elements/BlockProjet.svelte';
     import BlockCollaborateur from '$lib/parts/Elements/BlockCollaborateur.svelte';
+    import HPCover from '$lib/parts/Modules/HPCover.svelte';
 
     export let layout = '';
     export let smallContact = false;
@@ -32,7 +33,7 @@
     layout.__typename === 'ContenusFlexiblesContenusFlexiblesPushprojetsLayout' }
     <PushProjets titre={layout.titre} pages={layout.projets?.nodes} />
 
-{:else if layout.__typename === 'ContenusFlexiblesStagesFlexibleContentsPushprojetsLayout'}
+{:else if layout.__typename === 'ContenusFlexiblesStagedStagesFlexibleContentsPushprojetsLayout'}
     <div class="snap">
         {#each layout.projets?.nodes as projet }
             <BlockProjet {projet} />
@@ -51,11 +52,15 @@
 {:else if layout.__typename === 'ContenusFlexiblesContenusFlexiblesVideoLayout'}
     <Video titre={layout.titre} video={layout.video} />
 
-{:else if layout.__typename === `ContenusFlexiblesContenusFlexiblesBlocTitreVisuelTexteLayout` || layout.__typename === `ContenusFlexiblesStagesFlexibleContentsBlocTitreVisuelTexteLayout`} 
+{:else if layout.__typename === `ContenusFlexiblesContenusFlexiblesBlocTitreVisuelTexteLayout` || layout.__typename === `ContenusFlexiblesStagedStagesFlexibleContentsBlocTitreVisuelTexteLayout`} 
     <BlocTitreVisuelTexte titre={layout.titre} visuel={layout.visuel} texte={layout.texte} />
 
-{:else if layout.__typename === `ContenusFlexiblesStagesFlexibleContentsCollaborateursLayout`} 
+{:else if layout.__typename === `ContenusFlexiblesStagedStagesFlexibleContentsCollaborateursLayout`} 
     <BlockCollaborateur {layout} />
+
+
+{:else if layout.__typename === `ContenusFlexiblesContenusFlexiblesHpCoverLayout`} 
+    <HPCover cover_text={layout.cover_text} left_title={layout.left_title} right_title={layout.right_title}  cover_img={layout.cover_img.node.sourceUrl} />
 
     
 {/if}

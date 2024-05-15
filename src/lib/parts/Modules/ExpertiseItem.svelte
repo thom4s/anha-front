@@ -42,7 +42,7 @@
 <style lang="scss">
 
     section {
-        padding: 200px 50px;
+        padding: 50px;
         height: 100vh;
     }
 

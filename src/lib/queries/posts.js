@@ -32,7 +32,7 @@ export async function getPostBySlug( slug = '' ) {
 }
 
 
-export async function getAllPosts( lang = 'fr' ) {
+export async function getAllPosts( lang = 'fr', direction = "first", position = "after", cursor = '' ) {
     
     const posts = await fetch(PUBLIC_API_URL, {
         method: 'POST',
@@ -40,21 +40,25 @@ export async function getAllPosts( lang = 'fr' ) {
         body: JSON.stringify({
             query: `
                 {
-                    posts(where: {language: ${lang.toUpperCase()} }) {
-                        nodes {
-                            ${basic_fields_string}
-                            ${seo_query_string}
-                            ${featuredImage_fields_string}
-                            informationsNews {
-                                lien
-                                lieu
-                                labelDuLien
-                                date
-                                video
-                                galery {
-                                    nodes {
-                                        sourceUrl
-                                        srcSet
+                    posts( ${direction}: 2, ${position}: "${cursor}", where: {language: ${lang.toUpperCase()} }) {
+
+                        edges {
+                            cursor
+                            node {
+                                ${basic_fields_string}
+                                ${seo_query_string}
+                                ${featuredImage_fields_string}
+                                informationsNews {
+                                    lien
+                                    lieu
+                                    labelDuLien
+                                    date
+                                    video
+                                    galery {
+                                        nodes {
+                                            sourceUrl
+                                            srcSet
+                                        }
                                     }
                                 }
                             }
