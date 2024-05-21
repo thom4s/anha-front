@@ -26,7 +26,7 @@
     
     .status-code {
         font-size: 125px;
-        color: $primary-color;
+        color: $black;
         font-weight: $font-b;
     }
     .h2 {
