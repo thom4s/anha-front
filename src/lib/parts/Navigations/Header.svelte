@@ -49,14 +49,17 @@
             if( st < 150 ) {
                 //console.log('documentIsScrolling BACKTOTHETOP');
                 masthead.classList.remove('out');
+                masthead.classList.add('at-top');
             }
             else if (st > lastScrollTop ){
                 //console.log('documentIsScrolling DOWN');
                 masthead.classList.add('out');
+                masthead.classList.remove('at-top');
             } 
             else {
                 //console.log('documentIsScrolling UP');
                 masthead.classList.remove('out');
+                masthead.classList.remove('at-top');
             }
 
             lastScrollTop = st;
@@ -68,22 +71,22 @@
 
 </script>
 
-<header id="masthead">
+<header id="masthead" class="at-top" class:home={$page.url.pathname === '/fr' || $page.url.pathname === '/en'}>
     <div class="container">
-        <nav>
+        <nav class="left">
             <ul>
                 {#each menuItemsPrimary.nodes as item}
                     <li>
-                        <a href="{item.path}" class:active={pathname == item.path}>{item.label}</a>
+                        <a href="{item.path}" class="menu" class:active={pathname == item.path}>{item.label}</a>
                     </li>
                 {/each}
             </ul>
         </nav>
 
         {#if $page.url.pathname === '/fr' || $page.url.pathname === '/en' }
-            <h1>
+            <h1 class="logo_container no-margin">
                 <a href="/{$activeLang}" class="brand_logo">
-                    <img src="{logo_nobaseline}" alt="logo" />
+                    <img src="{logo}" alt="logo" />
                 </a>
             </h1>
         {:else}
@@ -91,11 +94,11 @@
                 <img src="{logo}" alt="logo"/>
             </a>
         {/if}
-        <nav>
+        <nav class="right">
             <ul>
                 {#each menuItemsSecondary.nodes as item}
                     <li>
-                        <a href="{item.path}" class:active={pathname == item.path}>{item.label}</a>
+                        <a href="{item.path}" class="menu" class:active={pathname == item.path}>{item.label}</a>
                     </li>
                 {/each}
 
@@ -111,29 +114,56 @@
 <style lang="scss">
 
     header {
-        border-bottom: 1px solid;
         position: fixed;
         top: 0;
         right: 0;
         left: 0;
         transform: translateY(0);
-        background-color: white;
+        background-color: $light-bg;
         z-index: 9;
         transition: transform .2s;
+        &.home.at-top {
+            .container {
+                align-items: flex-start;
+                // padding-bottom: 150px;
+            }
+            .logo_container {
+                margin-top: 50px;
+                // transform: translateY(100%);
+                .brand_logo {
+                    max-width: 420px;
+                    padding: 60px 0;
+                }
+            }
+        }
+    }
 
-
-     }
+    nav {
+        width: 40%;
+        padding: 42px 0;
+        &.right ul {
+            justify-content: flex-end;
+        }
+    }
 
     .container {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 40px;
+        transition: 0.5s ease-in-out;
+    }
+
+    .logo_container {
+        transition: 0.5s ease-in-out;
+        line-height: 0;
     }
 
     .brand_logo {
+        transition: 0.5s ease-in-out;
         display: inline-block;
-        max-width: 200px;
+        max-width: 150px;
+        padding: 15px 0;
     }
 
     ul {

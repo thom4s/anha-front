@@ -33,6 +33,22 @@
 </script>
 
 
-{#each langs as l}
-    <li><button disabled={l.slug === $activeLang} on:click={ () => switchLang(l.slug)}>{l.name}</button></li>
-{/each}
+<div class="fl-center">
+    {#each langs as l, index}
+        <li><button class="menu" disabled={l.slug === $activeLang} on:click={ () => switchLang(l.slug)}>{l.name.substring(0,2)}</button></li>
+        {#if index === 0}
+            <span>/</span>
+        {/if}
+    {/each}
+</div>
+
+
+
+<style lang="scss">
+
+.menu {
+    background-color: unset;
+    border: none;
+}
+
+</style>
