@@ -134,14 +134,14 @@ h4, .h4 { @include h4; }
     font-style: italic;
 	line-height: 1.25;
     letter-spacing: 0.06em;
+    color: $dark-font;
 }
 
 
-.caption {
+.caption, .caption p {
     font-size: 1.2rem;
 	line-height: 1.40;
     letter-spacing: 0.06em;
-	font-weight: $font-m;
 }
 
 .menu {

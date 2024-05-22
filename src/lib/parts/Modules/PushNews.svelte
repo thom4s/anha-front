@@ -5,7 +5,7 @@
 
 </script>
 
-<section class="module">
+<section class="module container">
 
     <h2>{titre}</h2>
 
@@ -20,7 +20,8 @@
 
 <style lang="scss">
     .module {
-        margin: 40px 0;
+        margin-top: 180px;
+        margin-bottom: 180px;
     }
     .logos {
         display: flex;

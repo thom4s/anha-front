@@ -20,7 +20,14 @@
     justify-content: right;
     align-items: center;
 }
-
+.fl-column-space {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.vbot {
+    align-items: flex-end;
+}
 
 .gap-xxs {gap: $space-xxs};
 .gap-xs  {gap: $space-xs};
