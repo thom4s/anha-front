@@ -2,3 +2,24 @@ iframe {
     width: 100%;
     height: 100%;
 }
+
+
+.btn {
+    font-size: 1.2rem;
+    line-height: 1.45;
+    font-weight: 350;
+    letter-spacing: 0.06em;
+    text-align: center;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+
+    &.light {
+        color: $dark-font;
+        border: 1px solid $dark-font;
+    }
+    &.dark {
+        color: $light-font;
+        background-color: $dark-bg;
+    }
+}

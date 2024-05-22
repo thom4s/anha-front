@@ -48,11 +48,11 @@
 
 <style>
     footer {
-        margin-top: 80px;
+        margin-top: 10px;
+        margin-bottom: 60px;
     }
     .container {
         border-top: 1px solid;
-        margin-bottom: 60px;
     }
     nav {
         padding: 15px 0;

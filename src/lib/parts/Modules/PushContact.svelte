@@ -23,22 +23,22 @@
     <div class="grid container">
 
         <div class="m_6column">
-            <h2>{@html title}</h2>
+            <h2 class="h1 no-margin">{@html title}</h2>
 
 
             {#if smallContact }
 
             {:else}
-                <div>{@html text}</div>
-                <a href="{lien?.url}">{label}</a>
+                <div class="body">{@html text}</div>
+                <a class="btn dark" href="{lien?.url}">{label}</a>
             {/if}
         
         </div>
 
         <div class="m_6column">
             {#if smallContact }
-                <div>{@html text}</div>
-                <a href="{lien?.url}">{label}</a>
+                <div class="body">{@html text}</div>
+                <a class="btn dark" href="{lien?.url}">{label}</a>
     
             {:else}
                 <Form />
@@ -54,7 +54,8 @@
 
 <style lang="scss">
     .module {
-        margin: 40px 0;
+        margin-top: 180px;
+        margin-bottom: 30px;
     }
     .logos {
         display: flex;
@@ -63,5 +64,8 @@
         img { 
             object-fit: contain;
         }
+    }
+    div.body {
+        margin-bottom: 30px;
     }
 </style>
