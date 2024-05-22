@@ -140,7 +140,7 @@
 
     nav {
         width: 40%;
-        padding: 42px 0;
+        padding: 36px 0;
         &.right ul {
             justify-content: flex-end;
         }
@@ -175,13 +175,6 @@
 
         a {
             padding: 10px;
-            text-decoration: none;
-            color: black;
-            font-weight: 400;
-
-            &:hover {
-                font-weight: bold;
-            }
         }
     }
 
