@@ -39,3 +39,8 @@
 <Footer {menuItemsPrimary} {menuItemsSecondary} {menuItemsFooter} />
 
 
+<style>
+    :global(header.home.at-top) ~ main {
+        margin-top: 318px;
+    }
+</style>

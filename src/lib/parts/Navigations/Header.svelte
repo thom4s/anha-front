@@ -137,10 +137,10 @@
             }
         }
     }
-
+    
     nav {
         width: 40%;
-        padding: 36px 0;
+        padding: 35.5px 0;
         &.right ul {
             justify-content: flex-end;
         }

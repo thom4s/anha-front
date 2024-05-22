@@ -26,8 +26,13 @@
 
 
 <style lang="scss">
+    .module {
+        position: relative;
+        height: 80vh;
+    }
     img {
-        min-height: 90vh;
+        height: 100%;
+        width: 100%;
     }
     .content {
         padding: 200px;
