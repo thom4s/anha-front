@@ -17,7 +17,7 @@
 
 <article class="block_post" transition:fade={{ duration: 200 }}>
 
-    <div class="fl-justify gap-m">
+    <div class="fl-justify gap-l">
 
         <div class="half">
 

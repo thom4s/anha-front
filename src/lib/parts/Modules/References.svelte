@@ -37,6 +37,7 @@
 <style lang="scss">
     .module {
         margin: 40px 0;
+        overflow: hidden;
     }
     .line {
         display: flex;

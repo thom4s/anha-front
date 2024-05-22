@@ -6,7 +6,7 @@
 
 <article class="block_page">
 
-    <div class="fl-justify gap-m">
+    <div class="fl-justify gap-l">
 
         <div class="half">
 

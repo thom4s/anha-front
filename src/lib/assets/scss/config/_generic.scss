@@ -21,9 +21,18 @@
     align-items: center;
 }
 
-.gap-m {
-    gap: 40px;
-}
+
+.gap-xxs {gap: $space-xxs};
+.gap-xs  {gap: $space-xs};
+.gap-s   {gap: $space-s};
+.gap-m   {gap: $space-m};
+.gap-l   {gap: $space-l};
+.gap-xl  {gap: $space-xl};
+.gap-xxl {gap: $space-xxl};
+
+
+
+
 
 .no-margin {
     margin: 0;
