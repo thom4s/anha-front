@@ -18,7 +18,7 @@
 
 
 <section class="module">
-    <h2>{titre}</h2>
+    <!-- <h2>{titre}</h2> -->
 
     {#if ligneLogos && ligneLogos?.length > 0}
         <div class="logos">

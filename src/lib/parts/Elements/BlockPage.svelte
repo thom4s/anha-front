@@ -6,7 +6,7 @@
 
 <article class="block_page">
 
-    <div class="fl-justify gap-l">
+    <div class="fl-vcenter gap-m">
 
         <div class="half">
 
@@ -20,10 +20,10 @@
         <div class="half">
             <div class="bloc_texts">
                 
-                <div class="">  
-                    <h2>{post.title}</h2>
-                    <div>{@html post.content}</div>
-                    <a href="{post.link}">En savoir plus</a>
+                <div class="fl-column-space gap-m">  
+                    <h2 class="h2 no-margin">{post.title}</h2>
+                    <div class="body">{@html post.content}</div>
+                    <a class="link" href="{post.link}">En savoir plus</a>
                 </div>
                 
             </div>
@@ -52,5 +52,9 @@
 }
 .half {
     width: 50%;
+}
+
+img {
+    aspect-ratio: 5/4;
 }
 </style>

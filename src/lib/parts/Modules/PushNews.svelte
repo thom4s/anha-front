@@ -7,7 +7,7 @@
 
 <section class="module container">
 
-    <h2>{titre}</h2>
+    <!-- <h2>{titre}</h2> -->
 
     {#if pages && pages.length > 0}
         {#each pages as post }
