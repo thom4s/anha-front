@@ -7,7 +7,7 @@
     import '$lib/assets/scss/style.scss';
 
     export let data;
-    $: ({menuItemsPrimary, menuItemsSecondary, menuItemsFooter, seoConfig, langs, currentLang } = data)
+    $: ({menuItemsPrimary, menuItemsSecondary, menuItemsFooter, seoConfig, langs, currentLang, socialLinks } = data)
     
     $: $activeLang = currentLang;
 
@@ -36,7 +36,7 @@
     <slot />
 </main>
 
-<Footer {menuItemsPrimary} {menuItemsSecondary} {menuItemsFooter} />
+<Footer {menuItemsPrimary} {menuItemsSecondary} {menuItemsFooter} {socialLinks} />
 
 
 <style>

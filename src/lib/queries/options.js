@@ -86,6 +86,32 @@ export async function getFormsParams( ) {
     return options;
 }
 
+export async function getSocialLinks( ) {
+    
+    const options = await fetch(PUBLIC_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            query: `
+            {
+                optionsDuSite {
+                    socialLinks {
+                        instagram_account
+                        linkedin_account
+                    }
+                }
+            }
+            `
+            }),
+        })
+        .then(res => res.json())
+        .then(res => {
+            return res.data.optionsDuSite.socialLinks
+        });
+
+    return options;
+}
+
 export async function getPushContactContents( ) {
     
     const options = await fetch(PUBLIC_API_URL, {

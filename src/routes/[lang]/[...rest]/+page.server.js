@@ -13,23 +13,23 @@ export async function load( {params} ) {
 
     page = await getPageBySlug(params.rest)
 
-    if( page.template.templateName === 'Projets') {
+    if( page.template?.templateName === 'Projets') {
       projets = await getAllProjets(params.lang);
       secteurs = await getAllTerms('secteurs');
       savoirfaires = await getAllTerms('savoirfaires');
     }
 
-    if( page.template.templateName === 'Actualités') {
+    if( page.template?.templateName === 'Actualités') {
       posts = await getAllPosts(params.lang);
       secteurs = await getAllTerms('secteurs');
       savoirfaires = await getAllTerms('savoirfaires');
     }
 
-    if( page.template.templateName === 'Page Presse') {
+    if( page.template?.templateName === 'Page Presse') {
       posts = await getAllPressArticles(params.lang);
     }
 
-    if( page.template.templateName === 'Modèle Savoir Faire') {
+    if( page.template?.templateName === 'Modèle Savoir Faire') {
       page = await getPageBySlug(params.rest, true)
     }
 

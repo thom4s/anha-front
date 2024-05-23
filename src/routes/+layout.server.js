@@ -1,5 +1,5 @@
 import { getSeoSchema } from '$lib/queries/seo';
-import { getMenuItems, getLangs } from '$lib/queries/options';
+import { getMenuItems, getLangs, getSocialLinks } from '$lib/queries/options';
 
 
 export async function load( { params, locals } ) {
@@ -7,6 +7,7 @@ export async function load( { params, locals } ) {
     return {
         seoConfig: await getSeoSchema(),
         langs: await getLangs(),
+        socialLinks: await getSocialLinks(),
         currentLang: params.lang,
         menuItemsPrimary: await getMenuItems(params.lang, 'primary_menu'),
         menuItemsSecondary: await getMenuItems(params.lang, 'secondary_menu'),
