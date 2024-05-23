@@ -237,6 +237,21 @@ export const richtext_query_string = `
 const string_projets = `
 	__typename
 	titre
+	link {
+		edges {
+			node {
+				date
+				slug
+				... on Page {
+					id
+					link
+					title
+					uri
+				}
+			}
+		}
+	}
+	label
 	projets {
 		nodes {
 			... on Projet {

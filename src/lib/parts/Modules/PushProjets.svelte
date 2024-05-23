@@ -5,6 +5,8 @@
     import { register } from 'swiper/element/bundle';
 
     export let titre = '';
+    export let label = '';
+    export let link = '';
     export let pages = [];
 
     onMount( async () => {
@@ -29,6 +31,8 @@
                 </svg>    
             </div>
         </div>
+
+        <a href="{link}">{label}</a>
     </div>
 
     {#if pages && pages.length > 0}
@@ -51,7 +55,6 @@
             {/each}
 
         </swiper-container >
-
 
     {/if}
 
