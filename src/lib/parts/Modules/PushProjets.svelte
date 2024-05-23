@@ -1,11 +1,16 @@
 <script>
 	import BlockProjet from '$lib/parts/Elements/BlockProjet.svelte';
+	import { onMount } from 'svelte';
     
     import { register } from 'swiper/element/bundle';
-    register();
 
     export let titre = '';
     export let pages = [];
+
+    onMount( async () => {
+        register();
+
+    });
 </script>
 
 <section class="module container">

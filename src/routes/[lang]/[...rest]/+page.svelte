@@ -25,22 +25,22 @@
     {#if page}
 
 
-            {#if page.template.templateName === 'Projets'}
+            {#if page?.template?.templateName === 'Projets'}
                 <Projets {page} {projets} {savoirfaires} {secteurs} />
                 
-            {:else if page.template.templateName === 'Actualités'}
+            {:else if page?.template?.templateName === 'Actualités'}
                 <News {page} {posts} />
 
-            {:else if page.template.templateName === 'Modèle Sur 2 Colonnes'}
+            {:else if page?.template?.templateName === 'Modèle Sur 2 Colonnes'}
                 <SplitScreen {page} />
 
-            {:else if page.template.templateName === 'Modèle Savoir Faire'}
+            {:else if page?.template?.templateName === 'Modèle Savoir Faire'}
                 <Expertise {page} />
 
-            {:else if page.template.templateName === 'Page Contact'}
+            {:else if page?.template?.templateName === 'Page Contact'}
                 <Contact {page} />    
 
-            {:else if page.template.templateName === 'Page Presse'}
+            {:else if page?.template?.templateName === 'Page Presse'}
                 <Presse {page} {posts} />
 
             {:else}

@@ -16,7 +16,6 @@ export async function getProjetBySlug( slug = '' ) {
                 ${extended_fields_string}
                 ${featuredImage_fields_string}
                 ${seo_query_string}
-                ${flexibleContents_query_string}
                 ${contentType_fields_string}
                 ${taxonomies_fields_string}
             }
