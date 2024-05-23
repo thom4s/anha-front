@@ -156,4 +156,8 @@
         cursor: zoom-in;
         cursor: url('$lib/assets/svg/arrowfull.svg'), auto;
     }
+
+    .caption {
+        text-align: right;
+    }
 </style>
