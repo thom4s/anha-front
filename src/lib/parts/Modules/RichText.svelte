@@ -8,9 +8,9 @@
 <section class="module container">
     <!-- <h2>{titre}</h2> -->
 
-    <div class="contents">
-        <div class="chapo">{@html contentOne}</div>
-        <div class="body">{@html contentTwo}</div>
+    <div class="grid">
+        <div class="chapo m_6column">{@html contentOne}</div>
+        <div class="body m_6column">{@html contentTwo}</div>
     </div>
 </section>
 
@@ -19,9 +19,5 @@
     .module {
         margin-top: 180px;
         margin-bottom: 180px;
-    }
-    .contents {
-        display: flex;
-        gap: 30px;
     }
 </style>
