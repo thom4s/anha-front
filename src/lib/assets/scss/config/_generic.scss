@@ -25,6 +25,10 @@
     flex-direction: column;
     justify-content: space-between;
 }
+.fl-column {
+    display: flex;
+    flex-direction: column;
+}
 .vbot {
     align-items: flex-end;
 }
@@ -39,6 +43,9 @@
 
 
 
+.txt-center {
+    justify-content: center;
+}
 
 
 .no-margin {

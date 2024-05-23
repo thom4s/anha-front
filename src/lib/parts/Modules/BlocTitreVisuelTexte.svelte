@@ -4,18 +4,26 @@
     export let texte = '';
 </script>
 
-<div class="module fl-center snap">
-    <h2>{titre}</h2>
+<div class="module fl-column gap-m snap">
+    <h2 class="h2 no-margin txt-center">{titre}</h2>
     <div class="">
         <img src="{visuel?.node?.sourceUrl}">
     </div>
-    {@html texte}
+    <div class="body">
+        {@html texte}
+    </div>
 </div>
 
 
 <style lang="scss">
     .module {
-        margin: 40px 0;
-        height: 100vh;
+        height: 100%;
+    }
+    h2 {
+        align-self: center;
+    }
+
+    img {
+        aspect-ratio: 5/4;
     }
 </style>

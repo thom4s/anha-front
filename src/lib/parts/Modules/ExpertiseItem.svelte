@@ -12,8 +12,13 @@
 </script>
 
 
-    <section id="r0" class="fl-center">
+    <section id="r0" class="fl-column-space fl-center chapo">
+        <span></span>
         {@html chapo} 
+        <svg width="20" height="61" viewBox="0 0 20 61" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 0.940002L10 59.3855" stroke="black" stroke-linecap="square"/>
+            <path d="M1 50.94L10 59.94L19 50.94" stroke="black" stroke-linecap="square"/>
+        </svg>    
     </section>
 
     {#each flexibleContents as layout, i}
@@ -52,7 +57,8 @@
 
     section {
         padding: 50px;
-        height: 100vh;
+        height: calc(100vh - 100px);
     }
+
 
 </style>

@@ -4,35 +4,35 @@
     
     import { onMount } from "svelte";
 
-    onMount(() => {
+    // onMount(() => {
 
-        const sections = document.querySelectorAll('.left-sections section, .right-sections  section');
+    //     const sections = document.querySelectorAll('.left-sections section, .right-sections  section');
         
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
+    //     const observer = new IntersectionObserver((entries) => {
+    //         entries.forEach(entry => {
+    //             if (entry.isIntersecting) {
     
-                    // Get next section
-                    const id = entry.target.id;
-                    const currentSec = document.getElementById(`${id}`);
-                    // currentSec.scrollIntoView({ behavior: "smooth", block: "start" })
+    //                 // Get next section
+    //                 const id = entry.target.id;
+    //                 const currentSec = document.getElementById(`${id}`);
+    //                 // currentSec.scrollIntoView({ behavior: "smooth", block: "start" })
     
-                    // Scroll to next section
-                    window.scrollTo({
-                        top: currentSec.offsetTop,
-                        behavior: "smooth",
-                    });
-                }
-            });
-        }, {
-            root: null,
-            rootMargin: `0px`,
-            threshold: 0.1
-        });
+    //                 // Scroll to next section
+    //                 window.scrollTo({
+    //                     top: currentSec.offsetTop,
+    //                     behavior: "smooth",
+    //                 });
+    //             }
+    //         });
+    //     }, {
+    //         root: null,
+    //         rootMargin: `0px`,
+    //         threshold: 0.1
+    //     });
     
-        sections.forEach((el) => observer.observe(el));
+    //     sections.forEach((el) => observer.observe(el));
 
-    });
+    // });
 
     let designVisible = false;
     let productionVisible = false;
@@ -51,19 +51,19 @@
     <div class="wrapper" class:overflow={!productionVisible && !designVisible}>
 
         <div class="btn-container">
-            <button class="btn" on:click={() => {designVisible = !designVisible}}>{leftCol.titre}</button>
-            <button class="btn" on:click={() => {productionVisible = !productionVisible}}>{rightCol.titre}</button>
+            <button class="btn h1" on:click={() => {designVisible = !designVisible}}>{leftCol.titre}</button>
+            <button class="btn h1" on:click={() => {productionVisible = !productionVisible}}>{rightCol.titre}</button>
         </div>
 
 
         <div class="sec-container">
-                <div class="left-sections" class:active={productionVisible}>
-                    <ExpertiseItem chapo={rightCol.chapo} flexibleContents={rightCol.flexibleContents}/>
-                </div>
-    
-                <div class="right-sections" class:active={designVisible}>
-                    <ExpertiseItem chapo={leftCol.chapo} flexibleContents={leftCol.flexibleContents}/>
-                </div>
+            <div class="left-sections" class:active={productionVisible}>
+                <ExpertiseItem chapo={rightCol.chapo} flexibleContents={rightCol.flexibleContents}/>
+            </div>
+
+            <div class="right-sections" class:active={designVisible}>
+                <ExpertiseItem chapo={leftCol.chapo} flexibleContents={leftCol.flexibleContents}/>
+            </div>
         </div>
 
     </div>
@@ -88,15 +88,21 @@
         top: 0;
     }
         .btn {
-            all: unset;
+            border: none;   
+            background-color: unset;
             display: block;
             width: 50%;
             height: 100%;
             font-size: 80px;
-            cursor: pointer;
             text-align: center;
-            background-color: #000000;
-            color: white;
+            cursor: pointer;
+
+            &:first-child {
+                border-right: 0.5px solid $dark-font;
+            }
+            &:last-child {
+                border-left: 0.5px solid $dark-font;
+            }
 
             &:hover {
                 font-style: italic;
@@ -109,7 +115,7 @@
         overflow: hidden;
     }
         .left-sections, .right-sections {
-            background-color: white;
+            background-color: $light-bg2;
             position: relative;
             z-index: 5;
             width: 50%;
@@ -124,15 +130,6 @@
         }
         .left-sections.active, .right-sections.active {
             transform: translateX(0);
-        }
-
-        section {
-            padding: 50px;
-            height: 100vh;
-            /* scroll-snap-align: center; */
-        }
-        section:nth-child(even) {
-            background-color: #2a2a2a;
         }
 
 </style>
