@@ -23,11 +23,13 @@
     {#if ligneLogos && ligneLogos?.length > 0}
         <div class="logos">
             {#each ligneLogos as ligne, i }
-                <Marqueeck class="line" {options1} >
-                    {#each ligne.logos.nodes as logo }
-                        <img src="{logo.sourceUrl}" />
-                    {/each}
-                </Marqueeck>
+                <div class="line-container">
+                    <Marqueeck options={ (i & 1) ? { direction: "right" } : { direction: "left" } } class="line" {options1} >
+                        {#each ligne.logos.nodes as logo }
+                            <img src="{logo.sourceUrl}" />
+                        {/each}
+                    </Marqueeck>
+                </div>
             {/each}
         </div>
     {/if}
@@ -36,14 +38,21 @@
 
 <style lang="scss">
     .module {
-        margin: 40px 0;
+        margin: 180px 0;
         overflow: hidden;
     }
     .line {
         display: flex;
         gap: 20px;
     }
+    .line-container {
+        border-top: 1px solid $dark-font;
+        &:last-child {
+            border-bottom: 1px solid $dark-font;
+        }
+    }
     img { 
         object-fit: contain;
+        max-height: 180px;
     }
 </style>
