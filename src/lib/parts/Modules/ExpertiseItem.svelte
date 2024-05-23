@@ -56,8 +56,8 @@
 <style lang="scss">
 
     section {
-        padding: 50px;
-        height: calc(100vh - 100px);
+        padding: 60px;
+        min-height: calc(100vh - 120px);
     }
 
 

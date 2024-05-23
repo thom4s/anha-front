@@ -21,6 +21,7 @@
     }
     h2 {
         align-self: center;
+        text-align: center;
     }
 
     img {

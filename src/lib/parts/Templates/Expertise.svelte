@@ -1,8 +1,118 @@
 <script lang="ts">
+    import { onMount } from "svelte";
     import ExpertiseItem from '$lib/parts/Modules/ExpertiseItem.svelte';
     import PushContact from '../Modules/PushContact.svelte';
     
-    import { onMount } from "svelte";
+
+
+    // import { gsap } from "gsap";
+    // import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+    import {gsap}  from "gsap/dist/gsap";        
+    import {ScrollToPlugin} from "gsap/dist/ScrollToPlugin";   
+    gsap.registerPlugin(ScrollToPlugin);
+
+
+    onMount(() => {
+        // Get sections in left and right containers
+        const leftSections = gsap.utils.toArray(".left-sections section");
+        const rightSections = gsap.utils.toArray(".right-sections section");
+        
+        // Sections index and scroll state
+        let currentIndexLeft = 0;
+        let currentIndexRight = 0;
+        let isScrolling = false;
+
+        // Scroll to a specific section
+        function goToSection(sections, index) {
+            
+            isScrolling = true;
+
+            gsap.to(window, {
+                scrollTo: { y: sections[index] },
+                duration: 0.85,
+                onComplete: () => { isScrolling = false }
+            });
+        }
+
+        // Handle mouse wheel events
+        function handleScroll(event) {
+            if (isScrolling) return;
+
+            // Set active sections (left or right)
+            const activeSections = productionVisible ? leftSections : (designVisible ? rightSections : []);
+            if (activeSections.length === 0) return;
+
+            // Determine current index based on active container
+            let currentIndex = productionVisible ? currentIndexLeft : currentIndexRight;
+            const direction = event.deltaY > 0 ? 1 : -1; // Scroll direction
+            const nextIndex = currentIndex + direction;
+
+            // Check if the next index is between the first and the last section
+            if (nextIndex >= 0 && nextIndex < activeSections.length) {
+                event.preventDefault();
+
+                if (productionVisible) currentIndexLeft = nextIndex;
+                else if (designVisible) currentIndexRight = nextIndex;
+                
+                goToSection(activeSections, nextIndex);
+
+            }
+        }
+
+        // Handle touch start event to get initial touch position
+        function handleTouchStart(event) {
+            touchStartY = event.touches[0].clientY;
+        }
+
+        // Handle touch end event to determine scroll direction
+        function handleTouchEnd(event) {
+            if (isScrolling) return;
+
+            // Set active sections (left or right)
+            const activeSections = productionVisible ? leftSections : (designVisible ? rightSections : []);
+            if (activeSections.length === 0) return;
+
+            let currentIndex = productionVisible ? currentIndexLeft : currentIndexRight;
+            let touchEndY = event.changedTouches[0].clientY;
+
+            const direction = touchStartY > touchEndY + 5 ? 1 : touchStartY < touchEndY - 5 ? -1 : 0;
+            const nextIndex = currentIndex + direction;
+
+            // Check if the next index is between the first and the last section
+            if (direction !== 0 && nextIndex >= 0 && nextIndex < activeSections.length) {
+                
+                if (productionVisible) currentIndexLeft = nextIndex;
+                else if (designVisible) currentIndexRight = nextIndex;
+
+                goToSection(activeSections, nextIndex);
+            }
+        }
+
+        let touchStartY = 0; // Initial touch position
+
+        window.addEventListener('wheel', handleScroll, { passive: false });
+        window.addEventListener('touchstart', handleTouchStart, { passive: false });
+        window.addEventListener('touchend', handleTouchEnd, { passive: false });
+
+        return () => {
+            // Remove event listeners when component is destroyed
+            window.removeEventListener('wheel', handleScroll);
+            window.removeEventListener('touchstart', handleTouchStart);
+            window.removeEventListener('touchend', handleTouchEnd);
+        };
+    });
+
+    let designVisible = false;
+    let productionVisible = false;
+
+    export let page = {};
+
+    $: console.log(page )
+
+    $: ( { leftCol, rightCol } = page.contenusSavoirFaire)
+
+
+
 
     // onMount(() => {
 
@@ -33,15 +143,6 @@
     //     sections.forEach((el) => observer.observe(el));
 
     // });
-
-    let designVisible = false;
-    let productionVisible = false;
-
-    export let page = {};
-
-    $: console.log(page )
-
-    $: ( { leftCol, rightCol } = page.contenusSavoirFaire)
 
 </script>
 
@@ -130,12 +231,11 @@
                 height: 100%;
                 width: 100%;
                 object-fit: cover;
-                top: 0;
-                right: 0;
-                left: 0;
-                bottom: 0;
+                inset: 0;
                 z-index: 0;
                 opacity: 0;
+                transition: 0.2s;
+
             }
         }
 
