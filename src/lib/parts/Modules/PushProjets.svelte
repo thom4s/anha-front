@@ -34,7 +34,7 @@
             </div>
         </div>
 
-        <a href="{link.nodes[0].uri}">{label}</a>
+        <a href="{link.nodes[0]?.uri}">{label}</a>
     </div>
 
     {#if pages && pages.length > 0}

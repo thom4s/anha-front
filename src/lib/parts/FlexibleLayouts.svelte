@@ -31,7 +31,7 @@
 
 {:else if 
     layout.__typename === 'ContenusFlexiblesContenusFlexiblesPushprojetsLayout' }
-    <PushProjets titre={layout.titre} pages={layout.projets?.nodes} label={layout.label} link={layout.link} />
+    <PushProjets titre={layout.titre} pages={layout.projets?.nodes} label={layout.label} link="{layout.link}" />
 
 {:else if layout.__typename === 'ContenusFlexiblesStagedStagesFlexibleContentsPushprojetsLayout'}
     <div class="snap">
