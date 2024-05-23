@@ -1,6 +1,7 @@
 <script>
     import SEO from '$lib/parts/SEO/index.svelte';
-    
+    import { fade } from 'svelte/transition';
+
     import { config, activeLang, menusStore, langsStore } from '$lib/config/website.js'
     import Header from "$lib/parts/Navigations/Header.svelte";
     import Footer from "$lib/parts/Navigations/Footer.svelte";
@@ -42,7 +43,11 @@
 <Header/>
 
 <main>
-    <slot />
+    {#key data.pathname}
+        <div in:fade={{ duration: 200, delay: 100 }} out:fade={{ duration: 100 }}>
+            <slot />
+        </div>
+    {/key}
 </main>
 
 <Footer />

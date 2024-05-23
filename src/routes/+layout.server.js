@@ -2,9 +2,11 @@ import { getSeoSchema } from '$lib/queries/seo';
 import { getMenuItems, getLangs, getSocialLinks } from '$lib/queries/options';
 
 
-export async function load( { params, locals } ) {
+export async function load( { url, params, locals } ) {
+	const { pathname } = url;
 
     return {
+        pathname,
         seoConfig: await getSeoSchema(),
         langs: await getLangs(),
         socialLinks: await getSocialLinks(),
