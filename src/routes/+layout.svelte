@@ -41,6 +41,6 @@
 
 <style>
     :global(header.home.at-top) ~ main {
-        margin-top: 318px;
+        margin-top: 325px;
     }
 </style>

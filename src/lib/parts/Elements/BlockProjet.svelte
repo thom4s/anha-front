@@ -7,38 +7,44 @@
 
 
 <article class="block" transition:fade={{ duration: 200 }}>
-    <a href="{projet.uri}">
+    <a class="fl-column-space gap-xs" href="{projet.uri}">
 
         {#if projet.informationsProjet.tax_client }
             {#each projet.informationsProjet.tax_client.nodes as node}
-                <div>{node.name}</div>
+                <div class="caption">{node.name}</div>
             {/each}
         {/if}
 
-        <div class="bloc_title">
-            <h2>{projet.title}</h2>
-        </div>
+        <a href="#" class="h4">
+            <h4 class="h4 no-margin">
+                {projet.title}
+                <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 8.62305H13.7559" stroke="black" stroke-linecap="square" stroke-linejoin="round"/>
+                    <path d="M9.5 4.12305L14 8.62305L9.5 13.123" stroke="black" stroke-linecap="square"/>
+                </svg>
+            </h4>
+        </a>
 
         <div class="bloc_metadata fl-justify">
             {#if projet.informationsProjet.meta_date }
-                {projet.informationsProjet.meta_date}
+                <!-- <span class="caption">{projet.informationsProjet.meta_date}</span> -->
             {/if}
 
             {#if projet.informationsProjet.tax_secteur }
                 {#each projet.informationsProjet.tax_secteur.nodes as node}
-                    <span>{node.name}</span>
+                    <span class="caption">{node.name}</span>
                 {/each}
             {/if}
 
             {#if projet.informationsProjet.tax_savoirfaire }
                 {#each projet.informationsProjet.tax_savoirfaire.nodes as node}
-                    <span>{node.name}</span>
+                    <span class="caption">{node.name}</span>
                 {/each}
             {/if}
 
             {#if projet.informationsProjet.tax_materiau }
                 {#each projet.informationsProjet.tax_materiau.nodes as node}
-                    <span>{node.name}</span>
+                    <span class="caption">{node.name}</span>
                 {/each}
             {/if}
             
@@ -55,17 +61,20 @@
 
 
 <style lang="scss">
-    a {
-        display: block;
-        color: inherit;
-        text-decoration: none;
-    }
+
     .bloc_media {
         img {
+            aspect-ratio: 4/5;
             width: 100%;
         }
     }
-    .bloc_metadata {
-
+    svg {
+        vertical-align: middle;
+        margin-left: 4px;
+    }
+    :global(.swiper-slide.project.even) {
+        img {
+            aspect-ratio: 5/4;
+        }
     }
 </style>

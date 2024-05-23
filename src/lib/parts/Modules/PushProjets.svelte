@@ -8,24 +8,39 @@
     export let pages = [];
 </script>
 
-<section class="module">
+<section class="module container">
 
-    <div class="module_title">
-        <h2>{titre}</h2>
+    <div class="module_title fl-vcenter gap-s">
+        <h2 class="h2 no-margin">{titre}</h2>
+        <div class="swiper-navigation fl-vcenter">
+            <div class="swiper-button-prev-out">
+                <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 26.377L10 16.377L20 6.377" stroke="black" stroke-linecap="square"/>
+                </svg>                    
+            </div>
+            <div class="swiper-button-next-out">
+                <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 6.62305L22 16.623L12 26.623" stroke="black" stroke-linecap="square"/>
+                </svg>    
+            </div>
+        </div>
     </div>
 
     {#if pages && pages.length > 0}
 
         <swiper-container   
-            navigation={true}
-            space-between="40" 
-            slides-per-view="2.5" 
+            navigation={{
+                nextEl: '.swiper-button-next-out',
+                prevEl: '.swiper-button-prev-out'
+            }}
+            space-between="30" 
+            slides-per-view="3.5" 
             speed="500" 
             direction="horizontal"
         >
 
-            {#each pages as projet }
-                <swiper-slide class="swiper-slide">
+            {#each pages as projet, i }
+                <swiper-slide class="swiper-slide project" class:even={i & 1}>
                     <BlockProjet {projet} />
                 </swiper-slide>
             {/each}
@@ -35,16 +50,24 @@
 
     {/if}
 
-
 </section>
 
 <style lang="scss">
     .module {
-        margin: 40px 0;
+        margin-top: 180px;
+        margin-bottom: 180px;
+    }
+    .swiper-button-prev-out, .swiper-button-next-out {
+        cursor: pointer;
+        transition: 0.3s;
+        &.swiper-button-disabled {
+            opacity: 0.5;
+        }
     }
     .module_title {
         border-bottom: 1px solid;
-        margin-bottom: 20px;
+        padding-bottom: 30px;
+        margin-bottom: 30px;
     }
     .logos {
         display: flex;
