@@ -3,35 +3,35 @@ Font face
 --------------------------------------------------------------*/
 
 @font-face {
-	font-family: 'Gotham';
+	font-family: 'Gotham-Light';
 	font-style: normal;
 	font-weight: 300;
 	src: url('fonts/Gotham-Light.otf') format('opentype');
 }
 
 @font-face {
-	font-family: 'Gotham';
+	font-family: 'Gotham-Book';
 	font-style: normal;
 	font-weight: 400;
 	src: url('fonts/Gotham-Book.otf') format('opentype');
 }
 
 @font-face {
-	font-family: 'Gotham';
+	font-family: 'Gotham-Book';
 	font-style: italic;
 	font-weight: 400;
 	src: url('fonts/Gotham-BookItalic.otf') format('opentype');
 }
 
 @font-face {
-	font-family: 'Gotham';
+	font-family: 'Gotham-Book';
 	font-style: normal;
 	font-weight: 500;
 	src: url('fonts/Gotham-Medium.otf') format('opentype');
 }
 
 @font-face {
-	font-family: 'Gotham-MediumIta';
+	font-family: 'Gotham-Book';
 	font-style: italic;
 	font-weight: 500;
 	src: url('fonts/Gotham-MediumIta.otf') format('opentype');
@@ -45,7 +45,7 @@ Global
 html {
     font-size: 62.5%;
     background-color: $light-bg;
-    font-family: 'Gotham', sans-serif;
+    font-family: 'Gotham-Light', sans-serif;
 }
 body {
     // font-family: Arial, Helvetica, sans-serif;
@@ -58,6 +58,7 @@ main {
 
 
 @mixin h1 {
+    font-family: 'Gotham-Book', sans-serif;
     font-size: 6rem;
     font-weight: $font-r;
     letter-spacing: 0.12em;
@@ -70,6 +71,7 @@ h1, .h1 { @include h1; }
 
 
 @mixin h2 {
+    font-family: 'Gotham-Book', sans-serif;
     font-size: 3.5rem;
     font-weight: $font-r;
     letter-spacing: 0.06em;
@@ -82,6 +84,7 @@ h2, .h2 { @include h2; }
 
 
 @mixin h3 {
+    font-family: 'Gotham-Book', sans-serif;
     font-size: 2.2rem;
     font-weight: $font-r;
     letter-spacing: 0.06em;
@@ -94,6 +97,7 @@ h3, .h3 { @include h3; }
 
 
 @mixin h4 {
+    font-family: 'Gotham-Book', sans-serif;
     font-size: 1.2rem;
     font-weight: $font-r;
     letter-spacing: 0.06em;
@@ -119,18 +123,22 @@ h4, .h4 { @include h4; }
 }
 
 .chapo, .chapo > p {
+    font-family: 'Gotham-Book', sans-serif;
 	font-size: 2.2rem;
 	line-height: 1.45;
 	font-weight: $font-m;
     letter-spacing: 0.06em;
+    font-weight: $font-r;
+    text-transform: uppercase;
 	@include max(tablet) {
         font-size: 2rem;
     }
 }
 
 .link {
+    font-family: 'Gotham-Book', sans-serif;
     font-size: 1.2rem;
-    font-weight: 350;
+    font-weight: $font-m;
     font-style: italic;
 	line-height: 1.25;
     letter-spacing: 0.06em;

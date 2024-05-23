@@ -5,22 +5,23 @@
 </script>
 
 
-<section class="module">
-    <h2>{titre}</h2>
+<section class="module container">
+    <!-- <h2>{titre}</h2> -->
 
     <div class="contents">
-        <div>{@html contentOne}</div>
-        <div>{@html contentTwo}</div>
+        <div class="chapo">{@html contentOne}</div>
+        <div class="body">{@html contentTwo}</div>
     </div>
 </section>
 
 
 <style lang="scss">
     .module {
-        margin: 40px 0;
+        margin-top: 180px;
+        margin-bottom: 180px;
     }
     .contents {
         display: flex;
-        gap: 60px;
+        gap: 30px;
     }
 </style>

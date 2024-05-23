@@ -4,7 +4,7 @@
 </script>
 
 <div class="module">
-    <h2>{titre}</h2>
+    <!-- <h2>{titre}</h2> -->
     <div class="vid_container">
         {@html video}
     </div>
@@ -13,10 +13,10 @@
 
 <style lang="scss">
     .module {
-        margin: 40px 0;
+        margin: 180px 0;
     }
     .vid_container {
-        height: 50vh;
+        height: 90vh;
     }
 
 </style>
