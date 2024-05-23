@@ -16,7 +16,7 @@
 </script>
 
 
-<div class="mb-xxlarge">
+<div class="mb-xxlarge ">
 
     <div class="container ">
         {#if page}
@@ -113,8 +113,11 @@
 
 <style lang="scss">
 
+
+
     .project_texts {
         padding-right: $space-xl;
+        padding-top: $space-xl;
         position: relative;
 
         &:after {

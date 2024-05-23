@@ -15,7 +15,7 @@
     <div class="body">
         {@html texte}
     </div>
-    
+
 </div>
 
 
@@ -30,8 +30,5 @@
     }
     img {
         aspect-ratio: 5/4;
-    }
-    :global(main)  {
-        margin-top: 0;
     }
 </style>

@@ -22,10 +22,8 @@
 </script>
 
 
-    <div class="container">
-        <h1 class="visualy-hidden">{page.title}</h1>
-        <!-- <div>{@html page.content}</div> -->
-    </div>
+    <h1 class="visualy-hidden">{page.title}</h1>
+    <!-- <div>{@html page.content}</div> -->
 
     
     <div class="grid container">
@@ -66,6 +64,11 @@
 
 
 <style lang="scss">
+
+    .container {
+        margin-top: $space-xxl;
+    }
+
 
     // PROJECT FILTERS
 
