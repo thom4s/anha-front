@@ -1,8 +1,5 @@
 <script>
     import { config } from "$lib/config/website";
-
-    $: console.log( $config );
-
 </script>
 
 

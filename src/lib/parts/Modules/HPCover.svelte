@@ -4,7 +4,6 @@
     export let right_title = '';
     export let cover_img = '';
 
-    $: console.log('HP COVER')
 </script>
 
 <section class="module hpcover">

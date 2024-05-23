@@ -39,9 +39,7 @@ export async function getMenuItems( lang = 'fr', id = '') {
             }
         }
     `
-
-    console.log('getMenuItems QUERY', query)
-
+    
     const menuItems = await fetch(PUBLIC_API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

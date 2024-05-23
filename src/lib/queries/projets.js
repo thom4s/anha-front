@@ -29,7 +29,6 @@ export async function getProjetBySlug( slug = '' ) {
         })
         .then(res => res.json())
         .then(res => {
-            console.log('res: ', res)
             return res.data.projet
         });
 
@@ -61,7 +60,6 @@ export async function getAdjacentProject( databaseId = '', direction = '' ) {
         })
         .then(res => res.json())
         .then(res => {
-            console.log('res: ', res)
             return res.data.projets
         });
 

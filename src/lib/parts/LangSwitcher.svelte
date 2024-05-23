@@ -1,10 +1,9 @@
 <script>
-    import { activeLang } from "$lib/config/website";
+    import { activeLang, langsStore } from "$lib/config/website";
     import { goto } from "$app/navigation";
     import { page } from "$app/stores";
     import { getTranslation } from "$lib/queries/pages";
 
-    export let langs = []
 
     //$: console.log('LangSwitcher activeLang: ', $activeLang)
     //$: console.log('page: ', $page)
@@ -34,7 +33,7 @@
 
 
 <div class="fl-center">
-    {#each langs as l, index}
+    {#each $langsStore as l, index}
         <li><button class="menu" disabled={l.slug === $activeLang} on:click={ () => switchLang(l.slug)}>{l.name.substring(0,2)}</button></li>
         {#if index === 0}
             <span>/</span>

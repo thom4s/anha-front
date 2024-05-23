@@ -1,9 +1,9 @@
 <script>
+    import { menusStore } from "$lib/config/website";
     import SocialLinks from "$lib/parts/Navigations/SocialLinks.svelte";
 
-    export let menuItemsPrimary = []
-    export let menuItemsSecondary = []
-    export let menuItemsFooter = []
+    $: ( {menuItemsPrimary, menuItemsSecondary, menuItemsFooter} = $menusStore)
+
 </script>
 <footer>
     <div class="container">

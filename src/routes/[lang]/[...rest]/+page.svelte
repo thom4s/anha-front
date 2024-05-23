@@ -17,8 +17,6 @@
 
     $: ({page, posts, projets, savoirfaires, secteurs} = data)
 
-    $: console.log( 'Page: ', page  )
-
 </script>
 
 <div class="">

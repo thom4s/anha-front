@@ -9,8 +9,6 @@
     export let link = '';
     export let pages = [];
 
-    $: console.log('link', link)
-
     onMount( async () => {
         register();
 

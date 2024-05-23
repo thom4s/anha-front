@@ -23,3 +23,6 @@ export const config = writable({
 });
 
 export const activeLang = writable('fr');
+
+export const menusStore = writable({});
+export const langsStore = writable({});

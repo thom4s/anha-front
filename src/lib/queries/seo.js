@@ -65,7 +65,6 @@ export async function getSeoSchema( ) {
         })
         .then(res => res.json())
         .then(res => {
-            console.log('res: ', res)
             return res.data
         });
 

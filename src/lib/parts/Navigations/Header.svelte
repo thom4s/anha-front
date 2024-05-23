@@ -1,16 +1,14 @@
 <script>
-    import { activeLang } from "$lib/config/website";
+    import { activeLang, menusStore } from "$lib/config/website";
     import LangSwitcher from "$lib/parts/LangSwitcher.svelte";
     import { page } from '$app/stores';
 	import logo from '$lib/assets/logo_anha_nb.png';
 	import logo_nobaseline from '$lib/assets/logo_anha_nobaseline.png';
     import { onMount } from "svelte";
 
-    export let menuItemsPrimary = []
-    export let menuItemsSecondary = []
-    export let langs = []
+    $: ( {menuItemsPrimary, menuItemsSecondary} = $menusStore)
     
-    $: console.log( 'pathname', $page.url.pathname)
+
     $: pathname = $page.url.pathname + '/';
 
 
@@ -102,7 +100,7 @@
                     </li>
                 {/each}
 
-                <LangSwitcher {langs} />
+                <LangSwitcher />
             </ul>
         </nav>
 

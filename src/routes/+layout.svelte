@@ -1,7 +1,7 @@
 <script>
     import SEO from '$lib/parts/SEO/index.svelte';
     
-    import { config, activeLang } from '$lib/config/website.js'
+    import { config, activeLang, menusStore, langsStore } from '$lib/config/website.js'
     import Header from "$lib/parts/Navigations/Header.svelte";
     import Footer from "$lib/parts/Navigations/Footer.svelte";
     import '$lib/assets/scss/style.scss';
@@ -10,7 +10,15 @@
     $: ({menuItemsPrimary, menuItemsSecondary, menuItemsFooter, seoConfig, langs, currentLang, socialLinks } = data)
     
     $: $activeLang = currentLang;
+    $: $langsStore = langs;
 
+    $: $menusStore = {
+        menuItemsPrimary,
+        menuItemsSecondary,
+        menuItemsFooter
+    }
+
+    
     $: {
         $config.author = seoConfig.seo.schema.companyName
         $config.ogLanguage = seoConfig.seo.schema.inLanguage
@@ -31,13 +39,13 @@
 
 <SEO />
 
-<Header {menuItemsPrimary} {menuItemsSecondary} {langs}/>
+<Header/>
 
 <main>
     <slot />
 </main>
 
-<Footer {menuItemsPrimary} {menuItemsSecondary} {menuItemsFooter} {socialLinks} />
+<Footer />
 
 
 <style>

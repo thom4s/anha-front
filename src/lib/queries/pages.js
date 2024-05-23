@@ -78,7 +78,6 @@ export async function getHomePage ( lang = '' ) {
         })
         .then(res => res.json())
         .then(res => {
-            console.log('getHomePage res: ', res)
             return res.data.nodeByUri
         });
 
@@ -89,7 +88,7 @@ export async function getHomePage ( lang = '' ) {
 export async function getPageBySlug( uri = '', savoirfaire = false ) {
     let query = '';
 
-    if( savoirfaire) {
+    if( savoirfaire ) {
         query = `{
             page(id: "${uri}", idType: URI) {
                 id
@@ -133,7 +132,6 @@ export async function getPageBySlug( uri = '', savoirfaire = false ) {
         })
         .then(res => res.json())
         .then(res => {
-            console.log('res: ', res)
             return res.data.page
         });
 

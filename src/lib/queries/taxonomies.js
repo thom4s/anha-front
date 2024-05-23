@@ -24,7 +24,6 @@ export async function getAllTerms( taxonomie = '' ) {
         })
         .then(res => res.json())
         .then(res => {
-            console.log('res: ', res)
             return res.data[taxonomie]
         });
 
