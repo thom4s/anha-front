@@ -6,7 +6,7 @@
 </script>
 
 
-<article class="block" transition:fade={{ duration: 200 }}>
+<article class="block bloc_projet" transition:fade={{ duration: 200 }}>
     <a class="fl-column-space gap-xs" href="{projet.uri}">
 
         {#if projet.informationsProjet.tax_client }

@@ -243,6 +243,7 @@ const string_projets = `
 				date
 				title
 				link
+				uri
 				${taxonomies_fields_string}
 				${featuredImage_fields_string}
 			}
