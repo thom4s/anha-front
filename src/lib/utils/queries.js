@@ -196,6 +196,7 @@ export const pushNews_query_string = `
 						date
 						video
 					}
+					${featuredImage_fields_string}
 				}
 			}
 		}
