@@ -435,6 +435,13 @@ export const savoirfaire_query_string = `
 		leftCol {
 			titre
 			chapo
+			visuel {
+				node {
+					altText
+					srcSet
+					sourceUrl
+				}
+			}
 			flexibleContents {
 				__typename
 				... on ContenusSavoirFaireLeftColFlexibleContentsBlocTitreVisuelTexteLayout {
@@ -448,6 +455,13 @@ export const savoirfaire_query_string = `
 		rightCol {
 			titre
 			chapo
+			visuel {
+				node {
+					altText
+					srcSet
+					sourceUrl
+				}
+			}
 			flexibleContents {
 				__typename
 				... on ContenusSavoirFaireRightColFlexibleContentsBlocTitreVisuelTexteLayout {

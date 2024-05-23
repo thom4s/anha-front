@@ -51,8 +51,18 @@
     <div class="wrapper" class:overflow={!productionVisible && !designVisible}>
 
         <div class="btn-container">
-            <button class="btn h1" on:click={() => {designVisible = !designVisible}}>{leftCol.titre}</button>
-            <button class="btn h1" on:click={() => {productionVisible = !productionVisible}}>{rightCol.titre}</button>
+            <button class="btn h1" on:click={() => {designVisible = !designVisible}}>
+                <span>{leftCol.titre}</span>
+                {#if rightCol.visuel }
+                    <img src="{leftCol.visuel.node.sourceUrl}">
+                {/if}
+            </button>
+            <button class="btn h1" on:click={() => {productionVisible = !productionVisible}}>
+                <span>{rightCol.titre}</span>
+                {#if rightCol.visuel }
+                    <img src="{rightCol.visuel.node.sourceUrl}">
+                {/if}
+            </button>
         </div>
 
 
@@ -96,6 +106,7 @@
             font-size: 80px;
             text-align: center;
             cursor: pointer;
+            position: relative;
 
             &:first-child {
                 border-right: 0.5px solid $dark-font;
@@ -106,6 +117,25 @@
 
             &:hover {
                 font-style: italic;
+                img {
+                    opacity: 1;
+                }
+            }
+            span {
+                position: relative;
+                z-index: 1;
+            }
+            img {
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                top: 0;
+                right: 0;
+                left: 0;
+                bottom: 0;
+                z-index: 0;
+                opacity: 0;
             }
         }
 
