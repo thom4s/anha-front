@@ -1,4 +1,5 @@
 <script>
+    import Arrow from '../Svgs/Arrow.svelte';
 	import { fade } from 'svelte/transition';
 
     export let projet = {};
@@ -15,12 +16,9 @@
             {/each}
         {/if}
 
-        <h4 class="h4 no-margin">
+        <h4 class="h4 no-margin fl-vcenter gap-s">
                 {projet.title}
-                <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3 8.62305H13.7559" stroke="black" stroke-linecap="square" stroke-linejoin="round"/>
-                    <path d="M9.5 4.12305L14 8.62305L9.5 13.123" stroke="black" stroke-linecap="square"/>
-                </svg>
+                <Arrow />
         </h4>
 
         <div class="bloc_metadata fl-justify">

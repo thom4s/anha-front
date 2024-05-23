@@ -1,3 +1,12 @@
+
+.visualy-hidden {
+    visibility: hidden;
+    margin: 0;
+    height: 0;
+    width: 0;
+}
+
+
 .fl-justify {
     display: flex;
     justify-content: space-between;
@@ -47,7 +56,21 @@
     justify-content: center;
 }
 
-
+.mb-small {
+    margin-bottom: $space-s;
+}
+.mb-medium {
+    margin-bottom: $space-m;
+}
+.mb-large {
+    margin-bottom: $space-l;
+}
+.mb-large {
+    margin-bottom: $space-l;
+}
+.mb-xxlarge {
+    margin-bottom: $space-xxl;
+}
 .no-margin {
     margin: 0;
 }

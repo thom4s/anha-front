@@ -10,7 +10,7 @@
     let filters = [];
 
     const filter = (e) => {
-        filters = [e.target.innerText]
+        filters = [e.target.getAttribute('data-term')]
     }
 
     $: visibleProjets = filters.length > 0 ?
@@ -22,30 +22,30 @@
 </script>
 
 
-    <div>
-        <h1>{page.title}</h1>
-        <div>{@html page.content}</div>
+    <div class="container">
+        <h1 class="visualy-hidden">{page.title}</h1>
+        <!-- <div>{@html page.content}</div> -->
     </div>
 
     
-    <div class="grid">
+    <div class="grid container">
 
         <div class="s_3column">
             <div class="filters">
 
-                <p class="filter">
-                    <strong>Secteurs</strong>
+                <div class="filterGroup mb-medium">
+                    <span class="caption filterGroupName">Filtrer par Secteurs</span>
                     {#each secteurs.nodes as t }
-                        <span on:click={ (e) => filter(e) } class:active={filters.includes(t.name)}>{t.name}</span>
+                        <span on:click={ (e) => filter(e) } data-term="{t.name}" class="caption filterItem" class:active={filters.includes(t.name)}>{t.name}</span>
                     {/each}
-                </p>
+                </div>
 
-                <p class="filter">
-                    <strong>Savoir Faires</strong>
+                <div class="filterGroup">
+                    <span class="caption filterGroupName">Filtrer par Savoir-faire</span>
                     {#each savoirfaires.nodes as t }
-                        <span on:click={ (e) => filter(e) } class:active={filters.includes(t.name)}>{t.name}</span>
+                        <span on:click={ (e) => filter(e) } data-term="{t.name}" class="caption filterItem" class:active={filters.includes(t.name)}>{t.name}</span>
                     {/each}
-                </p>
+                </div>
 
             </div>
         </div>
@@ -66,7 +66,33 @@
 
 
 <style lang="scss">
-    .filter {
+
+    // PROJECT FILTERS
+
+    .filterGroupName {
+        &:after {
+            content: '>'
+        }
+    }
+    .filterItem {
+
+        &:before {
+            content: '';
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 1px solid;
+            margin-right: 10px;
+            transition: background-color .3s;
+        }
+
+        &.active:before {
+            background-color: black;
+        }
+    }
+
+    .filterGroup {
         display: flex;
         flex-direction: column;
         gap: 10px;
@@ -74,10 +100,6 @@
         span {
             cursor: pointer;
         }
-        .active {
-            font-weight: bold;
-            position: relative;
-            left: 10px;
-        }
+
     }
 </style>
