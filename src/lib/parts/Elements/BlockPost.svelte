@@ -79,10 +79,14 @@
                 
                 <div class="fl-column-space gap-s">  
                     <h2 class="h3 no-margin">{post.title}</h2>
-                    <div class="body">{@html post.content}</div>
+
+                    {#if post.content }
+                        <div class="body">{@html post.content}</div>
+                    {/if}
+                    
                     {#if post.informationsNews?.lien }
                         <a class="link" href="{post.informationsNews?.lien}">
-                            {post.informationsNews?.label}
+                            {post.informationsNews?.labelDuLien}
                         </a>
                     {/if}
                 </div>
