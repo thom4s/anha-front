@@ -9,6 +9,8 @@
     export let link = '';
     export let pages = [];
 
+    $: console.log('link', link)
+
     onMount( async () => {
         register();
 
@@ -32,7 +34,7 @@
             </div>
         </div>
 
-        <a href="{link}">{label}</a>
+        <a href="{link.nodes[0].uri}">{label}</a>
     </div>
 
     {#if pages && pages.length > 0}

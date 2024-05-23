@@ -238,17 +238,12 @@ const string_projets = `
 	__typename
 	titre
 	link {
-		edges {
-			node {
-				date
-				slug
-				... on Page {
-					id
-					link
-					title
-					uri
-				}
-			}
+		nodes {
+		  ... on Page {
+			id
+			title
+		  }
+		  uri
 		}
 	}
 	label
