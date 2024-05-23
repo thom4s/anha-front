@@ -106,7 +106,7 @@ export async function getSocialLinks( ) {
         })
         .then(res => res.json())
         .then(res => {
-            return res.data.optionsDuSite.socialLinks
+            return res.data.optionsDuSite?.socialLinks
         });
 
     return options;

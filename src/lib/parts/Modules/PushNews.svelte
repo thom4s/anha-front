@@ -2,7 +2,8 @@
     import BlockPost from "$lib/Parts/Elements/BlockPost.svelte";
     export let titre = '';
     export let pages = [];
-
+    let module = true;
+    
 </script>
 
 <section class="module container">
@@ -11,7 +12,7 @@
 
     {#if pages && pages.length > 0}
         {#each pages as post }
-             <BlockPost {post} />
+             <BlockPost {post} {module} />
         {/each}
     {/if}
 

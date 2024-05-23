@@ -17,6 +17,7 @@ export const config = writable({
 	contactEmail: '',
 	facebookPage: '',
 	linkedinProfile: '',
+	instagramProfile: '',
 	twitterUsername: '',
 	twitterUserId: '',
 });

@@ -23,7 +23,8 @@
         $config.themeColor = ""
         $config.contactEmail = ""
         $config.facebookPage = seoConfig.seo.social.facebook.url
-        $config.linkedinProfile = seoConfig.seo.social.linkedIn.url
+        $config.linkedinProfile = socialLinks.linkedin_account
+        $config.instagramProfile = socialLinks.instagram_account
         $config.twitterUsername = seoConfig.seo.social.twitter.username
     }
 </script>

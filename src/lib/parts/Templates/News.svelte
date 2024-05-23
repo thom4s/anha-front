@@ -2,6 +2,7 @@
     import BlockPost from "$lib/parts/Elements/BlockPost.svelte";
     import PushContact from "$lib/parts/Modules/PushContact.svelte";
     import Pagination from "../Navigations/Pagination.svelte";
+    import SocialLinks from "$lib/parts/Navigations/SocialLinks.svelte"
 
     export let page = {};
     export let posts = [];
@@ -18,7 +19,14 @@
 
         <div class="m_4column">
             <h1>{page.title}</h1>
-            <div>{@html page.content}</div>
+
+            <div class="fl-justify vbot">
+
+                <p class="caption">Retrouvez tous nos événements sur nos réseaux sociaux</p>
+
+                <SocialLinks />
+            </div>
+
         </div>
 
         <div class="m_8column">
