@@ -1,23 +1,10 @@
 <script>
     import PushContact from "$lib/parts/Modules/PushContact.svelte";
+    import NotFound from '$lib/parts/Navigations/NotFound.svelte';
 </script>
 
 
-<article class="fl-justify">
-    
-    <div class="fl-center">
-        <h1>Page non trouvée</h1>
-    </div>
-
-    <div class="fl-center">
-        <div>
-            <p>Vous ne trouvez pas ce que vous cherchez ? </p>
-            <a href="/projets">Découvrez nos projets</a>
-            <a href="/contact">Contactez nous</a>
-        </div>
-
-    </div>
-</article>
+<NotFound />
 
 
 <PushContact />

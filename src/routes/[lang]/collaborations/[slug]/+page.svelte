@@ -17,6 +17,6 @@
         <h1>{page.title}</h1>
         <div>{@html page.content}</div>
     {:else}
-        <p>No content</p>
+        <NotFound />
     {/if}
 </div>

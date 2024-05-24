@@ -1,5 +1,7 @@
 <script lang="ts">
     import Arrow from '$lib/parts/Svgs/Arrow.svelte';
+    import NotFound from '$lib/parts/Navigations/NotFound.svelte';
+    
     import { goto, afterNavigate } from '$app/navigation';
     import { base } from '$app/paths'
 
@@ -102,7 +104,8 @@
             </article>
 
         {:else}
-            <p>No content</p>
+            <NotFound />
+
         {/if}
 
         

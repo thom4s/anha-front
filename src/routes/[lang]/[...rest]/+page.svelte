@@ -6,7 +6,8 @@
     import Contact from '$lib/parts/Templates/Contact.svelte';
 	import Expertise from '$lib/parts/Templates/Expertise.svelte';
 	import Presse from '$lib/parts/Templates/Presse.svelte';
-
+    import NotFound from '$lib/parts/Navigations/NotFound.svelte';
+    
     export let data: {
         page: Promise<void>;
         posts: Promise<void>;
@@ -47,6 +48,6 @@
             {/if}
 
     {:else}
-        <p>No content</p>
+        <NotFound />
     {/if}
 </div>

@@ -54,6 +54,7 @@
 
 .txt-center {
     justify-content: center;
+    text-align: center;
 }
 
 .mb-small {
@@ -67,6 +68,9 @@
 }
 .mb-large {
     margin-bottom: $space-l;
+}
+.mb-xlarge {
+    margin-bottom: $space-xl;
 }
 .mb-xxlarge {
     margin-bottom: $space-xxl;
@@ -89,6 +93,39 @@
 
 .no-margin {
     margin: 0;
+}
+
+
+.pb-small {
+    padding-bottom: $space-s;
+}
+.pb-medium {
+    padding-bottom: $space-m;
+}
+.pb-large {
+    padding-bottom: $space-l;
+}
+.pb-large {
+    padding-bottom: $space-l;
+}
+.pb-xxlarge {
+    padding-bottom: $space-xxl;
+}
+
+.pt-small {
+    padding-top: $space-s;
+}
+.pt-medium {
+    padding-top: $space-m;
+}
+.pt-large {
+    padding-top: $space-l;
+}
+.pt-large {
+    padding-top: $space-l;
+}
+.pt-xxlarge {
+    padding-top: $space-xxl;
 }
 
 
