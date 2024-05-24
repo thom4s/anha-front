@@ -50,7 +50,7 @@
     <TabExpertise titre={layout.titre} contenus={layout.contenus} />
 
 {:else if layout.__typename === 'ContenusFlexiblesContenusFlexiblesVideoLayout'}
-    <Video titre={layout.titre} video={layout.video} />
+    <Video titre={layout.titre} video={layout.video} plateforme={layout.plateforme}/>
 
 {:else if layout.__typename === `ContenusFlexiblesContenusFlexiblesBlocTitreVisuelTexteLayout` || layout.__typename === `ContenusFlexiblesStagedStagesFlexibleContentsBlocTitreVisuelTexteLayout`} 
     <BlocTitreVisuelTexte titre={layout.titre} visuel={layout.visuel} texte={layout.texte} />

@@ -280,6 +280,7 @@ const string_vid = `
 	__typename
 	titre
 	video
+	plateforme
 `
 
 export const video_query_string = `
