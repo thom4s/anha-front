@@ -167,13 +167,17 @@
         background-color: $light-bg;
         z-index: 9;
         transition: transform .2s;
+        
         &.home.at-top {
+
             .container {
                 align-items: flex-start;
                 // padding-bottom: 150px;
             }
             .logo_container {
-                margin-top: 50px;
+                @include min(bigtablet) {
+                    margin-top: 50px;
+                }
                 // transform: translateY(100%);
                 .brand_logo {
                     max-width: 420px;
@@ -243,6 +247,8 @@
             padding:  $space-s $space-m;
             display: flex;
             justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: flex-start;
         }
 
         button {
@@ -258,6 +264,13 @@
         .brand_logo {
             z-index: 999;
             padding: 0;
+        }
+        .logo_container {
+            margin-top: 0 !important;
+            .brand_logo {
+                max-width: 300px !important;
+                padding: 0 !important;
+            }
         }
     }
     .menusContainer {
@@ -277,7 +290,7 @@
             .container {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 10px;
+                gap: 5px;
             }
 
             nav {
