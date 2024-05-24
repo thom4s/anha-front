@@ -1,5 +1,5 @@
 <script>
-    import BlockPage from "$lib/Parts/Elements/BlockPage.svelte";
+    import BlockPage from "$lib/parts/Elements/BlockPage.svelte";
     export let titre = '';
     export let pages = [];
 </script>
