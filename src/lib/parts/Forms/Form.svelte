@@ -26,50 +26,33 @@
         };
     }}>
 
-    <div class="group">
-        <Input type="text" placeholder="Thomas" name="firstname" />
-        <Input type="text" placeholder="Florentin" name="lastname" />
-    </div>
+        <Input type="text" placeholder="Nom" name="firstname" size="half" required={true} />
+        <Input type="text" placeholder="Prénom" name="lastname" size="half" required={true} />
 
-    <div class="group">
-        <Input type="text" placeholder="Place de la république..." name="adresse" />
-    </div>
+        <Input type="text" placeholder="Adresse" name="adresse" size="full" required={false}/>
 
-    <div class="group">
-        <Input type="text" placeholder="77..." name="code postal" />
-        <Input type="text" placeholder="Place de la république..." name="Ville" />
-    </div>
+        <Input type="text" placeholder="Code postal" name="code postal" size="half" required={false}/>
+        <Input type="text" placeholder="Ville" name="Ville" size="half" required={true}/>
 
-    <div class="group">
-        <Input type="text" placeholder="06...." name="telephone" />
-        <Input type="email" placeholder="nom@domaine.fr" name="mail" />
-    </div>
+        <Input type="text" placeholder="Téléphone" name="telephone" size="half" required={true}/>
+        <Input type="email" placeholder="e-mail" name="mail" size="half" required={true}/>
 
-    <div class="group">
-        <Textarea name="message" />
-    </div>
+        <Textarea name="message" placeholder="Votre message" size="full" required={true}/>
 
-    <div class="group">
         <Checkbox label="J’accepte que mes données soient récupérées pour le traitement de ma demande." name="acceptance" />
-    </div>
 
-    <Input type="submit" value="Envoyer" />
+        <Input type="submit" value="Envoyer" />
 </form>
 
 <style lang="scss">
     form {
+        display: flex;
+        justify-content: space-between;
+        flex-flow: row wrap;
+        gap: $space-m;
         transition: all .2s;
     }
     .loading {
         opacity: .5;
-    }
-    .group {
-        display: flex;
-        justify-content: space-between;
-        gap: 40px;
-
-        & > * {
-            width: 50%;
-        }
     }
 </style>
