@@ -1,7 +1,7 @@
 <script lang="ts">
     import BlockProjet from "$lib/parts/Elements/BlockProjet.svelte";
 	import { fade } from 'svelte/transition';
-    
+	import PushContact from "../Modules/PushContact.svelte";
     export let page = {};
     export let projets = [];
     export let savoirfaires = [];
@@ -49,9 +49,9 @@
         </div>
 
         <div class="s_9column ">
-            <div class="grid">
+            <div class="masonry grid">
                 {#each visibleProjets as projet }
-                    <div class="m_3column">
+                    <div class="grid-item m_3column">
                         <BlockProjet {projet}/>
                     </div>
                 {:else}
@@ -60,6 +60,9 @@
             </div>
         </div>
     </div>
+
+    <PushContact />
+
 
 
 
