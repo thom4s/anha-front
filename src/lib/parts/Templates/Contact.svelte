@@ -10,12 +10,12 @@
 
     <div class="grid">
         
-        <div class="m_4column">
-            <h1>{page.title}</h1>
+        <div class="m_3column">
+            <h1 class="h1">{page.title}</h1>
             <div>{@html page.content}</div>
         </div>
 
-        <div class="m_8column">
+        <div class="m_9column">
             <Form />
         </div>
     </div>
@@ -26,5 +26,9 @@
 <style lang="scss">
     .container {
         padding: 60px 0;
+
+        .h1 {
+            margin-top: 0;
+        }
     }
 </style>

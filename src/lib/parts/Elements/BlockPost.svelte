@@ -18,11 +18,11 @@
 </script>
 
 
-<article class="block_post" transition:fade={{ duration: 200 }}>
+<article class="block_post" class:module={module} transition:fade={{ duration: 200 }}>
 
     <div class="fl-justify gap-l">
 
-        <div class="half">
+        <div class="half media">
             <div class="bloc_media">
                 {#if post.informationsNews?.video}
 
@@ -72,7 +72,7 @@
             </div>
         </div>
 
-        <div class="half">
+        <div class="half texts">
 
             <div class="bloc_texts">
                 <div class="fl-justify fl-vtop">  
@@ -123,7 +123,11 @@
     .block_post {
         // border-top: 1px solid;
         border-bottom: 1px solid;
-        padding-bottom: 30px;
+        padding: 30px 0;
+
+        &:not(.module):nth-child(odd) .half.texts {
+            order: -1;
+        }
 
         &:nth-child(2n) {
             .grid {
@@ -131,6 +135,13 @@
                 direction: rtl;
             }
         }
+        .half.media {
+            width: 45%;
+        }
+        .half.texts {
+            width: 55%;
+        }
+
         .bloc_texts {
             direction: ltr;
             display: flex;
@@ -148,9 +159,6 @@
                 aspect-ratio: 5/4;
             }
         }
-    }
-    .half {
-        width: 50%;
     }
     img:hover {
         cursor: zoom-in;

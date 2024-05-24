@@ -1,4 +1,4 @@
-@ -1,48 +0,0 @@
+<!-- @ -1,48 +0,0 @@ -->
 <script>
     export let post = {};
     export let type = '';
@@ -7,25 +7,27 @@
 
 <article class="block_collaboration">
 
-    <div class="grid">
+    <div class="fl-justify gap-l">
 
-        <div class="m_4column">
+        <div class="bloc_texts fl-column-space">
 
-            <div>{post.informationsCollaboration.date}</div>
+            <div class="caption">{post.informationsCollaboration.date}</div>
             
             <div>  
-                <h2>{post.title}</h2>
-                <div>{@html post.excerpt}</div>
+                <h2 class="h3 no-margin">{post.title}</h2>
+                <div class="body">{@html post.excerpt}</div>
             </div>
             
-            {#if post.informationsCollaboration.lien }
-                <a href="{post.informationsCollaboration.lien}">
-                    {post.informationsCollaboration.label}
-                </a>
-            {/if}
+            <div>
+                {#if post.informationsCollaboration.lien }
+                    <a class="link" href="{post.informationsCollaboration.lien}">
+                        {post.informationsCollaboration.label}
+                    </a>
+                {/if}
+            </div>
         </div>
 
-        <div class="m_4column">
+        <div class="bloc_media">
             <img src="{post.featuredImage?.node?.sourceUrl}" alt="">
         </div>
 
@@ -39,10 +41,21 @@
     border-top: 1px solid;
     padding: 20px 0;
 
-    &:nth-child(2n) {
-        .grid {
-            grid-auto-flow: dense;
-            direction: rtl;
+    &:nth-child(even) .bloc_media {
+        order: -1;
+    }
+
+    .bloc_texts {
+        width: 55%;
+    }
+    .bloc_media {
+        width: 45%;
+        height: 100%;
+
+        img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 5/4;
         }
     }
 }

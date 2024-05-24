@@ -15,28 +15,30 @@
 
 <article>
 
-    <div class="grid">
-
-        <div class="m_4column">
-            <h1>{page.title}</h1>
-
-            <div class="fl-justify vbot">
-
-                <p class="caption">Retrouvez tous nos événements sur nos réseaux sociaux</p>
-
-                <SocialLinks />
+    <div class="container">
+        <div class="grid">
+    
+            <div class="m_3column">
+                <!-- <h1>{page.title}</h1> -->
+    
+                <div class="fl-column-space gap-xs">
+    
+                    <p class="caption">Retrouvez tous nos événements sur nos réseaux sociaux</p>
+    
+                    <SocialLinks />
+                </div>
+    
             </div>
-
+    
+            <div class="m_9column">
+                {#each posts.edges as post }
+                    <BlockPost post={post.node} type="posts"/>
+                {/each}
+    
+                <Pagination bind:posts={posts} pageInfo={posts.pageInfo} />
+            </div>
+    
         </div>
-
-        <div class="m_8column">
-            {#each posts.edges as post }
-                <BlockPost post={post.node} type="posts"/>
-            {/each}
-
-            <Pagination bind:posts={posts} pageInfo={posts.pageInfo} />
-        </div>
-
     </div>
 
 </article>

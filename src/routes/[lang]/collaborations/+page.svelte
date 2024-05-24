@@ -14,12 +14,12 @@
 
     <div class="grid">
 
-        <div class="m_4column">
-            <h1>{page.title}</h1>
+        <div class="m_3column">
+            <!-- <h1>{page.title}</h1> -->
             <div>{@html page.content}</div>
         </div>
 
-        <div class="m_8column">
+        <div class="m_9column">
             {#each collaborations.nodes as post }
                 <BlockCollaboration {post} type="collaborations"/>
             {/each}
@@ -30,3 +30,8 @@
 </div>
 
 
+<style lang="scss">
+    .container {
+        padding: 60px 0;
+    }
+</style>
