@@ -20,6 +20,7 @@ export async function getLangs( ) {
         })
         .then(res => res.json())
         .then(res => {
+            if( ! res.data ) return
             return res.data.languages
         });
         
@@ -47,9 +48,7 @@ export async function getMenuItems( lang = 'fr', id = '') {
         })
         .then(res => res.json())
         .then(res => {
-            if(!res.data) {
-                return 
-            }
+            if( ! res.data ) return;
             return res.data.menuItems;
         });
         
@@ -81,6 +80,7 @@ export async function getFormsParams( ) {
         })
         .then(res => res.json())
         .then(res => {
+            if( ! res.data ) return
             return res.data.optionsDuSite.formulaireDeContact
         });
 
@@ -107,6 +107,7 @@ export async function getSocialLinks( ) {
         })
         .then(res => res.json())
         .then(res => {
+            if( ! res.data ) return
             return res.data.optionsDuSite?.socialLinks
         });
 
@@ -140,6 +141,7 @@ export async function getPushContactContents( ) {
         })
         .then(res => res.json())
         .then(res => {
+            if( ! res.data ) return
             return res.data.optionsDuSite.formulaireDeContact.contenusPushContact
         });
 
