@@ -73,11 +73,14 @@
     <div class="container">
         <nav class="left">
             <ul>
-                {#each menuItemsPrimary.nodes as item}
-                    <li>
-                        <a href="{item.path}" class="menu" class:active={pathname == item.path}>{item.label}</a>
-                    </li>
-                {/each}
+                {#key menuItemsPrimary}
+                    {#each menuItemsPrimary.nodes as item}
+                        <li>
+                            <a href="{item.path}" class="menu" class:active={pathname == item.path}>{item.label}</a>
+                        </li>
+                    {/each}
+                {/key}
+
             </ul>
         </nav>
 

@@ -28,7 +28,7 @@
                     <div class="sticky">
 
                         <div class="project_action">
-                            <a href="{previousPage}" class="link">Retour à la liste des projets</a>
+                            <a href="/fr/projets" class="link">Retour à la liste des projets</a>
                         </div>
 
                         <div class="project_title">
