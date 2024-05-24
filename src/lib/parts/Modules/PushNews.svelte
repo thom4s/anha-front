@@ -1,5 +1,5 @@
 <script>
-    import BlockPost from "$lib/Parts/Elements/BlockPost.svelte";
+    import BlockPost from "$lib/parts/Elements/BlockPost.svelte";
     export let titre = '';
     export let pages = [];
     let module = true;

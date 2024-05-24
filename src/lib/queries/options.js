@@ -47,7 +47,10 @@ export async function getMenuItems( lang = 'fr', id = '') {
         })
         .then(res => res.json())
         .then(res => {
-            return res.data.menuItems
+            if(!res.data) {
+                return 
+            }
+            return res.data.menuItems;
         });
         
     return menuItems;
