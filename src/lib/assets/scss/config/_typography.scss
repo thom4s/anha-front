@@ -6,35 +6,40 @@ Font face
 	font-family: 'Gotham-Light';
 	font-style: normal;
 	font-weight: 300;
-	src: url('fonts/Gotham-Light.otf') format('opentype');
+	src: url('fonts/Gotham-Light.otf') format('OpenType'),
+        url("fonts/Gotham-Light.ttf") format('TrueType');
 }
 
 @font-face {
 	font-family: 'Gotham-Book';
 	font-style: normal;
 	font-weight: 400;
-	src: url('fonts/Gotham-Book.otf') format('opentype');
+	src: url('fonts/Gotham-Book.otf') format('OpenType'),
+        url("fonts/Gotham-Book.ttf") format('TrueType');
 }
 
 @font-face {
 	font-family: 'Gotham-Book';
 	font-style: italic;
 	font-weight: 400;
-	src: url('fonts/Gotham-BookItalic.otf') format('opentype');
+	src: url('fonts/Gotham-BookItalic.otf') format('OpenType'),
+        url("fonts/Gotham-BookItalic.ttf") format('TrueType');
 }
 
 @font-face {
 	font-family: 'Gotham-Book';
 	font-style: normal;
 	font-weight: 500;
-	src: url('fonts/Gotham-Medium.otf') format('opentype');
+	src: url('fonts/Gotham-Medium.otf') format('OpenType'),
+        url("fonts/Gotham-Medium.ttf") format('TrueType');
 }
 
 @font-face {
 	font-family: 'Gotham-Book';
 	font-style: italic;
 	font-weight: 500;
-	src: url('fonts/Gotham-MediumIta.otf') format('opentype');
+	src: url('fonts/Gotham-MediumIta.otf') format('OpenType'),
+        url("fonts/Gotham-MediumIta.ttf") format('TrueType');
 }
 
 
