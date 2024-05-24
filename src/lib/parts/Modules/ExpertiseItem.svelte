@@ -5,7 +5,7 @@
 
     export let chapo = '';
     export let flexibleContents = '';
-    export let position = '';
+    export const position = '';
 
 
     $: console.log("Module Projets: ", flexibleContents)

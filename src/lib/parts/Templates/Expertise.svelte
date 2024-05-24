@@ -155,13 +155,13 @@
             <button class="btn h1" on:click={() => {designVisible = !designVisible}}>
                 <span>{leftCol.titre}</span>
                 {#if rightCol.visuel }
-                    <img src="{leftCol.visuel.node.sourceUrl}">
+                    <img src="{leftCol.visuel.node.sourceUrl}" alt="{leftCol.visuel.node.caption}">
                 {/if}
             </button>
             <button class="btn h1" on:click={() => {productionVisible = !productionVisible}}>
                 <span>{rightCol.titre}</span>
                 {#if rightCol.visuel }
-                    <img src="{rightCol.visuel.node.sourceUrl}">
+                    <img src="{rightCol.visuel.node.sourceUrl}" alt='{rightCol.visuel.node.caption}'>
                 {/if}
             </button>
         </div>

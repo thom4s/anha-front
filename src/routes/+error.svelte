@@ -10,7 +10,7 @@
         <h2 class="h2">{$page.error.message}</h2>
 
         <div class="actions flex-center gap-l">
-            <a class="btn btn_secondary" href="" data-sveltekit-reload>Try to reload first</a>
+            <a class="btn btn_secondary" href="#" data-sveltekit-reload>Try to reload first</a>
             <a class="btn btn_secondary" href={ ($page.error.link) ? $page.error.link : '/'} data-sveltekit-prefetch>No ? Ok, go back</a>
         </div>
     </div>

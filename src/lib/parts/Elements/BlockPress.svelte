@@ -1,6 +1,5 @@
 <script>
     export let post = {};
-    export let type = '';
 </script>
 
 

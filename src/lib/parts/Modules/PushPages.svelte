@@ -1,6 +1,6 @@
 <script>
     import BlockPage from "$lib/parts/Elements/BlockPage.svelte";
-    export let titre = '';
+    export const titre = '';
     export let pages = [];
 </script>
 
@@ -21,13 +21,5 @@
     .module {
         margin-top: 180px;
         margin-bottom: 180px;
-    }
-    .logos {
-        display: flex;
-        gap: 20px;
-
-        img { 
-            object-fit: contain;
-        }
     }
 </style>

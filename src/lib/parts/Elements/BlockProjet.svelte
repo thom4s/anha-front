@@ -3,7 +3,7 @@
 	import { fade } from 'svelte/transition';
 
     export let projet = {};
-    export let type = '';    
+    export const type = '';    
 </script>
 
 
@@ -63,10 +63,6 @@
             aspect-ratio: 4/5;
             width: 100%;
         }
-    }
-    svg {
-        vertical-align: middle;
-        margin-left: 4px;
     }
     :global(.swiper-slide.project.even) {
         img {

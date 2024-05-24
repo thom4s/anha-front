@@ -1,5 +1,5 @@
 <script>
-    export let titre = '';
+    export const titre = '';
     export let contentOne = '';
     export let contentTwo = '';
 </script>

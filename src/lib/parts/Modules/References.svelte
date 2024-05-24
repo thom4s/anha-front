@@ -1,7 +1,7 @@
 <script>
     import Marqueeck from '@arisbh/marqueeck'; // https://marqueeck.vercel.app/docs/props
 
-    export let titre = '';
+    export const titre = '';
     export let ligneLogos = [];
 
     const options1 = {

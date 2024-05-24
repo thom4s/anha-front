@@ -24,7 +24,5 @@
 
 
 <style lang="scss">
-    .container {
-        padding-top: 100px;
-    }
+
 </style>

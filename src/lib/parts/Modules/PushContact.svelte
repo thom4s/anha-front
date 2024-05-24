@@ -26,9 +26,7 @@
             <h2 class="h1 no-margin">{@html title}</h2>
 
 
-            {#if smallContact }
-
-            {:else}
+            {#if !smallContact }
                 <div class="body">{@html text}</div>
                 <a class="btn dark" href="{lien?.url}">{label}</a>
             {/if}
@@ -56,14 +54,6 @@
     .module {
         margin-top: 180px;
         margin-bottom: 30px;
-    }
-    .logos {
-        display: flex;
-        gap: 20px;
-
-        img { 
-            object-fit: contain;
-        }
     }
     div.body {
         margin-bottom: 30px;

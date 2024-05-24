@@ -4,7 +4,7 @@
     
     import { register } from 'swiper/element/bundle';
 
-    export let titre = '';
+    export const titre = '';
     export let label = '';
     export let link = '';
     export let pages = [];
@@ -79,13 +79,5 @@
         padding-bottom: 30px;
         margin-bottom: 30px;
         align-items: flex-end;
-    }
-    .logos {
-        display: flex;
-        gap: 20px;
-
-        img { 
-            object-fit: contain;
-        }
     }
 </style>

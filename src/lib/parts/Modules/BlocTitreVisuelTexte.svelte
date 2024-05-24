@@ -1,5 +1,5 @@
 <script>
-    export let titre = '';
+    export const titre = '';
     export let visuel = '';
     export let texte = '';
 </script>

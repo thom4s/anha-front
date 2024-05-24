@@ -34,14 +34,14 @@
                 <div class="filterGroup mb-medium">
                     <span class="caption filterGroupName">Filtrer par Secteurs</span>
                     {#each secteurs.nodes as t }
-                        <span on:click={ (e) => filter(e) } data-term="{t.name}" class="caption filterItem" class:active={filters.includes(t.name)}>{t.name}</span>
+                        <button on:click={ (e) => filter(e) } data-term="{t.name}" class="caption filterItem" class:active={filters.includes(t.name)}>{t.name}</button>
                     {/each}
                 </div>
 
                 <div class="filterGroup">
                     <span class="caption filterGroupName">Filtrer par Savoir-faire</span>
                     {#each savoirfaires.nodes as t }
-                        <span on:click={ (e) => filter(e) } data-term="{t.name}" class="caption filterItem" class:active={filters.includes(t.name)}>{t.name}</span>
+                        <button on:click={ (e) => filter(e) } data-term="{t.name}" class="caption filterItem" class:active={filters.includes(t.name)}>{t.name}</button>
                     {/each}
                 </div>
 
@@ -81,7 +81,11 @@
         }
     }
     .filterItem {
-
+        background: none;
+        border: none;
+        text-align: left;
+        padding: 0;
+        
         &:before {
             content: '';
             display: inline-block;

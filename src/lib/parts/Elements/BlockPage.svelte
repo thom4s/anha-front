@@ -35,21 +35,6 @@
 
 
 <style lang="scss"> 
-.block_post {
-    border-top: 1px solid;
-    border-bottom: 1px solid;
-    padding: 20px 0;
-
-    &:nth-child(2n) {
-        .grid {
-            grid-auto-flow: dense;
-            direction: rtl;
-        }
-    }
-    .bloc_texts {
-        direction: ltr;
-    }
-}
 .half {
     width: 50%;
 }

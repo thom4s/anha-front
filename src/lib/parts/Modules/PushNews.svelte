@@ -1,6 +1,6 @@
 <script>
     import BlockPost from "$lib/parts/Elements/BlockPost.svelte";
-    export let titre = '';
+    export const titre = '';
     export let pages = [];
     let module = true;
     
@@ -23,13 +23,5 @@
     .module {
         margin-top: 180px;
         margin-bottom: 180px;
-    }
-    .logos {
-        display: flex;
-        gap: 20px;
-
-        img { 
-            object-fit: contain;
-        }
     }
 </style>

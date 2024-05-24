@@ -3,7 +3,7 @@
     import PushContact from "$lib/parts/Modules/PushContact.svelte";
 
     export let page = {};
-    export let posts = [];
+    export const posts = [];
 
 </script>
 

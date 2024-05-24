@@ -92,7 +92,7 @@
                         {#if page.informationsProjet.gallery}
                             {#each page.informationsProjet.gallery.nodes as node}
                                 <div class="snap projet_media_item">
-                                    <img src="{node.sourceUrl}">
+                                    <img src="{node.sourceUrl}" alt="{node.caption}">
                                 </div>
                             {/each}
                         {/if}
