@@ -3,6 +3,9 @@ iframe {
     height: 100%;
 }
 
+/*--------------------------------------------------------------
+Buttons
+--------------------------------------------------------------*/
 
 .btn {
     font-size: 1.2rem;
@@ -21,5 +24,112 @@ iframe {
     &.dark {
         color: $light-font;
         background-color: $dark-bg;
+    }
+}
+
+
+/*--------------------------------------------------------------
+Form
+--------------------------------------------------------------*/
+
+.input-group {
+    position: relative;
+    input:not([type="submit"], [type="button"], [type="radio"], [type="checkbox"]), textarea, select {
+        background-color: transparent;
+        border: 1px solid $gray;
+        padding: $space-s;
+        color: $dark-font;
+        width: 100%;
+        transition: 0.2s;
+        text-align: left;
+        &:focus {
+            border-color: $dark-font;
+            ~ label {
+                color: $dark-font;
+            }
+        }
+        &:not([type="checkbox"]) {
+            &:focus, &:optional:not(:placeholder-shown) {
+                outline: none;
+                ~ label {
+                    transform: translateY(-200%);
+                    background-color: $light-bg;
+                    padding: 0 calc($space-s / 2);
+                }
+            }
+        }
+
+        &~label {
+            position: absolute;
+            transition: 0.2s ease all;
+            pointer-events: none;
+            color: $gray;
+            left: $space-s;
+            top: 20px;
+            will-change: transform;
+        }
+    }
+    input[type="radio"], input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+    }
+    input[type="submit"], input[type="button"] {
+        border: 0;
+        @include max(tablet) {
+            width: 100%;
+        }
+    }
+
+    @include max(tablet) {
+        width: 100%;
+    }
+}
+
+.full {
+    width: 100%;
+}
+.half {
+    @include min(tablet) {
+        width: calc(50% - calc($space-m / 2));
+    }
+    @include max(tablet) {
+        width: 100%;
+    }
+}
+
+.checkbox {
+    input[type=checkbox] {
+        position: relative;
+        border: 2px solid $gray;
+        border-radius: 3px;
+        background: $light-bg;
+        cursor: pointer;
+        padding: 8px;
+        height: 20px;
+        width: 20px;
+        appearance: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &:checked {
+            background-color: $dark-font;
+            border-color: $dark-font;
+        }
+        &:before {
+            content: "";
+            position: absolute;
+            width: 4px;
+            height: 8px;
+            border: solid $light-bg;
+            border-width: 0 2px 2px 0;
+            margin: -3px -1px 0 -1px;
+            transform: rotate(45deg);
+            z-index: 2;
+        }
+    }
+    label {
+        cursor: pointer;
+        align-items: center;
+        gap: $space-s;
     }
 }

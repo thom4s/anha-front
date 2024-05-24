@@ -23,3 +23,8 @@
 </div>
 
 
+<style lang="scss">
+    .container {
+        padding: 60px 0;
+    }
+</style>
