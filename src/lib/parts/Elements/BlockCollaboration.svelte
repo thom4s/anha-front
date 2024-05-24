@@ -13,7 +13,7 @@
 
             <div class="caption">{post.informationsCollaboration.date}</div>
             
-            <div>  
+            <div class="fl-column-space gap-s">  
                 <h2 class="h3 no-margin">{post.title}</h2>
                 <div class="body">{@html post.excerpt}</div>
             </div>
