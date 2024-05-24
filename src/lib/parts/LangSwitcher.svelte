@@ -48,6 +48,10 @@
 .menu {
     background-color: unset;
     border: none;
+    cursor: pointer;
+}
+button:disabled {
+    font-weight: bold;
 }
 
 </style>
