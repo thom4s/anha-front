@@ -11,7 +11,10 @@
 
             <div class="block_meta fl-justify mb-xsmall">
                 <span class="caption">{post.informationsPress?.date}</span>
-                <span class="caption">{post.informationsPress?.author}</span>
+
+                {#if post.informationsPress?.author}
+                    <span class="caption">{post.informationsPress?.author}</span>
+                {/if}
             </div>
             
             <div class=" mb-xxsmall">  

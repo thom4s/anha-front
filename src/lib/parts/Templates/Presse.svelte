@@ -19,7 +19,7 @@
     <div class="grid mb-xxlarge">
 
             {#each posts.edges as post }
-                <div class="m_4column mb-medium">
+                <div class="item_container m_4column">
                     <BlockPress post={post.node} type="posts"/>
                 </div>
             {/each}
@@ -36,7 +36,30 @@
 
 
 <style lang="scss">
+
+    .grid {
+        grid-row-gap: 0;
+    }
+    .item_container {
+        position: relative;
+        padding-bottom: $space-l;
+
+        &:nth-last-child(-n+3) {
+            padding-bottom: 0;
+        }
+
+        &:not(:nth-child(3n))::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: - $space-s;
+            height: 100%;
+            width: 1px;
+            background-color: black;
+        }
+    }
     article {
-        padding-top: $space-xxl;
+        padding-top: $space-xl;
     }
 </style>

@@ -1,7 +1,10 @@
 <script lang="ts">
     import BlockProjet from "$lib/parts/Elements/BlockProjet.svelte";
+	import PushContact from "$lib/parts/Modules/PushContact.svelte";
+
+    import { onMount } from "svelte";
 	import { fade } from 'svelte/transition';
-	import PushContact from "../Modules/PushContact.svelte";
+
     export let page = {};
     export let projets = [];
     export let savoirfaires = [];
@@ -19,6 +22,37 @@
 		}) : projets.nodes;
 
         $: console.log('filters', filters)
+
+
+
+        // MASONRY 
+
+        function resizeGridItem(grid, item){
+
+            let rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
+            let rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
+            let rowSpan = Math.ceil((item.querySelector('.item_container').getBoundingClientRect().height+rowGap)/(rowHeight+rowGap));
+            item.style.gridRowEnd = "span " + rowSpan;
+        }
+
+        function resizeAllGridItems(grid, allItems){
+            for(let x=0 ; x < allItems.length ; x++ ){
+                resizeGridItem(grid, allItems[x]);
+            }
+        }
+
+        onMount ( () => {
+            const allItems = document.querySelectorAll(".grid-item");
+            const grid = document.querySelector(".masonry");
+            
+            resizeAllGridItems(grid, allItems);
+            window.addEventListener("resize", resizeAllGridItems);
+
+        }) 
+
+
+
+
 </script>
 
 
@@ -29,7 +63,7 @@
     <div class="grid container">
 
         <div class="s_3column">
-            <div class="filters">
+            <div class="filters sticky">
 
                 <div class="filterGroup mb-medium">
                     <span class="caption filterGroupName">Filtrer par Secteurs</span>
@@ -52,7 +86,9 @@
             <div class="masonry grid">
                 {#each visibleProjets as projet }
                     <div class="grid-item m_3column">
-                        <BlockProjet {projet}/>
+                        <div class="item_container">
+                            <BlockProjet {projet}/>
+                        </div>
                     </div>
                 {:else}
                     <p in:fade={{ delay: 200, duration: 200 }}>Aucun résultat</p>
@@ -72,6 +108,31 @@
         margin-top: $space-xxl;
     }
 
+    .masonry {
+        grid-auto-rows: 20px;
+        grid-row-gap: 0;
+    }
+
+    .item_container {
+        position: relative;
+        padding-bottom: $space-l;
+
+        &:not(:nth-child(3n))::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: - $space-s;
+            height: 100%;
+            width: 1px;
+            background-color: black;
+        }
+    }
+    
+    .sticky {
+        position: sticky;
+        top: $space-xxl * 2;
+    }
 
     // PROJECT FILTERS
 

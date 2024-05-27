@@ -116,8 +116,6 @@
 
 <style lang="scss">
 
-
-
     .project_texts {
         padding-right: $space-xl;
         padding-top: $space-xl;

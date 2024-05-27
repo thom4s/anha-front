@@ -60,7 +60,7 @@
 
     .bloc_media {
         img {
-            aspect-ratio: 4/5;
+            //aspect-ratio: 4/5;
             width: 100%;
         }
     }
