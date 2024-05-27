@@ -2,7 +2,7 @@ import { PUBLIC_API_URL } from "$env/static/public";
 import { seo_query_string, basic_fields_string, featuredImage_fields_string } from '$lib/utils/queries';
 
 
-export async function getAllPressArticles( lang = 'fr' ) {
+export async function getAllPressArticles( lang = 'fr', first = 6 ) {
     
     const posts = await fetch(PUBLIC_API_URL, {
         method: 'POST',
@@ -10,7 +10,7 @@ export async function getAllPressArticles( lang = 'fr' ) {
         body: JSON.stringify({
             query: `
                 {
-                    presses( where: {language: ${lang.toUpperCase()} }) {
+                    presses( first: ${first}, where: {language: ${lang.toUpperCase()} }) {
                         pageInfo {
                             startCursor
                             endCursor
@@ -28,6 +28,8 @@ export async function getAllPressArticles( lang = 'fr' ) {
                                     date
                                     label
                                     lien
+                                    author
+                                    magazineName
                                 }
                             }
                         }

@@ -1,6 +1,6 @@
 <script lang="ts">
     import PushContact from "$lib/parts/Modules/PushContact.svelte";
-    import Pagination from "$lib/parts/Navigations/Pagination.svelte";
+    import LoadMore from "$lib/parts/Navigations/LoadMore.svelte";
     import BlockPress from "$lib/parts/Elements/BlockPress.svelte";
 
     export let page = {};
@@ -12,24 +12,21 @@
 </script>
 
 
-<article>
+<article class="container">
 
-    <div class="grid">
+    <h1 class="visualy-hidden">{page.title}</h1>
 
-        <div class="m_4column">
-            <h1>{page.title}</h1>
-            <div>{@html page.content}</div>
-        </div>
+    <div class="grid mb-xxlarge">
 
-        <div class="m_8column">
             {#each posts.edges as post }
-                <BlockPress post={post.node} type="posts"/>
+                <div class="m_4column mb-medium">
+                    <BlockPress post={post.node} type="posts"/>
+                </div>
             {/each}
 
-            <Pagination bind:posts={posts} pageInfo={posts.pageInfo} />
-        </div>
-
     </div>
+
+    <LoadMore bind:posts={posts} pageInfo={posts.pageInfo} />
 
 </article>
 

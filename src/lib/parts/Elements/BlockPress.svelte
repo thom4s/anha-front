@@ -5,43 +5,34 @@
 
 <article class="block_press">
 
-    <div class="grid">
+            <div class="block_media mb-xsmall">
+                <img src="{post.featuredImage?.node?.sourceUrl}" alt="">
+            </div>
 
-        <div class="m_4column">
-
-            <div>{post.informationsPress?.date}</div>
+            <div class="block_meta fl-justify mb-xsmall">
+                <span class="caption">{post.informationsPress?.date}</span>
+                <span class="caption">{post.informationsPress?.author}</span>
+            </div>
             
-            <div>  
-                <h2>{post.title}</h2>
-                <div>{@html post.excerpt}</div>
+            <div class=" mb-xxsmall">  
+                <h2 class="body mb-0">{post.informationsPress?.magazineName}</h2>
+                <h2 class="body">{post.title}</h2>
             </div>
             
             {#if post.informationsPress?.lien }
-                <a href="{post.informationsPress?.lien}">
+                <a href="{post.informationsPress?.lien}" class="link">
                     {post.informationsPress?.label}
                 </a>
             {/if}
-        </div>
 
-        <div class="m_4column">
-            <img src="{post.featuredImage?.node?.sourceUrl}" alt="">
-        </div>
-
-    </div>
 
 </article>
 
 
 <style lang="scss"> 
-.block_press {
-    border-top: 1px solid;
-    padding: 20px 0;
-
-    &:nth-child(2n) {
-        .grid {
-            grid-auto-flow: dense;
-            direction: rtl;
-        }
+    img {
+        width: 100%;
+        aspect-ratio: 4/5;
+        background-color: $beige;
     }
-}
 </style>

@@ -16,6 +16,9 @@ Buttons
     padding: 10px 20px;
     text-decoration: none;
     display: inline-block;
+    border: none;
+    background: none;
+    cursor: pointer;
 
     &.light {
         color: $dark-font;
