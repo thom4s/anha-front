@@ -26,7 +26,7 @@
 
     </div>
 
-    <LoadMore bind:posts={posts} pageInfo={posts.pageInfo} />
+    <LoadMore bind:posts={posts} pageInfo={posts.pageInfo} contentType="presse"/>
 
 </article>
 
@@ -37,6 +37,6 @@
 
 <style lang="scss">
     article {
-        padding-top: 200px;
+        padding-top: $space-xxl;
     }
 </style>

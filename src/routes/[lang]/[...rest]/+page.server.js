@@ -21,8 +21,6 @@ export async function load( {params} ) {
 
     if( page?.template?.templateName === 'Actualités') {
       posts = await getAllPosts(params.lang);
-      secteurs = await getAllTerms('secteurs');
-      savoirfaires = await getAllTerms('savoirfaires');
     }
 
     if( page?.template?.templateName === 'Page Presse') {

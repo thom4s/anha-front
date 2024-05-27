@@ -1,13 +1,23 @@
 <script lang="ts">
     import { getAllPressArticles } from "$lib/queries/press";
+    import { getAllPosts } from "$lib/queries/posts";
 
     export let posts = []
     export let pageInfo = []
+    export let contentType = ''
 
     const loadMorePosts = async () => {
         const length = posts.edges.length;
-        const newPosts = await getAllPressArticles('fr', length + 1)
-        console.log('loadMorePosts', posts)
+        let newPosts
+        if( contentType === 'presse') {
+            newPosts = await getAllPressArticles('fr', length + 6)
+        }
+        else if (contentType === 'news') {
+            newPosts = await getAllPosts('fr', length + 6)
+        }
+        else {
+            newPosts = await getAllPosts('fr', length + 6) 
+        }
         return newPosts;
     }
 </script>

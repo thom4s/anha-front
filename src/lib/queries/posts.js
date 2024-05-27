@@ -32,7 +32,7 @@ export async function getPostBySlug( slug = '' ) {
 }
 
 
-export async function getAllPosts( lang = 'fr', direction = "first", position = "after", cursor = '' ) {
+export async function getAllPosts( lang = 'fr', length = 10 ) {
     
     const posts = await fetch(PUBLIC_API_URL, {
         method: 'POST',
@@ -40,7 +40,7 @@ export async function getAllPosts( lang = 'fr', direction = "first", position = 
         body: JSON.stringify({
             query: `
                 {
-                    posts( ${direction}: 2, ${position}: "${cursor}", where: {language: ${lang.toUpperCase()} }) {
+                    posts( first: ${length}, where: {language: ${lang.toUpperCase()} }) {
                         pageInfo {
                             startCursor
                             endCursor

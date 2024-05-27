@@ -1,8 +1,8 @@
 <script lang="ts">
     import BlockPost from "$lib/parts/Elements/BlockPost.svelte";
     import PushContact from "$lib/parts/Modules/PushContact.svelte";
-    import Pagination from "../Navigations/Pagination.svelte";
     import SocialLinks from "$lib/parts/Navigations/SocialLinks.svelte"
+	import LoadMore from "$lib/parts/Navigations/LoadMore.svelte";
 
     export let page = {};
     export let posts = [];
@@ -35,7 +35,8 @@
                     <BlockPost post={post.node} type="posts"/>
                 {/each}
     
-                <Pagination bind:posts={posts} pageInfo={posts.pageInfo} />
+                <LoadMore bind:posts={posts} pageInfo={posts.pageInfo} contentType="news"/>
+
             </div>
     
         </div>
@@ -51,6 +52,6 @@
 
 <style lang="scss">
     article {
-        padding-top: 200px;
+        padding-top: $space-xxl;
     }
 </style>
