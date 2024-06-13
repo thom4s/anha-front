@@ -23,11 +23,12 @@
 
         $: console.log('filters', filters)
 
+        let allItems, grid;
 
 
         // MASONRY 
 
-        function resizeGridItem(grid, item){
+        function resizeGridItem(item){
 
             let rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
             let rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
@@ -35,17 +36,18 @@
             item.style.gridRowEnd = "span " + rowSpan;
         }
 
-        function resizeAllGridItems(grid, allItems){
+        function resizeAllGridItems(){
             for(let x=0 ; x < allItems.length ; x++ ){
-                resizeGridItem(grid, allItems[x]);
+                resizeGridItem(allItems[x]);
             }
         }
 
         onMount ( () => {
-            const allItems = document.querySelectorAll(".grid-item");
-            const grid = document.querySelector(".masonry");
-            
-            resizeAllGridItems(grid, allItems);
+            console.log('onMount !')
+            $: grid = document.querySelector(".masonry");
+            $: allItems = document.querySelectorAll(".grid-item");
+
+            resizeAllGridItems();
             window.addEventListener("resize", resizeAllGridItems);
 
         }) 
