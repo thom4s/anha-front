@@ -4,6 +4,14 @@
 
     export let projet = {};
     export const type = '';    
+
+    // PARALLAX
+    import Ukiyo from "ukiyojs";
+
+    new Ukiyo(".parallax", {
+        scale: 1.15,
+        speed: 1.2,
+    })
 </script>
 
 
@@ -48,7 +56,7 @@
 
         {#if projet.featuredImage}
             <div class="bloc_media">   
-                <img src="{projet.featuredImage.node.sourceUrl}" srcset={projet.featuredImage.node.srcSet} sizes="{projet.featuredImage.node.sizes}" alt="{projet.featuredImage.node.altText}" />
+                <img class="parallax" src="{projet.featuredImage.node.sourceUrl}" srcset={projet.featuredImage.node.srcSet} sizes="{projet.featuredImage.node.sizes}" alt="{projet.featuredImage.node.altText}" />
             </div>
         {/if}
         

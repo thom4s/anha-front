@@ -14,6 +14,17 @@
     let fullScreenType = '';
 
     export let module = false;
+
+
+
+    // PARALLAX
+    import Ukiyo from "ukiyojs";
+
+    new Ukiyo(".parallax", {
+        scale: 1.15,
+        speed: 1.2,
+    })
+
     
 </script>
 
@@ -61,6 +72,7 @@
 
                 {:else}
                     <img 
+                        class="parallax"
                         src="{post.featuredImage?.node?.sourceUrl}" 
                         alt=""
                         on:click={ () => {
