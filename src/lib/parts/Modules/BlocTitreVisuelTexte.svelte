@@ -1,4 +1,6 @@
 <script>
+	import { onMount } from "svelte";
+
     export const titre = '';
     export let visuel = '';
     export let texte = '';
@@ -6,10 +8,13 @@
     // PARALLAX
     import Ukiyo from "ukiyojs";
 
-    new Ukiyo(".parallax", {
-        scale: 1.15,
-        speed: 1.2,
+    onMount(() => {
+        new Ukiyo(".parallax", {
+            scale: 1.15,
+            speed: 1.2,
+        })
     })
+
 </script>
 
 <div class="module fl-column gap-m snap">

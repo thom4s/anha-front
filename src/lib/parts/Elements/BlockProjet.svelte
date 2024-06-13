@@ -1,4 +1,5 @@
 <script>
+	import { onMount } from 'svelte';
     import Arrow from '../Svgs/Arrow.svelte';
 	import { fade } from 'svelte/transition';
 
@@ -8,10 +9,13 @@
     // PARALLAX
     import Ukiyo from "ukiyojs";
 
-    new Ukiyo(".parallax", {
-        scale: 1.15,
-        speed: 1.2,
+    onMount(() => {
+        new Ukiyo(".parallax", {
+            scale: 1.15,
+            speed: 1.2,
+        })
     })
+
 </script>
 
 

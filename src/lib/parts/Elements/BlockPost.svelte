@@ -19,11 +19,15 @@
 
     // PARALLAX
     import Ukiyo from "ukiyojs";
+	import { onMount } from 'svelte';
 
-    new Ukiyo(".parallax", {
-        scale: 1.15,
-        speed: 1.2,
+    onMount(() => {
+        new Ukiyo(".parallax", {
+            scale: 1.1,
+            speed: 1.2,
+        })
     })
+
 
     
 </script>
