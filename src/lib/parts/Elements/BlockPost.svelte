@@ -76,7 +76,7 @@
 
                 {:else}
                     <img 
-                        class="parallax"
+                        class="parallax hover-target"
                         src="{post.featuredImage?.node?.sourceUrl}" 
                         alt=""
                         on:click={ () => {
@@ -96,7 +96,7 @@
                     <div class="caption">{@html post.informationsNews?.lieu}</div>
                 </div>
                 
-                <div class="fl-column-space gap-s">  
+                <div class="fl-column-start gap-s">  
                     <h2 class="h3 no-margin">{post.title}</h2>
 
                     {#if post.content }
@@ -162,6 +162,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            align-items: flex-start;
             height: 100%;
             gap: 30px;
         }
@@ -176,8 +177,8 @@
         }
     }
     img:hover {
-        cursor: zoom-in;
-        cursor: url('$lib/assets/svg/arrowfull.svg'), auto;
+        // cursor: zoom-in;
+        // cursor: url('$lib/assets/svg/arrowfull.svg'), auto;
     }
 
     .caption {

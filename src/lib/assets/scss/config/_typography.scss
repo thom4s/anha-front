@@ -161,6 +161,45 @@ h4, .h4 { @include h4; }
     letter-spacing: 0.06em;
     color: $dark-font;
     text-transform: uppercase;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 1px;
+        background-color: black;
+        transition: 0.3s;
+    }
+
+    &:hover:after {
+        content: '';
+        transform: translateX(100%);
+        animation: underlineSlide 0.5s forwards;
+        transform-origin: right center;
+    }
+}
+
+@keyframes underlineSlide{
+    0% {
+        transform: scaleX(1);
+        transform-origin: right center;
+    }
+    50% {
+        transform: scaleX(0);
+        transform-origin: right center;
+    }
+    50.1% {
+        transform: scaleX(0);
+        transform-origin: left center;
+    }
+    100% {
+        transform: scaleX(1);
+        transform-origin: left center;
+    }
 }
 
 

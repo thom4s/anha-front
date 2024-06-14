@@ -38,6 +38,11 @@
     display: flex;
     flex-direction: column;
 }
+.fl-column-start {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
 .vbot {
     align-items: flex-end;
 }

@@ -1,12 +1,13 @@
 <script>
     import SEO from '$lib/parts/SEO/index.svelte';
     import { fly } from 'svelte/transition';
-    import { cubicIn, cubicOut, cubicInOut } from 'svelte/easing';
+    import { cubicOut } from 'svelte/easing';
 
   
     import { config, activeLang, menusStore, langsStore } from '$lib/config/website.js';
     import Header from "$lib/parts/Navigations/Header.svelte";
     import Footer from "$lib/parts/Navigations/Footer.svelte";
+	  import HoverCursor from '$lib/parts/HoverCursor.svelte';
     import '$lib/assets/scss/style.scss';
   
     export let data;
@@ -38,12 +39,16 @@
         $config.instagramProfile = socialLinks.instagram_account
         $config.twitterUsername = seoConfig.seo.social.twitter.username
     }
+
   </script>
   
   <SEO />
   
   <Header/>
   
+  <HoverCursor />
+  
+
   <main>
     {#key data.pathname}
       <div
