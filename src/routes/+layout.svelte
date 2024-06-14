@@ -1,24 +1,26 @@
 <script>
     import SEO from '$lib/parts/SEO/index.svelte';
-    import { fade } from 'svelte/transition';
+    import { fly } from 'svelte/transition';
+    import { cubicIn, cubicOut, cubicInOut } from 'svelte/easing';
 
-    import { config, activeLang, menusStore, langsStore } from '$lib/config/website.js'
+  
+    import { config, activeLang, menusStore, langsStore } from '$lib/config/website.js';
     import Header from "$lib/parts/Navigations/Header.svelte";
     import Footer from "$lib/parts/Navigations/Footer.svelte";
     import '$lib/assets/scss/style.scss';
-
+  
     export let data;
-    $: ({menuItemsPrimary, menuItemsSecondary, menuItemsFooter, seoConfig, langs, currentLang, socialLinks } = data)
+    $: ({ menuItemsPrimary, menuItemsSecondary, menuItemsFooter, seoConfig, langs, currentLang, socialLinks } = data);
     
     $: $activeLang = currentLang;
     $: $langsStore = langs;
-
+  
     $: $menusStore = {
         menuItemsPrimary,
         menuItemsSecondary,
         menuItemsFooter
     }
-
+  
     
     $: {
         $config.author = seoConfig.seo.schema.companyName
@@ -36,25 +38,26 @@
         $config.instagramProfile = socialLinks.instagram_account
         $config.twitterUsername = seoConfig.seo.social.twitter.username
     }
-</script>
-
-<SEO />
-
-<Header/>
-
-<main>
+  </script>
+  
+  <SEO />
+  
+  <Header/>
+  
+  <main>
     {#key data.pathname}
-        <div in:fade={{ duration: 200, delay: 100 }} out:fade={{ duration: 100 }}>
-            <slot />
-        </div>
+      <div
+        in:fly={{ y: -20, duration: 2000, easing: cubicOut }}
+      >
+        <slot />
+      </div>
     {/key}
-</main>
-
-<Footer />
-
-
-<style>
+  </main>
+  
+  <Footer />
+  
+  <style>
     :global(header.home.at-top) ~ main {
         margin-top: 325px;
     }
-</style>
+  </style>  
