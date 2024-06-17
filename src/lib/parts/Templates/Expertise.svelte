@@ -90,16 +90,16 @@
 
         let touchStartY = 0; // Initial touch position
 
-        window.addEventListener('wheel', handleScroll, { passive: false });
-        window.addEventListener('touchstart', handleTouchStart, { passive: false });
-        window.addEventListener('touchend', handleTouchEnd, { passive: false });
+        // window.addEventListener('wheel', handleScroll, { passive: false });
+        // window.addEventListener('touchstart', handleTouchStart, { passive: false });
+        // window.addEventListener('touchend', handleTouchEnd, { passive: false });
 
-        return () => {
-            // Remove event listeners when component is destroyed
-            window.removeEventListener('wheel', handleScroll);
-            window.removeEventListener('touchstart', handleTouchStart);
-            window.removeEventListener('touchend', handleTouchEnd);
-        };
+        // return () => {
+        //     // Remove event listeners when component is destroyed
+        //     window.removeEventListener('wheel', handleScroll);
+        //     window.removeEventListener('touchstart', handleTouchStart);
+        //     window.removeEventListener('touchend', handleTouchEnd);
+        // };
     });
 
     let designVisible = false;
@@ -152,14 +152,16 @@
     <div class="wrapper" class:overflow={!productionVisible && !designVisible}>
 
         <div class="btn-container">
-            <button class="btn h1" on:click={() => {designVisible = !designVisible}}>
-                <span>{leftCol.titre}</span>
+            <button class="btn h1 left" class:active={designVisible} on:click={() => {designVisible = !designVisible}}>
+                <span class="btn_title_clone">{leftCol.titre}</span>
+                <span class="btn_title">{leftCol.titre}</span>
                 {#if rightCol.visuel }
                     <img src="{leftCol.visuel.node.sourceUrl}" alt="{leftCol.visuel.node.caption}">
                 {/if}
             </button>
-            <button class="btn h1" on:click={() => {productionVisible = !productionVisible}}>
-                <span>{rightCol.titre}</span>
+            <button class="btn h1 right"  class:active={productionVisible} on:click={() => {productionVisible = !productionVisible}}>
+                <span class="btn_title_clone">{rightCol.titre}</span>
+                <span class="btn_title">{rightCol.titre}</span>
                 {#if rightCol.visuel }
                     <img src="{rightCol.visuel.node.sourceUrl}" alt='{rightCol.visuel.node.caption}'>
                 {/if}
@@ -207,7 +209,7 @@
             font-size: 80px;
             text-align: center;
             cursor: pointer;
-            position: relative;
+            position: relative; 
 
             &:first-child {
                 border-right: 0.5px solid $dark-font;
@@ -224,7 +226,33 @@
             }
             span {
                 position: relative;
+                transition: all .3s;
                 z-index: 1;
+            }
+            .btn_title_clone {
+                opacity: 0;
+                transition: opacity .3s;
+                position: absolute;
+                top: 160px;
+                text-orientation: sideways;
+            }
+            &.left .btn_title_clone {
+                left: 20px;
+                writing-mode: sideways-lr;
+            }
+            &.right .btn_title_clone {
+                right: 20px;
+                writing-mode: sideways-rl;
+            }
+            &.active {
+                .btn_title_clone {
+                    opacity: 1;
+                }
+            }
+            &.active {
+                .btn_title {
+                    opacity: 0;
+                }
             }
             img {
                 position: absolute;
@@ -248,9 +276,10 @@
             background-color: $light-bg2;
             position: relative;
             z-index: 5;
-            width: 50%;
-            transition: 0.3s ease-in-out;
+            max-width: 0px;
+            transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
             transform: translateX(0);
+            overflow-x: hidden;
         }
         .left-sections {
             transform: translateX(-100%);
@@ -260,6 +289,15 @@
         }
         .left-sections.active, .right-sections.active {
             transform: translateX(0);
+            max-width: 90vw;
+            width: 90vw;
         }
+        .left-sections.active {
+            margin-right: 10vw;
+        }
+        .right-sections.active {
+            margin-left: 10vw;
+        }
+        
 
 </style>
