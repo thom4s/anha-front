@@ -81,7 +81,7 @@
                 </div>
                 
                 <div class="fl-column-space gap-s">  
-                    <h2 class="h3 no-margin">{post.title}</h2>
+                    <h2 class="h2 mb-small">{@html post.title}</h2>
 
                     {#if post.content }
                         <div class="body">{@html post.content}</div>

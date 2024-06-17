@@ -2,7 +2,7 @@
     import Arrow from '$lib/parts/Svgs/Arrow.svelte';
     import NotFound from '$lib/parts/Navigations/NotFound.svelte';
     
-    import { goto, afterNavigate } from '$app/navigation';
+    import { afterNavigate } from '$app/navigation';
     import { base } from '$app/paths'
 
     let previousPage : string = base ;

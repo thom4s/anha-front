@@ -11,11 +11,5 @@
 
 
 <style lang="scss">
-    article {
-        padding: 200px 0;
 
-        & > div {
-            width: 50%;
-        }
-    }
 </style>

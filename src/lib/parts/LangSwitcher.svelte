@@ -32,19 +32,22 @@
 </script>
 
 
-<div class="fl-center">
+<ul class="fl-center">
     {#each $langsStore as l, index}
         <li><button class="menu" disabled={l.slug === $activeLang} on:click={ () => switchLang(l.slug)}>{l.name.substring(0,2)}</button></li>
         {#if index === 0}
             <span>/</span>
         {/if}
     {/each}
-</div>
+</ul>
 
 
 
 <style lang="scss">
 
+ul {
+    list-style: none;
+}
 .menu {
     background-color: unset;
     border: none;
