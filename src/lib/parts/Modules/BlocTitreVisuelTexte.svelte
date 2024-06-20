@@ -6,7 +6,7 @@
 
 </script>
 
-<div class="module fl-column gap-m media-{design}" data-module="media">
+<div class="module fl-column media-{design}" data-module="media">
 
     {#if titre !== null && texte !== null }
         <div class="module_txt">
@@ -35,6 +35,11 @@
         margin-bottom: $space-xxl * 2;
     }
     .media-full {
+
+        .module_txt {
+            padding-bottom: $space-l;
+        }
+
         img {
             width: calc(100% + 5vw);
             max-width: none;
@@ -47,8 +52,14 @@
     .media-left {
         display: flex;
         flex-direction: row-reverse;
-        gap: $space-l;
 
+        .module_media {
+            width: 50%;
+            flex: 0 0 50%;
+        }
+        .module_txt {
+            padding-left: $space-l;
+        }
         @include min(desktop) {
             
         }
@@ -56,10 +67,11 @@
     .media-right {
         display: flex;
         flex-direction: row;
-        gap: $space-l;
 
         .module_txt {
             width: 50%;
+            flex: 0 0 50%;
+            padding-right: $space-l;
         }
         img {
             width: calc(100% + 5vw);

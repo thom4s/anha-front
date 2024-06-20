@@ -331,6 +331,7 @@ const string_collabs = `
 	collaborateurs {
 		job
 		name
+		details
 		photo {
 			node {
 				sourceUrl

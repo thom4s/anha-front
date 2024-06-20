@@ -14,9 +14,9 @@
 
             {#each stages as stage}
 
-                <div class="grid">
+                <div class="grid stage">
 
-                    <div class="m_6column splitLeft {stage.positionsticky}">
+                    <div class="m_6column stage_left splitLeft {stage.positionsticky}">
 
                         <div class="sticky fl-hcenter fl-column gap-l">
                             <div class="">{@html stage.stickyContent}</div>
@@ -24,7 +24,7 @@
 
                     </div>
 
-                    <div class="m_6column splitRight-marged">
+                    <div class="m_6column stage_right splitRight-marged">
 
                         {#each stage.flexibleContents as layout}
                             {#if layout && layout.__typename }
@@ -54,5 +54,13 @@
     }
     .right {
         order: 2;
+    }
+    .stage {
+        & + & {
+            .sticky {
+                top: 30%;
+                justify-content: flex-start;
+            }
+        }
     }
 </style>

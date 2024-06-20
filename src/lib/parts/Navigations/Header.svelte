@@ -140,7 +140,7 @@
     }
     
     nav {
-        padding: 35.5px 0;
+        padding: 25px 0;
     }
 
     .container {
