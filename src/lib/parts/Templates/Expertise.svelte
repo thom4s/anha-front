@@ -245,6 +245,7 @@
                 writing-mode: sideways-rl;
             }
             &.active {
+                background-color: $beige_dark;
                 .btn_title_clone {
                     opacity: 1;
                 }

@@ -31,22 +31,24 @@
     
 </script>
 
-
-<ul class="fl-center">
-    {#each $langsStore as l, index}
-        <li><button class="menu" disabled={l.slug === $activeLang} on:click={ () => switchLang(l.slug)}>{l.name.substring(0,2)}</button></li>
-        {#if index === 0}
-            <span>/</span>
-        {/if}
-    {/each}
-</ul>
-
+<nav>
+    <ul class="fl-center">
+        {#each $langsStore as l, index}
+            <li><button class="menu" disabled={l.slug === $activeLang} on:click={ () => switchLang(l.slug)}>{l.name.substring(0,2)}</button></li>
+            {#if index === 0}
+                <span>/</span>
+            {/if}
+        {/each}
+    </ul>
+</nav>
 
 
 <style lang="scss">
 
 ul {
     list-style: none;
+    padding: 0;
+    margin: 0;
 }
 .menu {
     background-color: unset;

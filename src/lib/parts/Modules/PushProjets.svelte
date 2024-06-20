@@ -4,20 +4,19 @@
     
     import { register } from 'swiper/element/bundle';
 
-    export const titre = '';
+    export let titre = '';
     export let label = '';
     export let link = '';
     export let pages = [];
 
     onMount( async () => {
         register();
-
     });
 </script>
 
-<section class="module container">
+<section class="module ">
 
-    <div class="module_title fl-justify gap-s">
+    <div class="module_title container fl-justify gap-s">
         <div class="fl-center gap-s">
             <h2 class="h2 no-margin">{titre}</h2>
             <div class="swiper-navigation fl-vcenter">
@@ -72,6 +71,11 @@
         transition: 0.3s;
         &.swiper-button-disabled {
             opacity: 0.5;
+        }
+    }
+    .swiper-slide {
+        &:first-child {
+            margin-left: 5vw;
         }
     }
     .module_title {

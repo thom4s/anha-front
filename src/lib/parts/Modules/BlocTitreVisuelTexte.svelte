@@ -4,7 +4,7 @@
     export let texte = '';
 </script>
 
-<div class="module fl-column gap-m snap">
+<div class="module fl-column gap-m">
 
     <h2 class="h2 no-margin txt-center">{titre}</h2>
 

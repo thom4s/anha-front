@@ -1,11 +1,12 @@
 <script>
     import SvgBurger from "$lib/assets/svg/SvgBurger.svelte";
-    import { activeLang, menusStore } from "$lib/config/website";
+    import { menusStore } from "$lib/config/website";
     import LangSwitcher from "$lib/parts/LangSwitcher.svelte";
     import { page } from '$app/stores';
-	import logo from '$lib/assets/logo_anha_nb.png';
-	import logo_nobaseline from '$lib/assets/logo_anha_nobaseline.png';
     import { onMount } from "svelte";
+    import Logo from "$lib/parts/Elements/Logo.svelte";
+    import Menu from "$lib/parts/Elements/Menu.svelte";
+    import Close from '$lib/parts/Svgs/Close.svelte';
 
     $: ( {menuItemsPrimary, menuItemsSecondary} = $menusStore)
     
@@ -84,71 +85,40 @@
 
     <div class="mobileContainer">
 
+        <Logo />
+        
         <button on:click={() => {
             handleMobileMenu();
         }}>
             <SvgBurger />
         </button>
 
-        {#if $page.url.pathname === '/fr' || $page.url.pathname === '/en' }
-            <h1 class="logo_container no-margin">
-                <a href="/{$activeLang}" class="brand_logo">
-                    <img src="{logo}" alt="logo" />
-                </a>
-            </h1>
-        {:else}
-            <a href="/{$activeLang}" class="brand_logo">
-                <img src="{logo}" alt="logo"/>
-            </a>
-        {/if}
-
-        <span></span>
-        
     </div>
 
     <div class="menusContainer" class:menuIsVisible>
 
-        <div class=" container" >
-            <nav class="left">
-                <ul>
-                    {#key menuItemsPrimary}
-                        {#each menuItemsPrimary.nodes as item}
-                            <li>
-                                <a href="{item.path}" class="menu" class:active={pathname == item.path}>{item.label}</a>
-                            </li>
-                        {/each}
-                    {/key}
+        <div class="container" >
 
-                </ul>
-            </nav>
+            <div class="logo_group">
+                <Logo />
 
-            {#if $page.url.pathname === '/fr' || $page.url.pathname === '/en' }
-                <h1 class="logo_container no-margin">
-                    <a href="/{$activeLang}" class="brand_logo">
-                        <img src="{logo}" alt="logo" />
-                    </a>
-                </h1>
-            {:else}
-                <a href="/{$activeLang}" class="brand_logo">
-                    <img src="{logo}" alt="logo"/>
-                </a>
-            {/if}
+                <button on:click={ () => menuIsVisible = false } 
+                    class="btn_clean menus_close_btn">
+                    <Close />
+                </button>
 
-            <nav class="right">
-                <ul>
-                    {#each menuItemsSecondary.nodes as item}
-                        <li>
-                            <a href="{item.path}" class="menu" class:active={pathname == item.path}>{item.label}</a>
-                        </li>
-                    {/each}
+            </div>
 
-                    <LangSwitcher />
+            <div class="menus_group fl-right gap-s">
 
-                    <li class="cta">
-                        <a href="/fr/contact" class="btn dark">Contact</a>
-                    </li>
-                </ul>
-            </nav>
+                <Menu menuItems={menuItemsPrimary}/>
+
+                <LangSwitcher />
+
+                <nav class="cta">
+                    <a href="/fr/contact" class="btn dark">Contact</a>
+                </nav>
+            </div>
 
         </div>
     </div>
@@ -167,32 +137,10 @@
         background-color: $light-bg;
         z-index: 9;
         transition: transform .2s;
-        
-        &.home.at-top {
-
-            .container {
-                align-items: flex-start;
-                // padding-bottom: 150px;
-            }
-            .logo_container {
-                @include min(bigtablet) {
-                    margin-top: 50px;
-                }
-                // transform: translateY(100%);
-                .brand_logo {
-                    max-width: 420px;
-                    padding: 60px 0;
-                }
-            }
-        }
     }
     
     nav {
-        width: 40%;
         padding: 35.5px 0;
-        &.right ul {
-            justify-content: flex-end;
-        }
     }
 
     .container {
@@ -201,18 +149,6 @@
         justify-content: space-between;
         gap: 40px;
         transition: 0.5s ease-in-out;
-    }
-
-    .logo_container {
-        transition: 0.5s ease-in-out;
-        line-height: 0;
-    }
-
-    .brand_logo {
-        transition: 0.5s ease-in-out;
-        display: inline-block;
-        max-width: 150px;
-        padding: 15px 0;
     }
 
     ul {
@@ -261,19 +197,10 @@
             }
         }
 
-        .brand_logo {
-            z-index: 999;
-            padding: 0;
-        }
-        .logo_container {
-            margin-top: 0 !important;
-            .brand_logo {
-                max-width: 300px !important;
-                padding: 0 !important;
-            }
-        }
     }
-    .menusContainer {
+
+
+    :global(.menusContainer) {
         transition: transform .5s;
 
         @include max(bigtablet) {
@@ -284,7 +211,7 @@
             left: 0;
             height: 100vh;
             width: 90vw;
-            padding-top: $space-xxl;
+            padding-top: $space-m;
             background-color: $beige;
 
             .container {
@@ -322,5 +249,26 @@
 
     }
 
+    .logo_group {
+        @include max(bigtablet) {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+        @include min(bigtablet) {
+            .menus_close_btn {
+                display: none; 
+            }
+        }
+
+    }
+    .menus_group {
+        @include max(bigtablet) {
+            flex-direction: column;
+            align-items: flex-start;
+            margin-top: $space-l;
+        }
+    }
 
 </style>

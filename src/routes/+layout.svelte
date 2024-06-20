@@ -54,7 +54,5 @@
 
 
 <style>
-    :global(header.home.at-top) ~ main {
-        margin-top: 325px;
-    }
+
 </style>
