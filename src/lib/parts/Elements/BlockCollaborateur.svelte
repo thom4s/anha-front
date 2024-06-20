@@ -5,7 +5,7 @@ export let layout = {}
 $: console.log('layout: ', layout)
 </script>
 
-<div class="module snap">
+<div class="module">
     {#each layout.collaborateurs as collab}
         <div class="">
             <p>{collab.name}</p>

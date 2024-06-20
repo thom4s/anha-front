@@ -88,9 +88,9 @@ h1, h2, h3, h4, h5 {
 
 @mixin h1 {
     font-family: 'Baskervville', sans-serif;
-    font-size: 8.5rem;
+    font-size: 9.5rem;
     font-weight: $font-r;
-    letter-spacing: 0.2em;
+    letter-spacing: -0.002em;
     line-height: .9;
 	@include max(tablet) {
         font-size: 3.8rem;
@@ -104,9 +104,9 @@ h1, .h1 { @include h1; }
 
 @mixin h2 {
     font-family: 'Baskervville', sans-serif;
-    font-size: 5.3rem;
+    font-size: 5.9rem;
     font-weight: $font-r;
-    letter-spacing: 0.06em;
+    letter-spacing: -0.002em;
     line-height: .9;
 	@include max(tablet) {
         font-size: 3rem;
@@ -119,12 +119,11 @@ h2, .h2 { @include h2; }
 
 
 @mixin h3 {
-    font-family: 'Gotham-Book', sans-serif;
-    font-size: 2.2rem;
+    font-family: 'Baskervville', sans-serif;
+    font-size: 3rem;
     font-weight: $font-r;
-    letter-spacing: 0.06em;
-    line-height: 1.45;
-    text-transform: uppercase;
+    letter-spacing: -0.002em;
+    line-height: .95;
 	@include max(tablet) {
         font-size: 2rem;
     }

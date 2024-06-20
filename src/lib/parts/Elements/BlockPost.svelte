@@ -121,8 +121,8 @@
 
 <style lang="scss"> 
     .block_post {
-        border-top: 1px solid;
-        padding: 30px 0;
+        //border-top: 1px solid;
+        //padding: 30px 0;
 
         &:not(.module):nth-child(odd) .half.texts {
             order: -1;

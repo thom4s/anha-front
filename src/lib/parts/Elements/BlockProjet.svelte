@@ -16,10 +16,10 @@
             {/each}
         {/if}
 
-        <h4 class="h4 no-margin fl-vcenter gap-s">
-                {projet.title}
-                <Arrow />
-        </h4>
+        <h3 class="h3 no-margin fl-vcenter gap-s">
+            {projet.title}
+            <Arrow />
+        </h3>
 
         <div class="bloc_metadata fl-justify">
             {#if projet.informationsProjet.meta_date }

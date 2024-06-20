@@ -10,15 +10,15 @@
     padding-right: $space-xl;
     position: relative;
 
-    &:after {
-        content: '';
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: - $space-s;
-        width: 1px;
-        background-color: black;
-    }
+    // &:after {
+    //     content: '';
+    //     position: absolute;
+    //     top: 0;
+    //     bottom: 0;
+    //     right: - $space-s;
+    //     width: 1px;
+    //     background-color: black;
+    // }
 
     &.right {
         padding-left: $space-xl;

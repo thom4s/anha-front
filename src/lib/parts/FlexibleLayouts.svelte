@@ -34,7 +34,7 @@
     <PushProjets titre={layout.titre} pages={layout.projets?.nodes} label={layout.label} link="{layout.link}" />
 
 {:else if layout.__typename === 'ContenusFlexiblesStagedStagesFlexibleContentsPushprojetsLayout'}
-    <div class="snap">
+    <div class="">
         {#each layout.projets?.nodes as projet }
             <BlockProjet {projet} />
         {/each}
@@ -53,7 +53,7 @@
     <Video titre={layout.titre} video={layout.video} plateforme={layout.plateforme}/>
 
 {:else if layout.__typename === `ContenusFlexiblesContenusFlexiblesBlocTitreVisuelTexteLayout` || layout.__typename === `ContenusFlexiblesStagedStagesFlexibleContentsBlocTitreVisuelTexteLayout`} 
-    <BlocTitreVisuelTexte titre={layout.titre} visuel={layout.visuel} texte={layout.texte} />
+    <BlocTitreVisuelTexte titre={layout.titre} visuel={layout.visuel} design={layout.design} texte={layout.texte} />
 
 {:else if layout.__typename === `ContenusFlexiblesStagedStagesFlexibleContentsCollaborateursLayout`} 
     <BlockCollaborateur {layout} />

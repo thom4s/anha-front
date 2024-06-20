@@ -18,9 +18,8 @@
 
                     <div class="m_6column splitLeft {stage.positionsticky}">
 
-                        <div class="sticky fl-center fl-column gap-l">
-                            <div class="h2">Étude de <em>faisabilité</em></div>
-                            <div class="chapo">{@html stage.stickyContent}</div>
+                        <div class="sticky fl-hcenter fl-column gap-l">
+                            <div class="">{@html stage.stickyContent}</div>
                         </div>
 
                     </div>

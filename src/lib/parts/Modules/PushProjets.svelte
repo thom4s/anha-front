@@ -76,6 +76,9 @@
     .swiper-slide {
         &:first-child {
             margin-left: 5vw;
+            @include min(destktop) {
+                margin-left: calc( calc( 100% - 1600px) / 2 );
+            }
         }
     }
     .module_title {

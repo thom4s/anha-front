@@ -215,6 +215,7 @@ export const pushPages_query_string = `
 					title
 					link
 					content
+					excerpt
 					${featuredImage_fields_string}
 				}
 			}
@@ -300,13 +301,14 @@ export const Stagedvideo_query_string = `
 const string_tvt = `
 	__typename
 	titre
+	texte
+	design
 	visuel {
 		node {
 			id
 			sourceUrl
 		}
 	}
-	texte
 `
 
 export const BlocTitreVisuelTexte_query_string = `
