@@ -164,10 +164,6 @@
         }
     }
 
-    .active {
-        font-weight: bold;
-    }
-
     .cta {
         text-transform: uppercase;
     }

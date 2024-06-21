@@ -111,39 +111,6 @@
 
     $: ( { leftCol, rightCol } = page.contenusSavoirFaire)
 
-
-
-
-    // onMount(() => {
-
-    //     const sections = document.querySelectorAll('.left-sections section, .right-sections  section');
-        
-    //     const observer = new IntersectionObserver((entries) => {
-    //         entries.forEach(entry => {
-    //             if (entry.isIntersecting) {
-    
-    //                 // Get next section
-    //                 const id = entry.target.id;
-    //                 const currentSec = document.getElementById(`${id}`);
-    //                 // currentSec.scrollIntoView({ behavior: "smooth", block: "start" })
-    
-    //                 // Scroll to next section
-    //                 window.scrollTo({
-    //                     top: currentSec.offsetTop,
-    //                     behavior: "smooth",
-    //                 });
-    //             }
-    //         });
-    //     }, {
-    //         root: null,
-    //         rootMargin: `0px`,
-    //         threshold: 0.1
-    //     });
-    
-    //     sections.forEach((el) => observer.observe(el));
-
-    // });
-
 </script>
 
 
@@ -152,30 +119,27 @@
     <div class="wrapper" class:overflow={!productionVisible && !designVisible}>
 
         <div class="btn-container">
+
             <button class="btn h1 left" class:active={designVisible} on:click={() => {designVisible = !designVisible}}>
                 <span class="btn_title_clone">{leftCol.titre}</span>
                 <span class="btn_title">{leftCol.titre}</span>
-                {#if rightCol.visuel }
-                    <img src="{leftCol.visuel.node.sourceUrl}" alt="{leftCol.visuel.node.caption}">
-                {/if}
             </button>
+
             <button class="btn h1 right"  class:active={productionVisible} on:click={() => {productionVisible = !productionVisible}}>
                 <span class="btn_title_clone">{rightCol.titre}</span>
                 <span class="btn_title">{rightCol.titre}</span>
-                {#if rightCol.visuel }
-                    <img src="{rightCol.visuel.node.sourceUrl}" alt='{rightCol.visuel.node.caption}'>
-                {/if}
             </button>
+
         </div>
 
 
         <div class="sec-container">
             <div class="left-sections" class:active={productionVisible}>
-                <ExpertiseItem chapo={rightCol.chapo} flexibleContents={rightCol.flexibleContents}/>
+                <ExpertiseItem chapo={rightCol.chapo} visuel={rightCol.visuel} flexibleContents={rightCol.flexibleContents} design="left" />
             </div>
 
             <div class="right-sections" class:active={designVisible}>
-                <ExpertiseItem chapo={leftCol.chapo} flexibleContents={leftCol.flexibleContents}/>
+                <ExpertiseItem chapo={leftCol.chapo} visuel={leftCol.visuel}  flexibleContents={leftCol.flexibleContents} design="right"/>
             </div>
         </div>
 
@@ -202,7 +166,7 @@
     }
         .btn {
             border: none;   
-            background-color: unset;
+            background-color: $light-bg2;
             display: block;
             width: 50%;
             height: 100%;
@@ -211,18 +175,11 @@
             cursor: pointer;
             position: relative; 
 
-            &:first-child {
-                border-right: 0.5px solid $dark-font;
-            }
-            &:last-child {
-                border-left: 0.5px solid $dark-font;
-            }
-
-            &:hover {
-                font-style: italic;
-                img {
-                    opacity: 1;
+            &:not(.active):hover {
+                .btn_title {
+                    font-style: italic;
                 }
+                background-color: $white;
             }
             span {
                 position: relative;
@@ -233,19 +190,19 @@
                 opacity: 0;
                 transition: opacity .3s;
                 position: absolute;
-                top: 160px;
+                top: 105px;
                 text-orientation: sideways;
             }
             &.left .btn_title_clone {
-                left: 20px;
+                left: 0;
                 writing-mode: sideways-lr;
             }
             &.right .btn_title_clone {
-                right: 20px;
+                right: 0;
                 writing-mode: sideways-rl;
             }
             &.active {
-                background-color: $beige_dark;
+                background-color: $white;
                 .btn_title_clone {
                     opacity: 1;
                 }
@@ -281,12 +238,15 @@
             transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
             transform: translateX(0);
             overflow-x: hidden;
+            
         }
         .left-sections {
-            transform: translateX(-100%);
+            transform: translateX(-40vw);
+
+            
         }
         .right-sections {
-            transform: translateX(100%);
+            transform: translateX(40vw);
         }
         .left-sections.active, .right-sections.active {
             transform: translateX(0);

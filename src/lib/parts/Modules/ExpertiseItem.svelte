@@ -4,6 +4,8 @@
     import BlockProjet from "$lib/parts/Elements/BlockProjet.svelte";
 
     export let chapo = '';
+    export let visuel = '';
+    export let design = 'left';
     export let flexibleContents = '';
     export const position = '';
 
@@ -12,20 +14,17 @@
 </script>
 
 
-    <section id="r0" class="fl-column-space fl-center chapo">
-        <span></span>
-        {@html chapo} 
-        <svg width="20" height="61" viewBox="0 0 20 61" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10 0.940002L10 59.3855" stroke="black" stroke-linecap="square"/>
-            <path d="M1 50.94L10 59.94L19 50.94" stroke="black" stroke-linecap="square"/>
-        </svg>    
+    <section id="r0" class="container fl-column-space fl-center">
+
+        <BlocTitreVisuelTexte visuel={visuel} texte={chapo} {design} /> 
+  
     </section>
 
     {#each flexibleContents as layout, i}
         
         {#if layout && layout.__typename }
 
-            <section id="{`r${i+1}`}">
+            <section id="{`r${i+1}`}" class="container">
                 {#if 
                     layout.__typename === 'ContenusSavoirFaireLeftColFlexibleContentsBlocTitreVisuelTexteLayout' 
                     || layout.__typename === 'ContenusSavoirFaireRightColFlexibleContentsBlocTitreVisuelTexteLayout' }
@@ -56,9 +55,9 @@
 <style lang="scss">
 
     section {
-        padding: 60px;
-        min-height: calc(100vh - 120px);
+        &:first-child {
+            min-height: calc(100vh - 120px);
+        }
     }
-
 
 </style>

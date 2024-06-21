@@ -52,6 +52,7 @@
     .media-left {
         display: flex;
         flex-direction: row-reverse;
+        align-items: center;
 
         .module_media {
             width: 50%;
@@ -67,6 +68,7 @@
     .media-right {
         display: flex;
         flex-direction: row;
+        align-items: center;
 
         .module_txt {
             width: 50%;

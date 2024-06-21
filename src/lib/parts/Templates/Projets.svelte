@@ -15,6 +15,10 @@
     const filter = (e) => {
         filters = [e.target.getAttribute('data-term')]
     }
+    const reset = (e) => {
+        filters = [];
+        resizeAllGridItems()
+    }
 
     $: visibleProjets = filters.length > 0 ?
         projets.nodes.filter( project => {
@@ -64,18 +68,18 @@
     
     <div class="grid container">
 
-        <div class="s_3column">
+        <div class="s_12column">
             <div class="filters sticky">
 
                 <div class="filterGroup mb-medium">
-                    <span class="caption filterGroupName">Filtrer par Secteurs</span>
+                    <button on:click={ reset } data-term="" class="caption filterItem" class:active={filters.length === 0}>Tous les secteurs</button>
                     {#each secteurs.nodes as t }
                         <button on:click={ (e) => filter(e) } data-term="{t.name}" class="caption filterItem" class:active={filters.includes(t.name)}>{t.name}</button>
                     {/each}
                 </div>
 
                 <div class="filterGroup">
-                    <span class="caption filterGroupName">Filtrer par Savoir-faire</span>
+                    <button on:click={ reset } data-term="" class="caption filterItem" class:active={filters.length === 0}>Tous les savoir-faire</button>
                     {#each savoirfaires.nodes as t }
                         <button on:click={ (e) => filter(e) } data-term="{t.name}" class="caption filterItem" class:active={filters.includes(t.name)}>{t.name}</button>
                     {/each}
@@ -84,10 +88,14 @@
             </div>
         </div>
 
-        <div class="s_9column ">
+    </div>
+
+    <div class="grid container">
+
+        <div class="s_12column ">
             <div class="masonry grid">
                 {#each visibleProjets as projet }
-                    <div class="grid-item m_3column">
+                    <div class="grid-item s_12column m_4column">
                         <div class="item_container">
                             <BlockProjet {projet}/>
                         </div>
@@ -119,16 +127,16 @@
         position: relative;
         padding-bottom: $space-l;
 
-        &:not(:nth-child(3n))::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            right: - $space-s;
-            height: 100%;
-            width: 1px;
-            background-color: black;
-        }
+        // &:not(:nth-child(3n))::after {
+        //     content: '';
+        //     position: absolute;
+        //     top: 0;
+        //     bottom: 0;
+        //     right: - $space-s;
+        //     height: 100%;
+        //     width: 1px;
+        //     background-color: black;
+        // }
     }
     
     .sticky {
@@ -138,36 +146,27 @@
 
     // PROJECT FILTERS
 
-    .filterGroupName {
-        &:after {
-            content: '>'
-        }
-    }
     .filterItem {
         background: none;
-        border: none;
-        text-align: left;
-        padding: 0;
-        
-        &:before {
-            content: '';
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            border: 1px solid;
-            margin-right: 10px;
-            transition: background-color .3s;
-        }
+        border: 1px solid $black;
+        padding: .5em 1em;
+        border-radius: 16px;
+        cursor: pointer;
+        transition: background-color .3s;
 
-        &.active:before {
+        &:hover {
+            background-color: $black;
+            color: white;
+        }
+        &.active {
             background-color: black;
+            color: white;
         }
     }
 
     .filterGroup {
         display: flex;
-        flex-direction: column;
+        justify-content: center;
         gap: 10px;
 
         span {
