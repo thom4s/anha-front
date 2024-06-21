@@ -107,7 +107,7 @@
 
     export let page = {};
 
-    $: console.log(page )
+    $: console.log('page', page )
 
     $: ( { leftCol, rightCol } = page.contenusSavoirFaire)
 
@@ -135,11 +135,11 @@
 
         <div class="sec-container">
             <div class="left-sections" class:active={productionVisible}>
-                <ExpertiseItem chapo={rightCol.chapo} visuel={rightCol.visuel} flexibleContents={rightCol.flexibleContents} design="left" />
+                <ExpertiseItem chapo={rightCol.chapo} visuel={rightCol.visuel} flexibleContents={rightCol.contenusFlexibles} design="left" />
             </div>
 
             <div class="right-sections" class:active={designVisible}>
-                <ExpertiseItem chapo={leftCol.chapo} visuel={leftCol.visuel}  flexibleContents={leftCol.flexibleContents} design="right"/>
+                <ExpertiseItem chapo={leftCol.chapo} visuel={leftCol.visuel}  flexibleContents={leftCol.contenusFlexibles} design="right"/>
             </div>
         </div>
 

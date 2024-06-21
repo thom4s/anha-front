@@ -409,7 +409,7 @@ export const stagedContents_query_string = `
 export const groupeBlocTitreVisuel_query_string = `
 	__typename
 		texte
-		titre
+
 		visuel {
 			node {
 				sourceUrl
@@ -446,12 +446,12 @@ export const savoirfaire_query_string = `
 					sourceUrl
 				}
 			}
-			flexibleContents {
+			contenusFlexibles {
 				__typename
-				... on ContenusSavoirFaireLeftColFlexibleContentsBlocTitreVisuelTexteLayout {
-					${groupeBlocTitreVisuel_query_string}
+				... on ContenusSavoirFaireLeftColContenusFlexiblesBlocTitreVisuelTexteLayout {
+					${string_tvt}
 				}
-				... on ContenusSavoirFaireLeftColFlexibleContentsPushprojetsLayout {
+				... on ContenusSavoirFaireLeftColContenusFlexiblesPushprojetsLayout {
 					${groupeBlocsProjets_query_string}
 				}
 			}
@@ -466,12 +466,12 @@ export const savoirfaire_query_string = `
 					sourceUrl
 				}
 			}
-			flexibleContents {
+			contenusFlexibles {
 				__typename
-				... on ContenusSavoirFaireRightColFlexibleContentsBlocTitreVisuelTexteLayout {
+				... on ContenusSavoirFaireRightColContenusFlexiblesBlocTitreVisuelTexteLayout {
 					${groupeBlocTitreVisuel_query_string}
 				}
-				... on ContenusSavoirFaireRightColFlexibleContentsPushprojetsLayout {
+				... on ContenusSavoirFaireRightColContenusFlexiblesPushprojetsLayout {
 					${groupeBlocsProjets_query_string}
 				}
 			}

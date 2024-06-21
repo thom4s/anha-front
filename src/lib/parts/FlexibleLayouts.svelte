@@ -33,7 +33,9 @@
     layout.__typename === 'ContenusFlexiblesContenusFlexiblesPushprojetsLayout' }
     <PushProjets titre={layout.titre} pages={layout.projets?.nodes} label={layout.label} link="{layout.link}" />
 
-{:else if layout.__typename === 'ContenusFlexiblesStagedStagesFlexibleContentsPushprojetsLayout'}
+{:else if 
+    layout.__typename === 'ContenusFlexiblesStagedStagesContenusFlexiblesPushprojetsLayout' || 
+    layout.__typename === `ContenusSavoirFaireLeftColContenusFlexiblesPushprojetsLayout` }
     <div class="">
         {#each layout.projets?.nodes as projet }
             <BlockProjet {projet} />
@@ -43,17 +45,25 @@
 {:else if layout.__typename === 'ContenusFlexiblesContenusFlexiblesReferencesLayout'}
     <References titre={layout.titre} ligneLogos={layout.ligneLogos} />
 
+
 {:else if layout.__typename === 'ContenusFlexiblesContenusFlexiblesRichtextLayout'}
     <RichText titre={layout.titre} contentOne={layout.contentOne} contentTwo={layout.contentTwo} />
+
 
 {:else if layout.__typename === 'ContenusFlexiblesContenusFlexiblesTabExpertiseLayout'}
     <TabExpertise titre={layout.titre} contenus={layout.contenus} />
 
+
 {:else if layout.__typename === 'ContenusFlexiblesContenusFlexiblesVideoLayout'}
     <Video titre={layout.titre} video={layout.video} plateforme={layout.plateforme}/>
 
-{:else if layout.__typename === `ContenusFlexiblesContenusFlexiblesBlocTitreVisuelTexteLayout` || layout.__typename === `ContenusFlexiblesStagedStagesContenusFlexiblesBlocTitreVisuelTexteLayout`} 
+
+{:else if 
+    layout.__typename === `ContenusFlexiblesContenusFlexiblesBlocTitreVisuelTexteLayout` || 
+    layout.__typename === `ContenusFlexiblesStagedStagesContenusFlexiblesBlocTitreVisuelTexteLayout` || 
+    layout.__typename === `ContenusSavoirFaireLeftColContenusFlexiblesBlocTitreVisuelTexteLayout` } 
     <BlocTitreVisuelTexte visuel={layout.visuel} ratio={layout.img_ratio} design={layout.design} texte={layout.texte} />
+
 
 {:else if layout.__typename === `ContenusFlexiblesStagedStagesContenusFlexiblesCollaborateursLayout`} 
     <BlockCollaborateur {layout} />

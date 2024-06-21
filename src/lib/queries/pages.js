@@ -124,6 +124,8 @@ export async function getPageBySlug( uri = '', savoirfaire = false ) {
         }`
     }
 
+    //console.log(query)
+
     const page = await fetch(PUBLIC_API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

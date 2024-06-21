@@ -27,11 +27,6 @@ $: console.log('layout: ', layout)
 
 
 <style lang="scss">
-    .module {
-        margin: 40px 0;
-        padding: 0 $gutter;
-    }
-
     .item {
         border-top: 1px solid;
         padding: $space-m 0;
