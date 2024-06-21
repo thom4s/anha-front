@@ -164,8 +164,8 @@ MEDIA
 }
 
 .mod_tvt_txts {
-    max-width: $max-width / 2;
-    padding: $gutter * 4;
+    max-width: calc($max-width / 2);
+    padding: $gutter * 2;
 
     a {
         @extend .link;

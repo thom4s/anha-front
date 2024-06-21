@@ -26,7 +26,7 @@
 
                     <div class="m_6column stage_right stage_contents">
 
-                        {#each stage.flexibleContents as layout}
+                        {#each stage.contenusFlexibles as layout}
                             {#if layout && layout.__typename }
 
                                 <FlexibleLayouts {layout} />
@@ -65,6 +65,6 @@
     }
     .stage_txt {
         max-width: calc($max-width / 2);
-        padding: $gutter * 4;
+        padding: $gutter * 2;
     }
 </style>

@@ -40,7 +40,7 @@ img {
     aspect-ratio: 5/4;
 }
 .bloc_texts {
-    max-width: $max-width / 2;
+    max-width: calc($max-width / 2);
     padding: $gutter * 4;
 }
 </style>

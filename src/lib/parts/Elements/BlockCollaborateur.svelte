@@ -3,17 +3,21 @@ export let layout = {}
 $: console.log('layout: ', layout)
 </script>
 
-<div class="module collaborateurs" data-module="collaborateurs">
-    {#each layout.collaborateurs as collab}
-        <div class="item">
-            <div>
-                <img src="{collab.photo?.node.sourceUrl}" alt="" />
+<div class="module mod_collaborateurs">
+    {#each layout.collaborateur as collab}
+        <div class="item grid">
+            <div class="mod_media s_1column">
+                <div class="square">
+                    <div class="inner">
+                        <img src="{collab.photo?.node.sourceUrl}" alt="" />
+                    </div>
+                </div>
             </div>
-            <div>
+            <div class="mod_title s_2column">
                 <p class="no-margin">{collab.name}</p>
                 <p class="no-margin caption">{collab.job}</p>
             </div>
-            <div>
+            <div class="mod_details s_3column">
                 {@html collab.details}
             </div>
 
@@ -25,13 +29,17 @@ $: console.log('layout: ', layout)
 <style lang="scss">
     .module {
         margin: 40px 0;
-        height: 100vh;
+        padding: 0 $gutter;
     }
 
     .item {
         border-top: 1px solid;
         padding: $space-m 0;
-        display: flex;
-        gap: $gutter;
+    }
+    .mod_media {
+        img {
+            border-radius: 50%;
+            overflow: hidden;
+        }
     }
 </style>

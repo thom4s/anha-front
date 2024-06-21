@@ -1,5 +1,4 @@
 <script>
-    export let titre = '';
     export let visuel = '';
     export let texte = '';
     export let design = 'full';
@@ -9,19 +8,15 @@
 
 <div class="module mod_tvt fl-column media-{design}" data-ratio="{ratio}">
 
-    <div class="wrapper_txt">
-        <div class="mod_tvt_txts">
-            {#if titre !== null }
-                <h2 class="h2 mb-medium">{@html titre}</h2>
-            {/if}
-                
-            {#if texte !== null }
+    {#if texte !== null }
+        <div class="wrapper_txt">
+            <div class="mod_tvt_txts">
                 <div class="body">
                     {@html texte}
                 </div>
-            {/if}
+            </div>
         </div>
-    </div>
+    {/if}
 
     <div class="wrapper_media">
         <div class="mod_media">
@@ -56,7 +51,7 @@
             width: 50%;
             flex: 0 0 50%;
         }
-        
+
         .wrapper_media {
             width: 50%;
             flex: 0 0 50%;

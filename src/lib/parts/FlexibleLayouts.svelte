@@ -52,10 +52,10 @@
 {:else if layout.__typename === 'ContenusFlexiblesContenusFlexiblesVideoLayout'}
     <Video titre={layout.titre} video={layout.video} plateforme={layout.plateforme}/>
 
-{:else if layout.__typename === `ContenusFlexiblesContenusFlexiblesBlocTitreVisuelTexteLayout` || layout.__typename === `ContenusFlexiblesStagedStagesFlexibleContentsBlocTitreVisuelTexteLayout`} 
-    <BlocTitreVisuelTexte titre={layout.titre} visuel={layout.visuel} ratio={layout.img_ratio} design={layout.design} texte={layout.texte} />
+{:else if layout.__typename === `ContenusFlexiblesContenusFlexiblesBlocTitreVisuelTexteLayout` || layout.__typename === `ContenusFlexiblesStagedStagesContenusFlexiblesBlocTitreVisuelTexteLayout`} 
+    <BlocTitreVisuelTexte visuel={layout.visuel} ratio={layout.img_ratio} design={layout.design} texte={layout.texte} />
 
-{:else if layout.__typename === `ContenusFlexiblesStagedStagesFlexibleContentsCollaborateursLayout`} 
+{:else if layout.__typename === `ContenusFlexiblesStagedStagesContenusFlexiblesCollaborateursLayout`} 
     <BlockCollaborateur {layout} />
 
 

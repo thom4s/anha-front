@@ -269,7 +269,7 @@ export const PushProjets_query_string = `
 	}
 `
 export const StagedPushProjets_query_string = `
-	... on ContenusFlexiblesStagedStagesFlexibleContentsPushprojetsLayout {
+	... on ContenusFlexiblesStagedStagesContenusFlexiblesPushprojetsLayout {
 		${string_projets}
 	}
 `
@@ -290,7 +290,7 @@ export const video_query_string = `
 	}
 `
 export const Stagedvideo_query_string = `
-	... on ContenusFlexiblesStagedStagesFlexibleContentsVideoLayout {
+	... on ContenusFlexiblesStagedStagesContenusFlexiblesVideoLayout {
 		${string_vid}
 	}
 `
@@ -300,7 +300,6 @@ export const Stagedvideo_query_string = `
 
 const string_tvt = `
 	__typename
-	titre
 	texte
 	design
 	img_ratio
@@ -318,7 +317,7 @@ export const BlocTitreVisuelTexte_query_string = `
 	}
 `
 export const StagedBlocTitreVisuelTexte_query_string = `
-	... on ContenusFlexiblesStagedStagesFlexibleContentsBlocTitreVisuelTexteLayout {
+	... on ContenusFlexiblesStagedStagesContenusFlexiblesBlocTitreVisuelTexteLayout {
 		${string_tvt}
 	}
 `
@@ -329,7 +328,7 @@ export const StagedBlocTitreVisuelTexte_query_string = `
 
 const string_collabs = `
 	__typename
-	collaborateurs {
+	collaborateur {
 		job
 		name
 		details
@@ -342,7 +341,7 @@ const string_collabs = `
 `
 
 export const StagedCollaborateurs_query_string = `
-	... on ContenusFlexiblesStagedStagesFlexibleContentsCollaborateursLayout {
+	... on ContenusFlexiblesStagedStagesContenusFlexiblesCollaborateursLayout {
 		${string_collabs}
 	}
 `
@@ -389,7 +388,7 @@ export const stagedContents_query_string = `
 		stages {
 			stickyContent
 			positionsticky
-			flexibleContents {
+			contenusFlexibles {
 				${StagedBlocTitreVisuelTexte_query_string}
 				${StagedPushProjets_query_string}
 				${StagedCollaborateurs_query_string}
