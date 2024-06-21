@@ -6,7 +6,7 @@
 
 
 
-<article class="container">
+<article class="">
 
     <h1 class="visualy-hidden">{page.title}</h1>
 
@@ -16,15 +16,15 @@
 
                 <div class="grid stage">
 
-                    <div class="m_6column stage_left splitLeft {stage.positionsticky}">
+                    <div class="m_6column stage_left stage_sticky {stage.positionsticky}">
 
                         <div class="sticky fl-hcenter fl-column gap-l">
-                            <div class="">{@html stage.stickyContent}</div>
+                            <div class="stage_txt">{@html stage.stickyContent}</div>
                         </div>
 
                     </div>
 
-                    <div class="m_6column stage_right splitRight-marged">
+                    <div class="m_6column stage_right stage_contents">
 
                         {#each stage.flexibleContents as layout}
                             {#if layout && layout.__typename }
@@ -62,5 +62,9 @@
                 justify-content: flex-start;
             }
         }
+    }
+    .stage_txt {
+        max-width: calc($max-width / 2);
+        padding: $gutter * 4;
     }
 </style>

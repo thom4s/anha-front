@@ -303,6 +303,7 @@ const string_tvt = `
 	titre
 	texte
 	design
+	img_ratio
 	visuel {
 		node {
 			id

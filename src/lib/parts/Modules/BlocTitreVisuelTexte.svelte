@@ -3,27 +3,30 @@
     export let visuel = '';
     export let texte = '';
     export let design = 'full';
+    export let ratio = 'full';
 
 </script>
 
-<div class="module fl-column media-{design}" data-module="media">
+<div class="module mod_tvt fl-column media-{design}" data-ratio="{ratio}">
 
-    {#if titre !== null && texte !== null }
-        <div class="module_txt">
+    <div class="wrapper_txt">
+        <div class="mod_tvt_txts">
             {#if titre !== null }
                 <h2 class="h2 mb-medium">{@html titre}</h2>
             {/if}
-            
+                
             {#if texte !== null }
                 <div class="body">
                     {@html texte}
                 </div>
             {/if}
         </div>
-    {/if}
+    </div>
 
-    <div class="module_media">
-        <img src="{visuel?.node?.sourceUrl}">
+    <div class="wrapper_media">
+        <div class="mod_media">
+            <img src="{visuel?.node?.sourceUrl}">
+        </div>
     </div>
 
 </div>
@@ -35,18 +38,13 @@
         margin-bottom: $space-xxl * 2;
     }
     .media-full {
-
-        .module_txt {
-            padding-bottom: $space-l;
-        }
-
         img {
-            width: calc(100% + 5vw);
-            max-width: none;
+            width: 100%;
+            max-height: 95vh;
         }
 
-        @include min(desktop) {
-            
+        .wrapper_txt {
+            padding-bottom: $space-l;
         }
     }
     .media-left {
@@ -54,15 +52,14 @@
         flex-direction: row-reverse;
         align-items: center;
 
-        .module_media {
+        .wrapper_txt {
             width: 50%;
             flex: 0 0 50%;
         }
-        .module_txt {
-            padding-left: $space-l;
-        }
-        @include min(desktop) {
-            
+        
+        .wrapper_media {
+            width: 50%;
+            flex: 0 0 50%;
         }
     }
     .media-right {
@@ -70,18 +67,10 @@
         flex-direction: row;
         align-items: center;
 
-        .module_txt {
+        .wrapper_txt {
             width: 50%;
             flex: 0 0 50%;
-            padding-right: $space-l;
-        }
-        img {
-            width: calc(100% + 5vw);
-            max-width: none;
-        }
-
-        @include min(desktop) {
-            
         }
     }
+
 </style>

@@ -143,3 +143,31 @@ Form
         gap: $space-s;
     }
 }
+
+
+/*--------------------------------------------------------------
+MEDIA
+--------------------------------------------------------------*/
+
+[data-ratio="verticale"] {
+    img {
+        width: 100%;
+        aspect-ratio: 4/5;
+    }
+}
+
+[data-ratio="horizontale"] {
+    img {
+        width: 100%;
+        aspect-ratio: 5/4;
+    }
+}
+
+.mod_tvt_txts {
+    max-width: $max-width / 2;
+    padding: $gutter * 4;
+
+    a {
+        @extend .link;
+    }
+}

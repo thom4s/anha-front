@@ -9,17 +9,12 @@
     <div class="fl-vcenter gap-m grid">
 
         <div class="m_6column">
-
             <div class="bloc_media">
                 <img src="{post.featuredImage?.node?.sourceUrl}" alt="">
             </div>
-
-            
         </div>
 
-        <div class="m_1column"></div>
-
-        <div class="m_5column">
+        <div class="m_6column">
             <div class="bloc_texts">
                 
                 <div class="fl-column-space gap-m">  
@@ -43,5 +38,9 @@
 
 img {
     aspect-ratio: 5/4;
+}
+.bloc_texts {
+    max-width: $max-width / 2;
+    padding: $gutter * 4;
 }
 </style>

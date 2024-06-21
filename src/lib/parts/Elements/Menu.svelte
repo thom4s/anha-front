@@ -37,7 +37,11 @@ ul {
 
     a {
         padding: $space-xs;
-        display: inline-block;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+
         &::after {
                 content: attr(data-text);
                 content: attr(data-text) / "";
@@ -48,6 +52,7 @@ ul {
                 pointer-events: none;
                 font-weight: 900;
         }
+        
         &:hover {
             font-weight: 900;
         }

@@ -4,7 +4,7 @@
     export let pages = [];
 </script>
 
-<section class="module container">
+<section class="module mod_pushpages">
 
     {#if pages && pages.length > 0}
         {#each pages as post }
