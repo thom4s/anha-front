@@ -15,74 +15,79 @@
         page: Promise<void>;
     }
     $: ({page, prevPage, nextPage} = data)
+
+    $: console.log( page.informationsProjet.visuels )
 </script>
 
 
-<div class="mb-xxlarge ">
+<article class="template mb-xxlarge" dtaa-template="projet">
 
-    <div class="container ">
+    <div class="">
         {#if page}
 
             <article class="grid" data-id="{page.id}" data-dbid={page.databaseId}>
 
                 <div class="m_6column project_texts">
 
-                    <div class="sticky">
+                    <div class="texts_inner">
 
-                        <div class="project_action">
-                            <a href="/fr/projets" class="link">Retour à la liste des projets</a>
-                        </div>
+                        <div class="sticky">
 
-                        <div class="project_title">
-                            <h1 class="h2">{page.title}</h1>
-                        </div>
+                            <div class="project_action">
+                                <a href="/fr/projets" class="link">Retour à la liste des projets</a>
+                            </div>
 
-                        <div class="project_metadata">
+                            <div class="project_title">
+                                <h1 class="h2">{page.title}</h1>
+                            </div>
 
-                            <p>
-                                <span>Date</span>
-                                <span class="caption">{@html page.informationsProjet.meta_date}</span>
-                            </p>
+                            <div class="project_metadata">
 
-                            {#if page.informationsProjet.tax_secteur}
-                                {#each page.informationsProjet.tax_secteur.nodes as node}
-                                    <p>
-                                        <span>Secteur</span>
-                                        <span class="caption">{node.name}</span>
-                                    </p>
-                                {/each}
-                            {/if}
-                            
-                            {#if page.informationsProjet.tax_savoirfaire}
-                                {#each page.informationsProjet.tax_savoirfaire.nodes as node}
-                                    <p>
-                                        <span>Savoir Faire</span>
-                                        <span class="caption">{node.name}</span>
-                                    </p>
-                                {/each}
-                            {/if}
+                                <p>
+                                    <span>Date</span>
+                                    <span class="caption">{@html page.informationsProjet.meta_date}</span>
+                                </p>
 
-                            {#if page.informationsProjet.tax_materiau}
-                                {#each page.informationsProjet.tax_materiau.nodes as node}
-                                    <p>
-                                        <span>Materiaux</span>
-                                        <span class="caption">{node.name}</span>
-                                    </p>
-                                {/each}
-                            {/if}
-                        </div>
+                                {#if page.informationsProjet.tax_secteur}
+                                    {#each page.informationsProjet.tax_secteur.nodes as node}
+                                        <p>
+                                            <span>Secteur</span>
+                                            <span class="caption">{node.name}</span>
+                                        </p>
+                                    {/each}
+                                {/if}
+                                
+                                {#if page.informationsProjet.tax_savoirfaire}
+                                    {#each page.informationsProjet.tax_savoirfaire.nodes as node}
+                                        <p>
+                                            <span>Savoir Faire</span>
+                                            <span class="caption">{node.name}</span>
+                                        </p>
+                                    {/each}
+                                {/if}
 
-                        <div class="project_content">
-                            {@html page.content}
-                        </div>
+                                {#if page.informationsProjet.tax_materiau}
+                                    {#each page.informationsProjet.tax_materiau.nodes as node}
+                                        <p>
+                                            <span>Materiaux</span>
+                                            <span class="caption">{node.name}</span>
+                                        </p>
+                                    {/each}
+                                {/if}
+                            </div>
 
-                        <div class="project_navigation fl-justify">
-                            {#if prevPage }
-                                <a href="{prevPage.node.uri}" class="h4 fl-vcenter gap-xs"><Arrow left={true} /> {prevPage.node.title}</a>
-                            {/if}
-                            {#if nextPage }
-                                <a href="{nextPage.node.uri}" class="h4 fl-vcenter gap-xs">{nextPage.node.title} <Arrow /> </a>
-                            {/if}
+                            <div class="project_content">
+                                {@html page.content}
+                            </div>
+
+                            <div class="project_navigation fl-justify">
+                                {#if prevPage }
+                                    <a href="{prevPage.node.uri}" class="h4 fl-vcenter gap-xs"><Arrow left={true} /> {prevPage.node.title}</a>
+                                {/if}
+                                {#if nextPage }
+                                    <a href="{nextPage.node.uri}" class="h4 fl-vcenter gap-xs">{nextPage.node.title} <Arrow /> </a>
+                                {/if}
+                            </div>
                         </div>
 
                     </div>
@@ -91,10 +96,14 @@
 
                 <div class="m_6column project_medias">
 
-                        {#if page.informationsProjet.gallery}
-                            {#each page.informationsProjet.gallery.nodes as node}
-                                <div class="projet_media_item">
-                                    <img src="{node.sourceUrl}" alt="{node.caption}">
+                        {#if page.informationsProjet.visuels}
+                            {#each page.informationsProjet.visuels as v}
+                                
+                                <div class="projet_media_item" data-design="{v.design}" data-ratio="{v.ratio}">
+
+                                    {#each v.visuel.nodes as node}
+                                        <img src="{node.sourceUrl}" alt="{node.caption}">
+                                    {/each}
                                 </div>
                             {/each}
                         {/if}
@@ -107,35 +116,30 @@
             <NotFound />
 
         {/if}
-
         
     </div>
 
-</div>
+</article>
 
 
 <style lang="scss">
 
     .project_texts {
         padding-right: $space-xl;
+        padding-left: $space-xl;
         padding-top: $space-xl;
         position: relative;
+        display: flex;
+        justify-content: flex-end;
 
-        &:after {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            right: - $space-s;
-            width: 1px;
-            background-color: black;
+        .texts_inner {
+            max-width: 730px;
         }
     }
     .project_medias {
         margin-left: - $space-s;
     }
     .sticky {
-        position: sticky;
         top: 100px;
     }
 
@@ -159,10 +163,26 @@
     }
 
     .projet_media_item {
-        height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 20px;
+        margin-bottom: $space-xl;
+    }
+    [data-design="couple"] {
+        gap: $space-l;
+        height: 75vh;
+        
+        img:first-child {
+            align-self: flex-start;
+        }
+        img:last-child {
+            align-self: flex-end;
+        }
+    }
+    [data-design="left"] {
+        padding-right: $space-xl;    
+    }
+    [data-design="right"] {
+        padding-left: $space-xl;    
     }
 </style>

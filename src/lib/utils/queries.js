@@ -91,11 +91,14 @@ export const taxonomies_fields_string = `
                 name
             }
         }
-		gallery {
-			nodes {
-				sourceUrl
-				srcSet
-				title
+		visuels {
+			design
+			ratio
+			visuel {
+				nodes {
+					sourceUrl
+					sizes
+				}
 			}
 		}
 	}
