@@ -1,6 +1,7 @@
 <script lang="ts">
     import BlockProjet from "$lib/parts/Elements/BlockProjet.svelte";
 	import PushContact from "$lib/parts/Modules/PushContact.svelte";
+    import Filters from '$lib/parts/Svgs/Filters.svelte';
 
     import { onMount } from "svelte";
 	import { fade } from 'svelte/transition';
@@ -10,11 +11,25 @@
     export let savoirfaires = [];
     export let secteurs = [];
 
+    
+    // MENU MOBILE
+
+    let menuIsVisible = false;
+
+    const handleMobileMenu = () => {
+        console.log('handleMobileMenu')
+        menuIsVisible = !menuIsVisible;
+    }
+
+    // FILTERS
+
     let filters = [];
 
     const filter = (e) => {
         loading = true;
         filters = [e.target.getAttribute('data-term')];
+        menuIsVisible = false;
+
         setTimeout( () => {
             resizeAllGridItems()
             loading = false;
@@ -23,6 +38,7 @@
     const reset = (e) => {
         filters = [];
         resizeAllGridItems()
+        menuIsVisible = false
     }
 
     $: visibleProjets = filters.length > 0 ?
@@ -70,9 +86,24 @@
     <!-- <div>{@html page.content}</div> -->
 
     
-    <div class="grid container">
+    <div class="grid container filtersContainer">
 
-        <div class="s_12column">
+        <div class="btn_outer s_12column">
+            <button class="btn_clean fl-vcenter gap-s" on:click={ () => menuIsVisible = true }>
+                <span class="icon"><Filters /></span>
+                <span class="caption">Afficher les filtres</span>
+            </button>
+        </div>
+
+        <div class="menusContainer s_12column" class:menuIsVisible>
+
+            <div class="btn_outer">
+                <button class="btn_clean fl-vcenter gap-s" on:click={ () => menuIsVisible = false }>
+                    <span class="icon"><Filters /></span>
+                    <span class="caption">Masquer les filtres</span>
+                </button>
+            </div>
+
             <div class="filters sticky">
 
                 <div class="filterGroup mb-medium">
@@ -119,7 +150,12 @@
 <style lang="scss">
 
     .container {
-        margin-top: $space-xxl;
+        @include min(tablet) {
+            margin-top: $space-xxl;
+        }
+        @include max(tablet) {
+            margin-top: $space-m;
+        }
     }
 
     .masonry {
@@ -145,6 +181,24 @@
 
     // PROJECT FILTERS
 
+    .filtersContainer {
+        @include max(tablet) {
+            border-bottom: 1px solid black;
+        }
+    }
+    .menusContainer {
+
+        @include max(tablet) {
+            right: auto;
+            left: 0;
+            transform: translateX(-110vw);
+            padding: $space-m;
+
+            &.menuIsVisible {
+                transform: translateX(0);
+            }
+        }
+    }
     .filterItem {
         background: none;
         border: 1px solid $black;
@@ -168,9 +222,32 @@
         justify-content: center;
         gap: 10px;
 
+        @include max(tablet) {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
         span {
             cursor: pointer;
         }
+    }
 
+    .btn_outer {
+        @include max(tablet) {
+            width: 100%;
+            margin-bottom: $space-m;
+            & > * {
+                flex: 0 0 auto;
+            }
+        }
+        @include min(tablet) {
+            display: none;
+        }
+
+    }
+    .icon {
+        flex: 0 0 32px;
+        width: 32px;
+        height: 32px;
     }
 </style>
