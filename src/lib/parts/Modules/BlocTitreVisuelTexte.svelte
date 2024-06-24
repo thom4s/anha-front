@@ -29,9 +29,14 @@
 <style lang="scss">
     .module {
         justify-content: space-between;
-        margin-bottom: $space-xxl * 2;
         width: 100%;
 
+        @include min(tablet) {
+            margin-bottom: $space-xxl * 2;
+        }
+        @include max(tablet) {
+            margin-bottom: $space-xl * 2;
+        }
         img {
             width: 100%;
         }
@@ -43,38 +48,58 @@
         }
 
         .wrapper_txt {
-            padding-bottom: $space-xl;
+            @include min(tablet) {
+                padding-bottom: $space-xl;
+            }
+            @include max(tablet) {
+                padding-bottom: $space-m;
+            }
+            
         }
     }
     .media-left {
         display: flex;
-        flex-direction: row-reverse;
-        align-items: center;
 
-        .wrapper_txt {
-            width: 50%;
-            flex: 0 0 50%;
+        @include max(tablet) {
+            flex-direction: column;
         }
+        @include min(tablet) {
+            flex-direction: row-reverse;
+            align-items: center;
 
-        .wrapper_media {
-            width: 50%;
-            flex: 0 0 50%;
+            .wrapper_txt {
+                width: 50%;
+                flex: 0 0 50%;
+            }
+
+            .wrapper_media {
+                width: 50%;
+                flex: 0 0 50%;
+            }
         }
     }
 
     .media-right {
         display: flex;
         flex-direction: row;
-        align-items: center;
 
-        .wrapper_txt {
-            width: 50%;
-            flex: 0 0 50%;
+        @include max(tablet) {
+            flex-direction: column;
         }
-        .wrapper_media {
-            width: 50%;
-            flex: 0 0 50%;
+        @include min(tablet) {
+            flex-direction: row;
+            align-items: center;
+
+            .wrapper_txt {
+                width: 50%;
+                flex: 0 0 50%;
+            }
+            .wrapper_media {
+                width: 50%;
+                flex: 0 0 50%;
+            }
         }
+
     }
 
 </style>

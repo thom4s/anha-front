@@ -16,7 +16,7 @@
 
                 <div class="grid stage" class:inversed={stage.positionsticky == 'right' } >
 
-                    <div class="m_6column stage_left stage_sticky">
+                    <div class="s_12column m_6column stage_left stage_sticky">
 
                         <div class="sticky fl-hcenter fl-column gap-l">
                             <div class="stage_txt">{@html stage.stickyContent}</div>
@@ -24,7 +24,7 @@
 
                     </div>
 
-                    <div class="m_6column stage_right stage_contents">
+                    <div class="s_12column m_6column stage_right stage_contents">
 
                         {#each stage.contenusFlexibles as layout}
                             {#if layout && layout.__typename }
@@ -50,14 +50,24 @@
     .sticky {
         position: sticky;
         top: 0;
-        height: 100vh;
+
+        @include min(tablet) {
+            height: 100vh;
+        }
     }
     .inversed {
         & > :first-child {
-            order: 2;
+            @include min(tablet) {
+                order: 2;
+            }
         }
         :global(.mod_collaborateurs) {
-            padding-left: $gutter * 2;
+            @include max(tablet) {
+                padding-left: $gutter;
+            }
+            @include min(tablet) {
+                padding-left: $gutter * 2;
+            }
         }
     }
     .stage {
@@ -70,6 +80,19 @@
     }
     .stage_txt {
         max-width: calc($max-width / 2);
-        padding: 0 $gutter * 2;
+        
+        @include max(tablet) {
+            padding: $space-xl $gutter 0;
+        }
+        @include min(tablet) {
+            padding: 0 $gutter * 2;
+        }
+
+    }
+
+    :global(.stage_txt h1) {
+        @include max(tablet) {
+            margin-bottom: $space-m;
+        }
     }
 </style>

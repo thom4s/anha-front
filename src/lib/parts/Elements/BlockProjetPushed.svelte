@@ -10,7 +10,7 @@
 
 
 <article class="block block_projet" transition:fade={{ duration: 200 }}>
-    <a class="fl-justify gap-m" href="{projet.uri}">
+    <a class="fl-justify gap-m block_link" href="{projet.uri}">
 
         <div class="block_txt fl-column-space">
             {#if projet.informationsProjet?.tax_client }
@@ -19,7 +19,7 @@
                 {/each}
             {/if}
 
-            <h3 class="h3 no-margin fl-vcenter gap-s">
+            <h3 class="block_title h3 no-margin fl-vcenter gap-s">
                 {projet.title}
                 <Arrow />
             </h3>
@@ -63,19 +63,35 @@
     .block_projet {
         border-top: 1px solid black;
         padding-top: $space-s;
+
+    }
+    .block_link {
+        @include max(tablet) {
+            flex-direction: column;
+            gap: $space-xs;
+        }
     }
     .block_txt {
-        flex: 0 0 78%;
+        @include min(tablet) {
+            flex: 0 0 78%;
+        }
     }
     .block_media {
-        flex: 0 0 20%;
+        @include min(tablet) {
+            flex: 0 0 20%;
+        }
         img {
             aspect-ratio: 5/4;
             width: 100%;
         }
     }
+    .block_title {
+        @include max(tablet) {
+            padding: $space-s 0;
+        } 
+    }
 
-    a {
+    .block_link {
         text-decoration: none;
         color: inherit;
     }

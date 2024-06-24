@@ -166,11 +166,20 @@ MEDIA
 .mod_tvt_txts {
     max-width: calc($max-width / 2);
 
+    @include max(tablet) {
+        padding-top: $space-m;
+        padding-bottom: $space-m;
+    }
+
     .media-left & {
-        padding-left: 60px;
+        padding-left: $space-l;
+        padding-right: $space-m;
     }
     .media-right & {
-        padding-right: 60px;
+        padding-right: $space-l;
+    }
+    .media-full & {
+        padding-left: $space-l;
     }
     a {
         @extend .link;
@@ -178,13 +187,29 @@ MEDIA
 }
 .sec-container {
     .media-left .mod_tvt_txts {
-        padding-left: 120px;
+        padding-right: $space-m;
+        @include min(bigtablet) {
+            padding-left: 120px;
+        }
+        @include max(bigtablet) {
+            padding-left: $space-m;
+        }
     }
     .media-right .mod_tvt_txts {
-        padding-left: 120px;
+        @include min(bigtablet) {
+            padding-left: 120px;
+        }
+        @include max(bigtablet) {
+            padding-left: $space-m;
+        }
     }
     .media-full .mod_tvt_txts {
-        padding: 0 120px;
+        @include min(bigtablet) {
+            padding: 0 $space-l * 2;
+        }
+        @include max(bigtablet) {
+            padding: 0 $space-m;
+        }
     }
 }
 

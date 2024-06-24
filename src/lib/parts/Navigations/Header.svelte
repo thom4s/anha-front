@@ -176,7 +176,7 @@
             display:  none;
         }
         @include max(bigtablet) {
-            padding: $space-m $space-m;
+            padding: $space-m $space-m $space-s;
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;

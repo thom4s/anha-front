@@ -2,7 +2,7 @@
     import { onMount } from "svelte";
     import ExpertiseItem from '$lib/parts/Modules/ExpertiseItem.svelte';
     import PushContact from '../Modules/PushContact.svelte';
-    
+    import Close from '$lib/parts/Svgs/Close.svelte';
 
 
     // import { gsap } from "gsap";
@@ -141,10 +141,24 @@
 
         <div class="sec-container">
             <div class="left-sections" bind:this={leftColContainer} class:active={productionVisible}>
+                <button on:click={ () => productionVisible = false } 
+                    class="btn_clean menus_close_btn">
+                    <Close />
+                </button>
+                <div class="btn_title_mobile fl-column">
+                    <span class="caption ">{rightCol.titre}</span>
+                </div>
                 <ExpertiseItem chapo={rightCol.chapo} visuel={rightCol.visuel} flexibleContents={rightCol.contenusFlexibles} design="left" />
             </div>
 
             <div class="right-sections"  bind:this={rightColContainer} class:active={designVisible}>
+                <button on:click={ () => designVisible = false } 
+                    class="btn_clean menus_close_btn">
+                    <Close />
+                </button>
+                <div class="btn_title_mobile fl-column">
+                    <span class="caption ">{leftCol.titre}</span>
+                </div>
                 <ExpertiseItem chapo={leftCol.chapo} visuel={leftCol.visuel}  flexibleContents={leftCol.contenusFlexibles} design="right"/>
             </div>
         </div>
@@ -159,7 +173,7 @@
 <style lang="scss">
 
     $space_for_title : 140px;
-    $space_for_title_mobile : 140px;
+    $space_for_title_mobile : 20px;
 
     .wrapper.overflow {
         height: 100vh;
@@ -183,6 +197,14 @@
             text-align: center;
             cursor: pointer;
             position: relative; 
+
+            .btn_title {
+                @include max(bigtablet) {
+                    text-orientation: sideways;
+                    writing-mode: sideways-lr;
+
+                }
+            }
 
             &:not(.active):hover {
                 .btn_title {
@@ -257,14 +279,61 @@
         }
         .left-sections.active, .right-sections.active {
             transform: translateX(0);
-            max-width: calc(100vw - $space_for_title);
-            width: calc(100vw - $space_for_title);;
+
+            @include min(bigtablet) {
+                max-width: calc(100vw - $space_for_title);
+                width: calc(100vw - $space_for_title);
+            }
+            @include max(bigtablet) {
+                width: calc(100vw - $space_for_title_mobile);
+                max-width: calc(100vw - $space_for_title_mobile);
+            }
         }
         .left-sections.active {
-            margin-right: $space_for_title;
+            @include min(bigtablet) {
+                margin-right: $space_for_title;
+            }
+            @include max(bigtablet) {
+                margin-right: $space_for_title_mobile;
+            }
         }
         .right-sections.active {
-            margin-left: $space_for_title;
+            @include min(bigtablet) {
+                margin-left: $space_for_title;
+            }
+            @include max(bigtablet) {
+                margin-left: $space_for_title_mobile;
+            }
+        }
+
+        .btn_title_mobile {
+            @include min(tablet) {
+                 display: none;
+            }
+
+            @include max(bigtablet) {
+                padding: $space-xl 0 0 $space-m;
+                margin-bottom: - $space-s;
+            }
+        }
+        .menus_close_btn {
+            position: absolute;
+            top: 20px;
+
+            @include min(bigtablet) {
+                width: 30px;
+                height: 30px;
+            }
+            @include max(bigtablet) {
+                width: 20px;
+                height: 20px;
+            }
+            .right-sections & {
+                left: 10px;
+            }
+            .left-sections & {
+                right: 10px;
+            }
         }
         
 

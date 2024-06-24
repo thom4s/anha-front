@@ -91,7 +91,13 @@ $:console.log('layout: ', layout)
 
 <style lang="scss">
     .mod_pushprojects {
-        padding: $space-xl;
+        @include min(tablet) {
+            padding: $space-xl;
+        }
+        @include max(tablet) {
+            padding: $space-m;
+        }
+
         .mod_action {
             border-top: 1px solid black;
             padding-top: $space-s;

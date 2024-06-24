@@ -93,7 +93,7 @@ h1, h2, h3, h4, h5 {
     letter-spacing: -0.002em;
     line-height: .9;
 	@include max(tablet) {
-        font-size: 3.8rem;
+        font-size: 6.1rem;
     }
     em {
         font-style: italic;
@@ -109,7 +109,7 @@ h1, .h1 { @include h1; }
     letter-spacing: -0.002em;
     line-height: .9;
 	@include max(tablet) {
-        font-size: 3rem;
+        font-size: 4.5rem;
     }
     em {
         font-style: italic;
@@ -125,7 +125,7 @@ h2, .h2 { @include h2; }
     letter-spacing: -0.002em;
     line-height: .95;
 	@include max(tablet) {
-        font-size: 2rem;
+        font-size: 3rem;
     }
 }
 h3, .h3 { @include h3; }
@@ -153,7 +153,7 @@ h4, .h4 { @include h4; }
 	font-weight: $font-l;
 	line-height: 1.5;
     text-transform: none;
-    
+
     &:first-of-type {
 		margin-top: 0;
 	}
@@ -161,10 +161,20 @@ h4, .h4 { @include h4; }
 		margin-bottom: 0;
 	}
     h1 {
-        margin-bottom: $space-xl;
+        @include max(tablet) {
+            margin-bottom: $space-m;
+        }
+        @include min(tablet) {
+            margin-bottom: $space-xl;
+        }
     }
     h2 {
-        margin-bottom: $space-m;
+        @include max(tablet) {
+            margin-bottom: $space-s;
+        }
+        @include min(tablet) {
+            margin-bottom: $space-m;
+        }
     }
 }
 

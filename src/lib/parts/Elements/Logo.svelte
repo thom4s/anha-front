@@ -56,15 +56,25 @@
             align-items: flex-end;
 
             img {
-                max-width: 150px;
+                @include max(tablet) {
+                    max-width: 100px;
+                }
+                @include min(tablet) {
+                    max-width: 150px;
+                }
             }
         }
             .tagline {
                 text-decoration: none;
                 text-transform: uppercase;
-                font-size: 1.4rem;
                 line-height: 1.2;
                 font-family: "Gotham-Light";
+                @include max(tablet) {
+                    font-size: 1.2rem;
+                }
+                @include min(tablet) {
+                    font-size: 1.4rem;
+                }
             }
 
 </style>
