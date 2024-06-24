@@ -40,7 +40,7 @@ $:console.log('layout: ', layout)
     ||  layout.__typename === `ContenusSavoirFaireRightColContenusFlexiblesPushprojetsLayout` }
     <section class="module mod_pushprojects">
         <div class="mod_title">
-            <h2 class="h2">{layout.titre}</h2>
+            <h2 class="h2">{@html layout.titre}</h2>
         </div>
         <div class="mod_projects">
             {#each layout.projets?.nodes as projet }
@@ -50,7 +50,7 @@ $:console.log('layout: ', layout)
             {/each}
         </div>
         <div class="mod_action">
-            <a class="link" href="{layout.link?.nodes[0].uri}">{layout.label}</a>
+            <a class="link" href="{layout.link?.nodes[0].uri}">{@html layout.label}</a>
         </div>
     </section>
     

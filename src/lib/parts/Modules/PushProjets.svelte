@@ -44,9 +44,9 @@
                 prevEl: '.swiper-button-prev-out'
             }}
             space-between="30" 
-            slides-per-view="3.5" 
+            slides-per-view="auto" 
             speed="500" 
-            direction="horizontal"
+            direction="horizontal",
         >
 
             {#each pages as projet, i }
@@ -72,8 +72,29 @@
         &.swiper-button-disabled {
             opacity: 0.5;
         }
+
+        @include max(destktop) {
+           display: none;
+        }
     }
+
+
     .swiper-slide {
+        transition: width .2s;
+
+        @include max(destktop) {
+            width: 33%;
+        }
+        @include max(bigtablet) {
+            width: 33%;
+        }
+        @include max(tablet) {
+            width: 85%;
+        }
+        @include min(destktop) {
+            width: calc( calc( $max-width - $space-m * 3) / 4);
+        }
+        
         &:first-child {
             margin-left: 5vw;
             @include min(destktop) {

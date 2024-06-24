@@ -176,7 +176,7 @@
             display:  none;
         }
         @include max(bigtablet) {
-            padding:  $space-s $space-m;
+            padding: $space-m $space-m;
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
@@ -198,16 +198,17 @@
 
     :global(.menusContainer) {
         transition: transform .5s;
+        z-index: 999;
 
         @include max(bigtablet) {
-            transform: translateX(-110vw);
+            transform: translateX(110vw);
             position: fixed;
             bottom: 0;
             top: 0;
-            left: 0;
+            right: 0;
             height: 100vh;
-            width: 90vw;
-            padding-top: $space-m;
+            width: calc(100vw - $space-m);
+            padding-top: $space-s;
             background-color: $beige;
 
             .container {
@@ -257,7 +258,10 @@
                 display: none; 
             }
         }
-
+        .menus_close_btn {
+            width: 20px;
+            height: 20px;
+        }
     }
     .menus_group {
         @include max(bigtablet) {

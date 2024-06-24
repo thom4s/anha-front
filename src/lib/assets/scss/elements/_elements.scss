@@ -165,10 +165,26 @@ MEDIA
 
 .mod_tvt_txts {
     max-width: calc($max-width / 2);
-    padding: 0 120px;
 
+    .media-left & {
+        padding-left: 60px;
+    }
+    .media-right & {
+        padding-right: 60px;
+    }
     a {
         @extend .link;
+    }
+}
+.sec-container {
+    .media-left .mod_tvt_txts {
+        padding-left: 120px;
+    }
+    .media-right .mod_tvt_txts {
+        padding-left: 120px;
+    }
+    .media-full .mod_tvt_txts {
+        padding: 0 120px;
     }
 }
 
@@ -176,4 +192,16 @@ MEDIA
     img {
         max-height: 95vh;
     }
+}
+
+
+/*--------------------------------------------------------------
+SWIPER
+--------------------------------------------------------------*/
+
+.swiper-button-next,
+.swiper-button-prev {
+    @include max(destktop) {
+       display: none;
+    } 
 }

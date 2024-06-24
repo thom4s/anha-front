@@ -4,3 +4,10 @@
     <path d="M11.2 11.6472L1 1.64722" stroke="black" stroke-linecap="square" stroke-linejoin="round"/>
 </svg>
     
+
+<style>
+    svg {
+        height: 100%;
+        width: 100%;
+    }
+</style>
