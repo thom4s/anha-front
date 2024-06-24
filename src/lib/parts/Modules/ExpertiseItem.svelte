@@ -14,7 +14,7 @@
 </script>
 
 
-    <section id="r0" class="container fl-column-space fl-center">
+    <section id="r0" class="fl-column-space fl-center">
 
         <BlocTitreVisuelTexte visuel={visuel} texte={chapo} {design} /> 
   
@@ -24,7 +24,6 @@
         
         {#if layout && layout.__typename }
 
-            <p>{layout.__typename}</p>
             <FlexibleLayouts {layout} />
 
         {/if}

@@ -3,10 +3,9 @@
     export let texte = '';
     export let design = 'full';
     export let ratio = 'full';
-
 </script>
 
-<div class="module mod_tvt fl-column media-{design}" data-ratio="{ratio}">
+<section class="module mod_tvt fl-column media-{design}" data-ratio="{ratio}">
 
     {#if texte !== null }
         <div class="wrapper_txt">
@@ -19,27 +18,32 @@
     {/if}
 
     <div class="wrapper_media">
-        <div class="mod_media">
+        <div class="mod_tvt_media">
             <img src="{visuel?.node?.sourceUrl}">
         </div>
     </div>
 
-</div>
+</section>
 
 
 <style lang="scss">
     .module {
-        justify-content: center;
+        justify-content: space-between;
         margin-bottom: $space-xxl * 2;
+        width: 100%;
+
+        img {
+            width: 100%;
+        }
     }
     .media-full {
         img {
             width: 100%;
-            max-height: 95vh;
+            max-height: 80vh;
         }
 
         .wrapper_txt {
-            padding-bottom: $space-l;
+            padding-bottom: $space-xl;
         }
     }
     .media-left {
@@ -57,12 +61,17 @@
             flex: 0 0 50%;
         }
     }
+
     .media-right {
         display: flex;
         flex-direction: row;
         align-items: center;
 
         .wrapper_txt {
+            width: 50%;
+            flex: 0 0 50%;
+        }
+        .wrapper_media {
             width: 50%;
             flex: 0 0 50%;
         }

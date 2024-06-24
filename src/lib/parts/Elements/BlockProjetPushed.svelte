@@ -1,0 +1,82 @@
+<script>
+    import Arrow from '../Svgs/Arrow.svelte';
+	import { fade } from 'svelte/transition';
+
+    export let projet = {};
+    export const type = '';    
+
+    $: console.log('projet: ', projet )
+</script>
+
+
+<article class="block block_projet" transition:fade={{ duration: 200 }}>
+    <a class="fl-justify gap-m" href="{projet.uri}">
+
+        <div class="block_txt fl-column-space">
+            {#if projet.informationsProjet?.tax_client }
+                {#each projet.informationsProjet.tax_client?.nodes as node}
+                    <div class="caption">{node.name}</div>
+                {/each}
+            {/if}
+
+            <h3 class="h3 no-margin fl-vcenter gap-s">
+                {projet.title}
+                <Arrow />
+            </h3>
+
+            <div class="bloc_metadata fl-justify">
+                {#if projet.informationsProjet?.meta_date }
+                    <!-- <span class="caption">{projet.informationsProjet.meta_date}</span> -->
+                {/if}
+
+                {#if projet.informationsProjet?.tax_secteur }
+                    {#each projet.informationsProjet.tax_secteur.nodes as node}
+                        <span class="caption">{node.name}</span>
+                    {/each}
+                {/if}
+
+                {#if projet.informationsProjet?.tax_savoirfaire }
+                    {#each projet.informationsProjet.tax_savoirfaire.nodes as node}
+                        <span class="caption">{node.name}</span>
+                    {/each}
+                {/if}
+
+                {#if projet.informationsProjet?.tax_materiau }
+                    {#each projet.informationsProjet.tax_materiau.nodes as node}
+                        <span class="caption">{node.name}</span>
+                    {/each}
+                {/if}
+                
+            </div>
+        </div>
+        {#if projet.featuredImage}
+            <div class="block_media">   
+                <img src="{projet.featuredImage.node.sourceUrl}" srcset={projet.featuredImage.node.srcSet} sizes="{projet.featuredImage.node.sizes}" alt="{projet.featuredImage.node.altText}" />
+            </div>
+        {/if}
+        
+    </a>
+</article>
+
+
+<style lang="scss">
+    .block_projet {
+        border-top: 1px solid black;
+        padding-top: $space-s;
+    }
+    .block_txt {
+        flex: 0 0 78%;
+    }
+    .block_media {
+        flex: 0 0 20%;
+        img {
+            aspect-ratio: 5/4;
+            width: 100%;
+        }
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+</style>

@@ -13,7 +13,12 @@
     let filters = [];
 
     const filter = (e) => {
-        filters = [e.target.getAttribute('data-term')]
+        loading = true;
+        filters = [e.target.getAttribute('data-term')];
+        setTimeout( () => {
+            resizeAllGridItems()
+            loading = false;
+        }, 1000)
     }
     const reset = (e) => {
         filters = [];
@@ -27,7 +32,7 @@
 
         $: console.log('filters', filters)
 
-        let allItems, grid;
+        let allItems, grid, loading = false;
 
 
         // MASONRY 
@@ -41,6 +46,7 @@
         }
 
         function resizeAllGridItems(){
+            allItems = document.querySelectorAll(".grid-item");
             for(let x=0 ; x < allItems.length ; x++ ){
                 resizeGridItem(allItems[x]);
             }
@@ -48,12 +54,10 @@
 
         onMount ( () => {
             console.log('onMount !')
-            $: grid = document.querySelector(".masonry");
-            $: allItems = document.querySelectorAll(".grid-item");
+            grid = document.querySelector(".masonry");
 
             resizeAllGridItems();
             window.addEventListener("resize", resizeAllGridItems);
-
         }) 
 
 
@@ -93,7 +97,7 @@
     <div class="grid container">
 
         <div class="s_12column ">
-            <div class="masonry grid">
+            <div class="masonry grid" class:loading={loading}>
                 {#each visibleProjets as projet }
                     <div class="grid-item s_12column m_4column">
                         <div class="item_container">
@@ -121,6 +125,12 @@
     .masonry {
         grid-auto-rows: 20px;
         grid-row-gap: 0;
+        transition: opacity .3s;
+        opacity: 1;
+
+        &.loading {
+            opacity: 0;
+        }
     }
 
     .item_container {

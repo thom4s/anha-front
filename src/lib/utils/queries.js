@@ -422,11 +422,26 @@ export const groupeBlocTitreVisuel_query_string = `
 export const groupeBlocsProjets_query_string = `
 	__typename
 	titre
+	link {
+		nodes {
+		  ... on Page {
+			id
+			title
+		  }
+		  uri
+		}
+	}
+	label
 	projets {
 		nodes {
 			... on Projet {
 				id
+				date
 				title
+				link
+				uri
+				${taxonomies_fields_string}
+				${featuredImage_fields_string}
 			}
 		}
 	}
@@ -469,7 +484,7 @@ export const savoirfaire_query_string = `
 			contenusFlexibles {
 				__typename
 				... on ContenusSavoirFaireRightColContenusFlexiblesBlocTitreVisuelTexteLayout {
-					${groupeBlocTitreVisuel_query_string}
+					${string_tvt}
 				}
 				... on ContenusSavoirFaireRightColContenusFlexiblesPushprojetsLayout {
 					${groupeBlocsProjets_query_string}

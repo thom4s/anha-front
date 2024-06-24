@@ -102,8 +102,8 @@
         // };
     });
 
-    let designVisible = false;
-    let productionVisible = false;
+    let designVisible = false, productionVisible = false;
+    let rightColContainer, leftColContainer;
 
     export let page = {};
 
@@ -116,11 +116,17 @@
 
 <article>
 
-    <div class="wrapper" class:overflow={!productionVisible && !designVisible}>
+    <div class="wrapper" class:overflow={!productionVisible && !designVisible} >
 
         <div class="btn-container">
 
-            <button class="btn h1 left" class:active={designVisible} on:click={() => {designVisible = !designVisible}}>
+            <button class="btn h1 left" 
+                class:active={designVisible} 
+                on:click={ () => {
+
+                    designVisible = !designVisible
+                } }
+            >
                 <span class="btn_title_clone">{leftCol.titre}</span>
                 <span class="btn_title">{leftCol.titre}</span>
             </button>
@@ -134,11 +140,11 @@
 
 
         <div class="sec-container">
-            <div class="left-sections" class:active={productionVisible}>
+            <div class="left-sections" bind:this={leftColContainer} class:active={productionVisible}>
                 <ExpertiseItem chapo={rightCol.chapo} visuel={rightCol.visuel} flexibleContents={rightCol.contenusFlexibles} design="left" />
             </div>
 
-            <div class="right-sections" class:active={designVisible}>
+            <div class="right-sections"  bind:this={rightColContainer} class:active={designVisible}>
                 <ExpertiseItem chapo={leftCol.chapo} visuel={leftCol.visuel}  flexibleContents={leftCol.contenusFlexibles} design="right"/>
             </div>
         </div>
@@ -151,6 +157,9 @@
 
 
 <style lang="scss">
+
+    $space_for_title : 140px;
+    $space_for_title_mobile : 140px;
 
     .wrapper.overflow {
         height: 100vh;
@@ -242,23 +251,37 @@
         }
         .left-sections {
             transform: translateX(-40vw);
-
-            
         }
         .right-sections {
             transform: translateX(40vw);
         }
         .left-sections.active, .right-sections.active {
             transform: translateX(0);
-            max-width: 90vw;
-            width: 90vw;
+            max-width: calc(100vw - $space_for_title);
+            width: calc(100vw - $space_for_title);;
         }
         .left-sections.active {
-            margin-right: 10vw;
+            margin-right: $space_for_title;
         }
         .right-sections.active {
-            margin-left: 10vw;
+            margin-left: $space_for_title;
         }
         
+
+    .fadeOut {
+        animation-duration: 1s;
+        animation-name: fadeOut;
+        animation-delay: 0;
+    }
+
+    @keyframes fadeOut {
+        from {
+            opacity: 1;
+        }
+        to {
+            opacity: 0;
+        }
+    }
+
 
 </style>

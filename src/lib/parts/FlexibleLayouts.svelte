@@ -8,7 +8,7 @@
     import TabExpertise from '$lib/parts/Modules/TabExpertise.svelte';
     import Video from '$lib/parts/Modules/Video.svelte';
     import BlocTitreVisuelTexte from '$lib/parts/Modules/BlocTitreVisuelTexte.svelte';
-    import BlockProjet from '$lib/parts/Elements/BlockProjet.svelte';
+    import BlockProjetPushed from '$lib/parts/Elements/BlockProjetPushed.svelte';
     import BlockCollaborateur from '$lib/parts/Elements/BlockCollaborateur.svelte';
     import HPCover from '$lib/parts/Modules/HPCover.svelte';
 
@@ -16,6 +16,7 @@
     export let smallContact = false;
     export let prefix = '';
 
+$:console.log('layout: ', layout)
 </script>
 
 
@@ -34,13 +35,24 @@
     <PushProjets titre={layout.titre} pages={layout.projets?.nodes} label={layout.label} link="{layout.link}" />
 
 {:else if 
-    layout.__typename === 'ContenusFlexiblesStagedStagesContenusFlexiblesPushprojetsLayout' || 
-    layout.__typename === `ContenusSavoirFaireLeftColContenusFlexiblesPushprojetsLayout` }
-    <div class="">
-        {#each layout.projets?.nodes as projet }
-            <BlockProjet {projet} />
-        {/each}
-    </div>
+    layout.__typename === 'ContenusFlexiblesStagedStagesContenusFlexiblesPushprojetsLayout' 
+    ||  layout.__typename === `ContenusSavoirFaireLeftColContenusFlexiblesPushprojetsLayout`
+    ||  layout.__typename === `ContenusSavoirFaireRightColContenusFlexiblesPushprojetsLayout` }
+    <section class="module mod_pushprojects">
+        <div class="mod_title">
+            <h2 class="h2">{layout.titre}</h2>
+        </div>
+        <div class="mod_projects">
+            {#each layout.projets?.nodes as projet }
+                <div class="mb-small">
+                    <BlockProjetPushed {projet} />
+                </div>
+            {/each}
+        </div>
+        <div class="mod_action">
+            <a class="link" href="{layout.link?.nodes[0].uri}">{layout.label}</a>
+        </div>
+    </section>
     
 {:else if layout.__typename === 'ContenusFlexiblesContenusFlexiblesReferencesLayout'}
     <References titre={layout.titre} ligneLogos={layout.ligneLogos} />
@@ -59,9 +71,10 @@
 
 
 {:else if 
-    layout.__typename === `ContenusFlexiblesContenusFlexiblesBlocTitreVisuelTexteLayout` || 
-    layout.__typename === `ContenusFlexiblesStagedStagesContenusFlexiblesBlocTitreVisuelTexteLayout` || 
-    layout.__typename === `ContenusSavoirFaireLeftColContenusFlexiblesBlocTitreVisuelTexteLayout` } 
+    layout.__typename === `ContenusFlexiblesContenusFlexiblesBlocTitreVisuelTexteLayout` 
+    || layout.__typename === `ContenusFlexiblesStagedStagesContenusFlexiblesBlocTitreVisuelTexteLayout` 
+    || layout.__typename === `ContenusSavoirFaireLeftColContenusFlexiblesBlocTitreVisuelTexteLayout` 
+    || layout.__typename === `ContenusSavoirFaireRightColContenusFlexiblesBlocTitreVisuelTexteLayout` } 
     <BlocTitreVisuelTexte visuel={layout.visuel} ratio={layout.img_ratio} design={layout.design} texte={layout.texte} />
 
 
@@ -74,3 +87,15 @@
 
     
 {/if}
+
+
+<style lang="scss">
+    .mod_pushprojects {
+        padding: $space-xl;
+        .mod_action {
+            border-top: 1px solid black;
+            padding-top: $space-s;
+        }
+    }
+    
+</style>

@@ -160,6 +160,12 @@ h4, .h4 { @include h4; }
 	&:last-of-type {
 		margin-bottom: 0;
 	}
+    h1 {
+        margin-bottom: $space-xl;
+    }
+    h2 {
+        margin-bottom: $space-m;
+    }
 }
 
 .chapo, 
