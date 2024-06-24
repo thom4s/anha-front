@@ -22,17 +22,17 @@
 
     <div class="grid container">
 
-        <div class="m_6column">
-            <h2 class="h1 mb-medium">{@html title}</h2>
+        <div class="s_12column m_6column">
 
+            <h2 class="mod_title h1 mb-medium">{@html title}</h2>
 
             {#if !smallContact }
-                <div class="body">{@html text}</div>
+                <div class="mod_content body">{@html text}</div>
             {/if}
         
         </div>
 
-        <div class="m_6column">
+        <div class="s_12column m_6column">
             {#if smallContact }
                 <div class="body">{@html text}</div>
                 <a class="btn dark" href="{lien?.url}">{label}</a>
@@ -52,7 +52,17 @@
 <style lang="scss">
     .module {
         margin-top: 180px;
-        margin-bottom: 180px;
+        @include min(tablet) {
+            margin-bottom: 180px;
+        }
+        @include max(tablet) {
+            margin-bottom: $space-m;
+        }
+        .mod_title {
+            @include max(tablet) {
+                margin-bottom: 0
+            } 
+        }
     }
     div.body {
         margin-bottom: 30px;

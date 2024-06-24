@@ -111,7 +111,9 @@
 
             <div class="menus_group fl-right gap-s">
 
-                <Menu menuItems={menuItemsPrimary}/>
+                <Menu 
+                    menuItems={menuItemsPrimary} 
+                    on:menuItemClicked={ () => menuIsVisible = false } />
 
                 <LangSwitcher />
 
@@ -207,7 +209,7 @@
             top: 0;
             right: 0;
             height: 100vh;
-            width: calc(100vw - $space-m);
+            width: calc(100vw - $space-m + 5px);
             padding-top: $space-s;
             background-color: $beige;
 

@@ -1,9 +1,16 @@
 <script>
     import { menusStore } from "$lib/config/website";
     import { page } from '$app/stores';
+	import { createEventDispatcher } from 'svelte';
+
+	const dispatch = createEventDispatcher();
 
     export let menuItems = [];
 
+    const menuItemClicked = () => {
+        console.log('menuItemClicked')
+		dispatch('menuItemClicked');
+    }
 
     $: pathname = $page.url.pathname + '/';
 
@@ -15,7 +22,7 @@
         {#key menuItems}
             {#each menuItems.nodes as item}
                 <li>
-                    <a href="{item.path}" data-text="{item.label}" class="menu" class:active={pathname == item.path}>{item.label}</a>
+                    <a href="{item.path}" data-text="{item.label}" class="menu" class:active={pathname == item.path} on:click={ () => menuItemClicked() }>{item.label}</a>
                 </li>
             {/each}
         {/key}
