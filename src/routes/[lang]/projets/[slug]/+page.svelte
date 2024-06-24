@@ -27,7 +27,7 @@
 
             <article class="grid" data-id="{page.id}" data-dbid={page.databaseId}>
 
-                <div class="m_6column project_texts">
+                <div class="s_12column m_6column project_texts">
 
                     <div class="texts_inner">
 
@@ -39,6 +39,10 @@
 
                             <div class="project_title">
                                 <h1 class="h2">{page.title}</h1>
+                            </div>
+
+                            <div class="m_hide projet_media_item" data-design="full" data-ratio="verticale">
+                                <img src="{page.featuredImage?.node?.sourceUrl}" alt="">
                             </div>
 
                             <div class="project_metadata">
@@ -80,12 +84,12 @@
                                 {@html page.content}
                             </div>
 
-                            <div class="project_navigation fl-justify">
+                            <div class="s_hide m_show project_navigation fl-justify">
                                 {#if prevPage }
-                                    <a href="{prevPage.node.uri}" class="h4 fl-vcenter gap-xs"><Arrow left={true} /> {prevPage.node.title}</a>
+                                    <a href="{prevPage.node.uri}" class="link fl-vcenter gap-xs"><Arrow left={true} /> {prevPage.node.title}</a>
                                 {/if}
                                 {#if nextPage }
-                                    <a href="{nextPage.node.uri}" class="h4 fl-vcenter gap-xs">{nextPage.node.title} <Arrow /> </a>
+                                    <a href="{nextPage.node.uri}" class="link fl-vcenter gap-xs">{nextPage.node.title} <Arrow /> </a>
                                 {/if}
                             </div>
                         </div>
@@ -94,7 +98,11 @@
                 </div>
 
 
-                <div class="m_6column project_medias">
+                <div class="s_12column m_6column project_medias">
+
+                        <div class="s_hide m_show projet_media_item" data-design="full" data-ratio="verticale">
+                            <img src="{page.featuredImage?.node?.sourceUrl}" alt="">
+                        </div>
 
                         {#if page.informationsProjet.visuels}
                             {#each page.informationsProjet.visuels as v}
@@ -112,6 +120,15 @@
 
             </article>
 
+            <div class="container m_hide project_navigation fl-justify">
+                {#if prevPage }
+                    <a href="{prevPage.node.uri}" class="link fl-vcenter gap-xs"><Arrow left={true} /> {prevPage.node.title}</a>
+                {/if}
+                {#if nextPage }
+                    <a href="{nextPage.node.uri}" class="link fl-vcenter gap-xs">{nextPage.node.title} <Arrow /> </a>
+                {/if}
+            </div>
+
         {:else}
             <NotFound />
 
@@ -125,16 +142,25 @@
 <style lang="scss">
 
     .project_texts {
-        padding-right: $space-xl;
-        padding-left: $space-xl;
+
         padding-top: $space-xl;
         position: relative;
         display: flex;
         justify-content: flex-end;
 
-        .texts_inner {
-            max-width: 730px;
+        @include min(tablet) {
+            padding-right: $space-xl;
+            padding-left: $space-xl;
+        }        
+        @include max(tablet) {
+            padding-right: 0;
+            padding-left: 0;
         }
+
+    }
+    .texts_inner {
+        width: 100%;
+        padding-left: calc( 100% - $max-width ) / 2;
     }
     .project_medias {
         margin-left: - $space-s;
@@ -144,11 +170,29 @@
     }
 
     .project_action {
-        margin-bottom: $space-xxl;
+        @include min(tablet) {
+            margin-bottom: $space-xxl;
+
+        }
+        @include max(tablet) {
+            padding-right: $space-m;
+            padding-left: $space-m;
+            margin-bottom: $space-l;
+        }
+    }
+    .project_title {
+        @include max(tablet) {
+            padding-right: $space-m;
+            padding-left: $space-m;
+        }
     }
 
     .project_metadata {
         margin-bottom: $space-xxl;
+        @include max(tablet) {
+            padding-right: $space-m;
+            padding-left: $space-m;
+        }
         p {
             border-top: 1px solid;
             padding: $space-s 0;
@@ -160,6 +204,10 @@
     }
     .project_content {
         margin-bottom: $space-xxl;
+        @include max(tablet) {
+            padding-right: $space-m;
+            padding-left: $space-m;
+        }
     }
 
     .projet_media_item {
@@ -167,11 +215,27 @@
         justify-content: center;
         align-items: center;
         margin-bottom: $space-xl;
+        &.s_hide {
+            @include max(tablet) {
+                display: none;
+            } 
+        }
+        &.m_hide {
+            @include min(tablet) {
+                display: none;
+            } 
+        }
     }
+
     [data-design="couple"] {
         gap: $space-l;
-        height: 75vh;
-        
+
+        @include min(tablet) {
+            height: 75vh;
+        }        
+        @include max(tablet) {
+            height: 60vh;
+        }
         img:first-child {
             align-self: flex-start;
         }

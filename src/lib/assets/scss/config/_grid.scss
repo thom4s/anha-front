@@ -41,7 +41,10 @@ Grid
     }
     .#{$suffix}_hide {
         display: none;
-    }        
+    }   
+    .#{$suffix}_show {
+        display: flex;
+    }      
     @for $i from 1 through $cols {
 
         .#{$suffix}_#{$i}column {
