@@ -18,7 +18,7 @@
     <div class="container">
         <div class="grid">
     
-            <div class="m_3column">
+            <div class="s_12column m_3column">
                 <!-- <h1>{page.title}</h1> -->
     
                 <div class="sticky fl-column-space gap-xs">
@@ -32,7 +32,7 @@
     
             </div>
     
-            <div class="m_9column">
+            <div class="s_12column m_9column">
                 {#each posts.edges as post }
                     <BlockPost post={post.node} type="posts"/>
                 {/each}

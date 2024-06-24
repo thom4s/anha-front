@@ -20,7 +20,7 @@
 
 <article class="block_post" class:module={module} transition:fade={{ duration: 200 }}>
 
-    <div class="fl-justify gap-l">
+    <div class="block_inner fl-justify gap-l">
 
         <div class="half media">
             <div class="bloc_media">
@@ -124,9 +124,15 @@
     .block_post {
 
         &:not(.module):nth-child(odd) .half.texts {
-            order: -1;
+            @include min(tablet) {
+                order: -1;
+            }
         }
-
+        .half.texts {
+            @include max(tablet) {
+                order: -1;
+            }
+        }
         &:nth-child(2n) {
             .grid {
                 grid-auto-flow: dense;
@@ -134,10 +140,14 @@
             }
         }
         .half.media {
-            width: 45%;
+            @include min(tablet) {
+                width: 45%;
+            }
         }
         .half.texts {
-            width: 55%;
+            @include min(tablet) {
+                width: 55%;
+            }
         }
 
         .bloc_texts {
@@ -158,6 +168,13 @@
             }
         }
     }
+
+    .block_inner {
+        @include max(tablet) {
+            flex-direction: column;
+        }
+    }
+
     img:hover {
         cursor: zoom-in;
         cursor: url('$lib/assets/svg/arrowfull.svg'), auto;
