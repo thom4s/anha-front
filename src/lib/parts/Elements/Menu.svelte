@@ -36,11 +36,11 @@ ul {
     padding: 0;
 
     a {
-        padding: $space-xs;
+        padding: $space-xs  $space-xs  $space-xs 0;
         display: inline-flex;
         flex-direction: column;
-        align-items: center;
         justify-content: space-between;
+        line-height: .5;
 
         &::after {
                 content: attr(data-text);
@@ -74,7 +74,7 @@ ul {
     &:before {
         content: '';
         position: absolute;
-        left: $space-xs;
+        left: 0;
         right: $space-xs;
         bottom: 0;
         height: 1px;

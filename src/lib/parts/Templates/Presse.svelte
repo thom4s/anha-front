@@ -42,22 +42,7 @@
     }
     .item_container {
         position: relative;
-        padding-bottom: $space-l;
-
-        &:nth-last-child(-n+3) {
-            padding-bottom: 0;
-        }
-
-        &:not(:nth-child(3n))::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            right: - $space-s;
-            height: 100%;
-            width: 1px;
-            background-color: black;
-        }
+        padding-bottom: $space-xl;
     }
     article {
         padding-top: $space-xl;

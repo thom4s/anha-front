@@ -9,14 +9,14 @@
 <footer>
     <div class="container">
 
-        <div class="nav_group fl-justify gap-l">
+        <div class="nav_group fl-justify gap-l mb-xsmall">
             <Menu menuItems={menuItemsPrimary} />
             <Menu menuItems={menuItemsFooter} />
-
-            <SocialLinks />
-
         </div>
 
+        <div class="nav_group fl-justify gap-l">
+            <SocialLinks />
+        </div>
             
     </div>
 </footer>

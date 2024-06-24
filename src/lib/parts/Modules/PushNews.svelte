@@ -6,7 +6,7 @@
     
 </script>
 
-<section class="module container">
+<section class="module mod_pushnews container">
 
     <!-- <h2>{titre}</h2> -->
 

@@ -23,12 +23,11 @@
     <div class="grid container">
 
         <div class="m_6column">
-            <h2 class="h1 no-margin">{@html title}</h2>
+            <h2 class="h1 mb-medium">{@html title}</h2>
 
 
             {#if !smallContact }
                 <div class="body">{@html text}</div>
-                <a class="btn dark" href="{lien?.url}">{label}</a>
             {/if}
         
         </div>
@@ -53,7 +52,7 @@
 <style lang="scss">
     .module {
         margin-top: 180px;
-        margin-bottom: 30px;
+        margin-bottom: 180px;
     }
     div.body {
         margin-bottom: 30px;

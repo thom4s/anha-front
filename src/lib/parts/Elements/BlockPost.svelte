@@ -81,7 +81,7 @@
                 </div>
                 
                 <div class="fl-column-space gap-s">  
-                    <h2 class="h2 mb-small">{@html post.title}</h2>
+                    <h3 class="h3 mb-small">{@html post.title}</h3>
 
                     {#if post.content }
                         <div class="body">{@html post.content}</div>
@@ -120,9 +120,8 @@
 {/if}
 
 <style lang="scss"> 
+
     .block_post {
-        //border-top: 1px solid;
-        //padding: 30px 0;
 
         &:not(.module):nth-child(odd) .half.texts {
             order: -1;
@@ -167,4 +166,5 @@
     .caption {
         text-align: right;
     }
+
 </style>

@@ -13,7 +13,7 @@
 </script>
 
 
-<article>
+<article class="template" data-template="News">
 
     <div class="container">
         <div class="grid">
@@ -21,11 +21,13 @@
             <div class="m_3column">
                 <!-- <h1>{page.title}</h1> -->
     
-                <div class="fl-column-space gap-xs">
-    
-                    <p class="caption">Retrouvez tous nos événements sur nos réseaux sociaux</p>
-    
-                    <SocialLinks />
+                <div class="sticky fl-column-space gap-xs">
+                    <div class="">
+                        <div class="mb-small">
+                            <p>Retrouvez tous nos événements sur nos réseaux sociaux</p>
+                        </div>
+                        <SocialLinks />
+                    </div>
                 </div>
     
             </div>

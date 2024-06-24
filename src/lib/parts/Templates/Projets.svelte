@@ -136,17 +136,6 @@
     .item_container {
         position: relative;
         padding-bottom: $space-l;
-
-        // &:not(:nth-child(3n))::after {
-        //     content: '';
-        //     position: absolute;
-        //     top: 0;
-        //     bottom: 0;
-        //     right: - $space-s;
-        //     height: 100%;
-        //     width: 1px;
-        //     background-color: black;
-        // }
     }
     
     .sticky {

@@ -6,3 +6,7 @@
 
 
 
+:not(.mod_pushnews) > .block_post {
+    border-top: 1px solid;
+    padding: $space-m 0;
+}

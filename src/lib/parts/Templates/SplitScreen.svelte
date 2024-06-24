@@ -85,7 +85,7 @@
             padding: $space-xl $gutter 0;
         }
         @include min(tablet) {
-            padding: 0 $gutter * 2;
+            padding: 0 $gutter * 4;
         }
 
     }

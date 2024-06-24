@@ -46,7 +46,7 @@
             space-between="30" 
             slides-per-view="auto" 
             speed="500" 
-            direction="horizontal",
+            direction="horizontal"
         >
 
             {#each pages as projet, i }
