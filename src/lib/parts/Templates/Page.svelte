@@ -16,7 +16,7 @@
 
         </div>
 
-        <div class="m_8column">
+        <div class="s_12column m_8column">
             <h1>{page.title}</h1>
             <div class="body">{@html page.content}</div>
     
