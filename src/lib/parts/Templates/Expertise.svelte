@@ -39,11 +39,11 @@
             if (isScrolling) return;
 
             // Set active sections (left or right)
-            const activeSections = productionVisible ? leftSections : (designVisible ? rightSections : []);
+            const activeSections = rightColVisible ? leftSections : (leftColVisible ? rightSections : []);
             if (activeSections.length === 0) return;
 
             // Determine current index based on active container
-            let currentIndex = productionVisible ? currentIndexLeft : currentIndexRight;
+            let currentIndex = rightColVisible ? currentIndexLeft : currentIndexRight;
             const direction = event.deltaY > 0 ? 1 : -1; // Scroll direction
             const nextIndex = currentIndex + direction;
 
@@ -51,8 +51,8 @@
             if (nextIndex >= 0 && nextIndex < activeSections.length) {
                 event.preventDefault();
 
-                if (productionVisible) currentIndexLeft = nextIndex;
-                else if (designVisible) currentIndexRight = nextIndex;
+                if (rightColVisible) currentIndexLeft = nextIndex;
+                else if (leftColVisible) currentIndexRight = nextIndex;
                 
                 goToSection(activeSections, nextIndex);
 
@@ -69,10 +69,10 @@
             if (isScrolling) return;
 
             // Set active sections (left or right)
-            const activeSections = productionVisible ? leftSections : (designVisible ? rightSections : []);
+            const activeSections = rightColVisible ? leftSections : (leftColVisible ? rightSections : []);
             if (activeSections.length === 0) return;
 
-            let currentIndex = productionVisible ? currentIndexLeft : currentIndexRight;
+            let currentIndex = rightColVisible ? currentIndexLeft : currentIndexRight;
             let touchEndY = event.changedTouches[0].clientY;
 
             const direction = touchStartY > touchEndY + 5 ? 1 : touchStartY < touchEndY - 5 ? -1 : 0;
@@ -81,8 +81,8 @@
             // Check if the next index is between the first and the last section
             if (direction !== 0 && nextIndex >= 0 && nextIndex < activeSections.length) {
                 
-                if (productionVisible) currentIndexLeft = nextIndex;
-                else if (designVisible) currentIndexRight = nextIndex;
+                if (rightColVisible) currentIndexLeft = nextIndex;
+                else if (leftColVisible) currentIndexRight = nextIndex;
 
                 goToSection(activeSections, nextIndex);
             }
@@ -102,8 +102,7 @@
         // };
     });
 
-    let designVisible = false, productionVisible = false;
-    let rightColContainer, leftColContainer;
+    let leftColVisible = false, rightColVisible = false;
 
     export let page = {};
 
@@ -111,28 +110,137 @@
 
     $: ( { leftCol, rightCol } = page.contenusSavoirFaire)
 
+
+
+    const animationIn = ( side, otherSide ) => { 
+
+        console.log('animationIn: ', side, otherSide)
+        let tl = gsap.timeline({onComplete: tlComplete});
+
+        function tlComplete() {
+            console.log("the tl is complete");
+        }
+
+        if( side === 'leftSide' ) {
+                leftColVisible = true
+        }
+        else if (side === 'rightSide') {
+            rightColVisible = true
+        }
+
+        // FADE OUT OTHERSIDE TITLE 
+        tl.to(`#${otherSide} .btn_title`, { opacity: 0, duration: .1 });
+
+        // BRING CONTENT TO FRONT (BUT DONT DISPLAY)
+        tl.to(`#${side}Contents`, { opacity: 1, duration: 0});
+        tl.to(`#${side}Contents`, { zIndex: 5, duration: 0});
+
+        // MOVE CONTENT (BUT DONT DISPLAY)
+        if( side === 'rightSide') {
+            tl.to(`#${side}Contents`, { translateX: '0', duration: 1, delay: .1 });
+            // DISPLAY CONTENT TITLE
+            tl.to(`#${side}Contents .section_title`, { backgroundColor: '#F8F7F4', duration: .1, delay: .2}, "<");
+            tl.to(`#${side}Contents`, { maxWidth: '100vw', duration: 1 });
+        }
+        else {
+            tl.to(`#${side}Contents`, { translateX: '-50vw', duration: 1, delay: .5 });
+            // DISPLAY CONTENT TITLE
+            tl.to(`#${side}Contents .section_title`, { backgroundColor: '#F8F7F4', duration: .1, delay: .2 }, "<");
+            tl.to(`#${side}Contents`, { maxWidth: '100vw', duration: .1 });
+        }
+
+
+        // DISPLAY CONTENT
+        tl.to(`#${side}Contents .section_inner`, { opacity: 1, duration: .5, delay: .2 });
+        tl.to(`#${side}Contents .section_title h2`, { opacity: 1, duration: .1 });
+        tl.to(`#${side} .btn_title_clone`, { opacity: 1, duration: .1 });
+
+        // START
+        if (tl.progress() < 1) {
+            tl.play();
+        } else {
+            tl.restart();
+        }
+    }
+
+    const animationOut = ( side, otherSide ) => { 
+
+        console.log('animationIn: ', side)
+        let tl = gsap.timeline({onComplete: tlComplete});
+
+        function tlComplete() {
+            console.log("the tl is complete");
+            if( side === 'leftSide' ) {
+                leftColVisible = false
+            }
+            else if (side === 'rightSide') {
+                rightColVisible = false
+            }
+        }
+
+        // HIDE CONTENT
+        tl.to(`#${side}Contents .section_inner`, { opacity: 0, duration: .5, delay: .2 });
+        tl.to(`#${side}Contents .section_title h2`, { opacity: 0, duration: .5 });
+        tl.to(`#${side} .btn_title_clone`, { opacity: 0, duration: .5 });
+
+        // HIDE CONTENT TITLE
+        tl.to(`#${side}Contents .section_title`, { backgroundColor: '', duration: .1, delay: .1 });
+
+        // MOVE CONTENT OUT
+        if( side === 'rightSide') {
+            tl.to(`#${side}Contents`, { maxWidth: '50vw', duration: 1 });
+            tl.to(`#${side}Contents`, { translateX: '0', duration: .1, delay: .5 });
+        }
+        else {
+            tl.to(`#${side}Contents`, { translateX: '0', duration: 1 });
+            tl.to(`#${side}Contents`, { maxWidth: '50vw', duration: .1 });
+        }
+
+        // SEND CONTENT TO BACK
+        tl.to(`#${side}Contents`, { opacity: 0, duration: 0});
+        tl.to(`#${side}Contents`, { zIndex: -1, duration: 0});
+
+        // FADE IN OTHERSIDE TITLE 
+        tl.to(`#${otherSide} .btn_title`, { opacity: 1, duration: .1 });
+
+        // START
+        if (tl.progress() < 1) {
+            tl.play();
+        } else {
+            tl.restart();
+        }
+
+    }
+
+
 </script>
 
 
 <article>
 
-    <div class="wrapper" class:overflow={!productionVisible && !designVisible} >
+    <div class="wrapper" class:overflow={!rightColVisible && !leftColVisible} >
 
         <div class="btn-container">
 
-            <button class="btn h1 left" 
-                class:active={designVisible} 
+            <button 
+                id="leftSide" 
+                class="btn h1 left" 
+                class:active={leftColVisible} 
                 on:click={ () => {
-
-                    designVisible = !designVisible
+                    animationIn( 'leftSide', 'rightSide' )
                 } }
             >
-                <span class="btn_title_clone">{leftCol.titre}</span>
                 <span class="btn_title">{leftCol.titre}</span>
             </button>
 
-            <button class="btn h1 right"  class:active={productionVisible} on:click={() => {productionVisible = !productionVisible}}>
-                <span class="btn_title_clone">{rightCol.titre}</span>
+            <button 
+                id="rightSide" 
+                class="btn h1 right" 
+                class:active={rightColVisible} 
+                on:click={() => {
+                    animationIn('rightSide', 'leftSide' )
+                }}
+            >
                 <span class="btn_title">{rightCol.titre}</span>
             </button>
 
@@ -140,26 +248,49 @@
 
 
         <div class="sec-container">
-            <div class="left-sections" bind:this={leftColContainer} class:active={productionVisible}>
-                <button on:click={ () => productionVisible = false } 
-                    class="btn_clean menus_close_btn">
-                    <Close />
-                </button>
-                <div class="btn_title_mobile fl-column">
-                    <span class="caption ">{rightCol.titre}</span>
+            <div id="rightSideContents" class="right-sections" class:active={rightColVisible}>
+
+                <div class="section_title">
+                    <h2 class="btn_title_clone">{rightCol.titre}</h2>
                 </div>
-                <ExpertiseItem chapo={rightCol.chapo} visuel={rightCol.visuel} flexibleContents={rightCol.contenusFlexibles} design="left" />
+
+                <div class="section_inner">
+                    <button 
+                        on:click={ () => {
+                            animationOut('rightSide', 'leftSide')
+                        } }
+                        class="btn_clean menus_close_btn"
+                        class:active={rightColVisible}
+                    >
+                        <Close />
+                    </button>
+                    <div class="btn_title_mobile fl-column">
+                        <span class="caption ">{rightCol.titre}</span>
+                    </div>
+                    <ExpertiseItem chapo={rightCol.chapo} visuel={rightCol.visuel} flexibleContents={rightCol.contenusFlexibles} design="left" />
+                </div>
             </div>
 
-            <div class="right-sections"  bind:this={rightColContainer} class:active={designVisible}>
-                <button on:click={ () => designVisible = false } 
-                    class="btn_clean menus_close_btn">
-                    <Close />
-                </button>
-                <div class="btn_title_mobile fl-column">
-                    <span class="caption ">{leftCol.titre}</span>
+            <div id="leftSideContents" class="left-sections" class:active={leftColVisible}>
+
+                <div class="section_title">
+                    <h2 class="btn_title_clone">{leftCol.titre}</h2>
                 </div>
-                <ExpertiseItem chapo={leftCol.chapo} visuel={leftCol.visuel}  flexibleContents={leftCol.contenusFlexibles} design="right"/>
+
+                <div class="section_inner">
+                    <button 
+                        class="btn_clean menus_close_btn"
+                        on:click={ () => {
+                            animationOut('leftSide', 'rightSide' )
+                        } }
+                    >
+                        <Close />
+                    </button>
+                    <div class="btn_title_mobile fl-column">
+                        <span class="caption ">{leftCol.titre}</span>
+                    </div>
+                    <ExpertiseItem chapo={leftCol.chapo} visuel={leftCol.visuel}  flexibleContents={leftCol.contenusFlexibles} design="right"/>
+                </div>
             </div>
         </div>
 
@@ -216,6 +347,7 @@
                 position: relative;
                 transition: all .3s;
                 z-index: 1;
+                display: inline-block;
             }
             .btn_title_clone {
                 opacity: 0;
@@ -252,7 +384,6 @@
                 z-index: 0;
                 opacity: 0;
                 transition: 0.2s;
-
             }
         }
 
@@ -262,47 +393,45 @@
         overflow: hidden;
     }
         .left-sections, .right-sections {
-            background-color: $light-bg2;
             position: relative;
-            z-index: 5;
-            max-width: 0px;
-            transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
-            transform: translateX(0);
+            z-index: -1;
             overflow-x: hidden;
-            
+            opacity: 0;
+            background-color: $light-bg2;
+            display: flex;
         }
+
+        $sectionTitleWidth: 115px;
+
+        .section_title {
+            padding: $gutter;
+            flex: 0 0 $sectionTitleWidth;
+            min-width: $sectionTitleWidth;
+
+            h2 {
+                margin: 0;
+                opacity: 0;
+            }
+        }
+        .section_inner {
+            opacity: 0;
+        }
+
         .left-sections {
-            transform: translateX(-40vw);
+            flex: 0 0 auto;
+            max-width: 50vw;
+
+            .btn_title_clone {
+                writing-mode: sideways-lr;
+            }
         }
         .right-sections {
-            transform: translateX(40vw);
-        }
-        .left-sections.active, .right-sections.active {
-            transform: translateX(0);
+            flex: 0 0 auto;
+            flex-direction: row-reverse;
+            max-width: 50vw;
 
-            @include min(bigtablet) {
-                max-width: calc(100vw - $space_for_title);
-                width: calc(100vw - $space_for_title);
-            }
-            @include max(bigtablet) {
-                width: calc(100vw - $space_for_title_mobile);
-                max-width: calc(100vw - $space_for_title_mobile);
-            }
-        }
-        .left-sections.active {
-            @include min(bigtablet) {
-                margin-right: $space_for_title;
-            }
-            @include max(bigtablet) {
-                margin-right: $space_for_title_mobile;
-            }
-        }
-        .right-sections.active {
-            @include min(bigtablet) {
-                margin-left: $space_for_title;
-            }
-            @include max(bigtablet) {
-                margin-left: $space_for_title_mobile;
+            .btn_title_clone {
+                writing-mode: sideways-rl;
             }
         }
 
@@ -310,7 +439,7 @@
             @include min(tablet) {
                  display: none;
             }
-
+ 
             @include max(bigtablet) {
                 padding: $space-xl 0 0 $space-m;
                 margin-bottom: - $space-s;
@@ -329,28 +458,13 @@
                 height: 20px;
             }
             .right-sections & {
-                left: 10px;
+                right: $sectionTitleWidth + 20px;
             }
             .left-sections & {
-                right: 10px;
+                left: $sectionTitleWidth + 20px;
             }
         }
         
-
-    .fadeOut {
-        animation-duration: 1s;
-        animation-name: fadeOut;
-        animation-delay: 0;
-    }
-
-    @keyframes fadeOut {
-        from {
-            opacity: 1;
-        }
-        to {
-            opacity: 0;
-        }
-    }
 
 
 </style>
