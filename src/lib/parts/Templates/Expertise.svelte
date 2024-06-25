@@ -12,96 +12,6 @@
     gsap.registerPlugin(ScrollToPlugin);
 
 
-    onMount(() => {
-        // Get sections in left and right containers
-        const leftSections = gsap.utils.toArray(".left-sections section");
-        const rightSections = gsap.utils.toArray(".right-sections section");
-        
-        // Sections index and scroll state
-        let currentIndexLeft = 0;
-        let currentIndexRight = 0;
-        let isScrolling = false;
-
-        // Scroll to a specific section
-        function goToSection(sections, index) {
-            
-            isScrolling = true;
-
-            gsap.to(window, {
-                scrollTo: { y: sections[index] },
-                duration: 0.85,
-                onComplete: () => { isScrolling = false }
-            });
-        }
-
-        // Handle mouse wheel events
-        function handleScroll(event) {
-            if (isScrolling) return;
-
-            // Set active sections (left or right)
-            const activeSections = rightColVisible ? leftSections : (leftColVisible ? rightSections : []);
-            if (activeSections.length === 0) return;
-
-            // Determine current index based on active container
-            let currentIndex = rightColVisible ? currentIndexLeft : currentIndexRight;
-            const direction = event.deltaY > 0 ? 1 : -1; // Scroll direction
-            const nextIndex = currentIndex + direction;
-
-            // Check if the next index is between the first and the last section
-            if (nextIndex >= 0 && nextIndex < activeSections.length) {
-                event.preventDefault();
-
-                if (rightColVisible) currentIndexLeft = nextIndex;
-                else if (leftColVisible) currentIndexRight = nextIndex;
-                
-                goToSection(activeSections, nextIndex);
-
-            }
-        }
-
-        // Handle touch start event to get initial touch position
-        function handleTouchStart(event) {
-            touchStartY = event.touches[0].clientY;
-        }
-
-        // Handle touch end event to determine scroll direction
-        function handleTouchEnd(event) {
-            if (isScrolling) return;
-
-            // Set active sections (left or right)
-            const activeSections = rightColVisible ? leftSections : (leftColVisible ? rightSections : []);
-            if (activeSections.length === 0) return;
-
-            let currentIndex = rightColVisible ? currentIndexLeft : currentIndexRight;
-            let touchEndY = event.changedTouches[0].clientY;
-
-            const direction = touchStartY > touchEndY + 5 ? 1 : touchStartY < touchEndY - 5 ? -1 : 0;
-            const nextIndex = currentIndex + direction;
-
-            // Check if the next index is between the first and the last section
-            if (direction !== 0 && nextIndex >= 0 && nextIndex < activeSections.length) {
-                
-                if (rightColVisible) currentIndexLeft = nextIndex;
-                else if (leftColVisible) currentIndexRight = nextIndex;
-
-                goToSection(activeSections, nextIndex);
-            }
-        }
-
-        let touchStartY = 0; // Initial touch position
-
-        // window.addEventListener('wheel', handleScroll, { passive: false });
-        // window.addEventListener('touchstart', handleTouchStart, { passive: false });
-        // window.addEventListener('touchend', handleTouchEnd, { passive: false });
-
-        // return () => {
-        //     // Remove event listeners when component is destroyed
-        //     window.removeEventListener('wheel', handleScroll);
-        //     window.removeEventListener('touchstart', handleTouchStart);
-        //     window.removeEventListener('touchend', handleTouchEnd);
-        // };
-    });
-
     let leftColVisible = false, rightColVisible = false;
 
     export let page = {};
@@ -116,6 +26,12 @@
 
         console.log('animationIn: ', side, otherSide)
         let tl = gsap.timeline({onComplete: tlComplete});
+
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth",
+        });
 
         function tlComplete() {
             console.log("the tl is complete");
@@ -138,21 +54,15 @@
         // MOVE CONTENT (BUT DONT DISPLAY)
         if( side === 'rightSide') {
             tl.to(`#${side}Contents`, { translateX: '0', duration: 1, delay: .1 });
-            // DISPLAY CONTENT TITLE
-            tl.to(`#${side}Contents .section_title`, { backgroundColor: '#F8F7F4', duration: .1, delay: .2}, "<");
-            tl.to(`#${side}Contents`, { maxWidth: '100vw', duration: 1 });
+            tl.to(`#${side}Contents`, { maxWidth: '93vw', duration: 1 });
         }
         else {
-            tl.to(`#${side}Contents`, { translateX: '-50vw', duration: 1, delay: .5 });
-            // DISPLAY CONTENT TITLE
-            tl.to(`#${side}Contents .section_title`, { backgroundColor: '#F8F7F4', duration: .1, delay: .2 }, "<");
-            tl.to(`#${side}Contents`, { maxWidth: '100vw', duration: .1 });
+            tl.to(`#${side}Contents`, { translateX: '-43vw', duration: 1, delay: .5 });
+            tl.to(`#${side}Contents`, { maxWidth: '93vw', duration: .1 });
         }
-
 
         // DISPLAY CONTENT
         tl.to(`#${side}Contents .section_inner`, { opacity: 1, duration: .5, delay: .2 });
-        tl.to(`#${side}Contents .section_title h2`, { opacity: 1, duration: .1 });
         tl.to(`#${side} .btn_title_clone`, { opacity: 1, duration: .1 });
 
         // START
@@ -180,11 +90,7 @@
 
         // HIDE CONTENT
         tl.to(`#${side}Contents .section_inner`, { opacity: 0, duration: .5, delay: .2 });
-        tl.to(`#${side}Contents .section_title h2`, { opacity: 0, duration: .5 });
         tl.to(`#${side} .btn_title_clone`, { opacity: 0, duration: .5 });
-
-        // HIDE CONTENT TITLE
-        tl.to(`#${side}Contents .section_title`, { backgroundColor: '', duration: .1, delay: .1 });
 
         // MOVE CONTENT OUT
         if( side === 'rightSide') {
@@ -230,6 +136,7 @@
                     animationIn( 'leftSide', 'rightSide' )
                 } }
             >
+                <span class="btn_title_clone">{leftCol.titre}</span>
                 <span class="btn_title">{leftCol.titre}</span>
             </button>
 
@@ -241,6 +148,7 @@
                     animationIn('rightSide', 'leftSide' )
                 }}
             >
+                <span class="btn_title_clone">{rightCol.titre}</span>
                 <span class="btn_title">{rightCol.titre}</span>
             </button>
 
@@ -249,10 +157,6 @@
 
         <div class="sec-container">
             <div id="rightSideContents" class="right-sections" class:active={rightColVisible}>
-
-                <div class="section_title">
-                    <h2 class="btn_title_clone">{rightCol.titre}</h2>
-                </div>
 
                 <div class="section_inner">
                     <button 
@@ -272,10 +176,6 @@
             </div>
 
             <div id="leftSideContents" class="left-sections" class:active={leftColVisible}>
-
-                <div class="section_title">
-                    <h2 class="btn_title_clone">{leftCol.titre}</h2>
-                </div>
 
                 <div class="section_inner">
                     <button 
@@ -355,6 +255,9 @@
                 position: absolute;
                 top: 105px;
                 text-orientation: sideways;
+                @include max(bigtablet) {
+                    display: none;
+                }
             }
             &.left .btn_title_clone {
                 left: 0;
@@ -366,9 +269,6 @@
             }
             &.active {
                 background-color: $white;
-                .btn_title_clone {
-                    opacity: 1;
-                }
             }
             &.active {
                 .btn_title {
@@ -393,12 +293,9 @@
         overflow: hidden;
     }
         .left-sections, .right-sections {
-            position: relative;
             z-index: -1;
-            overflow-x: hidden;
             opacity: 0;
             background-color: $light-bg2;
-            display: flex;
         }
 
         $sectionTitleWidth: 115px;
@@ -407,8 +304,16 @@
             padding: $gutter;
             flex: 0 0 $sectionTitleWidth;
             min-width: $sectionTitleWidth;
+            position: fixed;
+            height: 100vw;
+            top: 0;
+
+            @include max(tablet) {
+                display: none;
+            }
 
             h2 {
+                top: 100px;
                 margin: 0;
                 opacity: 0;
             }
@@ -424,6 +329,9 @@
             .btn_title_clone {
                 writing-mode: sideways-lr;
             }
+            .section_title {
+                left: -110px;
+            }
         }
         .right-sections {
             flex: 0 0 auto;
@@ -432,6 +340,9 @@
 
             .btn_title_clone {
                 writing-mode: sideways-rl;
+            }
+            .section_title {
+                right: -110px;
             }
         }
 
@@ -458,10 +369,22 @@
                 height: 20px;
             }
             .right-sections & {
-                right: $sectionTitleWidth + 20px;
+                @include min(bigtablet) {
+                    right: $gutter;
+                }
+                @include max(bigtablet) {
+                    right: $gutter;
+                }
+                
             }
             .left-sections & {
-                left: $sectionTitleWidth + 20px;
+                @include min(bigtablet) {
+                    left: $gutter;
+                }
+                @include max(bigtablet) {
+                    left: $gutter;
+                }
+                
             }
         }
         
