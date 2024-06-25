@@ -81,12 +81,24 @@
     .stage_txt {
         max-width: calc($max-width / 2);
         
+        @include min(desktop) {
+            padding-right:  calc( calc( 100vw - $max-width ) / 2 );
+            padding-left: calc( calc( 100vw - $max-width ) / 2 );
+        }
+        @include max(desktop) {
+            padding-right: 5vw;
+            padding-left: 5vw;
+        }
+        @include max(bigtablet) {
+            padding-right: $gutter;
+            padding-left: $gutter;
+        }        
         @include max(tablet) {
-            padding: $space-xl $gutter 0;
+            padding-right: 0;
+            padding-left: 0;
         }
-        @include min(tablet) {
-            padding: 0 $gutter * 4;
-        }
+        
+
 
     }
 

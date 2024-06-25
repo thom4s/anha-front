@@ -145,8 +145,6 @@
                             >
                         </div>
 
-
-
                         {#if projet.informationsProjet.visuels}
                             {#each projet.informationsProjet.visuels as v}
                                 
@@ -206,9 +204,17 @@
         display: flex;
         justify-content: flex-end;
 
-        @include min(tablet) {
+        @include min(desktop) {
             padding-right: $space-xl;
-            padding-left: $space-xl;
+            padding-left: calc( calc( 100vw - $max-width ) / 2 );
+        }
+        @include max(desktop) {
+            padding-right: $space-xl;
+            padding-left: 5vw;
+        }
+        @include max(bigtablet) {
+            padding-right: $gutter;
+            padding-left: $gutter;
         }        
         @include max(tablet) {
             padding-right: 0;

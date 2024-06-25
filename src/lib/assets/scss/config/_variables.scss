@@ -53,13 +53,12 @@ Responsive
 
 $cols: 12;
 $gutter: $space-m;
-
+$max-width: 1660px;
 
 $mobile_first:         true !default;
 $minimal_breakpoint:   0px !default;
 $mobile_breakpoint:    580px !default;
 $tablet_breakpoint:    820px !default;
 $bigtablet_breakpoint: 1200px !default; 
-$desktop_breakpoint:  1660px !default; 
+$desktop_breakpoint:   $max-width + 160px !default; 
 
-$max-width: 1660px;

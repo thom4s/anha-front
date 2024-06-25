@@ -33,12 +33,14 @@
 
         {:else if type === 'slide'}
             <swiper-container 
-                space-between="0" 
-                slides-per-view="auto" 
-                init="true"
+                space-between={30}
+                slides-per-view={3}
+                centered-slides={true}
+                init={true}
                 navigation={true}
                 pagination={true}
-                loop="true"
+                loop={true}
+
             >
                 {#each content.nodes as img }
                     <swiper-slide class="swiper-slide">

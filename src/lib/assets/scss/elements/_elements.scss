@@ -172,14 +172,15 @@ MEDIA
     }
 
     .media-left & {
-        padding-left: $space-l;
-        padding-right: $space-m;
+        padding-left: $gutter;
+        padding-right: $gutter;
     }
     .media-right & {
-        padding-right: $space-l;
+        padding-right: $gutter;
     }
     .media-full & {
-        padding-left: $space-l;
+        padding-left: $gutter * 2;
+        padding-right: $gutter;
     }
     a {
         @extend .link;
