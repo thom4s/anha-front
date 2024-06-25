@@ -26,18 +26,30 @@
     let filters = [];
 
     const filter = (e) => {
-        loading = true;
-        filters = [e.target.getAttribute('data-term')];
-        menuIsVisible = false;
+
+        setTimeout( () => {
+            filters = [e.target.getAttribute('data-term')];
+        }, 500)
 
         setTimeout( () => {
             resizeAllGridItems()
             loading = false;
         }, 1000)
+
+        menuIsVisible = false;
     }
     const reset = (e) => {
-        filters = [];
-        resizeAllGridItems()
+        loading = true;
+
+        setTimeout( () => {
+            filters = [];
+        }, 500)
+
+        setTimeout( () => {
+            resizeAllGridItems()
+            loading = false;
+        }, 1000)
+
         menuIsVisible = false
     }
 
@@ -46,35 +58,42 @@
 			return filters.includes(project.informationsProjet.tax_savoirfaire?.nodes[0].name) || filters.includes(project.informationsProjet.tax_secteur?.nodes[0].name)
 		}) : projets.nodes;
 
-        $: console.log('filters', filters)
+    $: console.log('filters', filters)
 
-        let allItems, grid, loading = false;
+    let allItems, grid, loading = true;
 
 
-        // MASONRY 
+    // MASONRY 
 
-        function resizeGridItem(item){
+    function resizeGridItem(item){
+        console.log('resizeGridItem : ', item);
+        let rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
+        let rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
+        let rowSpan = Math.ceil((item.querySelector('.item_container').getBoundingClientRect().height+rowGap)/(rowHeight+rowGap));
+        item.style.gridRowEnd = "span " + rowSpan;
+    }
 
-            let rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
-            let rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
-            let rowSpan = Math.ceil((item.querySelector('.item_container').getBoundingClientRect().height+rowGap)/(rowHeight+rowGap));
-            item.style.gridRowEnd = "span " + rowSpan;
+    function resizeAllGridItems(){
+        allItems = document.querySelectorAll(".grid-item");
+        console.log('resizeAllGridItems ', allItems);
+        console.log('Item length ', allItems.length);
+
+        for(let x=0 ; x < allItems.length ; x++ ){
+            resizeGridItem(allItems[x]);
         }
+    }
 
-        function resizeAllGridItems(){
-            allItems = document.querySelectorAll(".grid-item");
-            for(let x=0 ; x < allItems.length ; x++ ){
-                resizeGridItem(allItems[x]);
-            }
-        }
+    onMount ( () => {
+        console.log('onMount !')
+        grid = document.querySelector(".masonry");
 
-        onMount ( () => {
-            console.log('onMount !')
-            grid = document.querySelector(".masonry");
+        setTimeout( () => {
+            resizeAllGridItems()
+            loading = false;
+        }, 500)
 
-            resizeAllGridItems();
-            window.addEventListener("resize", resizeAllGridItems);
-        }) 
+        window.addEventListener("resize", resizeAllGridItems);
+    }) 
 
 
 
@@ -109,14 +128,14 @@
                 <div class="filterGroup mb-medium">
                     <button on:click={ reset } data-term="" class="caption filterItem" class:active={filters.length === 0}>Tous les secteurs</button>
                     {#each secteurs.nodes as t }
-                        <button on:click={ (e) => filter(e) } data-term="{t.name}" class="caption filterItem" class:active={filters.includes(t.name)}>{t.name}</button>
+                        <button on:click={ (e) => { loading = true; filter(e) } } data-term="{t.name}" class="caption filterItem" class:active={filters.includes(t.name)}>{t.name}</button>
                     {/each}
                 </div>
 
                 <div class="filterGroup">
                     <button on:click={ reset } data-term="" class="caption filterItem" class:active={filters.length === 0}>Tous les savoir-faire</button>
                     {#each savoirfaires.nodes as t }
-                        <button on:click={ (e) => filter(e) } data-term="{t.name}" class="caption filterItem" class:active={filters.includes(t.name)}>{t.name}</button>
+                        <button on:click={ (e) => { loading = true; filter(e) } } data-term="{t.name}" class="caption filterItem" class:active={filters.includes(t.name)}>{t.name}</button>
                     {/each}
                 </div>
 
@@ -161,7 +180,7 @@
     .masonry {
         grid-auto-rows: 20px;
         grid-row-gap: 0;
-        transition: opacity .3s;
+        transition: opacity .1s ease-in-out;
         opacity: 1;
 
         &.loading {

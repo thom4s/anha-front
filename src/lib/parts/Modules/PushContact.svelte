@@ -1,6 +1,7 @@
 <script>
     import { onMount } from "svelte";
     import { getPushContactContents } from '$lib/queries/options.js';
+    import { fade } from 'svelte/transition';
 
     import Form from "$lib/parts/Forms/Form.svelte";
 
@@ -24,17 +25,19 @@
 
         <div class="s_12column m_6column">
 
-            <h2 class="mod_title h1 mb-medium">{@html title}</h2>
+            {#if title }
+                <h2 class="mod_title h1 mb-medium" transition:fade={{ duration: 200 }}>{@html title}</h2>
+            {/if}
 
             {#if !smallContact }
-                <div class="mod_content body">{@html text}</div>
+                <div class="mod_content body" transition:fade={{ duration: 200 }}>{@html text}</div>
             {/if}
         
         </div>
 
         <div class="s_12column m_6column">
             {#if smallContact }
-                <div class="body">{@html text}</div>
+                <div class="body" transition:fade={{ duration: 200 }}>{@html text}</div>
                 <a class="btn dark" href="{lien?.url}">{label}</a>
     
             {:else}
