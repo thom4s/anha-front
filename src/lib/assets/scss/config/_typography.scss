@@ -148,11 +148,14 @@ h4, .h4 { @include h4; }
 
 
 
-.body, .body > p, p {
+.body, 
+.body > p, 
+p {
 	font-size: 1.6rem;
 	font-weight: $font-l;
 	line-height: 1.5;
     text-transform: none;
+    margin-bottom: $space-m;
 
     &:first-of-type {
 		margin-top: 0;
@@ -174,6 +177,7 @@ h4, .h4 { @include h4; }
         }
         @include min(tablet) {
             margin-bottom: $space-m;
+            margin-top: $space-l;
         }
     }
 }

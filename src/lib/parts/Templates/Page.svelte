@@ -8,7 +8,7 @@
 </script>
 
 
-<article>
+<article class="container" data-template="page">
 
     <div class="grid">
 
@@ -18,7 +18,7 @@
 
         <div class="m_8column">
             <h1>{page.title}</h1>
-            <div>{@html page.content}</div>
+            <div class="body">{@html page.content}</div>
     
             {#if page.contenusFlexibles.contenusFlexibles }
                 <Flexibles contenusFlexibles={page.contenusFlexibles?.contenusFlexibles}/>
@@ -34,5 +34,7 @@
 
 
 <style lang="scss">
-
+    .container {
+        margin-top: $space-xl * 2;
+    }
 </style>
