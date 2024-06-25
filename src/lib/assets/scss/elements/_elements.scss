@@ -226,7 +226,7 @@ SWIPER
 
 .swiper-button-next,
 .swiper-button-prev {
-    @include max(destktop) {
+    @include max(desktop) {
        display: none;
     } 
 }

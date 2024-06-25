@@ -3,8 +3,8 @@ Responsive
 --------------------------------------------------------------*/
 
 @mixin min($point) { // x >
-	@if $point == destktop {
-	  	@media (min-width: $destktop_breakpoint) { @content; }
+	@if $point == desktop {
+	  	@media (min-width: $desktop_breakpoint) { @content; }
 	}
 	@else if $point == bigtablet {
 		@media (min-width: $bigtablet_breakpoint) { @content; }
@@ -24,8 +24,8 @@ Responsive
 }
   
 @mixin max($point) { // < x
-	@if $point == destktop {
-		@media (max-width: $destktop_breakpoint) { @content; }
+	@if $point == desktop {
+		@media (max-width: $desktop_breakpoint) { @content; }
 	}
 	@else if $point == bigtablet {
 	  	@media (max-width: $bigtablet_breakpoint) { @content; }

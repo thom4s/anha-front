@@ -73,7 +73,7 @@
             opacity: 0.5;
         }
 
-        @include max(destktop) {
+        @include max(desktop) {
            display: none;
         }
     }
@@ -82,7 +82,7 @@
     .swiper-slide {
         transition: width .2s;
 
-        @include max(destktop) {
+        @include max(desktop) {
             width: 33%;
         }
         @include max(bigtablet) {
@@ -91,13 +91,13 @@
         @include max(tablet) {
             width: 85%;
         }
-        @include min(destktop) {
+        @include min(desktop) {
             width: calc( calc( $max-width - $space-m * 3) / 4);
         }
         
         &:first-child {
             margin-left: 5vw;
-            @include min(destktop) {
+            @include min(desktop) {
                 margin-left: calc( calc( 100% - $max-width) / 2 );
             }
         }
