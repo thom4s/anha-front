@@ -48,7 +48,11 @@
 
         {#if projet.featuredImage}
             <div class="bloc_media">   
-                <img src="{projet.featuredImage.node.sourceUrl}" srcset={projet.featuredImage.node.srcSet} sizes="{projet.featuredImage.node.sizes}" alt="{projet.featuredImage.node.altText}" />
+                <img 
+                    src="{projet.featuredImage.node.sourceUrl}" 
+                    srcset={projet.featuredImage.node.srcSet} 
+                    sizes="{projet.featuredImage.node.sizes}" 
+                    alt="{projet.featuredImage.node.altText}" />
             </div>
         {/if}
         

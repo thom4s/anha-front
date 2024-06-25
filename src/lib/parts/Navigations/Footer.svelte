@@ -9,7 +9,7 @@
 <footer>
     <div class="container">
 
-        <div class="nav_group fl-justify gap-l mb-xsmall">
+        <div class="nav_group fl-justify gap-l mb-small">
             <Menu menuItems={menuItemsPrimary} />
             <Menu menuItems={menuItemsFooter} />
         </div>

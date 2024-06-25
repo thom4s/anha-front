@@ -2,6 +2,13 @@
     import Arrow from '$lib/parts/Svgs/Arrow.svelte';
     import NotFound from '$lib/parts/Navigations/NotFound.svelte';
     
+    import arrowfull from '$lib/assets/svg/arrowfull.svg';
+    import FullScreen from '$lib/parts/Modules/FullScreen.svelte';
+    let fullscreen = false;
+    let fullScreenContent = '';
+    let fullScreenType = '';
+
+
     import { afterNavigate } from '$app/navigation';
     import { base } from '$app/paths'
 
@@ -12,20 +19,33 @@
     }) 
 
     export let data: {
-        page: Promise<void>;
+        projet: Promise<void>;
     }
-    $: ({page, prevPage, nextPage} = data)
+    $: ({projet, prevPage, nextPage} = data)
 
-    $: console.log( page.informationsProjet.visuels )
+    $: console.log( projet.informationsProjet.visuels )
+
+    let allMedias = {nodes: []};
+    $: {
+        allMedias.nodes = [...allMedias.nodes, projet.featuredImage?.node]
+
+        for( const v of projet.informationsProjet.visuels) {
+            for( const n of v.visuel.nodes) {
+                allMedias.nodes = [...allMedias.nodes, n]
+            }
+        }
+        console.log('allMedias', allMedias)
+    }
+
 </script>
 
 
-<article class="template mb-xxlarge" dtaa-template="projet">
+<article class="template mb-xxlarge" data-template="projet">
 
     <div class="">
-        {#if page}
+        {#if projet}
 
-            <article class="grid" data-id="{page.id}" data-dbid={page.databaseId}>
+            <article class="grid" data-id="{projet.id}" data-dbid={projet.databaseId}>
 
                 <div class="s_12column m_6column project_texts">
 
@@ -38,22 +58,32 @@
                             </div>
 
                             <div class="project_title">
-                                <h1 class="h2">{page.title}</h1>
+                                <h1 class="h2">{projet.title}</h1>
                             </div>
 
                             <div class="m_hide projet_media_item" data-design="full" data-ratio="verticale">
-                                <img src="{page.featuredImage?.node?.sourceUrl}" alt="">
+                                <img 
+                                    src="{projet.featuredImage.node.sourceUrl}" 
+                                    srcset={projet.featuredImage.node.srcSet} 
+                                    sizes="{projet.featuredImage.node.sizes}" 
+                                    alt="{projet.featuredImage.node.altText}"
+                                    on:click={ () => {
+                                        fullscreen = true;
+                                        fullScreenContent = allMedias;
+                                        fullScreenType= 'slide';
+                                    }}
+                                />
                             </div>
 
                             <div class="project_metadata">
 
                                 <p>
                                     <span>Date</span>
-                                    <span class="caption">{@html page.informationsProjet.meta_date}</span>
+                                    <span class="caption">{@html projet.informationsProjet.meta_date}</span>
                                 </p>
 
-                                {#if page.informationsProjet.tax_secteur}
-                                    {#each page.informationsProjet.tax_secteur.nodes as node}
+                                {#if projet.informationsProjet.tax_secteur}
+                                    {#each projet.informationsProjet.tax_secteur.nodes as node}
                                         <p>
                                             <span>Secteur</span>
                                             <span class="caption">{node.name}</span>
@@ -61,8 +91,8 @@
                                     {/each}
                                 {/if}
                                 
-                                {#if page.informationsProjet.tax_savoirfaire}
-                                    {#each page.informationsProjet.tax_savoirfaire.nodes as node}
+                                {#if projet.informationsProjet.tax_savoirfaire}
+                                    {#each projet.informationsProjet.tax_savoirfaire.nodes as node}
                                         <p>
                                             <span>Savoir Faire</span>
                                             <span class="caption">{node.name}</span>
@@ -70,8 +100,8 @@
                                     {/each}
                                 {/if}
 
-                                {#if page.informationsProjet.tax_materiau}
-                                    {#each page.informationsProjet.tax_materiau.nodes as node}
+                                {#if projet.informationsProjet.tax_materiau}
+                                    {#each projet.informationsProjet.tax_materiau.nodes as node}
                                         <p>
                                             <span>Materiaux</span>
                                             <span class="caption">{node.name}</span>
@@ -81,7 +111,7 @@
                             </div>
 
                             <div class="project_content">
-                                {@html page.content}
+                                {@html projet.content}
                             </div>
 
                             <div class="s_hide m_show project_navigation fl-justify">
@@ -101,16 +131,40 @@
                 <div class="s_12column m_6column project_medias">
 
                         <div class="s_hide m_show projet_media_item" data-design="full" data-ratio="verticale">
-                            <img src="{page.featuredImage?.node?.sourceUrl}" alt="">
+                            <img 
+                                src="{projet.featuredImage.node.sourceUrl}" 
+                                srcset={projet.featuredImage.node.srcSet} 
+                                sizes="{projet.featuredImage.node.sizes}" 
+                                alt="{projet.featuredImage.node.altText}"
+
+                                on:click={ () => {
+                                    fullscreen = true;
+                                    fullScreenContent = allMedias;
+                                    fullScreenType= 'slide';
+                                }}
+                            >
                         </div>
 
-                        {#if page.informationsProjet.visuels}
-                            {#each page.informationsProjet.visuels as v}
+
+
+                        {#if projet.informationsProjet.visuels}
+                            {#each projet.informationsProjet.visuels as v}
                                 
                                 <div class="projet_media_item" data-design="{v.design}" data-ratio="{v.ratio}">
 
                                     {#each v.visuel.nodes as node}
-                                        <img src="{node.sourceUrl}" alt="{node.caption}">
+                                        <img 
+                                            src="{node.sourceUrl}" 
+                                            srcset={node.srcSet} 
+                                            sizes="{node.sizes}" 
+                                            alt="{node.altText}"
+
+                                            on:click={ () => {
+                                                fullscreen = true;
+                                                fullScreenContent = allMedias;
+                                                fullScreenType= 'slide';
+                                            }}
+                                        >
                                     {/each}
                                 </div>
                             {/each}
@@ -138,6 +192,10 @@
 
 </article>
 
+
+{#if fullscreen }
+    <FullScreen bind:fullscreen={fullscreen} type={fullScreenType} content={fullScreenContent} />
+{/if}
 
 <style lang="scss">
 
@@ -249,4 +307,10 @@
     [data-design="right"] {
         padding-left: $space-xl;    
     }
+
+    img:hover {
+        cursor: zoom-in;
+        cursor: url('$lib/assets/svg/arrowfull.svg'), auto;
+    }
+
 </style>

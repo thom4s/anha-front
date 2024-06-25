@@ -96,8 +96,11 @@ export const taxonomies_fields_string = `
 			ratio
 			visuel {
 				nodes {
-					sourceUrl
+					caption
+					altText
 					sizes
+					srcSet
+					sourceUrl
 				}
 			}
 		}
@@ -109,8 +112,6 @@ export const featuredImage_fields_string = `
 		node {
 			caption
 			altText
-			fileSize
-			link
 			sizes
 			srcSet
 			sourceUrl

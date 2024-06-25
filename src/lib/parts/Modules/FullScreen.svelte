@@ -2,6 +2,10 @@
     import { register } from 'swiper/element/bundle';
     register();
 
+    import { fade } from 'svelte/transition';
+	import Close from '../Svgs/Close.svelte';
+
+
     export let content = '';
     export let type = '';
     export let fullscreen = '';
@@ -9,14 +13,17 @@
 </script>
 
 
-    <div class="fullscreen fl-center">
+    <div class="fullscreen fl-center" transition:fade={{ duration: 100 }} data-module="fullscreen">
 
-        <button on:click={() => {
-            fullscreen = false;
-            content = '';
-            type = '';
-        }}>
-        Close</button>  
+        <button 
+            class="btn_clean"
+            on:click={() => {
+                fullscreen = false;
+                content = '';
+                type = '';
+            }}
+        >
+        <Close /></button>  
 
         {#if type === 'image'}
             <img src="{content}" alt="">
@@ -30,6 +37,7 @@
                 slides-per-view="auto" 
                 init="true"
                 navigation={true}
+                pagination={true}
                 loop="true"
             >
                 {#each content.nodes as img }
@@ -49,7 +57,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: rgba(0, 0, 0, .8);
+        background-color: rgba($white, .99);
         z-index: 9;
     }
 
@@ -57,5 +65,28 @@
         position: absolute;
         top: 20px;
         right: 20px;
+        z-index: 99;
+        color: white;
     }
+
+    swiper-container {
+        width: 100%;
+        height: 100%;
+    }
+    .swiper-slide{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    img {
+        object-fit: contain;
+        max-width: 80vw;
+        max-height: 80vh;
+    }
+    .btn_clean {
+        width: 30px;
+        height: 30px;
+    }
+
+
 </style>

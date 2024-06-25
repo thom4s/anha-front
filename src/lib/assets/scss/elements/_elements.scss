@@ -230,3 +230,14 @@ SWIPER
        display: none;
     } 
 }
+
+.swiper-pagination {
+    bottom: $gutter !important;
+}
+.swiper-pagination-bullet-active {
+    background-color: $black !important;
+}
+.swiper-button-next svg, 
+.swiper-button-prev svg {
+    color: black;
+}

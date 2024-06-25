@@ -23,7 +23,7 @@
             </div>
             
             {#if post.informationsPress?.lien }
-                <a href="{post.informationsPress?.lien}" class="link">
+                <a href="{post.informationsPress?.lien}" class="link" target="_blank">
                     {post.informationsPress?.label}
                 </a>
             {/if}

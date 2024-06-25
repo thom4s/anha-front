@@ -3,11 +3,11 @@ import { getProjetBySlug, getAdjacentProject } from "$lib/queries/projets"
 
 export async function load( {params} ) {
 
-    const page = await getProjetBySlug(params.slug);
+    const projet = await getProjetBySlug(params.slug);
 
     return {
-        prevPage: await getAdjacentProject(page.databaseId, 'last'),
-        nextPage: await getAdjacentProject(page.databaseId, 'first'),
-        page
+        prevPage: await getAdjacentProject(projet.databaseId, 'last'),
+        nextPage: await getAdjacentProject(projet.databaseId, 'first'),
+        projet
     }
 }

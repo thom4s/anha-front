@@ -1,6 +1,6 @@
 
 import { PUBLIC_API_URL } from "$env/static/public";
-import { seo_query_string } from '$lib/utils/queries';
+import { seo_query_string, featuredImage_fields_string } from '$lib/utils/queries';
 
 
 export async function getOffreBySlug( slug = '', lang = 'fr' ) {
@@ -20,15 +20,7 @@ export async function getOffreBySlug( slug = '', lang = 'fr' ) {
                         templateName
                     }
                     content
-                    featuredImage {
-                        node {
-                            link
-                            sizes
-                            sourceUrl
-                            srcSet
-                            altText
-                        }
-                    }
+                    ${featuredImage_fields_string}
                     ${seo_query_string}
                 }
             }
