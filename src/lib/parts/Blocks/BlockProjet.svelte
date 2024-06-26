@@ -1,4 +1,5 @@
 <script>
+    import Image from "$lib/parts/Elements/Image.svelte";
     import Arrow from '../Svgs/Arrow.svelte';
 	import { fade } from 'svelte/transition';
 
@@ -48,11 +49,11 @@
 
         {#if projet.featuredImage}
             <div class="bloc_media">   
-                <img 
-                    src="{projet.featuredImage.node.sourceUrl}" 
-                    srcset={projet.featuredImage.node.srcSet} 
-                    sizes="{projet.featuredImage.node.sizes}" 
-                    alt="{projet.featuredImage.node.altText}" />
+
+                <Image 
+                    node={projet.featuredImage.node} 
+                />
+
             </div>
         {/if}
         

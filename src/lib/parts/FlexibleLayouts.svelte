@@ -7,9 +7,9 @@
     import RichText from '$lib/parts/Modules/RichText.svelte';
     import TabExpertise from '$lib/parts/Modules/TabExpertise.svelte';
     import Video from '$lib/parts/Modules/Video.svelte';
-    import BlocTitreVisuelTexte from '$lib/parts/Modules/BlocTitreVisuelTexte.svelte';
-    import BlockProjetPushed from '$lib/parts/Elements/BlockProjetPushed.svelte';
-    import BlockCollaborateur from '$lib/parts/Elements/BlockCollaborateur.svelte';
+    import BlockTVT from '$lib/parts/Blocks/BlockTVT.svelte';
+    import BlockProjetPushed from '$lib/parts/Blocks/BlockProjetPushed.svelte';
+    import BlockCollaborateur from '$lib/parts/Blocks/BlockCollaborateur.svelte';
     import HPCover from '$lib/parts/Modules/HPCover.svelte';
 
     export let layout = '';
@@ -75,7 +75,7 @@ $:console.log('layout: ', layout)
     || layout.__typename === `ContenusFlexiblesStagedStagesContenusFlexiblesBlocTitreVisuelTexteLayout` 
     || layout.__typename === `ContenusSavoirFaireLeftColContenusFlexiblesBlocTitreVisuelTexteLayout` 
     || layout.__typename === `ContenusSavoirFaireRightColContenusFlexiblesBlocTitreVisuelTexteLayout` } 
-    <BlocTitreVisuelTexte visuel={layout.visuel} ratio={layout.img_ratio} design={layout.design} texte={layout.texte} />
+    <BlockTVT visuel={layout.visuel} ratio={layout.img_ratio} design={layout.design} texte={layout.texte} />
 
 
 {:else if layout.__typename === `ContenusFlexiblesStagedStagesContenusFlexiblesCollaborateursLayout`} 

@@ -1,6 +1,8 @@
 <script>
-export let layout = {}
-$: console.log('layout: ', layout)
+    import Image from "$lib/parts/Elements/Image.svelte";
+
+    export let layout = {}
+    $: console.log('layout: ', layout)
 </script>
 
 <div class="module mod_collaborateurs">
@@ -9,7 +11,9 @@ $: console.log('layout: ', layout)
             <div class="mod_media s_3column m_1column">
                 <div class="square">
                     <div class="inner">
-                        <img src="{collab.photo?.node.sourceUrl}" alt="" />
+                        <Image 
+                            node={collab.photo?.node} 
+                        />
                     </div>
                 </div>
             </div>
@@ -32,7 +36,7 @@ $: console.log('layout: ', layout)
         padding: $space-m 0;
     }
     .mod_media {
-        img {
+        .inner {
             border-radius: 50%;
             overflow: hidden;
         }

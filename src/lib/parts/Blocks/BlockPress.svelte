@@ -1,4 +1,6 @@
 <script>
+    import Image from "$lib/parts/Elements/Image.svelte";
+
     export let post = {};
 </script>
 
@@ -6,7 +8,7 @@
 <article class="block_press">
 
             <div class="block_media mb-xsmall">
-                <img src="{post.featuredImage?.node?.sourceUrl}" alt="">
+                <Image node={post.featuredImage?.node} />
             </div>
 
             <div class="block_meta fl-justify mb-xsmall">
@@ -33,9 +35,5 @@
 
 
 <style lang="scss"> 
-    img {
-        width: 100%;
-        aspect-ratio: 4/5;
-        background-color: $beige;
-    }
+
 </style>

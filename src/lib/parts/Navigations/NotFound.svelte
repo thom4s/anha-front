@@ -1,7 +1,5 @@
 <script>
-    	import notfound from '$lib/assets/notfound.png';
-
-
+    import notfound from '$lib/assets/notfound.png';
 </script>
 
 <article class="">

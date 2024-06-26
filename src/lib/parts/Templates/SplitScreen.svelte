@@ -97,9 +97,6 @@
             padding-right: 0;
             padding-left: 0;
         }
-        
-
-
     }
 
     :global(.stage_txt h1) {

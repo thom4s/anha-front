@@ -1,7 +1,7 @@
 <script lang="ts">
     import PushContact from "$lib/parts/Modules/PushContact.svelte";
     import LoadMore from "$lib/parts/Navigations/LoadMore.svelte";
-    import BlockPress from "$lib/parts/Elements/BlockPress.svelte";
+    import BlockPress from "$lib/parts/Blocks/BlockPress.svelte";
 
     export let page = {};
     export let posts = [];

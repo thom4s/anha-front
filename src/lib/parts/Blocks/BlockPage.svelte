@@ -1,4 +1,5 @@
 <script>
+    import Image from "../Elements/Image.svelte";
     export let post = {};
 
 </script>
@@ -10,7 +11,7 @@
 
         <div class="m_6column">
             <div class="bloc_media">
-                <img src="{post.featuredImage?.node?.sourceUrl}" alt="">
+                <Image node={post.featuredImage?.node} />
             </div>
         </div>
 

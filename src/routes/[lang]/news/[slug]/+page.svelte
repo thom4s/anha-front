@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Image from "$lib/parts/Elements/Image.svelte";
 
     export let data: {
         page: Promise<void>;
@@ -13,7 +14,7 @@
     <div>Auteur : {@html page.author.node.name}</div>
 
     {#if page.featuredImage}
-        <img src="{page.featuredImage.node.sourceUrl}" srcset={page.featuredImage.node.srcSet} sizes="{page.featuredImage.node.sizes}" alt="{page.featuredImage.node.altText}" />
+        <Image node={page.featuredImage.node} />
     {/if}
 
     <div>{@html page.content}</div>

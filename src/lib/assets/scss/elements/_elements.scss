@@ -150,14 +150,16 @@ MEDIA
 --------------------------------------------------------------*/
 
 [data-ratio="verticale"] {
-    img {
+    img,
+    .media_outer {
         width: 100%;
         aspect-ratio: 4/5;
     }
 }
 
 [data-ratio="horizontale"] {
-    img {
+    img,
+    .media_outer {
         width: 100%;
         aspect-ratio: 5/4;
     }
@@ -220,6 +222,32 @@ MEDIA
     }
 }
 
+.block_press {
+    img {
+        width: 100%;
+        aspect-ratio: 4/5;
+        background-color: $beige;
+    }
+}
+.block_projet {
+    img {
+        aspect-ratio: 5/4;
+        width: 100%;
+    }
+}
+
+.marquee-line {
+    .media_container {
+        display: flex;
+        align-items: center;
+    }
+    img { 
+        object-fit: contain;
+        max-height: 180px;
+    }
+}
+
+
 
 /*--------------------------------------------------------------
 SWIPER
@@ -241,4 +269,8 @@ SWIPER
 .swiper-button-next svg, 
 .swiper-button-prev svg {
     color: black;
+}
+.swiper-button-next,
+.swiper-button-prev {
+    cursor: pointer;
 }

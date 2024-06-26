@@ -1,5 +1,5 @@
 <script lang="ts">
-    import BlockPost from "$lib/parts/Elements/BlockPost.svelte";
+    import BlockPost from "$lib/parts/Blocks/BlockPost.svelte";
     import PushContact from "$lib/parts/Modules/PushContact.svelte";
     import SocialLinks from "$lib/parts/Navigations/SocialLinks.svelte"
 	import LoadMore from "$lib/parts/Navigations/LoadMore.svelte";

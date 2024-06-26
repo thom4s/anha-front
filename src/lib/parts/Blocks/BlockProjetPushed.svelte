@@ -1,4 +1,6 @@
 <script>
+    import Image from "$lib/parts/Elements/Image.svelte";
+
     import Arrow from '../Svgs/Arrow.svelte';
 	import { fade } from 'svelte/transition';
 
@@ -8,7 +10,7 @@
 </script>
 
 
-<article class="block block_projet" transition:fade={{ duration: 200 }}>
+<article class="block_projet" transition:fade={{ duration: 200 }}>
     <a class="fl-justify gap-m block_link" href="{projet.uri}">
 
         <div class="block_txt fl-column-space">
@@ -50,7 +52,7 @@
         </div>
         {#if projet.featuredImage}
             <div class="block_media">   
-                <img src="{projet.featuredImage.node.sourceUrl}" srcset={projet.featuredImage.node.srcSet} sizes="{projet.featuredImage.node.sizes}" alt="{projet.featuredImage.node.altText}" />
+                <Image node={projet.featuredImage.node} />
             </div>
         {/if}
         
@@ -79,17 +81,12 @@
         @include min(tablet) {
             flex: 0 0 20%;
         }
-        img {
-            aspect-ratio: 5/4;
-            width: 100%;
-        }
     }
     .block_title {
         @include max(tablet) {
             padding: $space-s 0;
         } 
     }
-
     .block_link {
         text-decoration: none;
         color: inherit;

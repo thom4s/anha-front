@@ -1,5 +1,6 @@
-<!-- @ -1,48 +0,0 @@ -->
 <script>
+    import Image from "$lib/parts/Elements/Image.svelte";
+
     export let post = {};
     export let type = '';
 </script>
@@ -28,7 +29,7 @@
         </div>
 
         <div class="bloc_media">
-            <img src="{post.featuredImage?.node?.sourceUrl}" alt="">
+            <Image node={post.featuredImage?.node} />
         </div>
 
     </div>

@@ -1,24 +1,12 @@
 <script>
-    import FullScreen from '$lib/parts/Modules/FullScreen.svelte';
-	import SocialLinks from '../Navigations/SocialLinks.svelte';
+    import { fullscreen, fullScreenContent, fullScreenType } from '$stores/fullscreen.js';
+
+    import SocialLinks from '../Navigations/SocialLinks.svelte';
+    import Image from "../Elements/Image.svelte";
 
     import { fade } from 'svelte/transition';
     import { register } from 'swiper/element/bundle';
     register();
-
-    import Ukiyo from "ukiyojs";
-    import { onMount } from 'svelte';
-
-    onMount(() => {
-        new Ukiyo(".parallax", {
-            scale: 1.1,
-            speed: 1.5,
-        })
-    })
-
-    let fullscreen = false;
-    let fullScreenContent = '';
-    let fullScreenType = '';
 
     export let module = false;
     export let post = {};
@@ -39,9 +27,9 @@
                         class="trigger"
                         aria-roledescription=""
                         on:click={ () => {
-                            fullscreen = true;
-                            fullScreenContent = post.informationsNews?.video;
-                            fullScreenType= 'video';
+                            $fullscreen = true;
+                            $fullScreenContent = post.informationsNews?.video;
+                            $fullScreenType= 'video';
                         }}>
                         {@html post.informationsNews?.video}
                     </div>
@@ -54,31 +42,32 @@
                         navigation={true}
                         loop="true"
                     >
-                        {#each post.informationsNews?.galery.nodes as img }
+                        {#each post.informationsNews?.galery.nodes as node }
                             <swiper-slide class="swiper-slide">
-                                <img 
-                                    src="{img.sourceUrl}" 
-                                    alt="{img.caption}"
-                                    class="parallax"
-                                    on:click={ () => {
-                                        fullscreen = true;
-                                        fullScreenContent = post.informationsNews?.galery;
-                                        fullScreenType= 'slide';
-                                    }}>
+
+                                <Image 
+                                    node={post.featuredImage?.node} 
+                                    parallax={true}
+                                    on:imageClicked={ () => {
+                                        $fullscreen = true;
+                                        $fullScreenType = 'image';
+                                        $fullScreenContent = post.informationsNews?.galery
+                                    }}/>
+
                             </swiper-slide>
                         {/each}
                     </swiper-container >
 
                 {:else}
-                    <img 
-                        src="{post.featuredImage?.node?.sourceUrl}" 
-                        alt=""
-                        class="parallax"
-                        on:click={ () => {
-                            fullscreen = true;
-                            fullScreenType = 'image';
-                            fullScreenContent = post.featuredImage?.node?.sourceUrl
-                        }}>
+
+                    <Image 
+                        node={post.featuredImage?.node} 
+                        parallax={true}
+                        on:imageClicked={ () => {
+                            $fullscreen = true;
+                            $fullScreenType = 'image';
+                            $fullScreenContent = post.featuredImage?.node?.sourceUrl
+                        }}/>
                 {/if}
             </div>
         </div>
@@ -126,9 +115,6 @@
 
 </article>
 
-{#if fullscreen }
-    <FullScreen bind:fullscreen={fullscreen} type={fullScreenType} content={fullScreenContent} />
-{/if}
 
 <style lang="scss"> 
 

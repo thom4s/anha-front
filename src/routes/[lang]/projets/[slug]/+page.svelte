@@ -1,29 +1,14 @@
 <script lang="ts">
     import Arrow from '$lib/parts/Svgs/Arrow.svelte';
     import NotFound from '$lib/parts/Navigations/NotFound.svelte';
-    
-    import arrowfull from '$lib/assets/svg/arrowfull.svg';
-    import FullScreen from '$lib/parts/Modules/FullScreen.svelte';
-    let fullscreen = false;
-    let fullScreenContent = '';
-    let fullScreenType = '';
+    import Image from "$lib/parts/Elements/Image.svelte";
 
-
-    import { afterNavigate } from '$app/navigation';
-    import { base } from '$app/paths'
-
-    let previousPage : string = base ;
-
-    afterNavigate(({from}) => {
-        previousPage = from?.url.pathname || previousPage
-    }) 
-
-    export let data: {
-        projet: Promise<void>;
-    }
+    export let data: { projet: Promise<void>; }
     $: ({projet, prevPage, nextPage} = data)
 
-    $: console.log( projet.informationsProjet.visuels )
+
+    // MEDIAS FOR FULLSCREEN 
+    import { fullscreen, fullScreenContent, fullScreenType } from '$stores/fullscreen.js';
 
     let allMedias = {nodes: []};
     $: {
@@ -36,6 +21,10 @@
         }
         console.log('allMedias', allMedias)
     }
+
+    // PARRALAX
+    let parallax = false;
+
 
 </script>
 
@@ -62,17 +51,17 @@
                             </div>
 
                             <div class="m_hide projet_media_item" data-design="full" data-ratio="verticale">
-                                <img 
-                                    src="{projet.featuredImage.node.sourceUrl}" 
-                                    srcset={projet.featuredImage.node.srcSet} 
-                                    sizes="{projet.featuredImage.node.sizes}" 
-                                    alt="{projet.featuredImage.node.altText}"
-                                    on:click={ () => {
-                                        fullscreen = true;
-                                        fullScreenContent = allMedias;
-                                        fullScreenType= 'slide';
+
+                                <Image 
+                                    node={projet.featuredImage.node} 
+                                    {parallax} 
+                                    on:imageClicked={ () => {
+                                        $fullscreen = true;
+                                        $fullScreenType = 'image';
+                                        $fullScreenContent = allMedias
                                     }}
                                 />
+                                
                             </div>
 
                             <div class="project_metadata">
@@ -131,40 +120,46 @@
                 <div class="s_12column m_6column project_medias">
 
                         <div class="s_hide m_show projet_media_item" data-design="full" data-ratio="verticale">
-                            <img 
-                                src="{projet.featuredImage.node.sourceUrl}" 
-                                srcset={projet.featuredImage.node.srcSet} 
-                                sizes="{projet.featuredImage.node.sizes}" 
-                                alt="{projet.featuredImage.node.altText}"
 
-                                on:click={ () => {
-                                    fullscreen = true;
-                                    fullScreenContent = allMedias;
-                                    fullScreenType= 'slide';
-                                }}
-                            >
+                            <div class="media_outer">
+                                <Image 
+                                    node={projet.featuredImage.node} 
+                                    {parallax} 
+                                    fullscreened={true}
+                                    on:imageClicked={ () => {
+                                        $fullscreen = true;
+                                        $fullScreenType = 'slide';
+                                        $fullScreenContent = allMedias
+                                    }}
+                                />
+                            </div>
+                        
                         </div>
 
-                        {#if projet.informationsProjet.visuels}
+                        {#if projet.informationsProjet.visuels }
                             {#each projet.informationsProjet.visuels as v}
                                 
                                 <div class="projet_media_item" data-design="{v.design}" data-ratio="{v.ratio}">
 
                                     {#each v.visuel.nodes as node}
-                                        <img 
-                                            src="{node.sourceUrl}" 
-                                            srcset={node.srcSet} 
-                                            sizes="{node.sizes}" 
-                                            alt="{node.altText}"
 
-                                            on:click={ () => {
-                                                fullscreen = true;
-                                                fullScreenContent = allMedias;
-                                                fullScreenType= 'slide';
-                                            }}
-                                        >
+                                        <div class="media_outer">
+                                            <Image 
+                                                node={node}
+                                                {parallax} 
+                                                fullscreened={true}
+                                                on:imageClicked={ () => {
+                                                    $fullscreen = true;
+                                                    $fullScreenType = 'slide';
+                                                    $fullScreenContent = allMedias
+                                                }}
+                                            />
+                                        </div> 
+
                                     {/each}
+
                                 </div>
+
                             {/each}
                         {/if}
 
@@ -190,10 +185,6 @@
 
 </article>
 
-
-{#if fullscreen }
-    <FullScreen bind:fullscreen={fullscreen} type={fullScreenType} content={fullScreenContent} />
-{/if}
 
 <style lang="scss">
 
@@ -300,11 +291,13 @@
         @include max(tablet) {
             height: 60vh;
         }
-        img:first-child {
+        .media_outer:first-child {
             align-self: flex-start;
+            flex: 0 0 calc(50% - 20px);
         }
-        img:last-child {
+        .media_outer:last-child {
             align-self: flex-end;
+            flex: 0 0 calc(50% - 20px);
         }
     }
     [data-design="left"] {
@@ -312,11 +305,6 @@
     }
     [data-design="right"] {
         padding-left: $space-xl;    
-    }
-
-    img:hover {
-        cursor: zoom-in;
-        cursor: url('$lib/assets/svg/arrowfull.svg'), auto;
     }
 
 </style>

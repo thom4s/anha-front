@@ -3,7 +3,9 @@
     register();
 
     import { fade } from 'svelte/transition';
-	import Close from '../Svgs/Close.svelte';
+	import Close from '$lib/parts/Svgs/Close.svelte';
+	import IconArrowRight from '$lib/parts/Svgs/IconArrowRight.svelte';
+	import IconArrowLeft from '$lib/parts/Svgs/IconArrowLeft.svelte';
 
 
     export let content = '';
@@ -33,12 +35,18 @@
 
         {:else if type === 'slide'}
             <swiper-container 
-                space-between={30}
-                slides-per-view={3}
-                centered-slides={true}
+                spaceBetween={30}
+                slidesPerView={1.5}
+                centeredSlides={true}
                 init={true}
-                navigation={true}
-                pagination={true}
+                navigation={{
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                }}
+                pagination={{
+                    el: '.swiper-pagination',
+                    type: 'bullets',
+                }}
                 loop={true}
 
             >
@@ -48,7 +56,23 @@
                     </swiper-slide>
                 {/each}
             </swiper-container >
+
+
+            <div class="container swiper-utils">
+                <div class="swiper-pagination"></div>
+
+                <div class="swiper-button-prev">
+                    <IconArrowLeft />
+                </div>
+                <div class="swiper-button-next">
+                    <IconArrowRight />
+                </div>
+            </div>
+
+            
         {/if}
+
+        
     </div>
 
 
@@ -73,21 +97,31 @@
 
     swiper-container {
         width: 100%;
-        height: 100%;
+        display: flex;
+        align-items: center;
     }
     .swiper-slide{
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-self: center;
     }
     img {
         object-fit: contain;
-        max-width: 80vw;
+        // max-width: 80vw;
         max-height: 80vh;
     }
     .btn_clean {
         width: 30px;
         height: 30px;
+    }
+
+    .swiper-utils {
+        position: absolute;
+        bottom: $space-l;
+    }
+    .swiper-pagination {
+        position: absolute;
+        bottom: $gutter;
     }
 
 

@@ -1,5 +1,5 @@
 <script>
-	import BlockProjet from '$lib/parts/Elements/BlockProjet.svelte';
+	import BlockProjet from '$lib/parts/Blocks/BlockProjet.svelte';
 	import { onMount } from 'svelte';
     
     import { register } from 'swiper/element/bundle';

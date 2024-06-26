@@ -1,5 +1,5 @@
 <script lang="ts">
-    import BlockProjet from "$lib/parts/Elements/BlockProjet.svelte";
+    import BlockProjet from "$lib/parts/Blocks/BlockProjet.svelte";
 	import PushContact from "$lib/parts/Modules/PushContact.svelte";
     import Filters from '$lib/parts/Svgs/Filters.svelte';
 

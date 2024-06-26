@@ -1,5 +1,6 @@
 <script>
     import Marqueeck from '@arisbh/marqueeck'; // https://marqueeck.vercel.app/docs/props
+    import Image from "$lib/parts/Elements/Image.svelte";
 
     export const titre = '';
     export let ligneLogos = [];
@@ -17,16 +18,16 @@
 </script>
 
 
-<section class="module">
+<section class="module" data-module="references">
     <!-- <h2>{titre}</h2> -->
 
     {#if ligneLogos && ligneLogos?.length > 0}
         <div class="logos">
             {#each ligneLogos as ligne, i }
-                <div class="line-container">
-                    <Marqueeck options={ (i & 1) ? { direction: "right" } : { direction: "left" } } class="line" {options1} >
+                <div class="marquee-container">
+                    <Marqueeck options={ (i & 1) ? { direction: "right" } : { direction: "left" } } class="marquee-line" {options1} >
                         {#each ligne.logos.nodes as logo }
-                            <img src="{logo.sourceUrl}" />
+                            <Image node={logo} />
                         {/each}
                     </Marqueeck>
                 </div>
@@ -41,18 +42,15 @@
         margin: 180px 0;
         overflow: hidden;
     }
-    .line {
+    .marquee-line {
         display: flex;
         gap: 20px;
     }
-    .line-container {
+    .marquee-container {
         border-top: 1px solid $dark-font;
         &:last-child {
             border-bottom: 1px solid $dark-font;
         }
     }
-    img { 
-        object-fit: contain;
-        max-height: 180px;
-    }
+
 </style>

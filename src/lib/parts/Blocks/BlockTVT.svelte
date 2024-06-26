@@ -1,18 +1,14 @@
 <script>
+    import { fullscreen, fullScreenContent, fullScreenType } from '$stores/fullscreen.js';
+
     export let visuel = '';
     export let texte = '';
     export let design = 'full';
     export let ratio = 'full';
+    export let parallax = false;
 
-    import Ukiyo from "ukiyojs";
-    import { onMount } from 'svelte';
+    import Image from "$lib/parts/Elements/Image.svelte";
 
-    onMount(() => {
-        new Ukiyo(".parallax", {
-            scale: 1.1,
-            speed: 1.5,
-        })
-    })
 </script>
 
 <section class="module mod_tvt fl-column media-{design}" data-ratio="{ratio}">
@@ -29,7 +25,18 @@
 
     <div class="wrapper_media">
         <div class="mod_tvt_media">
-            <img class="parallax" alt="visuel?.node?.caption" src="{visuel?.node?.sourceUrl}">
+
+            <Image 
+                node={visuel?.node} 
+                {parallax} 
+                fullscreened={true}
+                on:imageClicked={ () => {
+                    $fullscreen = true;
+                    $fullScreenType = 'image';
+                    $fullScreenContent = visuel?.node.sourceUrl
+                }}
+            />
+
         </div>
     </div>
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import BlockCollaboration from "$lib/parts/Elements/BlockCollaboration.svelte";
+    import BlockCollaboration from "$lib/parts/Blocks/BlockCollaboration.svelte";
 
     export let data: {
         collaborations: Promise<void>;

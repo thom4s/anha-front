@@ -1,6 +1,6 @@
 
 <script>
-    import BlocTitreVisuelTexte from '$lib/parts/Modules/BlocTitreVisuelTexte.svelte';
+    import BlockTVT from '$lib/parts/Blocks/BlockTVT.svelte';
     import FlexibleLayouts from '$lib/parts/FlexibleLayouts.svelte';
 
     export let chapo = '';
@@ -16,7 +16,7 @@
 
     <section id="r0" class="fl-column-space fl-center">
 
-        <BlocTitreVisuelTexte visuel={visuel} texte={chapo} {design} /> 
+        <BlockTVT visuel={visuel} texte={chapo} {design} /> 
   
     </section>
 

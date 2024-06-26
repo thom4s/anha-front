@@ -1,7 +1,7 @@
 <script lang="ts">
     import Form from '$lib/parts/Forms/Form.svelte';
 
-    import BlockPost from "$lib/parts/Elements/BlockPost.svelte";
+    import BlockPost from "$lib/parts/Blocks/BlockPost.svelte";
 
     export let data: {
         page: Promise<void>;
