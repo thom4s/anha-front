@@ -3,6 +3,16 @@
     export let texte = '';
     export let design = 'full';
     export let ratio = 'full';
+
+    import Ukiyo from "ukiyojs";
+    import { onMount } from 'svelte';
+
+    onMount(() => {
+        new Ukiyo(".parallax", {
+            scale: 1.1,
+            speed: 1.5,
+        })
+    })
 </script>
 
 <section class="module mod_tvt fl-column media-{design}" data-ratio="{ratio}">
@@ -19,7 +29,7 @@
 
     <div class="wrapper_media">
         <div class="mod_tvt_media">
-            <img src="{visuel?.node?.sourceUrl}">
+            <img class="parallax" alt="visuel?.node?.caption" src="{visuel?.node?.sourceUrl}">
         </div>
     </div>
 
@@ -38,12 +48,12 @@
             margin-bottom: $space-xl * 2;
         }
         img {
-            width: 100%;
+            width: 100% !important;
         }
     }
     .media-full {
         img {
-            width: 100%;
+            width: 100% !important;
             max-height: 90vh;
         }
 

@@ -1,20 +1,29 @@
 <script>
     import FullScreen from '$lib/parts/Modules/FullScreen.svelte';
-    import arrowfull from '$lib/assets/svg/arrowfull.svg';
+	import SocialLinks from '../Navigations/SocialLinks.svelte';
 
     import { fade } from 'svelte/transition';
-    export let post = {};
-    export let type = '';
     import { register } from 'swiper/element/bundle';
-	import SocialLinks from '../Navigations/SocialLinks.svelte';
     register();
+
+    import Ukiyo from "ukiyojs";
+    import { onMount } from 'svelte';
+
+    onMount(() => {
+        new Ukiyo(".parallax", {
+            scale: 1.1,
+            speed: 1.5,
+        })
+    })
 
     let fullscreen = false;
     let fullScreenContent = '';
     let fullScreenType = '';
 
     export let module = false;
-    
+    export let post = {};
+    export let type = '';
+
 </script>
 
 
@@ -49,7 +58,8 @@
                             <swiper-slide class="swiper-slide">
                                 <img 
                                     src="{img.sourceUrl}" 
-                                    alt=""
+                                    alt="{img.caption}"
+                                    class="parallax"
                                     on:click={ () => {
                                         fullscreen = true;
                                         fullScreenContent = post.informationsNews?.galery;
@@ -63,6 +73,7 @@
                     <img 
                         src="{post.featuredImage?.node?.sourceUrl}" 
                         alt=""
+                        class="parallax"
                         on:click={ () => {
                             fullscreen = true;
                             fullScreenType = 'image';
