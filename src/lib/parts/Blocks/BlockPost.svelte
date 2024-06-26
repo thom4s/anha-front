@@ -62,7 +62,7 @@
 
                     <Image 
                         node={post.featuredImage?.node} 
-                        parallax={true}
+                        parallax={false}
                         on:imageClicked={ () => {
                             $fullscreen = true;
                             $fullScreenType = 'image';

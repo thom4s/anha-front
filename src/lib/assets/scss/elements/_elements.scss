@@ -174,8 +174,13 @@ MEDIA
     }
 
     .media-left & {
-        padding-left: $gutter;
         padding-right: $gutter;
+        @include min(bigtablet) {
+            padding-left: 120px;
+        }
+        @include max(bigtablet) {
+            padding-left: $space-m;
+        }
     }
     .media-right & {
         padding-right: $gutter;
@@ -243,10 +248,16 @@ MEDIA
     }
     img { 
         object-fit: contain;
-        max-height: 180px;
+        max-height: 130px;
     }
 }
-
+.block_collaboration {
+    img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 5/4;
+    }
+}
 
 
 /*--------------------------------------------------------------

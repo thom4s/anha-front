@@ -15,7 +15,7 @@
             <div class="caption">{post.informationsCollaboration.date}</div>
             
             <div class="fl-column-space gap-s">  
-                <h2 class="h3 no-margin">{post.title}</h2>
+                <h2 class="h3 no-margin">{@html post.title}</h2>
                 <div class="body">{@html post.excerpt}</div>
             </div>
             
@@ -52,12 +52,6 @@
     .bloc_media {
         width: 45%;
         height: 100%;
-
-        img {
-            width: 100%;
-            height: auto;
-            aspect-ratio: 5/4;
-        }
     }
 }
 </style>

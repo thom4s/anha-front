@@ -1,7 +1,7 @@
 <script lang="ts">
     import BlockProjet from "$lib/parts/Blocks/BlockProjet.svelte";
 	import PushContact from "$lib/parts/Modules/PushContact.svelte";
-    import Filters from '$lib/parts/Svgs/Filters.svelte';
+    import IconFilters from '$lib/parts/Svgs/IconFilters.svelte';
 
     import { onMount } from "svelte";
 	import { fade } from 'svelte/transition';
@@ -109,7 +109,7 @@
 
         <div class="btn_outer s_12column">
             <button class="btn_clean fl-vcenter gap-s" on:click={ () => menuIsVisible = true }>
-                <span class="icon"><Filters /></span>
+                <span class="icon"><IconFilters /></span>
                 <span class="caption">Afficher les filtres</span>
             </button>
         </div>
@@ -118,7 +118,7 @@
 
             <div class="btn_outer">
                 <button class="btn_clean fl-vcenter gap-s" on:click={ () => menuIsVisible = false }>
-                    <span class="icon"><Filters /></span>
+                    <span class="icon"><IconFilters /></span>
                     <span class="caption">Masquer les filtres</span>
                 </button>
             </div>

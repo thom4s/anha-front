@@ -19,14 +19,14 @@
 
 </script>
 
-<section class="module">
+<section class="module" class:mb-xxlarge={!smallContact}>
 
     <div class="grid container">
 
-        <div class="s_12column m_6column">
+        <div class="s_12column m_6column mod_titles">
 
             {#if title }
-                <h2 class="mod_title h1 mb-medium" transition:fade={{ duration: 200 }}>{@html title}</h2>
+                <h2 class="mod_title h1 no-margin" transition:fade={{ duration: 200 }}>{@html title}</h2>
             {/if}
 
             {#if !smallContact }
@@ -35,7 +35,7 @@
         
         </div>
 
-        <div class="s_12column m_6column">
+        <div class="s_12column m_6column mod_actions">
             {#if smallContact }
                 <div class="body" transition:fade={{ duration: 200 }}>{@html text}</div>
                 <a class="btn dark" href="{lien?.url}">{label}</a>
@@ -53,16 +53,17 @@
 <style lang="scss">
     .module {
         margin-top: 180px;
-        @include min(tablet) {
-            margin-bottom: 180px;
-        }
-        @include max(tablet) {
-            margin-bottom: $space-m;
-        }
+
         .mod_title {
             @include max(tablet) {
                 margin-bottom: 0
             } 
+        }
+        .mod_actions {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            justify-content: flex-end;
         }
     }
     div.body {

@@ -3,7 +3,7 @@
     register();
 
     import { fade } from 'svelte/transition';
-	import Close from '$lib/parts/Svgs/Close.svelte';
+	import IconClose from '$lib/parts/Svgs/IconClose.svelte';
 	import IconArrowRight from '$lib/parts/Svgs/IconArrowRight.svelte';
 	import IconArrowLeft from '$lib/parts/Svgs/IconArrowLeft.svelte';
 
@@ -25,7 +25,7 @@
                 type = '';
             }}
         >
-        <Close /></button>  
+        <IconClose /></button>  
 
         {#if type === 'image'}
             <img src="{content}" alt="">

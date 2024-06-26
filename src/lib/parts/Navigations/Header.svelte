@@ -6,7 +6,7 @@
     import { onMount } from "svelte";
     import Logo from "$lib/parts/Elements/Logo.svelte";
     import Menu from "$lib/parts/Elements/Menu.svelte";
-    import Close from '$lib/parts/Svgs/Close.svelte';
+    import IconClose from '$lib/parts/Svgs/IconClose.svelte';
 
     $: ( {menuItemsPrimary, menuItemsSecondary} = $menusStore)
     
@@ -104,7 +104,7 @@
 
                 <button on:click={ () => menuIsVisible = false } 
                     class="btn_clean menus_close_btn">
-                    <Close />
+                    <IconClose />
                 </button>
 
             </div>

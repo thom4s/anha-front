@@ -48,6 +48,7 @@
     }
     .marquee-container {
         border-top: 1px solid $dark-font;
+        padding: $space-s 0;
         &:last-child {
             border-bottom: 1px solid $dark-font;
         }

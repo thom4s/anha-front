@@ -1,5 +1,6 @@
 <script lang="ts">
     import BlockCollaboration from "$lib/parts/Blocks/BlockCollaboration.svelte";
+	import PushContact from "$lib/parts/Modules/PushContact.svelte";
 
     export let data: {
         collaborations: Promise<void>;
@@ -28,6 +29,8 @@
     </div>
     
 </div>
+
+<PushContact smallContact={false}/>
 
 
 <style lang="scss">

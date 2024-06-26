@@ -2,7 +2,7 @@
     import { onMount } from "svelte";
     import ExpertiseItem from '$lib/parts/Modules/ExpertiseItem.svelte';
     import PushContact from '../Modules/PushContact.svelte';
-    import Close from '$lib/parts/Svgs/Close.svelte';
+    import IconClose from '$lib/parts/Svgs/IconClose.svelte';
 
 
     // import { gsap } from "gsap";
@@ -53,11 +53,11 @@
 
         // MOVE CONTENT (BUT DONT DISPLAY)
         if( side === 'rightSide') {
-            tl.to(`#${side}Contents`, { translateX: '0', duration: 1, delay: .1 });
-            tl.to(`#${side}Contents`, { maxWidth: '93vw', duration: 1 });
+            tl.to(`#${side}Contents`, { translateX: '0', duration: .5, delay: .1 });
+            tl.to(`#${side}Contents`, { maxWidth: '93vw', duration: .5 });
         }
         else {
-            tl.to(`#${side}Contents`, { translateX: '-43vw', duration: 1, delay: .5 });
+            tl.to(`#${side}Contents`, { translateX: '-43vw', duration: .5, delay: .5 });
             tl.to(`#${side}Contents`, { maxWidth: '93vw', duration: .1 });
         }
 
@@ -94,11 +94,11 @@
 
         // MOVE CONTENT OUT
         if( side === 'rightSide') {
-            tl.to(`#${side}Contents`, { maxWidth: '50vw', duration: 1 });
+            tl.to(`#${side}Contents`, { maxWidth: '50vw', duration: .5 });
             tl.to(`#${side}Contents`, { translateX: '0', duration: .1, delay: .5 });
         }
         else {
-            tl.to(`#${side}Contents`, { translateX: '0', duration: 1 });
+            tl.to(`#${side}Contents`, { translateX: '0', duration: .5 });
             tl.to(`#${side}Contents`, { maxWidth: '50vw', duration: .1 });
         }
 
@@ -166,7 +166,7 @@
                         class="btn_clean menus_close_btn"
                         class:active={rightColVisible}
                     >
-                        <Close />
+                        <IconClose />
                     </button>
                     <div class="btn_title_mobile fl-column">
                         <span class="caption ">{rightCol.titre}</span>
@@ -184,7 +184,7 @@
                             animationOut('leftSide', 'rightSide' )
                         } }
                     >
-                        <Close />
+                        <IconClose />
                     </button>
                     <div class="btn_title_mobile fl-column">
                         <span class="caption ">{leftCol.titre}</span>
