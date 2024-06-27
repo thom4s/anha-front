@@ -8,22 +8,8 @@
 
 
     // MEDIAS FOR FULLSCREEN 
-    import { fullscreen, fullScreenContent, fullScreenType } from '$stores/fullscreen.js';
+    import { fullscreen, fullScreenType } from '$stores/fullscreen.js';
 
-    let allMedias = {nodes: []};
-    $: {
-        allMedias.nodes = [...allMedias.nodes, projet.featuredImage?.node]
-
-        if( projet.informationsProjet.visuels ) {
-            for( const v of projet.informationsProjet.visuels) {
-                for( const n of v.visuel.nodes) {
-                    allMedias.nodes = [...allMedias.nodes, n]
-                }
-            }
-        }
-
-        console.log('allMedias', allMedias)
-    }
 
     // PARRALAX
     let parallax = false;
@@ -58,10 +44,10 @@
                                 <Image 
                                     node={projet.featuredImage.node} 
                                     {parallax} 
+                                    includeThis={true}
                                     on:imageClicked={ () => {
                                         $fullscreen = true;
                                         $fullScreenType = 'image';
-                                        $fullScreenContent = allMedias
                                     }}
                                 />
                                 
@@ -126,13 +112,12 @@
 
                             <div class="media_outer">
                                 <Image 
-                                    node={projet.featuredImage.node} 
+                                    node={projet.featuredImage?.node} 
                                     {parallax} 
                                     fullscreened={true}
                                     on:imageClicked={ () => {
                                         $fullscreen = true;
                                         $fullScreenType = 'slide';
-                                        $fullScreenContent = allMedias
                                     }}
                                 />
                             </div>
@@ -151,10 +136,10 @@
                                                 node={node}
                                                 {parallax} 
                                                 fullscreened={true}
+                                                includeThis={true}
                                                 on:imageClicked={ () => {
                                                     $fullscreen = true;
                                                     $fullScreenType = 'slide';
-                                                    $fullScreenContent = allMedias
                                                 }}
                                             />
                                         </div> 

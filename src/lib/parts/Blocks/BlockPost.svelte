@@ -50,7 +50,7 @@
                                     parallax={true}
                                     on:imageClicked={ () => {
                                         $fullscreen = true;
-                                        $fullScreenType = 'image';
+                                        $fullScreenType = 'slide';
                                         $fullScreenContent = post.informationsNews?.galery
                                     }}/>
 
@@ -65,8 +65,7 @@
                         parallax={false}
                         on:imageClicked={ () => {
                             $fullscreen = true;
-                            $fullScreenType = 'image';
-                            $fullScreenContent = post.featuredImage?.node?.sourceUrl
+                            $fullScreenType = 'slide';
                         }}/>
                 {/if}
             </div>

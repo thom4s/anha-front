@@ -267,7 +267,7 @@ SWIPER
 
 .swiper-button-next,
 .swiper-button-prev {
-    @include max(desktop) {
+    @include max(tablet) {
        display: none;
     } 
 }

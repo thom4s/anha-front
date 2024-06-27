@@ -30,10 +30,10 @@
                 node={visuel?.node} 
                 {parallax} 
                 fullscreened={true}
+                includeThis={true}
                 on:imageClicked={ () => {
                     $fullscreen = true;
-                    $fullScreenType = 'image';
-                    $fullScreenContent = visuel?.node.sourceUrl
+                    $fullScreenType = 'slide';
                 }}
             />
 

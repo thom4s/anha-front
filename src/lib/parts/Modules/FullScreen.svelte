@@ -7,9 +7,9 @@
 	import IconArrowRight from '$lib/parts/Svgs/IconArrowRight.svelte';
 	import IconArrowLeft from '$lib/parts/Svgs/IconArrowLeft.svelte';
 
-
-    export let content = '';
-    export let type = '';
+    import { fullScreenContent, fullScreenType } from '$stores/fullscreen.js';
+    export let content = $fullScreenContent;
+    export let type = $fullScreenType;
     export let fullscreen = '';
 
 </script>
@@ -39,35 +39,28 @@
                 slidesPerView={1.5}
                 centeredSlides={true}
                 init={true}
-                navigation={{
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                }}
-                pagination={{
-                    el: '.swiper-pagination',
-                    type: 'bullets',
-                }}
+                navigation={true}
+                pagination={true}
                 loop={true}
 
             >
-                {#each content.nodes as img }
-                    <swiper-slide class="swiper-slide">
-                        <img src="{img.sourceUrl}" alt="">
-                    </swiper-slide>
-                {/each}
+                {#if content.nodes}
+                    {#each content.nodes as img }
+                        <swiper-slide class="swiper-slide">
+                            <img src="{img.sourceUrl}" alt="">
+                        </swiper-slide>
+                    {/each}
+                {:else}
+                    {#each content as src }
+                        <swiper-slide class="swiper-slide">
+                            <img src="{src}" alt="">
+                        </swiper-slide>
+                    {/each}
+                {/if}
             </swiper-container >
 
 
-            <div class="container swiper-utils">
-                <div class="swiper-pagination"></div>
 
-                <div class="swiper-button-prev">
-                    <IconArrowLeft />
-                </div>
-                <div class="swiper-button-next">
-                    <IconArrowRight />
-                </div>
-            </div>
 
             
         {/if}
@@ -122,6 +115,54 @@
     .swiper-pagination {
         position: absolute;
         bottom: $gutter;
+    }
+
+
+    swiper-container {
+        --swiper-theme-color: #ababab;
+        --swiper-navigation-size: 22px;
+        --swiper-navigation-color: $gray;
+        --swiper-navigation-top-offset: auto;
+        --swiper-navigation-sides-offset: 30vw;
+        --swiper-pagination-color: #92a4ae;
+        --swiper-pagination-bullet-border-radius: 6px;
+        --swiper-pagination-bullet-horizontal-gap: 4px;
+        --swiper-pagination-bullet-vertical-gap: 4px;
+        --swiper-pagination-bullet-size: px;
+        --swiper-pagination-bullet-width: 6px;
+        --swiper-pagination-bullet-height: 6px;
+        --swiper-pagination-bullet-opacity: 1;
+        --swiper-pagination-bullet-inactive-color: #254a5d;
+        --swiper-pagination-bullet-inactive-opacity: 1;
+        --swiper-pagination-bottom: 0rem;
+        --swiper-preloader-color: var(--swiper-theme-color);
+    }
+
+    swiper-container {
+        overflow-y: visible;
+    }
+
+    swiper-container::part(bullet) {
+        /* styles */
+    }
+
+    swiper-container::part(bullet-active) {
+        /* styles */
+    }
+
+    swiper-container::part(pagination) {
+        bottom: -30px;
+        z-index: 5;
+    }
+
+    swiper-container::part(container) {
+        /* styles */
+    }
+
+    swiper-container::part(button-prev),
+    swiper-container::part(button-next) {
+        z-index: 999;
+        bottom: -35px;
     }
 
 

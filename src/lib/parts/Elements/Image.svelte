@@ -1,8 +1,15 @@
 <script>
+    import { fullScreenContent, fullScreenType } from '$stores/fullscreen.js';
+
     // DATAS
     export let node = {}
     export let parallax = false
     export let fullscreened = false
+    export let includeThis = false
+
+    if( includeThis && ! $fullScreenContent.includes(node.sourceUrl)) {
+        $fullScreenContent = [... $fullScreenContent, node.sourceUrl]
+    }
 
 
     // DISPATCH ON CLICK
