@@ -43,11 +43,13 @@ $:console.log('layout: ', layout)
             <h2 class="h2">{@html layout.titre}</h2>
         </div>
         <div class="mod_projects">
-            {#each layout.projets?.nodes as projet }
-                <div class="mb-small">
-                    <BlockProjetPushed {projet} />
-                </div>
-            {/each}
+            {#if layout.projets }
+                {#each layout.projets?.nodes as projet }
+                    <div class="mb-small">
+                        <BlockProjetPushed {projet} />
+                    </div>
+                {/each}
+            {/if}
         </div>
         <div class="mod_action">
             <a class="link" href="{layout.link?.nodes[0].uri}">{@html layout.label}</a>

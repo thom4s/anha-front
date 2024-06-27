@@ -14,11 +14,14 @@
     $: {
         allMedias.nodes = [...allMedias.nodes, projet.featuredImage?.node]
 
-        for( const v of projet.informationsProjet.visuels) {
-            for( const n of v.visuel.nodes) {
-                allMedias.nodes = [...allMedias.nodes, n]
+        if( projet.informationsProjet.visuels ) {
+            for( const v of projet.informationsProjet.visuels) {
+                for( const n of v.visuel.nodes) {
+                    allMedias.nodes = [...allMedias.nodes, n]
+                }
             }
         }
+
         console.log('allMedias', allMedias)
     }
 

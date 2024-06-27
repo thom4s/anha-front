@@ -7,15 +7,13 @@ export async function getLangs( ) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            query: `
-                {
+            query: `{
                     languages {
                         slug
                         locale
                         name
                     }
-                }
-            `
+                }`
             }),
         })
         .then(res => res.json())
