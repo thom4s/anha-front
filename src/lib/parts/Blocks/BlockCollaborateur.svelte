@@ -2,7 +2,6 @@
     import Image from "$lib/parts/Elements/Image.svelte";
 
     export let layout = {}
-    $: console.log('layout: ', layout)
 </script>
 
 <div class="module mod_collaborateurs">

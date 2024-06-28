@@ -16,7 +16,7 @@
     export let smallContact = false;
     export let prefix = '';
 
-$:console.log('layout: ', layout)
+//$:console.log('layout: ', layout)
 </script>
 
 

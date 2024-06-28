@@ -38,7 +38,7 @@
         }
 
         if( side === 'leftSide' ) {
-                leftColVisible = true
+            leftColVisible = true
         }
         else if (side === 'rightSide') {
             rightColVisible = true
@@ -54,11 +54,36 @@
         // MOVE CONTENT (BUT DONT DISPLAY)
         if( side === 'rightSide') {
             tl.to(`#${side}Contents`, { translateX: '0', duration: .5, delay: .1 });
-            tl.to(`#${side}Contents`, { maxWidth: '93vw', duration: .5 });
+            tl.to(`#${side}Contents`, {
+                maxWidth: '93vw', 
+                duration: .5
+            });
+            tl.to(`#${side}Contents`, {
+                maxWidth: '93vw', 
+                duration: .1,
+                modifiers: {
+                    maxWidth: function() {
+                        return 'calc(100vw - 120px)';
+                    }
+                }
+            });
         }
         else {
-            tl.to(`#${side}Contents`, { translateX: '-43vw', duration: .5, delay: .5 });
-            tl.to(`#${side}Contents`, { maxWidth: '93vw', duration: .1 });
+            tl.to(`#${side}Contents`, { translate: '-43vw', duration: .5, delay: .5 });
+            tl.to(`#${side}Contents`, { translate: '-43vw', duration: .1,
+                modifiers: {
+                    translate: function() {
+                        return 'calc(-50vw + 120px)';
+                    }
+                }
+            });
+            tl.to(`#${side}Contents`, { maxWidth: '93vw', duration: .1,
+                modifiers: {
+                    maxWidth: function() {
+                        return 'calc(100vw - 120px)';
+                    }
+                }
+            });
         }
 
         // DISPLAY CONTENT
@@ -325,6 +350,7 @@
         .left-sections {
             flex: 0 0 auto;
             max-width: 50vw;
+            width: 100vw;
 
             .btn_title_clone {
                 writing-mode: sideways-lr;
@@ -337,6 +363,7 @@
             flex: 0 0 auto;
             flex-direction: row-reverse;
             max-width: 50vw;
+            width: 100vw;
 
             .btn_title_clone {
                 writing-mode: sideways-rl;

@@ -1,6 +1,6 @@
 <script>
     import BlockPost from "$lib/parts/Blocks/BlockPost.svelte";
-    export const titre = '';
+    export let titre = '';
     export let pages = [];
     let module = true;
     

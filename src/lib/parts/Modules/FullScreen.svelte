@@ -58,14 +58,9 @@
                     {/each}
                 {/if}
             </swiper-container >
-
-
-
-
             
         {/if}
 
-        
     </div>
 
 
@@ -124,22 +119,25 @@
         --swiper-navigation-color: $gray;
         --swiper-navigation-top-offset: auto;
         --swiper-navigation-sides-offset: 30vw;
-        --swiper-pagination-color: #92a4ae;
+        --swiper-pagination-color: black;
         --swiper-pagination-bullet-border-radius: 6px;
         --swiper-pagination-bullet-horizontal-gap: 4px;
         --swiper-pagination-bullet-vertical-gap: 4px;
-        --swiper-pagination-bullet-size: px;
-        --swiper-pagination-bullet-width: 6px;
-        --swiper-pagination-bullet-height: 6px;
+        --swiper-pagination-bullet-size: 10px;
+        --swiper-pagination-bullet-width: 10px;
+        --swiper-pagination-bullet-height: 10px;
         --swiper-pagination-bullet-opacity: 1;
-        --swiper-pagination-bullet-inactive-color: #254a5d;
+        --swiper-pagination-bullet-inactive-color: #bdbdbd;
         --swiper-pagination-bullet-inactive-opacity: 1;
         --swiper-pagination-bottom: 0rem;
         --swiper-preloader-color: var(--swiper-theme-color);
     }
 
     swiper-container {
-        overflow-y: visible;
+        overflow: visible;
+    }
+    swiper-container::part(container) {
+        overflow: visible;
     }
 
     swiper-container::part(bullet) {
@@ -151,18 +149,13 @@
     }
 
     swiper-container::part(pagination) {
-        bottom: -30px;
-        z-index: 5;
-    }
-
-    swiper-container::part(container) {
-        /* styles */
+        bottom: -5vh;
     }
 
     swiper-container::part(button-prev),
     swiper-container::part(button-next) {
         z-index: 999;
-        bottom: -35px;
+        bottom: -5vh;
     }
 
 
