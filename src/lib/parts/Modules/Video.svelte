@@ -21,7 +21,7 @@
     <div class="vid_container">
 
         <div class="youtube-plyr">
-            <Plyr  bind:player={player}>
+            <Plyr bind:player={player} hideControls="true">
               <div class="plyr__video-embed">
                 <iframe
                   src="{src}"

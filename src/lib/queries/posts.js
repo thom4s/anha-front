@@ -76,7 +76,6 @@ export async function getAllPosts( lang = 'fr', length = 10 ) {
         })
         .then(res => res.json())
         .then(res => {
-            console.log('getAllPosts', res)
             return res.data.posts
         });
 

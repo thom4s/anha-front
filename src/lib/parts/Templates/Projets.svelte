@@ -3,36 +3,36 @@
 	import PushContact from "$lib/parts/Modules/PushContact.svelte";
     import IconFilters from '$lib/parts/Svgs/IconFilters.svelte';
 
-    import { onMount } from "svelte";
-	import { fade } from 'svelte/transition';
+    import { onMount, afterUpdate, beforeUpdate } from "svelte";
+	import { fade, fly } from 'svelte/transition';
+    import { Masonry } from "svelte-bricks";
+
+    let [minColWidth, maxColWidth, gap] = [300, 400, 30]
+    let width, height
 
     export let page = {};
     export let projets = [];
     export let savoirfaires = [];
     export let secteurs = [];
 
+    let allItems, grid, loading = true;
+
     
     // MENU MOBILE
-
     let menuIsVisible = false;
 
-    const handleMobileMenu = () => {
-        console.log('handleMobileMenu')
-        menuIsVisible = !menuIsVisible;
-    }
 
     // FILTERS
-
     let filters = [];
 
     const filter = (e) => {
+        loading = true;
 
         setTimeout( () => {
             filters = [e.target.getAttribute('data-term')];
         }, 500)
 
         setTimeout( () => {
-            resizeAllGridItems()
             loading = false;
         }, 1000)
 
@@ -46,7 +46,6 @@
         }, 500)
 
         setTimeout( () => {
-            resizeAllGridItems()
             loading = false;
         }, 1000)
 
@@ -60,41 +59,23 @@
 
     $: console.log('filters', filters)
 
-    let allItems, grid, loading = true;
 
 
     // MASONRY 
 
-    function resizeGridItem(item){
-        console.log('resizeGridItem : ', item);
-        let rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
-        let rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
-        let rowSpan = Math.ceil((item.querySelector('.item_container').getBoundingClientRect().height+rowGap)/(rowHeight+rowGap));
-        item.style.gridRowEnd = "span " + rowSpan;
-    }
 
-    function resizeAllGridItems(){
-        allItems = document.querySelectorAll(".grid-item");
-        console.log('resizeAllGridItems ', allItems);
-        console.log('Item length ', allItems.length);
+    beforeUpdate ( () => {
+        console.log('beforeUpdate')
+        //loading = true;
+    })
 
-        for(let x=0 ; x < allItems.length ; x++ ){
-            resizeGridItem(allItems[x]);
-        }
-    }
-
-    onMount ( () => {
-        console.log('onMount !')
-        grid = document.querySelector(".masonry");
+    afterUpdate ( () => {
+        console.log('afterUpdate')
 
         setTimeout( () => {
-            resizeAllGridItems()
             loading = false;
-        }, 500)
-
-        window.addEventListener("resize", resizeAllGridItems);
+        }, 1000)
     }) 
-
 
 
 
@@ -104,7 +85,6 @@
     <h1 class="visualy-hidden">{page.title}</h1>
     <!-- <div>{@html page.content}</div> -->
 
-    
     <div class="grid container filtersContainer">
 
         <div class="btn_outer s_12column">
@@ -147,16 +127,18 @@
     <div class="grid container">
 
         <div class="s_12column ">
-            <div class="masonry grid" class:loading={loading}>
-                {#each visibleProjets as projet }
-                    <div class="grid-item s_12column m_4column">
-                        <div class="item_container">
-                            <BlockProjet {projet}/>
-                        </div>
-                    </div>
-                {:else}
-                    <p in:fade={{ delay: 200, duration: 200 }}>Aucun résultat</p>
-                {/each}
+            <div class:loading={loading}>
+                <Masonry
+                    items={visibleProjets}
+                    {minColWidth}
+                    {maxColWidth}
+                    {gap}
+                    let:item={projet}
+                    bind:masonryWidth={width}
+                    bind:masonryHeight={height}
+                    >
+                        <BlockProjet {projet}/>
+                </Masonry>
             </div>
         </div>
     </div>
@@ -167,6 +149,10 @@
 
 
 <style lang="scss">
+
+:global(div.masonry) {
+  justify-content: flex-start;
+}
 
     .container {
         @include min(tablet) {
@@ -184,7 +170,7 @@
         opacity: 1;
 
         &.loading {
-            opacity: 0;
+            opacity: 0.2;
         }
     }
 

@@ -20,15 +20,13 @@
   
     </section>
 
-    {#each flexibleContents as layout, i}
-        
-        {#if layout && layout.__typename }
-
-            <FlexibleLayouts {layout} />
-
-        {/if}
-    {/each}
-
+    {#if flexibleContents }
+        {#each flexibleContents as layout, i}
+            {#if layout && layout.__typename }
+                <FlexibleLayouts {layout} />
+            {/if}
+        {/each}
+    {/if}
 <style lang="scss">
 
     section {

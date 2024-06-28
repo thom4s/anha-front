@@ -34,10 +34,10 @@
 
 <div class="media_container">
     <img 
-        src="{node.sourceUrl}" 
-        alt="{node.caption}"
-        srcset="{node.srcSet}"
-        sizes="{node.sizes}" 
+        src="{node?.sourceUrl}" 
+        alt="{node?.caption}"
+        srcset="{node?.srcSet}"
+        sizes="{node?.sizes}" 
 
         class:parallax={parallax}
         class:clickable={fullscreened}

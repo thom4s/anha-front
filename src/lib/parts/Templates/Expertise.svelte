@@ -1,26 +1,22 @@
 <script lang="ts">
-    import { onMount } from "svelte";
     import ExpertiseItem from '$lib/parts/Modules/ExpertiseItem.svelte';
     import PushContact from '../Modules/PushContact.svelte';
     import IconClose from '$lib/parts/Svgs/IconClose.svelte';
+    import {device} from '$lib/stores/device.js';
 
 
-    // import { gsap } from "gsap";
-    // import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+    export let page = {};
+    $: console.log('page', page )
+
+
+    $: ( { leftCol, rightCol } = page.contenusSavoirFaire)
+    let leftColVisible = false, rightColVisible = false;
+
+
+    // ANIMATIONS
     import {gsap}  from "gsap/dist/gsap";        
     import {ScrollToPlugin} from "gsap/dist/ScrollToPlugin";   
     gsap.registerPlugin(ScrollToPlugin);
-
-
-    let leftColVisible = false, rightColVisible = false;
-
-    export let page = {};
-
-    $: console.log('page', page )
-
-    $: ( { leftCol, rightCol } = page.contenusSavoirFaire)
-
-
 
     const animationIn = ( side, otherSide ) => { 
 
@@ -63,7 +59,7 @@
                 duration: .1,
                 modifiers: {
                     maxWidth: function() {
-                        return 'calc(100vw - 120px)';
+                        return $device === 'mobile' ? 'calc(100vw - 30px)' : 'calc(100vw - 120px)';
                     }
                 }
             });
@@ -73,14 +69,14 @@
             tl.to(`#${side}Contents`, { translate: '-43vw', duration: .1,
                 modifiers: {
                     translate: function() {
-                        return 'calc(-50vw + 120px)';
+                        return $device === 'mobile' ? 'calc(-50vw + 30px)' : 'calc(-50vw + 120px)';
                     }
                 }
             });
             tl.to(`#${side}Contents`, { maxWidth: '93vw', duration: .1,
                 modifiers: {
                     maxWidth: function() {
-                        return 'calc(100vw - 120px)';
+                        return $device === 'mobile' ? 'calc(100vw - 30px)' : 'calc(100vw - 120px)';
                     }
                 }
             });

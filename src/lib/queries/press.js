@@ -41,7 +41,6 @@ export async function getAllPressArticles( lang = 'fr', first = 6 ) {
         })
         .then(res => res.json())
         .then(res => {
-            console.log('getAllPosts', res)
             return res.data.presses
         });
 

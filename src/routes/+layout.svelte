@@ -2,6 +2,7 @@
     import SEO from '$lib/parts/SEO/index.svelte';
     import { fade } from 'svelte/transition';
 	import { page, navigating } from '$app/stores';
+    import {width, mobile} from '$lib/stores/device';
 
     import { config, activeLang, menusStore, langsStore } from '$lib/config/website.js'
 
@@ -68,7 +69,4 @@
 
 <Footer />
 
-
-<style>
-
-</style>
+<svelte:window bind:innerWidth={$width} />
