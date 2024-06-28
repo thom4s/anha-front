@@ -3,7 +3,7 @@
     import SocialLinks from "$lib/parts/Navigations/SocialLinks.svelte";
     import Menu from "$lib/parts/Elements/Menu.svelte";
 
-    $: ( {menuItemsPrimary, menuItemsSecondary, menuItemsFooter} = $menusStore)
+    $: ( {menuItemsPrimary, menuItemsFooter} = $menusStore)
 
 </script>
 <footer>

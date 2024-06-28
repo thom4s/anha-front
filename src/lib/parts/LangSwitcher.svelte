@@ -3,7 +3,7 @@
     import { goto } from "$app/navigation";
     import { page } from "$app/stores";
     import { getTranslation } from "$lib/queries/pages";
-
+    import { invalidateAll  } from "$app/navigation";
 
     //$: console.log('LangSwitcher activeLang: ', $activeLang)
     //$: console.log('page: ', $page)

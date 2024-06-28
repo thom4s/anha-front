@@ -27,10 +27,17 @@ export async function getLangs( ) {
 
 
 export async function getMenuItems( lang = 'fr', id = '') {
+    let location = "";
 
+    if( lang === 'fr') {
+        location = id.toUpperCase()
+    }
+    else {
+        location = `${id.toUpperCase()}___${lang.toUpperCase()}`
+    }
     const query = `
         {
-            menuItems(where: {language: ${lang.toUpperCase()}, location: ${id.toUpperCase()} }) {
+            menuItems(where: {location: ${location} }) {
                 nodes {
                     label
                     path
@@ -49,9 +56,10 @@ export async function getMenuItems( lang = 'fr', id = '') {
             if( ! res.data ) return;
             return res.data.menuItems;
         });
-        
+
     return menuItems;
 }
+
 
 export async function getFormsParams( ) {
     

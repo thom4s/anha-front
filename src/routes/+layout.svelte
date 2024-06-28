@@ -1,6 +1,7 @@
 <script>
     import SEO from '$lib/parts/SEO/index.svelte';
     import { fade } from 'svelte/transition';
+	import { page, navigating } from '$app/stores';
 
     import { config, activeLang, menusStore, langsStore } from '$lib/config/website.js'
 
@@ -12,18 +13,16 @@
     import '$lib/assets/scss/style.scss';
 
     export let data;
-    $: ({menuItemsPrimary, menuItemsSecondary, menuItemsFooter, seoConfig, langs, currentLang, socialLinks } = data)
+    $: ({menuItemsPrimary, menuItemsFooter, seoConfig, langs, currentLang, socialLinks } = data)
     
     $: $activeLang = currentLang;
     $: $langsStore = langs;
 
     $: $menusStore = {
         menuItemsPrimary,
-        menuItemsSecondary,
         menuItemsFooter
     }
 
-    
     $: {
         $config.author = seoConfig.seo.schema.companyName
         $config.ogLanguage = seoConfig.seo.schema.inLanguage
@@ -40,6 +39,8 @@
         $config.instagramProfile = socialLinks.instagram_account
         $config.twitterUsername = seoConfig.seo.social.twitter.username
     }
+
+//    $: console.log('$navigating, ', $navigating)
 </script>
 
 <SEO />
@@ -56,12 +57,14 @@
     {/key}
 </main>
 
-{#if $fullscreen }
-    <FullScreen 
-        bind:fullscreen={$fullscreen} 
-        type={$fullScreenType} 
-        content={$fullScreenContent} />
-{/if}
+{#key $navigating?.to.route}
+    {#if $fullscreen }
+        <FullScreen 
+            bind:fullscreen={$fullscreen} 
+            type={$fullScreenType} 
+            content={$fullScreenContent} />
+    {/if}
+{/key}
 
 <Footer />
 

@@ -8,12 +8,10 @@
     import Menu from "$lib/parts/Elements/Menu.svelte";
     import IconClose from '$lib/parts/Svgs/IconClose.svelte';
 
-    $: ( {menuItemsPrimary, menuItemsSecondary} = $menusStore)
-    
-
+    $: ( {menuItemsPrimary} = $menusStore)
     $: pathname = $page.url.pathname + '/';
 
-
+    $: console.log('menuItemsPrimary', menuItemsPrimary)
   // VARIABLES
 
   onMount(() => {

@@ -2,7 +2,7 @@ import { getSeoSchema } from '$lib/queries/seo';
 import { getMenuItems, getLangs, getSocialLinks } from '$lib/queries/options';
 
 
-export async function load( { url, params, locals } ) {
+export async function load( { url, params } ) {
 	const { pathname } = url;
 
     return {
@@ -12,7 +12,6 @@ export async function load( { url, params, locals } ) {
         socialLinks: await getSocialLinks(),
         currentLang: params.lang,
         menuItemsPrimary: await getMenuItems(params.lang, 'primary_menu'),
-        menuItemsSecondary: await getMenuItems(params.lang, 'secondary_menu'),
         menuItemsFooter: await getMenuItems(params.lang, 'footer_menu')
     }
 }
