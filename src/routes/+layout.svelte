@@ -70,3 +70,13 @@
 <Footer />
 
 <svelte:window bind:innerWidth={$width} />
+
+<svelte:head>
+   {#if $fullscreen}
+      <style>
+         body {
+            overflow: hidden;
+         }
+      </style>
+   {/if}
+</svelte:head>	

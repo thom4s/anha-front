@@ -150,9 +150,9 @@
 
 <style lang="scss">
 
-:global(div.masonry) {
-  justify-content: flex-start;
-}
+    :global(div.masonry) {
+    justify-content: flex-start;
+    }
 
     .container {
         @include min(tablet) {
