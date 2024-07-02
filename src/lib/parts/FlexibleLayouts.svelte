@@ -69,7 +69,7 @@
 
 
 {:else if layout.__typename === 'ContenusFlexiblesContenusFlexiblesVideoLayout'}
-    <Video titre={layout.titre} video={layout.video} plateforme={layout.plateforme}/>
+    <Video titre={layout.titre} videoId={layout.video} plateforme={layout.plateforme}/>
 
 
 {:else if 

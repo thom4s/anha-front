@@ -194,11 +194,13 @@ export const pushNews_query_string = `
 					link
 					title
 					informationsNews {
+						date
+						fieldGroupName
+						labelDuLien
 						lien
 						lieu
-						labelDuLien
-						date
 						video
+						plateforme
 					}
 					${featuredImage_fields_string}
 				}

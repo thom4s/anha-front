@@ -60,6 +60,7 @@ export async function getAllPosts( lang = 'fr', length = 10 ) {
                                     labelDuLien
                                     date
                                     video
+                                    plateforme
                                     galery {
                                         nodes {
                                             sourceUrl

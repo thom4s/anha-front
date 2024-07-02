@@ -3,6 +3,7 @@
 
     import SocialLinks from '../Navigations/SocialLinks.svelte';
     import Image from "../Elements/Image.svelte";
+    import Video from '../Elements/Video.svelte';
 
     import { fade } from 'svelte/transition';
     import { register } from 'swiper/element/bundle';
@@ -11,6 +12,8 @@
     export let module = false;
     export let post = {};
     export let type = '';
+
+    $: console.log(post.title, post.informationsNews)
 
 </script>
 
@@ -21,18 +24,14 @@
 
         <div class="half media">
             <div class="bloc_media">
+
                 {#if post.informationsNews?.video}
 
-                    <div 
-                        class="trigger"
-                        aria-roledescription=""
-                        on:click={ () => {
-                            $fullscreen = true;
-                            $fullScreenContent = post.informationsNews?.video;
-                            $fullScreenType= 'video';
-                        }}>
-                        {@html post.informationsNews?.video}
-                    </div>
+                    <Video 
+                        videoId={post.informationsNews?.video}
+                        plateforme={post.informationsNews?.plateforme}
+                    />
+
                 {:else if post.informationsNews?.galery }
 
                     <swiper-container 
@@ -102,9 +101,13 @@
                     </div>
 
                 {:else}
-                    <a class="link" href="{post.informationsNews?.lien}">
-                        {post.informationsNews?.labelDuLien}
-                    </a>
+                    {#if post.informationsNews?.lien }
+                        <a class="link" href="{post.informationsNews?.lien}">
+                            {post.informationsNews?.labelDuLien}
+                        </a>
+                    {:else}
+                        <span></span>
+                    {/if}
                 {/if}
                 
             </div>

@@ -48,20 +48,27 @@ ul {
         flex-direction: column;
         justify-content: space-between;
         line-height: .5;
+        position: relative;
 
-        &::after {
-                content: attr(data-text);
-                content: attr(data-text) / "";
-                height: 0;
-                visibility: hidden;
-                overflow: hidden;
-                user-select: none;
-                pointer-events: none;
-                font-weight: 900;
+        &:after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            right: 8px;
+            width: 0;
+            bottom: 0;
+            background: #000;
+            height: 1px;
+            transition-property: width;
+            transition-duration: 0.3s;
+            transition-timing-function: ease-out;
         }
-        
-        &:hover {
-            font-weight: 900;
+        &:hover:after,
+        &:focus:after,
+        &:active:after {
+            left: 0;
+            right: auto;
+            width: calc(100% - 8px);
         }
     }
 
@@ -76,7 +83,6 @@ ul {
 }
 .active {
     font-weight: bold;
-    position: relative;
 
     &:before {
         content: '';
