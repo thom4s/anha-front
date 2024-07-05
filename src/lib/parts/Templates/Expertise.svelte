@@ -154,7 +154,12 @@
                 class="btn h1 left" 
                 class:active={leftColVisible} 
                 on:click={ () => {
-                    animationIn( 'leftSide', 'rightSide' )
+                    if( leftColVisible ) {
+                        animationOut('leftSide', 'rightSide' )
+                    }
+                    else {
+                        animationIn('leftSide', 'rightSide')
+                    }
                 } }
             >
                 <span class="btn_title_clone">{leftCol.titre}</span>
@@ -166,7 +171,12 @@
                 class="btn h1 right" 
                 class:active={rightColVisible} 
                 on:click={() => {
-                    animationIn('rightSide', 'leftSide' )
+                    if( rightColVisible ) {
+                        animationOut('rightSide', 'leftSide' )
+                    }
+                    else {
+                        animationIn('rightSide', 'leftSide')
+                    }
                 }}
             >
                 <span class="btn_title_clone">{rightCol.titre}</span>
