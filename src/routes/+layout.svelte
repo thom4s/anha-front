@@ -11,6 +11,7 @@
 
     import Header from "$lib/parts/Navigations/Header.svelte";
     import Footer from "$lib/parts/Navigations/Footer.svelte";
+    import HoverCursor from '$lib/parts/HoverCursor.svelte';
     import '$lib/assets/scss/style.scss';
 
     export let data;
@@ -47,6 +48,8 @@
 <SEO />
 
 <Header/>
+
+<HoverCursor />
 
 <main>
     {#key data.pathname}

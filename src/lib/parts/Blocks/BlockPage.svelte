@@ -18,7 +18,7 @@
         <div class="m_6column">
             <div class="bloc_texts">
                 
-                <div class="fl-column-space gap-m">  
+                <div class="fl-column-start gap-m">  
                     <h2 class="h1 no-margin">{@html post.title}</h2>
                     <div class="body">{@html post.excerpt}</div>
                     <a class="link" href="{post.link}">En savoir plus</a>

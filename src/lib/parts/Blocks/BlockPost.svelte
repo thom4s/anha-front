@@ -47,6 +47,7 @@
                                 <Image 
                                     node={post.featuredImage?.node} 
                                     parallax={true}
+                                    hoverTarget={true}
                                     on:imageClicked={ () => {
                                         $fullscreen = true;
                                         $fullScreenType = 'slide';
@@ -62,6 +63,7 @@
                     <Image 
                         node={post.featuredImage?.node} 
                         parallax={true}
+                        hoverTarget={true}
                         on:imageClicked={ () => {
                             $fullscreen = true;
                             $fullScreenType = 'slide';
@@ -72,13 +74,13 @@
 
         <div class="half texts">
 
-            <div class="bloc_texts">
+            <div class="bloc_texts ">
                 <div class="fl-justify fl-vtop">  
                     <div class="caption">{post.informationsNews?.date}</div>
                     <div class="caption">{@html post.informationsNews?.lieu}</div>
                 </div>
                 
-                <div class="fl-column-space gap-s">  
+                <div class="fl-column-start gap-s">  
                     <h3 class="h3 mb-small">{@html post.title}</h3>
 
                     {#if post.content }
@@ -174,10 +176,14 @@
         }
     }
 
-    img:hover {
-        cursor: zoom-in;
-        cursor: url('$lib/assets/svg/arrowfull.svg'), auto;
+    .link {
+        align-self: flex-start;
     }
+
+    // img:hover {
+    //     cursor: zoom-in;
+    //     cursor: url('$lib/assets/svg/arrowfull.svg'), auto;
+    // }
 
     .caption {
         text-align: right;

@@ -5,6 +5,7 @@
     // DATAS
     export let node = {}
     export let parallax = false
+    export let hoverTarget = false
     export let fullscreened = false
     export let includeThis = false
     let imgElement
@@ -47,6 +48,7 @@
 
         class:parallax={parallax}
         class:clickable={fullscreened}
+        class:hover-target={hoverTarget}
         on:click={ () => dispatch('imageClicked') } 
     />
 </div>
