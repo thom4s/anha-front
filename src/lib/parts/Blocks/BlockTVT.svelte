@@ -5,7 +5,7 @@
     export let texte = '';
     export let design = 'full';
     export let ratio = 'full';
-    export let parallax = false;
+    export let parallax = true;
 
     import Image from "$lib/parts/Elements/Image.svelte";
 
