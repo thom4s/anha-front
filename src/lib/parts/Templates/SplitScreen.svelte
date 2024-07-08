@@ -79,12 +79,22 @@
         }
     }
     .stage_txt {
-        max-width: calc($max-width / 2);
+        max-width: 900px;
         
-        @include min(desktop) {
-            padding-right:  calc( calc( 100vw - $max-width ) / 2 );
-            padding-left: calc( calc( 100vw - $max-width ) / 2 );
+
+        .stage_left & {
+            @include min(desktop) {
+                padding-left:  calc( calc( 100vw - $max-width ) / 2 );
+                padding-right: 120px;
+            }
         }
+        .inversed & {
+            @include min(desktop) {
+                padding-left:  120px;
+                padding-right: calc( calc( 100vw - $max-width ) / 2 );
+            }
+        }
+
         @include max(desktop) {
             padding-right: 5vw;
             padding-left: 5vw;
