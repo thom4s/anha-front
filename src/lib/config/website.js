@@ -1,7 +1,7 @@
 import { writable } from "svelte/store";
 
 import {
-	PUBLIC_SITE_URL,
+	PUBLIC_CANONICAL_ORIGIN,
 } from '$env/static/public';
 
 export const config = writable({
@@ -11,7 +11,7 @@ export const config = writable({
 	siteTitle: 'Anha',
 	siteShortTitle: 'Anha',
 	description: ' Design to Manufacture',
-	siteUrl: PUBLIC_SITE_URL,
+	siteUrl: PUBLIC_CANONICAL_ORIGIN,
 	backgroundColor: '#1b4079',
 	themeColor: '#d62828',
 	contactEmail: '',
