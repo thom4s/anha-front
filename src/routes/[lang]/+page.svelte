@@ -4,7 +4,7 @@
 	import PushContact from "$lib/parts/Modules/PushContact.svelte";
 
     export let data: {
-        homepage: Promise<void>;
+        page: Promise<void>;
     }
     $: ({page} = data)
 
