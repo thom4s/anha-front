@@ -81,7 +81,7 @@
                 </div>
                 
                 <div class="fl-column-start gap-s">  
-                    <h3 class="h3 mb-small">{@html post.title}</h3>
+                    <h3 class="h2 mb-small">{@html post.title}</h3>
 
                     {#if post.content }
                         <div class="body">{@html post.content}</div>
@@ -97,8 +97,8 @@
                 </div>
 
                 {#if module }
-                    <div class="fl-justify vbot">
-                        <p class="caption">Retrouvez tous nos événements sur nos réseaux sociaux</p>
+                    <div class="fl-justify vbot gap-s">
+                        <p class="caption txt-left">Retrouvez tous nos événements sur nos réseaux sociaux</p>
                         <SocialLinks />
                     </div>
 

@@ -262,9 +262,8 @@
 
             .btn_title {
                 @include max(bigtablet) {
-                    text-orientation: sideways;
-                    writing-mode: sideways-lr;
-
+                    writing-mode: vertical-rl;
+                    transform: rotate(180deg);
                 }
             }
 
@@ -281,22 +280,22 @@
                 display: inline-block;
             }
             .btn_title_clone {
+                top: 5%;
                 opacity: 0;
                 transition: opacity .3s;
                 position: absolute;
-                top: 105px;
-                text-orientation: sideways;
+                text-orientation: mixed;
+                writing-mode: vertical-rl;
+                transform: rotate(180deg);
                 @include max(bigtablet) {
                     display: none;
                 }
             }
             &.left .btn_title_clone {
                 left: 0;
-                writing-mode: sideways-lr;
             }
             &.right .btn_title_clone {
                 right: 0;
-                writing-mode: sideways-rl;
             }
             &.active {
                 background-color: $white;
