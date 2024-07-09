@@ -63,6 +63,10 @@
 
 <style lang="scss">
 
+    .bloc_projet:hover .h3 {
+        font-style: italic;
+    }
+
     .bloc_media {
         img {
             //aspect-ratio: 4/5;

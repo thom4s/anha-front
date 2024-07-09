@@ -65,6 +65,10 @@
         border-top: 1px solid black;
         padding-top: $space-s;
 
+        &:hover .block_title {
+            font-style: italic;
+        }
+
     }
     .block_link {
         @include max(tablet) {

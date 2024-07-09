@@ -7,7 +7,7 @@
 	import { fade, fly } from 'svelte/transition';
     import { Masonry } from "svelte-bricks";
 
-    let [minColWidth, maxColWidth, gap] = [300, 400, 30]
+    let [minColWidth, maxColWidth, gap] = [300, 800, 30]
     let width, height
 
     export let page = {};
@@ -105,7 +105,7 @@
 
             <div class="filters sticky">
 
-                <div class="filterGroup mb-medium">
+                <div class="filterGroup mb-small">
                     <button on:click={ reset } data-term="" class="caption filterItem" class:active={filters.length === 0}>Tous les secteurs</button>
                     {#each secteurs.nodes as t }
                         <button on:click={ (e) => { loading = true; filter(e) } } data-term="{t.name}" class="caption filterItem" class:active={filters.includes(t.name)}>{t.name}</button>
@@ -225,7 +225,7 @@
     .filterGroup {
         display: flex;
         justify-content: center;
-        gap: 10px;
+        gap: 15px;
 
         @include max(tablet) {
             flex-direction: column;
