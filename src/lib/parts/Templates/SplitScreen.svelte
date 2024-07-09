@@ -78,6 +78,11 @@
             }
         }
     }
+    .stage_left {
+        @include max(tablet) {
+            @include container;
+        }
+    }
     .stage_txt {
         max-width: 900px;
         

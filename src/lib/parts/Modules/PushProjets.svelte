@@ -33,7 +33,7 @@
             </div>
         </div>
 
-        <a class="link" href="{link?.nodes[0]?.uri}">{label}</a>
+        <a class="link on-desktop" href="{link?.nodes[0]?.uri}">{label}</a>
     </div>
 
     {#if pages && pages.length > 0}
@@ -58,6 +58,10 @@
         </swiper-container >
 
     {/if}
+    <div class="container mt-medium">
+        <a class="link on-mobile" href="{link?.nodes[0]?.uri}">{label}</a>
+    </div>
+
 
 </section>
 

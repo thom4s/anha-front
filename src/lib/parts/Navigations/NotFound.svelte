@@ -1,5 +1,6 @@
 <script>
     import notfound from '$lib/assets/notfound.png';
+    import PushContact from '../Modules/PushContact.svelte';
 </script>
 
 <article class="">
@@ -23,7 +24,7 @@
                         Essayez donc ceci :</p>
                 </div>
 
-                <div class="page_actions fl-column gap-xs">
+                <div class="page_actions fl-column-start gap-xs">
                     <a href="/fr/projets" class="link">Découvrez nos projets</a>
                     <a href="/fr/contact" class="link">Contactez nous</a>
                 </div>
@@ -33,8 +34,16 @@
     </div>
 </article>
 
+<PushContact />
 
 <style lang="scss">
+    .grid {
+        align-items: center;
+        @include max(tablet) {
+            @include container;
+            column-gap: 0;
+        }
+    }
     img {
         aspect-ratio: 5/4;
         width: 100%;

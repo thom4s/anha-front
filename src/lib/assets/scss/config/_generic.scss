@@ -59,6 +59,18 @@
 .gap-xl  {gap: $space-xl};
 .gap-xxl {gap: $space-xxl};
 
+.on-mobile {
+    @include min(tablet) {
+        display: none;
+    }
+}
+
+.on-desktop {
+    @include max(tablet) {
+        display: none;
+    }
+}
+
 
 
 .txt-center {

@@ -35,7 +35,7 @@
             margin-top: 0 !important;
 
             .brand_logo {
-                max-width: 150px !important;
+                // max-width: 150px !important;
                 padding: 0 !important;
             }
         }

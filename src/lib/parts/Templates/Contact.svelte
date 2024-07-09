@@ -11,7 +11,7 @@
     <div class="grid">
         
         <div class="m_3column">
-            <h1 class="h1">{page.title}</h1>
+            <!-- <h1 class="h1">{page.title}</h1> -->
             <div>{@html page.content}</div>
         </div>
 
