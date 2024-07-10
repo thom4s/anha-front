@@ -30,6 +30,7 @@
                 node={visuel?.node} 
                 {parallax} 
                 fullscreened={true}
+                hoverTarget={true}
                 includeThis={true}
                 on:imageClicked={ () => {
                     $fullscreen = true;

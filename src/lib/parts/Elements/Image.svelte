@@ -58,8 +58,8 @@
         width: 100%;
     }
 
-    .clickable:hover {
-        cursor: zoom-in;
-        cursor: url('$lib/assets/svg/arrowfull.svg'), auto;
-    }
+    // .clickable:hover {
+    //     cursor: zoom-in;
+    //     cursor: url('$lib/assets/svg/arrowfull.svg'), auto;
+    // }
 </style>
