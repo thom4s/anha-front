@@ -28,10 +28,10 @@
 
             <Image 
                 node={visuel?.node} 
-                {parallax} 
                 fullscreened={true}
                 hoverTarget={true}
                 includeThis={true}
+                ratio="5-4"
                 on:imageClicked={ () => {
                     $fullscreen = true;
                     $fullScreenType = 'slide';
@@ -45,6 +45,9 @@
 
 
 <style lang="scss">
+    .mod_tvt_media {
+        aspect-ratio: 5/4;
+    }
     .module {
         justify-content: space-between;
         width: 100%;

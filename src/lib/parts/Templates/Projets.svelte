@@ -153,6 +153,9 @@
     :global(div.masonry) {
     justify-content: flex-start;
     }
+    :global(div.masonry div.col) {
+        row-gap: $space-xl !important;
+    }
 
     .container {
         @include min(tablet) {
@@ -187,7 +190,7 @@
     // PROJECT FILTERS
 
     .filtersContainer {
-        @include max(tablet) {
+        @include max(bigtablet) {
             border-bottom: 1px solid black;
         }
     }
@@ -238,14 +241,14 @@
     }
 
     .btn_outer {
-        @include max(tablet) {
+        @include max(bigtablet) {
             width: 100%;
             margin-bottom: $space-m;
             & > * {
                 flex: 0 0 auto;
             }
         }
-        @include min(tablet) {
+        @include min(bigtablet) {
             display: none;
         }
 

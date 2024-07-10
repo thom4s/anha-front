@@ -9,7 +9,7 @@
 
 
 <article class="block bloc_projet" transition:fade={{ duration: 200 }}>
-    <a class="fl-column-space gap-xs" href="{projet.uri}">
+    <a class="fl-column-space gap-s" href="{projet.uri}">
 
         {#if projet.informationsProjet?.tax_client }
             {#each projet.informationsProjet.tax_client?.nodes as node}

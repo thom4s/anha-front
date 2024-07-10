@@ -107,7 +107,7 @@
 
             </div>
 
-            <div class="menus_group fl-right gap-s">
+            <div class="menus_group fl-right gap-m">
 
                 <Menu 
                     menuItems={menuItemsPrimary} 
@@ -152,9 +152,9 @@
     }
 
     ul {
-        display: flex;
+        // display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 30px;
         list-style: none;
         margin: 0;
         padding: 0;

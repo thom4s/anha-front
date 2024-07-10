@@ -8,6 +8,7 @@
     export let hoverTarget = false
     export let fullscreened = false
     export let includeThis = false
+    export let ratio = undefined;
     let imgElement
 
     if( includeThis && ! $fullScreenContent.includes(node.sourceUrl)) {
@@ -38,7 +39,7 @@
 </script>
 
 
-<div class="media_container">
+<div class={"media_container ratio-" + ratio} >
     <img 
         src="{node?.sourceUrl}" 
         alt="{node?.caption}"
@@ -56,6 +57,16 @@
 <style lang="scss">
     .media_container {
         width: 100%;
+    }
+
+    .ratio-5-4 {
+        aspect-ratio: 5/4;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 
     // .clickable:hover {

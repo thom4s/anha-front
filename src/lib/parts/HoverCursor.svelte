@@ -20,34 +20,36 @@
     const handleMouseLeave = () => { cursorVisible = false; };
 
     const attachEventListeners = () => {
-        customCursor = document.querySelector('.custom-cursor');
-        window.addEventListener('mousemove', handleMouseMove);
-        targets = document.querySelectorAll('.hover-target');
-        targets.forEach(target => {
-            target.addEventListener('mouseenter', handleMouseEnter);
-            target.addEventListener('mouseleave', handleMouseLeave);
-        });
+        if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+            
+            customCursor = document.querySelector('.custom-cursor');
+            window.addEventListener('mousemove', handleMouseMove);
+
+            targets = document.querySelectorAll('.hover-target');
+            targets.forEach(target => {
+                target.addEventListener('mouseenter', handleMouseEnter);
+                target.addEventListener('mouseleave', handleMouseLeave);
+            });
+        }
+
     };
 
     const removeEventListeners = () => {
-        window.removeEventListener('mousemove', handleMouseMove);
-        targets.forEach(target => {
-            target.removeEventListener('mouseenter', handleMouseEnter);
-            target.removeEventListener('mouseleave', handleMouseLeave);
-        });
+        if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+
+            window.removeEventListener('mousemove', handleMouseMove);
+
+            targets.forEach(target => {
+                target.removeEventListener('mouseenter', handleMouseEnter);
+                target.removeEventListener('mouseleave', handleMouseLeave);
+            });
+        }
+
     };
 
-    onMount(() => {
-        if (typeof window !== 'undefined' && typeof document !== 'undefined') {
-            attachEventListeners();
-        }
-    });
+    onMount(() => { attachEventListeners() });
 
-    onDestroy(() => {
-        if (typeof window !== 'undefined' && typeof document !== 'undefined') {
-            removeEventListeners();
-        }
-    });
+    onDestroy(() => { removeEventListeners() });
 
     $: if ($navigating) {
         removeEventListeners();
