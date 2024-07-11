@@ -115,6 +115,7 @@
                                     node={projet.featuredImage?.node} 
                                     {parallax} 
                                     fullscreened={true}
+                                    hoverTarget={true}
                                     on:imageClicked={ () => {
                                         $fullscreen = true;
                                         $fullScreenType = 'slide';
@@ -137,6 +138,7 @@
                                                 {parallax} 
                                                 fullscreened={true}
                                                 includeThis={true}
+                                                hoverTarget={true}
                                                 on:imageClicked={ () => {
                                                     $fullscreen = true;
                                                     $fullScreenType = 'slide';
@@ -176,6 +178,9 @@
 
 <style lang="scss">
 
+    .template {
+        margin-bottom: $space-xxl * 2;
+    }
     .project_texts {
 
         padding-top: $space-xl;
@@ -277,7 +282,7 @@
             height: 75vh;
         }        
         @include max(tablet) {
-            height: 60vh;
+            height: 40vh;
         }
         .media_outer:first-child {
             align-self: flex-start;

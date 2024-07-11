@@ -65,13 +65,10 @@
 
 
     beforeUpdate ( () => {
-        console.log('beforeUpdate')
         //loading = true;
     })
 
     afterUpdate ( () => {
-        console.log('afterUpdate')
-
         setTimeout( () => {
             loading = false;
         }, 1000)
