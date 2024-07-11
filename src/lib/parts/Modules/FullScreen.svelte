@@ -5,21 +5,17 @@
 
     import { fade } from 'svelte/transition';
 	import IconClose from '$lib/parts/Svgs/IconClose.svelte';
-	import IconArrowRight from '$lib/parts/Svgs/IconArrowRight.svelte';
-	import IconArrowLeft from '$lib/parts/Svgs/IconArrowLeft.svelte';
 
-    import { fullScreenContent, fullScreenType, resetFullscreen } from '$stores/fullscreen.js';
+    import { closeFullscreen, fullScreenContent, fullScreenType, resetFullscreen } from '$stores/fullscreen.js';
     export let content = $fullScreenContent;
     export let type = $fullScreenType;
     export let fullscreen = '';
 
-    $: console.log('fullScreenContent', $fullScreenContent);
-    $: console.log('fullScreenType', $fullScreenType);
 
     // CLOSE WHEN 'ESCAPE' PRESSED
     onMount(() => {
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') resetFullscreen()
+            if (e.key === 'Escape') closeFullscreen()
         });
     });
     
@@ -29,7 +25,7 @@
     <div class="fullscreen" transition:fade={{ duration: 100 }} data-module="fullscreen">
 
         <div class="fl-center container">
-            <button class="btn_clean" on:click={resetFullscreen}>
+            <button class="btn_clean" on:click={closeFullscreen}>
                 <IconClose />
             </button>  
 

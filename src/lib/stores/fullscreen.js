@@ -9,3 +9,6 @@ export function resetFullscreen() {
     fullScreenContent.set([]);
     fullScreenType.set('');
 }
+export function closeFullscreen() {
+    fullscreen.set(false);
+}

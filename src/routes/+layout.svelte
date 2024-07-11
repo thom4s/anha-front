@@ -44,8 +44,6 @@
         $config.twitterUsername = seoConfig.seo.social.twitter.username
     }
 
-//    $: console.log('$navigating, ', $navigating)
-
     $: if ($navigating) resetFullscreen();
 
 </script>
