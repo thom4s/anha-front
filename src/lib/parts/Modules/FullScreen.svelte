@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { onMount } from 'svelte';
     import { register } from 'swiper/element/bundle';
     register();
 
@@ -7,59 +8,65 @@
 	import IconArrowRight from '$lib/parts/Svgs/IconArrowRight.svelte';
 	import IconArrowLeft from '$lib/parts/Svgs/IconArrowLeft.svelte';
 
-    import { fullScreenContent, fullScreenType } from '$stores/fullscreen.js';
+    import { fullScreenContent, fullScreenType, resetFullscreen } from '$stores/fullscreen.js';
     export let content = $fullScreenContent;
     export let type = $fullScreenType;
     export let fullscreen = '';
 
+    $: console.log('fullScreenContent', $fullScreenContent);
+    $: console.log('fullScreenType', $fullScreenType);
+
+    // CLOSE WHEN 'ESCAPE' PRESSED
+    onMount(() => {
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') resetFullscreen()
+        });
+    });
+    
 </script>
 
 
-    <div class="fullscreen fl-center" transition:fade={{ duration: 100 }} data-module="fullscreen">
+    <div class="fullscreen" transition:fade={{ duration: 100 }} data-module="fullscreen">
 
-        <button 
-            class="btn_clean"
-            on:click={() => {
-                fullscreen = false;
-                content = '';
-                type = '';
-            }}
-        >
-        <IconClose /></button>  
+        <div class="fl-center container">
+            <button class="btn_clean" on:click={resetFullscreen}>
+                <IconClose />
+            </button>  
 
-        {#if type === 'image'}
-            <img src="{content}" alt="">
+            {#if type === 'image'}
+                <img src="{content}" alt="">
 
-        {:else if type === 'video'}
-            {@html content}
+            {:else if type === 'video'}
+                {@html content}
 
-        {:else if type === 'slide'}
-            <swiper-container 
-                spaceBetween={30}
-                slidesPerView={1.5}
-                centeredSlides={true}
-                init={true}
-                navigation={true}
-                pagination={true}
-                loop={true}
+            {:else if type === 'slide'}
+                <swiper-container 
+                    spaceBetween={30}
+                    slidesPerView={1.5}
+                    centeredSlides={true}
+                    init={true}
+                    navigation={true}
+                    pagination={true}
+                    loop={true}
 
-            >
-                {#if content.nodes}
-                    {#each content.nodes as img }
-                        <swiper-slide class="swiper-slide">
-                            <img src="{img.sourceUrl}" alt="">
-                        </swiper-slide>
-                    {/each}
-                {:else}
-                    {#each content as src }
-                        <swiper-slide class="swiper-slide">
-                            <img src="{src}" alt="">
-                        </swiper-slide>
-                    {/each}
-                {/if}
-            </swiper-container >
-            
-        {/if}
+                >
+                    {#if content.nodes}
+                        {#each content.nodes as img }
+                            <swiper-slide class="swiper-slide">
+                                <img src="{img.sourceUrl}" alt="">
+                            </swiper-slide>
+                        {/each}
+                    {:else}
+                        {#each content as src }
+                            <swiper-slide class="swiper-slide">
+                                <img src="{src}" alt="">
+                            </swiper-slide>
+                        {/each}
+                    {/if}
+                </swiper-container >
+                
+            {/if}
+        </div>
 
     </div>
 
@@ -74,6 +81,10 @@
         background-color: rgba($white, .99);
         z-index: 9;
     }
+
+    .container {
+        height: 100%;
+    } 
 
     button {
         position: absolute;

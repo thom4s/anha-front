@@ -15,6 +15,8 @@
 
     $: console.log(post.title, post.informationsNews)
 
+    // $: console.log('image', post.featuredImage?.node.sourceUrl);
+
 </script>
 
 
@@ -67,7 +69,8 @@
                         ratio="horizontale"
                         on:imageClicked={ () => {
                             $fullscreen = true;
-                            $fullScreenType = 'slide';
+                            $fullScreenType = 'image';
+                            $fullScreenContent = post.featuredImage?.node.sourceUrl
                         }}/>
                 {/if}
             </div>

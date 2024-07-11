@@ -189,11 +189,12 @@
     .filtersContainer {
         @include max(bigtablet) {
             border-bottom: 1px solid black;
+            column-gap: 0;
         }
     }
     .menusContainer {
 
-        @include max(tablet) {
+        @include max(bigtablet) {
             right: auto;
             left: 0;
             transform: translateX(-110vw);

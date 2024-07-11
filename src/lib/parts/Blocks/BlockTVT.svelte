@@ -34,7 +34,8 @@
                 ratio="{ratio}"
                 on:imageClicked={ () => {
                     $fullscreen = true;
-                    $fullScreenType = 'slide';
+                    $fullScreenType = 'image';
+                    $fullScreenContent = visuel?.node.sourceUrl
                 }}
             />
 

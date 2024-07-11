@@ -14,6 +14,8 @@
     import HoverCursor from '$lib/parts/HoverCursor.svelte';
     import '$lib/assets/scss/style.scss';
 
+    import { resetFullscreen } from '$stores/fullscreen.js';
+
     export let data;
     $: ({menuItemsPrimary, menuItemsFooter, seoConfig, langs, currentLang, socialLinks } = data)
     
@@ -43,6 +45,9 @@
     }
 
 //    $: console.log('$navigating, ', $navigating)
+
+    $: if ($navigating) resetFullscreen();
+
 </script>
 
 <SEO />
