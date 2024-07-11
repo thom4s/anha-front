@@ -86,7 +86,7 @@ Form
     input[type="submit"], input[type="button"] {
         border: 0;
         @include max(tablet) {
-            width: 100%;
+            width: unset;
         }
     }
 

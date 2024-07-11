@@ -52,6 +52,11 @@
         gap: $space-m;
         transition: all .2s;
     }
+
+    // :global(input[type="submit"]) {
+    //     width: unset !important;
+    // }
+
     .loading {
         opacity: .5;
     }

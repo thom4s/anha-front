@@ -10,12 +10,12 @@
 
     <div class="grid">
         
-        <div class="m_3column">
+        <div class="s_12column m_3column">
             <!-- <h1 class="h1">{page.title}</h1> -->
             <div>{@html page.content}</div>
         </div>
 
-        <div class="m_9column">
+        <div class="s_12column m_9column">
             <Form />
         </div>
     </div>
@@ -29,6 +29,13 @@
 
         .h1 {
             margin-top: 0;
+        }
+
+        .grid {
+            @include max(tablet) {
+                row-gap: 60px;
+                column-gap: 0;
+            }
         }
     }
 </style>
