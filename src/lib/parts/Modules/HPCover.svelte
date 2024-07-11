@@ -6,25 +6,17 @@
 
 </script>
 
-<section class="module hpcover">
+<section class="module mod_hpcover">
 
-    <img src="{cover_img}" alt="">
 
-    <div class="content grid">
-        <div class="m_6column">
-            <h1 class="h1">{left_title}</h1>
-            <div>{@html cover_text}</div>
-        </div>
-
-        <div class="m_6column">
-            <h1 class="h1">{right_title}</h1>
-        </div>
-    </div>
 
 </section>
 
 
 <style lang="scss">
+    .mod_hpcover {
+        background-color: $beige_dark;
+    }
     .module {
         position: relative;
         height: 80vh;

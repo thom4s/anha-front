@@ -8,7 +8,7 @@
     export let hoverTarget = false
     export let fullscreened = false
     export let includeThis = false
-    export let ratio = undefined;
+    export let ratio = 'horizontale';
     let imgElement
 
     if( includeThis && ! $fullScreenContent.includes(node.sourceUrl)) {
@@ -39,7 +39,7 @@
 </script>
 
 
-<div class={"media_container ratio-" + ratio} >
+<div class="media_container" data-ratio="{ratio}">
     <img 
         src="{node?.sourceUrl}" 
         alt="{node?.caption}"
@@ -57,10 +57,6 @@
 <style lang="scss">
     .media_container {
         width: 100%;
-    }
-
-    .ratio-5-4 {
-        aspect-ratio: 5/4;
     }
 
     img {
