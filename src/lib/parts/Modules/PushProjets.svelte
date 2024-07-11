@@ -19,7 +19,7 @@
 </script>
 
 
-<section class="module ">
+<section class="module mod_pushprojets">
 
     <div class="module_title container fl-justify gap-s">
         <div class="fl-center gap-s">
@@ -92,10 +92,10 @@
         transition: width .2s;
 
         @include max(desktop) {
-            width: 33%;
+            width: 29%;
         }
         @include max(bigtablet) {
-            width: 33%;
+            width: 30%;
         }
         @include max(tablet) {
             width: 85%;

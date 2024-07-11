@@ -6,9 +6,13 @@
     export let plateforme = '';
 </script>
 
-<div class="module">
+<div class="module mod_video">
 
-    <h2>{titre}</h2>
+    {#if titre}
+        <div class="mod_title">
+            <h2 class="h2">{titre}</h2>
+        </div>
+    {/if}
 
     <div class="vid_container">
         <Video 

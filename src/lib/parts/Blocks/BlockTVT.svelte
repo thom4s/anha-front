@@ -45,9 +45,7 @@
 
 
 <style lang="scss">
-    .mod_tvt_media {
-        aspect-ratio: 5/4;
-    }
+
     .module {
         justify-content: space-between;
         width: 100%;

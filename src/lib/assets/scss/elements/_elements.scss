@@ -189,7 +189,13 @@ MEDIA
     }
     .media-right & {
         padding-right: $gutter;
-        padding-left: calc( calc(100vw - $max-width) / 2);
+
+        @include min(desktop) {
+            padding-left: calc( calc(100vw - $max-width) / 2);
+        }
+        @include max(desktop) {
+            padding-left: 5vw;
+        }
     }
     .media-full & {
         // padding-left: $gutter * 2;
@@ -200,6 +206,38 @@ MEDIA
         @extend .link;
     }
 }
+
+.stage {
+    .media-right .mod_tvt_txts {
+        @include min(desktop) {
+            padding-left: 0;
+        }
+        @include max(desktop) {
+            padding-left: 0;
+        }
+    }
+
+    .media-left .mod_tvt_txts {
+        @include min(bigtablet) {
+            padding-left: $gutter;
+        }
+        @include max(bigtablet) {
+            padding-left: $space-m;
+        }
+    }
+
+    &.inversed {
+        .media-right .mod_tvt_txts {
+            padding-left: $gutter;
+        }
+    
+        .media-left .mod_tvt_txts {
+            padding-left: $gutter;
+        }
+    }
+}
+
+
 .sec-container {
     .media-left .mod_tvt_txts {
         padding-right: $space-m;
