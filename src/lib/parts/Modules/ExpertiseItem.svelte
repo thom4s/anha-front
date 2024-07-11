@@ -16,7 +16,7 @@
 
     <section id="r0" class="fl-column-space fl-center">
 
-        <BlockTVT visuel={visuel} texte={chapo} {design} /> 
+        <BlockTVT visuel={visuel} texte={chapo} ratio="verticale" {design} /> 
   
     </section>
 

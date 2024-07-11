@@ -208,21 +208,28 @@ MEDIA
 }
 
 .stage {
-    .media-right .mod_tvt_txts {
-        @include min(desktop) {
-            padding-left: 0;
-        }
-        @include max(desktop) {
-            padding-left: 0;
-        }
-    }
 
-    .media-left .mod_tvt_txts {
-        @include min(bigtablet) {
-            padding-left: $gutter;
+    &:not(.inversed) {
+        .media-right .mod_tvt_txts {
+            @include min(desktop) {
+                padding-left: 0;
+            }
+            @include max(desktop) {
+                padding-left: 0;
+            }
         }
-        @include max(bigtablet) {
-            padding-left: $space-m;
+
+        .media-left .mod_tvt_txts {
+            @include min(bigtablet) {
+                padding-left: $gutter;
+            }
+            @include max(bigtablet) {
+                padding-left: $space-m;
+            }
+        }
+
+        .media-full .mod_tvt_txts {
+            padding-left: 0;
         }
     }
 

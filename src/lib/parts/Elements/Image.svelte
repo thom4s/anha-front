@@ -8,7 +8,7 @@
     export let hoverTarget = false
     export let fullscreened = false
     export let includeThis = false
-    export let ratio = 'horizontale';
+    export let ratio = 'verticale';
     let imgElement
 
     if( includeThis && ! $fullScreenContent.includes(node.sourceUrl)) {
