@@ -4,7 +4,7 @@
     export let visuel = '';
     export let texte = '';
     export let design = 'full';
-    export let ratio = 'full';
+    export let ratio = 'horizontale';
     export let parallax = true;
 
     import Image from "$lib/parts/Elements/Image.svelte";
@@ -31,7 +31,7 @@
                 fullscreened={true}
                 hoverTarget={true}
                 includeThis={true}
-                ratio="horizontale"
+                ratio="{ratio}"
                 on:imageClicked={ () => {
                     $fullscreen = true;
                     $fullScreenType = 'slide';
