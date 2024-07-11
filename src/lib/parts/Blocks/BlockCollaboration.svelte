@@ -21,7 +21,7 @@
             
             <div>
                 {#if post.informationsCollaboration.lien }
-                    <a class="link" href="{post.informationsCollaboration.lien}">
+                    <a class="link" target="_blank" href="{post.informationsCollaboration.lien}">
                         {post.informationsCollaboration.label}
                     </a>
                 {/if}
