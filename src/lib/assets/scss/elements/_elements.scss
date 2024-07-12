@@ -300,7 +300,7 @@ MEDIA
         align-items: center;
     }
     img { 
-        object-fit: contain;
+        object-fit: contain !important;
         max-height: 130px;
     }
 }
