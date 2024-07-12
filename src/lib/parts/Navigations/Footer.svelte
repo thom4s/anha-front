@@ -25,8 +25,8 @@
 
 <style lang="scss">
     footer {
-        margin-top: 10px;
-        margin-bottom: 60px;
+        margin-top: $gutter;
+        margin-bottom: $gutter * 2;
     }
     .container {
         border-top: 1px solid;
