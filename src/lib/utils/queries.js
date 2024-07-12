@@ -91,6 +91,7 @@ export const taxonomies_fields_string = `
                 name
             }
         }
+		ratioFeaturedimg
 		visuels {
 			design
 			ratio

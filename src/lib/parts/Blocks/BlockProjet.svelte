@@ -5,6 +5,8 @@
 
     export let projet = {};
     export const type = '';    
+
+    $: console.log('projet ', projet.informationsProjet)
 </script>
 
 
@@ -51,7 +53,8 @@
             <div class="bloc_media">   
 
                 <Image 
-                    node={projet.featuredImage.node} 
+                    node={projet.featuredImage.node}
+                    ratio={ projet.informationsProjet?.ratioFeaturedimg[0]}
                 />
 
             </div>
