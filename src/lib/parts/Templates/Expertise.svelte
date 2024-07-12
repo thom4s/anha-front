@@ -40,8 +40,9 @@
             rightColVisible = true
         }
 
-        // FADE OUT OTHERSIDE TITLE 
+        // FADE OUT OTHERSIDE TITLES 
         tl.to(`#${otherSide} .btn_title`, { opacity: 0, duration: .1 });
+        tl.to(`#${side} .btn_title`, { opacity: 0, duration: .1 });
 
         // BRING CONTENT TO FRONT (BUT DONT DISPLAY)
         tl.to(`#${side}Contents`, { opacity: 1, duration: 0});
@@ -84,7 +85,7 @@
 
         // DISPLAY CONTENT
         tl.to(`#${side}Contents .section_inner`, { opacity: 1, duration: .5, delay: .2 });
-        tl.to(`#${side} .btn_title_clone`, { opacity: 1, duration: .1 });
+        tl.to(`#${side} .btn_title_clone`, { opacity: 1, duration: .1 }, "<");
 
         // START
         if (tl.progress() < 1) {
@@ -111,7 +112,7 @@
 
         // HIDE CONTENT
         tl.to(`#${side}Contents .section_inner`, { opacity: 0, duration: .5, delay: .2 });
-        tl.to(`#${side} .btn_title_clone`, { opacity: 0, duration: .5 });
+        tl.to(`#${side} .btn_title_clone`, { opacity: 0, duration: .5 }, "<");
 
         // MOVE CONTENT OUT
         if( side === 'rightSide') {
@@ -129,6 +130,7 @@
 
         // FADE IN OTHERSIDE TITLE 
         tl.to(`#${otherSide} .btn_title`, { opacity: 1, duration: .1 });
+        tl.to(`#${side} .btn_title`, { opacity: 1, duration: .1 }, "<");
 
         // START
         if (tl.progress() < 1) {
@@ -252,10 +254,15 @@
         .btn {
             border: none;   
             background-color: $light-bg2;
+            text-transform: none;
+            font-family: 'Baskervville', serif;
+            font-weight: 400;
+            font-style: italic;
             display: block;
             width: 50%;
             height: 100%;
-            font-size: 80px;
+            font-size: 9.5rem;
+            letter-spacing: -0.02em;
             text-align: center;
             cursor: pointer;
             position: relative; 
@@ -269,7 +276,7 @@
 
             &:not(.active):hover {
                 .btn_title {
-                    font-style: italic;
+                    font-style: normal;
                 }
                 background-color: $white;
             }

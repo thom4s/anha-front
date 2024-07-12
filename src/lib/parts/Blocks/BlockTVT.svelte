@@ -32,7 +32,7 @@
                 hoverTarget={true}
                 includeThis={true}
                 ratio="{ratio}"
-                parallax={true}
+                parallax={false}
                 on:imageClicked={ () => {
                     $fullscreen = true;
                     $fullScreenType = 'slide';
