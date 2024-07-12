@@ -8,10 +8,12 @@ Buttons
 --------------------------------------------------------------*/
 
 .btn {
+    font-family: "Gotham-Light", sans-serif;
     font-size: 1.2rem;
     line-height: 1.45;
-    font-weight: 350;
+    font-weight: 600;
     letter-spacing: 0.06em;
+    text-transform: uppercase;
     text-align: center;
     padding: 10px 20px;
     text-decoration: none;
@@ -19,6 +21,7 @@ Buttons
     border: none;
     background: none;
     cursor: pointer;
+    transition: all .3s;
 
     &.light {
         color: $dark-font;
@@ -26,7 +29,13 @@ Buttons
     }
     &.dark {
         color: $light-font;
-        background-color: $dark-bg;
+        background-color: $dark-font;
+        border: 1px solid $dark-font;
+    }
+
+    &:hover {
+        background: none;
+        color: $dark-bg;
     }
 }
 
@@ -84,7 +93,6 @@ Form
         height: 18px;
     }
     input[type="submit"], input[type="button"] {
-        border: 0;
         @include max(tablet) {
             width: unset;
         }

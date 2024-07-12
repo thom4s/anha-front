@@ -37,26 +37,26 @@
 ul {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 30px;
     list-style: none;
     margin: 0;
     padding: 0;
 
     a {
-        padding: $space-xs  $space-xs  $space-xs 0;
+        padding: 0;
         display: inline-flex;
         flex-direction: column;
         justify-content: space-between;
-        line-height: .5;
+        line-height: 1;
         position: relative;
 
         &:after {
             content: "";
             position: absolute;
             z-index: -1;
-            right: 8px;
+            right: 0;
             width: 0;
-            bottom: 0;
+            bottom: -3px;
             background: #000;
             height: 1px;
             transition-property: width;
@@ -88,8 +88,8 @@ ul {
         content: '';
         position: absolute;
         left: 0;
-        right: $space-xs;
-        bottom: 0;
+        right: 0;
+        bottom: -3px;
         height: 1px;
         background-color: black;
     }
