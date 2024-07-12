@@ -1,6 +1,6 @@
 <script>
 	import BlockProjet from '$lib/parts/Blocks/BlockProjet.svelte';
-	import { onMount, afterUpdate, onDestroy } from 'svelte';
+	import { onMount } from 'svelte';
     import { register } from 'swiper/element/bundle';
 
     export let titre = '';

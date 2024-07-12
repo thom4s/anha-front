@@ -1,4 +1,5 @@
 <script>
+	import { onMount, tick } from 'svelte';
     import { fullscreen, fullScreenContent, fullScreenType } from '$stores/fullscreen.js';
 
     import SocialLinks from '../Navigations/SocialLinks.svelte';
@@ -13,12 +14,27 @@
     export let post = {};
     export let type = '';
 
-    $: console.log(post.title, post.informationsNews)
+    let swiperContainer;
+    let prevButton;
+    let nextButton;
 
-    // $: console.log('image', post.featuredImage?.node.sourceUrl);
 
+
+    $: console.log(post.title, post.informationsNews);
+
+    onMount(async () => {
+        register();
+
+        await tick();
+
+        if (swiperContainer ) swiperContainer.initialize();
+    });
+
+    $: console.log('prev', prevButton);
+    $: console.log('next', nextButton);
+
+    $: console.log('swipContainer', swiperContainer);
 </script>
-
 
 <article class="block_post" class:module={module} transition:fade={{ duration: 200 }}>
 
@@ -35,30 +51,46 @@
                     />
 
                 {:else if post.informationsNews?.galery }
+                    <div class="slider-container">
 
-                    <swiper-container 
-                        space-between="0" 
-                        slides-per-view="auto" 
-                        init="true"
-                        navigation={true}
-                        loop="true"
-                    >
-                        {#each post.informationsNews?.galery.nodes as node }
-                            <swiper-slide class="swiper-slide">
-
-                                <Image 
-                                    node={post.featuredImage?.node} 
-                                    parallax={true}
-                                    hoverTarget={true}
-                                    on:imageClicked={ () => {
-                                        $fullscreen = true;
-                                        $fullScreenType = 'slide';
-                                        $fullScreenContent = post.informationsNews?.galery
-                                    }}/>
-
-                            </swiper-slide>
-                        {/each}
-                    </swiper-container >
+                        <swiper-container
+                            bind:this={swiperContainer}
+                            space-between="0" 
+                            slides-per-view="auto" 
+                            navigation={{
+                                nextEl: nextButton,
+                                prevEl: prevButton
+                            }}
+                            loop="true"
+                            init={false}
+                        >
+                            {#each post.informationsNews?.galery.nodes as node }
+                                <swiper-slide class="swiper-slide">
+                                    <Image 
+                                        node={post.featuredImage?.node} 
+                                        parallax={true}
+                                        hoverTarget={true}
+                                        on:imageClicked={ () => {
+                                            $fullscreen = true;
+                                            $fullScreenType = 'slide';
+                                            $fullScreenContent = post.informationsNews?.galery;
+                                        }}/>
+                                </swiper-slide>
+                            {/each}
+                        </swiper-container >
+                        <div class="swiper-navigation fl-justify">
+                            <div bind:this={prevButton} class="swiper-button-prev-out">
+                                <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 26.377L10 16.377L20 6.377" stroke="black" stroke-linecap="square"/>
+                                </svg>                    
+                            </div>
+                            <div bind:this={nextButton} class="swiper-button-next-out">
+                                <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 6.62305L22 16.623L12 26.623" stroke="black" stroke-linecap="square"/>
+                                </svg>    
+                            </div>
+                        </div>
+                    </div>
 
                 {:else}
 
@@ -70,7 +102,7 @@
                         on:imageClicked={ () => {
                             $fullscreen = true;
                             $fullScreenType = 'image';
-                            $fullScreenContent = post.featuredImage?.node.sourceUrl
+                            $fullScreenContent = post.featuredImage?.node.sourceUrl;
                         }}/>
                 {/if}
             </div>
@@ -170,6 +202,26 @@
                 width: inherit;
                 height: inherit;
                 aspect-ratio: 5/4;
+            }
+
+            .slider-container {
+                position: relative;
+                z-index: 0;
+            }
+
+            .swiper-navigation {
+                position: absolute;
+                top: 50%;
+                width: 100%;
+            }
+            .swiper-button-prev-out, .swiper-button-next-out {
+                cursor: pointer;
+                transition: 0.3s;
+                position: relative;
+                z-index: 1;
+                &.swiper-button-disabled {
+                    opacity: 0.5;
+                }
             }
         }
     }
