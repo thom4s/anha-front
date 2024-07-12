@@ -199,8 +199,7 @@ p {
 .link {
     font-family: 'Gotham-Book', sans-serif;
     font-size: 1.2rem;
-    font-weight: $font-m;
-    font-style: italic;
+    font-weight: $font-r;
 	line-height: 1.25;
     letter-spacing: 0.06em;
     color: $dark-font;
@@ -224,6 +223,9 @@ p {
         transform: translateX(100%);
         animation: underlineSlide 0.6s forwards;
         transform-origin: right center;
+    }
+    &:hover {
+        font-style: italic;
     }
 }
 
