@@ -68,7 +68,6 @@
                                 <swiper-slide class="swiper-slide">
                                     <Image 
                                         node={node} 
-                                        parallax={true}
                                         hoverTarget={true}
                                         ratio="horizontale"
                                         on:imageClicked={ () => {
@@ -97,7 +96,6 @@
 
                     <Image 
                         node={post.featuredImage?.node} 
-                        parallax={true}
                         hoverTarget={true}
                         ratio="horizontale"
                         on:imageClicked={ () => {

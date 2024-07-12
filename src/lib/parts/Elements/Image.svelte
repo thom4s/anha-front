@@ -29,7 +29,7 @@
     onMount(() => {
         if(parallax) {
             new Ukiyo(imgElement, {
-                scale: 1.2,
+                scale: 1.1,
                 speed: 1.3,
                 wrapperClass: 'parallax_outer'
             })
