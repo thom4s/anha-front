@@ -1,5 +1,5 @@
 <script>
-	import { onMount, tick } from 'svelte';
+    import { onMount, tick } from 'svelte';
     import { fullscreen, fullScreenContent, fullScreenType } from '$stores/fullscreen.js';
 
     import SocialLinks from '../Navigations/SocialLinks.svelte';
@@ -18,8 +18,6 @@
     let prevButton;
     let nextButton;
 
-
-
     $: console.log(post.title, post.informationsNews);
 
     onMount(async () => {
@@ -27,7 +25,7 @@
 
         await tick();
 
-        if (swiperContainer ) swiperContainer.initialize();
+        if (swiperContainer) swiperContainer.initialize();
     });
 
     $: console.log('prev', prevButton);
@@ -61,6 +59,12 @@
                                 nextEl: nextButton,
                                 prevEl: prevButton
                             }}
+                            pagination={{
+                                clickable: true,
+                                dynamicBullets: true,
+                                dynamicMainBullets: 4
+
+                            }}
                             loop="true"
                             init={false}
                         >
@@ -78,21 +82,16 @@
                                 </swiper-slide>
                             {/each}
                         </swiper-container >
-                        <!-- <div class="swiper-top-layer fl-center">
-                            <div class="swiper-navigation fl-justify"> -->
-                                <div bind:this={prevButton} class="swiper-button-prev-out fl-center">
-                                    <svg width="24" height="24" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M20 26.377L10 16.377L20 6.377" stroke="black" stroke-linecap="square"/>
-                                    </svg>                    
-                                </div>
-                                <div bind:this={nextButton} class="swiper-button-next-out fl-center">
-                                    <svg width="24" height="24" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M12 6.62305L22 16.623L12 26.623" stroke="black" stroke-linecap="square"/>
-                                    </svg>    
-                                </div>
-                            <!-- </div>
-                        </div> -->
-
+                        <div bind:this={prevButton} class="swiper-button-prev-out fl-center">
+                            <svg width="24" height="24" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 26.377L10 16.377L20 6.377" stroke="black" stroke-linecap="square"/>
+                            </svg>                    
+                        </div>
+                        <div bind:this={nextButton} class="swiper-button-next-out fl-center">
+                            <svg width="24" height="24" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 6.62305L22 16.623L12 26.623" stroke="black" stroke-linecap="square"/>
+                            </svg>    
+                        </div>
                     </div>
 
                 {:else}
@@ -214,6 +213,8 @@
                 }
             }
 
+            // SLIDER NAVIGATION
+
             .swiper-button-prev-out, .swiper-button-next-out {
                 cursor: pointer;
                 transition-duration: 0.4s;
@@ -238,6 +239,20 @@
             .swiper-button-next-out {
                 right: 16px;
             }
+
+
+            // SLIDER PAGINATION
+
+            --swiper-pagination-color: #F8F7F4;
+            --swiper-pagination-bullet-size: 8px;
+            --swiper-pagination-bullet-width: 8px;
+            --swiper-pagination-bullet-height: 8px;
+            --swiper-pagination-bullet-inactive-color: #F8F7F4;
+            --swiper-pagination-bullet-inactive-opacity: 0.5;
+            --swiper-pagination-bullet-opacity: 1;
+            --swiper-pagination-bullet-horizontal-gap: 3px;
+            --swiper-pagination-bottom: 15px
+            
         }
     }
 
