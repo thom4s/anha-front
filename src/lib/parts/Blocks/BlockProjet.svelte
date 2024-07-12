@@ -66,11 +66,17 @@
 
 <style lang="scss">
 
-    .bloc_projet:hover .h3 {
-        font-style: italic;
+    .bloc_projet:hover {
+        .h3 {
+            font-style: italic;
+        }
+        :global(img) {
+            transform: scale(1.03);
+        }
     }
 
     .bloc_media {
+        overflow: hidden;
         img {
             //aspect-ratio: 4/5;
             width: 100%;
