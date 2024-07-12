@@ -67,9 +67,10 @@
                             {#each post.informationsNews?.galery.nodes as node }
                                 <swiper-slide class="swiper-slide">
                                     <Image 
-                                        node={post.featuredImage?.node} 
+                                        node={node} 
                                         parallax={true}
                                         hoverTarget={true}
+                                        ratio="horizontale"
                                         on:imageClicked={ () => {
                                             $fullscreen = true;
                                             $fullScreenType = 'slide';
