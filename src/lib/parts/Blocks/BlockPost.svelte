@@ -85,7 +85,7 @@
                 </div>
                 
                 <div class="fl-column-start gap-s">  
-                    <h3 class="h3 mb-small">{@html post.title}</h3>
+                    <h3 class="mb-small" class:h2={module}>{@html post.title}</h3>
 
                     {#if post.content }
                         <div class="body">{@html post.content}</div>
