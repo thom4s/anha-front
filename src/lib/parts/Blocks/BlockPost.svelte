@@ -56,7 +56,7 @@
                         <swiper-container
                             bind:this={swiperContainer}
                             space-between="0" 
-                            slides-per-view="auto" 
+                            slides-per-view="auto"
                             navigation={{
                                 nextEl: nextButton,
                                 prevEl: prevButton
@@ -78,18 +78,21 @@
                                 </swiper-slide>
                             {/each}
                         </swiper-container >
-                        <div class="swiper-navigation fl-justify">
-                            <div bind:this={prevButton} class="swiper-button-prev-out">
-                                <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M20 26.377L10 16.377L20 6.377" stroke="black" stroke-linecap="square"/>
-                                </svg>                    
-                            </div>
-                            <div bind:this={nextButton} class="swiper-button-next-out">
-                                <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 6.62305L22 16.623L12 26.623" stroke="black" stroke-linecap="square"/>
-                                </svg>    
-                            </div>
-                        </div>
+                        <!-- <div class="swiper-top-layer fl-center">
+                            <div class="swiper-navigation fl-justify"> -->
+                                <div bind:this={prevButton} class="swiper-button-prev-out fl-center">
+                                    <svg width="24" height="24" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M20 26.377L10 16.377L20 6.377" stroke="black" stroke-linecap="square"/>
+                                    </svg>                    
+                                </div>
+                                <div bind:this={nextButton} class="swiper-button-next-out fl-center">
+                                    <svg width="24" height="24" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 6.62305L22 16.623L12 26.623" stroke="black" stroke-linecap="square"/>
+                                    </svg>    
+                                </div>
+                            <!-- </div>
+                        </div> -->
+
                     </div>
 
                 {:else}
@@ -206,21 +209,34 @@
             .slider-container {
                 position: relative;
                 z-index: 0;
+                &:hover :where(.swiper-button-prev-out, .swiper-button-next-out) {
+                    opacity: 1;
+                }
             }
 
-            .swiper-navigation {
-                position: absolute;
-                top: 50%;
-                width: 100%;
-            }
             .swiper-button-prev-out, .swiper-button-next-out {
                 cursor: pointer;
-                transition: 0.3s;
-                position: relative;
+                transition-duration: 0.4s;
+                transition-property: opacity;
+                position: absolute;
                 z-index: 1;
+                background-color: $light-bg;
+                border-radius: 50%;
+                width: 35px;
+                aspect-ratio: 1/1;
+                opacity: 0;
+                top: 50%;
+                transform: translateY(-50%);
                 &.swiper-button-disabled {
                     opacity: 0.5;
                 }
+            }
+
+            .swiper-button-prev-out {
+                left: 16px;
+            }
+            .swiper-button-next-out {
+                right: 16px;
             }
         }
     }
