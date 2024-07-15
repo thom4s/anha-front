@@ -42,6 +42,10 @@ ul {
     margin: 0;
     padding: 0;
 
+    @include max(tablet) {
+        gap: 40px;
+    }
+
     a {
         padding: 0;
         display: inline-flex;

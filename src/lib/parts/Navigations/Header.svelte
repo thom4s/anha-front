@@ -116,7 +116,7 @@
                 <LangSwitcher />
 
                 <nav class="cta">
-                    <a href="/fr/contact" class="btn dark">Contact</a>
+                    <a href="/fr/contact" class="btn dark" on:click={ () => menuIsVisible = false }>Contact</a>
                 </nav>
             </div>
 
@@ -264,6 +264,9 @@
         }
     }
     .menus_group {
+        @include max(bigtablet) {
+            gap: 40px;
+        }
         @include max(bigtablet) {
             flex-direction: column;
             align-items: flex-start;
