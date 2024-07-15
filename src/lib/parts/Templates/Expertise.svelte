@@ -254,6 +254,7 @@
         .btn {
             border: none;   
             background-color: $light-bg2;
+            line-height: 1.2;
             text-transform: none;
             font-family: 'Baskervville', serif;
             font-weight: 400;

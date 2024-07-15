@@ -51,6 +51,7 @@
         cursor: zoom-in;
         cursor: url('$lib/assets/svg/arrowfull.svg'), auto;
     }
+
     :global(.plyr__controls) {
         opacity: .1;
     }
@@ -60,4 +61,11 @@
     :global(.plyr__time--current, .plyr__menu) {
          display: none;
     }
+    :global(.plyr__control--overlaid) {
+        background-color: $beige !important;
+    }
+    :global(.plyr__control--overlaid svg) {
+        fill: $black !important;
+    }
+
 </style>

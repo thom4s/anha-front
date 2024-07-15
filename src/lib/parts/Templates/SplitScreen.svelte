@@ -1,4 +1,5 @@
 <script lang="ts">
+    import PushContact from '../Modules/PushContact.svelte';
     import FlexibleLayouts from '$lib/parts/FlexibleLayouts.svelte';
     export let page = {};
     $: ({stages } = page.contenusFlexiblesStaged)
@@ -44,6 +45,9 @@
 
 
 </article>
+
+
+<PushContact />
 
 
 <style lang="scss">
