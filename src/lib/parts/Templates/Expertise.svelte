@@ -407,7 +407,7 @@
         }
         .menus_close_btn {
             position: absolute;
-            top: 20px;
+            top: 10px;
 
             @include min(bigtablet) {
                 width: 30px;
@@ -419,19 +419,19 @@
             }
             .right-sections & {
                 @include min(bigtablet) {
-                    right: $gutter;
+                    right: 10px;
                 }
                 @include max(bigtablet) {
-                    right: $gutter;
+                    right: 10px;
                 }
                 
             }
             .left-sections & {
                 @include min(bigtablet) {
-                    left: $gutter;
+                    left: 10px;
                 }
                 @include max(bigtablet) {
-                    left: $gutter;
+                    left: 10px;
                 }
                 
             }
