@@ -48,6 +48,16 @@
         aspect-ratio: 5/4;
         width: 100%;
     }
+    .stage_left {
+        @include max(tablet) {
+            padding-bottom: 0;
+        }
+    }
+    .stage_right {
+        @include max(tablet) {
+            padding-top: 0;
+        }
+    }
     .stage_txt {
         
         @include min(desktop) {
@@ -67,5 +77,10 @@
             padding-left: 0;
         }
     }
-
+    .page_actions {
+        @include max(tablet) {
+            gap: $gutter;
+            margin-top: $gutter;
+        }
+    }
 </style>

@@ -8,7 +8,7 @@
 
 <article class="block_collaboration">
 
-    <div class="fl-justify gap-l">
+    <div class="block_inner fl-justify gap-l">
 
         <div class="bloc_texts fl-column-space">
 
@@ -42,15 +42,29 @@
     border-top: 1px solid;
     padding: 20px 0;
 
+    .block_inner {
+        @include max(tablet) {
+            flex-direction: column;
+            gap: $space-s;
+        }
+    }
+
     &:nth-child(even) .bloc_media {
-        order: -1;
+        @include min(tablet) {
+            order: -1;
+        }
     }
 
     .bloc_texts {
-        width: 55%;
+        @include min(tablet) {
+            width: 55%;
+        }
+        gap: $gutter;
     }
     .bloc_media {
-        width: 45%;
+        @include min(tablet) {
+            width: 45%;
+        }
         height: 100%;
     }
 }

@@ -19,7 +19,7 @@
     <div class="grid mb-xxlarge">
 
             {#each posts.edges as post }
-                <div class="item_container m_4column">
+                <div class="item_container s_12column m_4column">
                     <BlockPress post={post.node} type="posts"/>
                 </div>
             {/each}

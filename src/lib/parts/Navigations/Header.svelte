@@ -176,7 +176,7 @@
             display:  none;
         }
         @include max(bigtablet) {
-            padding: $space-m $space-m $space-s;
+            padding: $space-m 5vw $space-s;
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
@@ -197,10 +197,11 @@
 
 
     :global(.menusContainer) {
-        transition: transform .5s;
+
         z-index: 999;
 
         @include max(bigtablet) {
+            transition: transform .5s;
             transform: translateX(110vw);
             position: fixed;
             bottom: 0;

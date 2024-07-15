@@ -245,7 +245,7 @@
         display: flex;
         gap: 10px;
 
-        @include min(tablet) {
+        @include min(bigtablet) {
             display: none;
         }
     }
@@ -283,7 +283,7 @@
         justify-content: center;
         gap: 15px;
 
-        @include max(tablet) {
+        @include max(bigtablet) {
             flex-direction: column;
             align-items: flex-start;
             margin-top: $gutter;
@@ -293,7 +293,7 @@
             display: flex;
             justify-content: center;
             gap: 15px; 
-            @include max(tablet) {
+            @include max(bigtablet) {
                 flex-direction: column;
                 align-items: flex-start;
             }

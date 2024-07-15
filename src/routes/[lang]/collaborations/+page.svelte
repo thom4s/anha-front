@@ -15,12 +15,12 @@
 
     <div class="grid">
 
-        <div class="m_3column">
+        <div class="s_12column m_3column">
             <!-- <h1>{page.title}</h1> -->
             <div>{@html page.content}</div>
         </div>
 
-        <div class="m_9column">
+        <div class="s_12column m_9column">
             {#each collaborations.nodes as post }
                 <BlockCollaboration {post} type="collaborations"/>
             {/each}
