@@ -55,7 +55,7 @@ Form
     position: relative;
     input:not([type="submit"], [type="button"], [type="radio"], [type="checkbox"]), textarea, select {
         background-color: transparent;
-        border: 1px solid $gray;
+        border: 1px solid $gray-light;
         padding: $space-s;
         color: $dark-font;
         width: 100%;

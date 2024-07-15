@@ -6,7 +6,7 @@
 
 <div class="module mod_collaborateurs">
     {#each layout.collaborateur as collab}
-        <div class="item grid">
+        <div class="item item-collaborateur grid">
             <div class="mod_media s_3column m_1column">
                 <div class="square">
                     <div class="inner">
@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="mod_title s_7column m_2column">
-                <p class="no-margin">{collab.name}</p>
+                <p class="mb-xxsmall">{collab.name}</p>
                 <p class="no-margin caption">{collab.job}</p>
             </div>
             <div class="mod_details s_12column m_3column">

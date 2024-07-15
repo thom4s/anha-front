@@ -84,7 +84,7 @@
         }
     }
     .stage_txt {
-        max-width: 900px;
+        max-width: 1040px;
         
 
         .stage_left & {

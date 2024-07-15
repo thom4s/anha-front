@@ -20,8 +20,10 @@
             </div>
             
             <div class=" mb-xxsmall">  
-                <h2 class="body mb-0">{post.informationsPress?.magazineName}</h2>
-                <h2 class="body">{post.title}</h2>
+                <h2 class="block_title body">
+                    <span class="mb-0">{post.informationsPress?.magazineName}</span>
+                    <span>{post.title}</span>
+                </h2>
             </div>
             
             {#if post.informationsPress?.lien }
@@ -35,5 +37,12 @@
 
 
 <style lang="scss"> 
-
+    .block_title {
+        span {
+            display: block;
+        }
+    }
+    .link {
+        font-weight: 500;
+    }
 </style>

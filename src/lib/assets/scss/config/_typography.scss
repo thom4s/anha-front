@@ -151,6 +151,7 @@ h4, .h4 { @include h4; }
 .body, 
 .body > p, 
 p {
+    font-family: 'Gotham-Book', sans-serif;
 	font-size: 1.6rem;
 	font-weight: $font-l;
 	line-height: 1.5;
