@@ -267,6 +267,15 @@
             cursor: pointer;
             position: relative; 
 
+            &:first-child {
+                @include max(tablet) {
+                    border-right: 1px solid;
+                }
+            }
+            @include max(tablet) {
+                background-color: $white;
+            }
+
             .btn_title {
                 @include max(bigtablet) {
                     writing-mode: vertical-rl;

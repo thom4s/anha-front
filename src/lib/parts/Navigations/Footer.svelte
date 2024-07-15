@@ -27,6 +27,9 @@
     footer {
         margin-top: $gutter;
         margin-bottom: $gutter * 2;
+        @include max(bigtablet) {
+            margin-top: $gutter * 1.5;
+        }
     }
     .container {
         border-top: 1px solid;
@@ -38,7 +41,7 @@
     .nav_group {
         @include max(bigtablet) {
             flex-direction: column;
-            gap: $space-s;
+            gap: 40px;
         }
     }
 </style>

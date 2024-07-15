@@ -2,10 +2,11 @@
     import BlockProjet from "$lib/parts/Blocks/BlockProjet.svelte";
 	import PushContact from "$lib/parts/Modules/PushContact.svelte";
     import IconFilters from '$lib/parts/Svgs/IconFilters.svelte';
+    import IconArrowRight from '$lib/parts/Svgs/IconArrowRight.svelte';
 
-    import { onMount, afterUpdate, beforeUpdate } from "svelte";
-	import { fade, fly } from 'svelte/transition';
+    import { afterUpdate, beforeUpdate } from "svelte";
     import { Masonry } from "svelte-bricks";
+    import { fly } from "svelte/transition";
 
     let [minColWidth, maxColWidth, gap] = [350, 450, 30]
     let width, height
@@ -20,7 +21,7 @@
     
     // MENU MOBILE
     let menuIsVisible = false;
-
+    let filterOne = true, filterTwo = true;
 
     // FILTERS
     let filters = [];
@@ -82,7 +83,7 @@
     <h1 class="visualy-hidden">{page.title}</h1>
     <!-- <div>{@html page.content}</div> -->
 
-    <div class="grid container filtersContainer">
+    <div class="grid container filtersContainer" class:menuIsVisible>
 
         <div class="btn_outer s_12column">
             <button class="btn_clean fl-vcenter gap-s" on:click={ () => menuIsVisible = true }>
@@ -102,18 +103,45 @@
 
             <div class="filters sticky">
 
-                <div class="filterGroup mb-small">
-                    <button on:click={ reset } data-term="" class="caption filterItem" class:active={filters.length === 0}>Tous les secteurs</button>
-                    {#each secteurs.nodes as t }
-                        <button on:click={ (e) => { loading = true; filter(e) } } data-term="{t.name}" class="caption filterItem" class:active={filters.includes(t.name)}>{t.name}</button>
-                    {/each}
+                <div bind:this={filterOne} class="filterGroup mb-small" class:open={filterOne}>
+                    <span 
+                        class="caption filterLabel" 
+                        on:click={ () => {
+                            filterOne = !filterOne
+                        }}
+                    >
+                        Filtrer par secteur <IconArrowRight />
+                    </span>
+
+                    {#if filterOne }
+                        <div transition:fly={{ duration: 200 }}>
+                            <button on:click={ reset } data-term="" class="caption filterItem" class:active={filters.length === 0}>Tous les secteurs</button>
+                            {#each secteurs.nodes as t }
+                                <button on:click={ (e) => { loading = true; filter(e) } } data-term="{t.name}" class="caption filterItem" class:active={filters.includes(t.name)}>{t.name}</button>
+                            {/each}
+                        </div>
+                    {/if}
                 </div>
 
-                <div class="filterGroup">
-                    <button on:click={ reset } data-term="" class="caption filterItem" class:active={filters.length === 0}>Tous les savoir-faire</button>
-                    {#each savoirfaires.nodes as t }
-                        <button on:click={ (e) => { loading = true; filter(e) } } data-term="{t.name}" class="caption filterItem" class:active={filters.includes(t.name)}>{t.name}</button>
-                    {/each}
+                <div bind:this={filterTwo} class="filterGroup" class:open={filterTwo}>
+                    <span 
+                        class="caption filterLabel"
+                        on:click={ () => {
+                            filterTwo = !filterTwo
+                        }}
+                    >
+                        Filtrer par savoir-faire 
+                        <IconArrowRight />
+                    </span>
+
+                    {#if filterTwo }
+                    <div transition:fly={{ duration: 200 }}>
+                            <button on:click={ reset } data-term="" class="caption filterItem" class:active={filters.length === 0}>Tous les savoir-faire</button>
+                            {#each savoirfaires.nodes as t }
+                                <button on:click={ (e) => { loading = true; filter(e) } } data-term="{t.name}" class="caption filterItem" class:active={filters.includes(t.name)}>{t.name}</button>
+                            {/each}
+                        </div>
+                    {/if}
                 </div>
 
             </div>
@@ -184,11 +212,17 @@
         top: $space-xxl * 2;
     }
 
+
     // PROJECT FILTERS
 
     .filtersContainer {
         position: relative;
         z-index: 1;
+        
+        &.menuIsVisible {
+            z-index: 10;
+        }
+
         @include max(bigtablet) {
             border-bottom: 1px solid black;
             column-gap: 0;
@@ -207,7 +241,26 @@
             }
         }
     }
+    .filterLabel {
+        display: flex;
+        gap: 10px;
+
+        @include min(tablet) {
+            display: none;
+        }
+    }
+    :global(.filterLabel svg) {
+        width: 10px;
+        height: 10px;
+    }
+    :global(.filterLabel span) {
+        transform: rotate(-90deg);
+    }
+    :global(.open .filterLabel span) {
+        transform: rotate(90deg);
+    }
     .filterItem {
+        font-family: inherit;
         background: none;
         border: 1px solid $gray;
         padding: .5em 1em;
@@ -233,7 +286,19 @@
         @include max(tablet) {
             flex-direction: column;
             align-items: flex-start;
+            margin-top: $gutter;
         }
+
+        & > div {
+            display: flex;
+            justify-content: center;
+            gap: 15px; 
+            @include max(tablet) {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
 
         span {
             cursor: pointer;

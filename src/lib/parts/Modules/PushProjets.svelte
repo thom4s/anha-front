@@ -121,5 +121,9 @@
         padding-bottom: 30px;
         margin-bottom: 30px;
         align-items: flex-end;
+        @include max(tablet) {
+            margin-left: 5vw;
+            width: 95%;
+        }
     }
 </style>
