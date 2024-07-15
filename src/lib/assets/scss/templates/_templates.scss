@@ -7,3 +7,15 @@
     }
 } 
 
+.container-contact {
+    .contact-txt {
+        strong {
+            @extend .caption;
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+        a {
+            color: inherit
+        }
+    }
+}

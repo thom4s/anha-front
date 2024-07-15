@@ -6,13 +6,13 @@
 </script>
 
 
-<div class="container">
+<div class="container container-contact">
 
     <div class="grid">
         
         <div class="s_12column m_3column">
             <!-- <h1 class="h1">{page.title}</h1> -->
-            <div>{@html page.content}</div>
+            <div class="contact-txt">{@html page.content}</div>
         </div>
 
         <div class="s_12column m_9column">
