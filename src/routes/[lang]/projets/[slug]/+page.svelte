@@ -36,7 +36,7 @@
                             </div>
 
                             <div class="project_title">
-                                <h1 class="h2">{projet.title}</h1>
+                                <h1 class="h2 mb-medium">{projet.title}</h1>
                             </div>
 
                             <div class="m_hide projet_media_item" data-design="full" data-ratio="verticale">

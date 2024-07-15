@@ -187,6 +187,8 @@
     // PROJECT FILTERS
 
     .filtersContainer {
+        position: relative;
+        z-index: 1;
         @include max(bigtablet) {
             border-bottom: 1px solid black;
             column-gap: 0;
@@ -207,19 +209,19 @@
     }
     .filterItem {
         background: none;
-        border: 1px solid $black;
+        border: 1px solid $gray;
         padding: .5em 1em;
         border-radius: 16px;
+        font-weight: 300;
         cursor: pointer;
-        transition: background-color .3s;
+        transition: border .3s;
 
         &:hover {
-            background-color: $black;
-            color: white;
+            border-color: $black;
         }
         &.active {
             background-color: black;
-            color: white;
+            color: $beige;
         }
     }
 
