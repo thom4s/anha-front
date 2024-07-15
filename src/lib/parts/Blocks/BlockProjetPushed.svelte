@@ -65,10 +65,14 @@
         border-top: 1px solid black;
         padding-top: $space-s;
 
-        &:hover .block_title {
-            font-style: italic;
+        &:hover {
+            .block_title {
+                font-style: italic;
+            }
+            :global(img) {
+                transform: scale(1.03);
+            }
         }
-
     }
     .block_link {
         @include max(tablet) {
@@ -82,6 +86,7 @@
         }
     }
     .block_media {
+        overflow: hidden;
         @include min(tablet) {
             flex: 0 0 20%;
         }

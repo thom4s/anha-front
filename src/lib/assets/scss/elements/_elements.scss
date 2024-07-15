@@ -8,7 +8,7 @@ Buttons
 --------------------------------------------------------------*/
 
 .btn {
-    font-family: "Gotham-Light", sans-serif;
+    font-family: "Gotham-Medium", sans-serif;
     font-size: 1.2rem;
     line-height: 1.45;
     font-weight: 600;
@@ -255,7 +255,7 @@ MEDIA
 
 .sec-container {
     .media-left .mod_tvt_txts {
-        padding-right: $space-m;
+        padding-right: 120px;
         @include min(bigtablet) {
             padding-left: 120px;
         }
