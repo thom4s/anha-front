@@ -11,7 +11,7 @@
 </script>
 
 
-<div class="">
+<div class="template-home">
 
     {#if page.contenusFlexibles?.contenusFlexibles }
         <Flexibles contenusFlexibles={page.contenusFlexibles?.contenusFlexibles}/>

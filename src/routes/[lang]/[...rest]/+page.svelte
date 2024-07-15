@@ -20,7 +20,7 @@
 
 </script>
 
-<div class="">
+<div class="template-page">
     {#if page}
 
 

@@ -87,7 +87,6 @@
         }
     }
 
-
     .swiper-slide {
         transition: width .2s;
 
@@ -108,6 +107,12 @@
             margin-left: 5vw;
             @include min(desktop) {
                 margin-left: calc( calc( 100% - $max-width) / 2 );
+            }
+        }
+        &:last-child {
+            margin-right: 5vw;
+            @include min(desktop) {
+                margin-right: calc( calc( 100% - $max-width) / 2 );
             }
         }
     }

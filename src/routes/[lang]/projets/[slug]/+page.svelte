@@ -18,7 +18,7 @@
 </script>
 
 
-<article class="template mb-xxlarge" data-template="projet">
+<div class="template template-projet mb-xxlarge" data-template="projet">
 
     <div class="">
         {#if projet}
@@ -173,7 +173,7 @@
         
     </div>
 
-</article>
+</div>
 
 
 <style lang="scss">

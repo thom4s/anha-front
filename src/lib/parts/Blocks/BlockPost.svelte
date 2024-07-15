@@ -179,12 +179,14 @@
         }
         .half.media {
             @include min(tablet) {
-                width: 45%;
+                width: 50%;
+                flex: 0 0 50%;
             }
         }
         .half.texts {
             @include min(tablet) {
-                width: 55%;
+                width: 50%;
+                flex: 0 0 50%;
             }
         }
 

@@ -54,9 +54,10 @@
 
 <HoverCursor />
 
-<main>
+<main class="main">
     {#key data.pathname}
         <div 
+            class="template-outer"
             in:fade={{ duration: 300, delay: 300 }} 
             out:fade={{ duration: 300 }}>
             <slot />

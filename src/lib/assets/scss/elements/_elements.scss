@@ -174,7 +174,7 @@ MEDIA
 }
 
 .mod_tvt_txts {
-    max-width: calc($max-width / 2);
+    max-width: 1040px;
     
     p { 
         margin-bottom: 0;
@@ -196,7 +196,7 @@ MEDIA
         }
     }
     .media-right & {
-        padding-right: $gutter;
+        padding-right: $gutter * 4;
 
         @include min(desktop) {
             padding-left: calc( calc(100vw - $max-width) / 2);
@@ -325,24 +325,14 @@ MEDIA
 SWIPER
 --------------------------------------------------------------*/
 
-.swiper-button-next,
-.swiper-button-prev {
-    @include max(tablet) {
-       display: none;
-    } 
-}
-
 .swiper-pagination {
     bottom: $gutter !important;
 }
 .swiper-pagination-bullet-active {
     background-color: $black !important;
 }
-.swiper-button-next svg, 
-.swiper-button-prev svg {
-    color: black;
-}
-.swiper-button-next,
-.swiper-button-prev {
-    cursor: pointer;
+
+.swiper-button-disabled {
+    opacity: .5;
+    pointer-events: none;
 }

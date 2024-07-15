@@ -1,0 +1,9 @@
+
+// HOMEPAGE
+.template-home {
+    .mod_tvt h2 {
+        @extend .h1;
+        margin-bottom: $gutter * 2;
+    }
+} 
+

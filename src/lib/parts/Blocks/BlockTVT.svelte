@@ -47,7 +47,8 @@
 
 <style lang="scss">
 
-    .module {
+
+    .mod_tvt {
         justify-content: space-between;
         width: 100%;
 
@@ -61,6 +62,7 @@
             width: 100% !important;
         }
     }
+
     .media-full {
         img {
             width: 100% !important;
