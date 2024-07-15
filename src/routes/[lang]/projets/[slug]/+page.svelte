@@ -181,6 +181,9 @@
     .template {
         margin-bottom: $space-xxl * 2;
     }
+    .grid {
+        gap: 0;
+    }
     .project_texts {
 
         padding-top: $space-xl;

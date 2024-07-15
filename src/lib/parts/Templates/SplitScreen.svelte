@@ -71,6 +71,7 @@
         }
     }
     .stage {
+        gap: 0;
         & + & {
             .sticky {
                 top: 30%;
@@ -85,7 +86,6 @@
     }
     .stage_txt {
         max-width: 1040px;
-        
 
         .stage_left & {
             @include min(desktop) {
@@ -101,12 +101,12 @@
         }
 
         @include max(desktop) {
-            padding-right: 5vw;
-            padding-left: 5vw;
+            padding-right: 120px;
+            padding-left: 120px;
         }
         @include max(bigtablet) {
-            padding-right: $gutter;
-            padding-left: $gutter;
+            padding-right: $gutter * 2;
+            padding-left: $gutter * 2;
         }        
         @include max(tablet) {
             padding-right: 0;
