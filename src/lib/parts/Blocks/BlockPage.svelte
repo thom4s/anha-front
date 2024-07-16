@@ -40,11 +40,11 @@ img {
 .bloc_texts {
     max-width: 1040px;
 
-    @include max(bigtablet) {
-        padding: $gutter 5vw;
-    }
     @include max(desktop) {
         padding: $gutter * 2;
+    }
+    @include max(bigtablet) {
+        padding: $gutter 5vw;
     }
     @include min(desktop) {
         padding: $gutter * 4;
