@@ -20,7 +20,7 @@
 
     const animationIn = ( side, otherSide ) => { 
 
-        console.log('animationIn: ', side, otherSide)
+        console.log('animationIn: ', side, otherSide, $device)
         let tl = gsap.timeline({onComplete: tlComplete});
 
         window.scrollTo({
@@ -40,6 +40,10 @@
             rightColVisible = true
         }
 
+        if( $device === 'mobile' ) {
+            tl.to(`#${otherSide}`, { backgroundColor: '#F4F2EB', duration: 0});
+        }
+
         // FADE OUT OTHERSIDE TITLES 
         tl.to(`#${otherSide} .btn_title`, { opacity: 0, duration: .1 });
         tl.to(`#${side} .btn_title`, { opacity: 0, duration: .1 });
@@ -50,7 +54,7 @@
 
         // MOVE CONTENT (BUT DONT DISPLAY)
         if( side === 'rightSide') {
-            tl.to(`#${side}Contents`, { translateX: '0', duration: .5, delay: .1 });
+            tl.to(`#${side}Contents`, { translate: '0', duration: .5, delay: .1 });
             tl.to(`#${side}Contents`, {
                 maxWidth: '93vw', 
                 duration: .5
@@ -110,6 +114,10 @@
             }
         }
 
+        if( $device === 'mobile' ) {
+            tl.to(`#${otherSide}`, { backgroundColor: '#F8F7F4', duration: 0});
+        }
+        
         // HIDE CONTENT
         tl.to(`#${side}Contents .section_inner`, { opacity: 0, duration: .5, delay: .2 });
         tl.to(`#${side} .btn_title_clone`, { opacity: 0, duration: .5 }, "<");
@@ -117,10 +125,10 @@
         // MOVE CONTENT OUT
         if( side === 'rightSide') {
             tl.to(`#${side}Contents`, { maxWidth: '50vw', duration: .5 });
-            tl.to(`#${side}Contents`, { translateX: '0', duration: .1, delay: .5 });
+            tl.to(`#${side}Contents`, { translate: '0', duration: .1, delay: .1 });
         }
         else {
-            tl.to(`#${side}Contents`, { translateX: '0', duration: .5 });
+            tl.to(`#${side}Contents`, { translate: '0', duration: .5 });
             tl.to(`#${side}Contents`, { maxWidth: '50vw', duration: .1 });
         }
 
