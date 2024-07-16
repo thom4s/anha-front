@@ -38,6 +38,7 @@
     .item {
         border-top: 1px solid;
         padding: $space-m 0;
+        align-items: flex-start;
     }
     .mod_media {
         .inner {
@@ -66,7 +67,7 @@
     }
 
     .details_wrapper {
-        max-height: 200px;
+        max-height: 125px;
         overflow: hidden;
         transition: max-height .3s;
 
