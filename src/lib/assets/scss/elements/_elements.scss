@@ -8,10 +8,10 @@ Buttons
 --------------------------------------------------------------*/
 
 .btn {
-    font-family: "Gotham-Medium", sans-serif;
+    font-family: "Gotham", sans-serif;
     font-size: 1.2rem;
     line-height: 1.45;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     text-align: center;
@@ -204,6 +204,7 @@ MEDIA
         }
         @include max(desktop) {
             padding-left: 5vw;
+            padding-right: 5vw;
         }
     }
     .media-full & {

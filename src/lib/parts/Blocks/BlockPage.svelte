@@ -9,13 +9,13 @@
 
     <div class="fl-vcenter gap-m grid">
 
-        <div class="m_6column">
+        <div class="s_12column m_6column bloc_media_outer">
             <div class="bloc_media">
                 <Image node={post.featuredImage?.node} />
             </div>
         </div>
 
-        <div class="m_6column">
+        <div class="s_12column m_6column bloc_texts_outer">
             <div class="bloc_texts">
                 
                 <div class="fl-column-start gap-m">  
@@ -33,15 +33,24 @@
 
 
 <style lang="scss"> 
-.half {
-    width: 50%;
-}
 
 img {
     aspect-ratio: 5/4;
 }
 .bloc_texts {
-    max-width: calc($max-width / 2);
-    padding: $gutter * 4;
+    max-width: 1040px;
+
+    @include max(bigtablet) {
+        padding: $gutter 5vw;
+    }
+    @include min(bigtablet) {
+        padding: $gutter * 4;
+    }
 }
+.bloc_media_outer {
+    @include max(bigtablet) {
+        order: 2
+    }
+}
+
 </style>

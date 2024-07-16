@@ -68,7 +68,7 @@
                 text-decoration: none;
                 text-transform: uppercase;
                 line-height: 1.2;
-                font-family: "Gotham-Light";
+                font-family: "Gotham";
                 @include max(tablet) {
                     font-size: 1.2rem;
                 }

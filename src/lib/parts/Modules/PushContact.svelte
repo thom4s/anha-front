@@ -53,12 +53,6 @@
 <style lang="scss">
     .module {
         margin-top: 180px;
-
-        .mod_title {
-            @include max(tablet) {
-                margin-bottom: 0
-            } 
-        }
         .mod_actions {
             display: flex;
             align-items: flex-start;
