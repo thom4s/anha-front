@@ -63,6 +63,7 @@
         :global(.mod_collaborateurs) {
             @include max(tablet) {
                 padding-left: $gutter;
+                padding-right: $gutter;
             }
             @include min(tablet) {
                 padding-left: $gutter * 2;
@@ -71,13 +72,21 @@
     }
     .stage {
         gap: 0;
-        top: 30%;
+
+        & .sticky {
+            @include min(tablet) {
+                height: 90vh;
+            }
+        }
+
         & + & {
             .sticky {
+                height: auto;
                 top: 15%;
                 justify-content: flex-start;
             }
         }
+
     }
     .stage_left {
         @include max(tablet) {
