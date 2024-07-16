@@ -43,7 +43,10 @@ img {
     @include max(bigtablet) {
         padding: $gutter 5vw;
     }
-    @include min(bigtablet) {
+    @include max(desktop) {
+        padding: $gutter * 2;
+    }
+    @include min(desktop) {
         padding: $gutter * 4;
     }
 }

@@ -113,8 +113,8 @@
 
             <div class="bloc_texts ">
                 <div class="fl-justify fl-vtop">  
-                    <div class="caption">{post.informationsNews?.date}</div>
-                    <div class="caption">{@html post.informationsNews?.lieu}</div>
+                    <div class="caption bloc_date">{post.informationsNews?.date}</div>
+                    <div class="caption bloc_place">{@html post.informationsNews?.lieu}</div>
                 </div>
                 
                 <div class="fl-column-start gap-s">  
@@ -273,7 +273,7 @@
     //     cursor: url('$lib/assets/svg/arrowfull.svg'), auto;
     // }
 
-    .caption {
+    .bloc_place {
         text-align: right;
     }
 

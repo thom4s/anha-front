@@ -51,13 +51,8 @@
 
 
 <style lang="scss">
-    .sticky {
-        position: sticky;
-        top: 0;
-
-        @include min(tablet) {
-            height: 100vh;
-        }
+    article {
+        margin-top: $space-xxl * 2;
     }
     .inversed {
         & > :first-child {
@@ -76,9 +71,10 @@
     }
     .stage {
         gap: 0;
+        top: 30%;
         & + & {
             .sticky {
-                top: 30%;
+                top: 15%;
                 justify-content: flex-start;
             }
         }
@@ -104,9 +100,10 @@
             }
         }
 
-        @include max(desktop) {
+        @include min(bigtablet) {
             padding-right: 120px;
             padding-left: 120px;
+            padding-bottom: 120px;
         }
         @include max(bigtablet) {
             padding-right: $gutter * 2;
@@ -115,6 +112,7 @@
         @include max(tablet) {
             padding-right: 0;
             padding-left: 0;
+            padding-bottom: 60px;
         }
     }
 
