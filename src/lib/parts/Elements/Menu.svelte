@@ -86,7 +86,7 @@ ul {
     }
 }
 .active {
-    font-weight: bold;
+    font-weight: $font-m;
 
     &:before {
         content: '';

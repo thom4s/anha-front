@@ -213,9 +213,6 @@
         width: 100%;
         padding-left: calc( 100% - $max-width ) / 2;
     }
-    .project_medias {
-        margin-left: - $space-s;
-    }
     .sticky {
         top: 100px;
     }
