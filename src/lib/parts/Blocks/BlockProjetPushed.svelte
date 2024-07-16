@@ -70,7 +70,7 @@
                 font-style: italic;
             }
             :global(img) {
-                transform: scale(1.03);
+                transform: scale(1.06);
             }
         }
     }
