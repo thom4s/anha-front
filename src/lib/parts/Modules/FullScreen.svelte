@@ -38,7 +38,7 @@
             {:else if type === 'slide'}
                 <swiper-container 
                     spaceBetween={30}
-                    slidesPerView={1.5}
+                    slidesPerView={1.2}
                     centeredSlides={true}
                     init={true}
                     navigation={true}
@@ -103,7 +103,8 @@
     img {
         object-fit: contain;
         // max-width: 80vw;
-        max-height: 80vh;
+        max-height: 90vh;
+        aspect-ratio: 5/4;
     }
     .btn_clean {
         width: 30px;

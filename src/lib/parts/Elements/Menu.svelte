@@ -87,6 +87,7 @@ ul {
 }
 .active {
     font-weight: $font-m;
+    pointer-events: none;
 
     &:before {
         content: '';

@@ -268,7 +268,4 @@ p {
     @include max(bigtablet) {
         font-size: 1.5rem;
     }
-    &:hover {
-        font-weight: $font-m;
-    }
 }
