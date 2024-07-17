@@ -78,7 +78,6 @@
             @include max(tablet) {
                 padding-bottom: $space-m;
             }
-            
         }
     }
     .media-left {
@@ -86,6 +85,9 @@
 
         @include max(tablet) {
             flex-direction: column;
+            .wrapper_txt {
+                margin-bottom: $space-m;
+            }
         }
         @include min(tablet) {
             flex-direction: row-reverse;
@@ -109,6 +111,9 @@
 
         @include max(tablet) {
             flex-direction: column;
+            .wrapper_txt {
+                margin-bottom: $space-m;
+            }
         }
         @include min(tablet) {
             flex-direction: row;

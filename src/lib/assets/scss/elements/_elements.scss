@@ -181,36 +181,42 @@ MEDIA
         margin-bottom: 0;
     }
 
-    @include max(tablet) {
-        padding-top: $space-m;
-        padding-bottom: $space-m;
-        padding-left: $space-m;
-    }
-
     .media-left & {
-        padding-right: $gutter;
-        @include min(bigtablet) {
-            padding-left: 120px;
-        }
-        @include max(bigtablet) {
-            padding-left: $space-m;
-        }
-    }
-    .media-right & {
-        padding-right: $gutter * 4;
-
         @include min(desktop) {
             padding-left: calc( calc(100vw - $max-width) / 2);
         }
         @include max(desktop) {
+            padding-left: $gutter * 2;
+            padding-right: $gutter * 2;
+        }
+        @include max(tablet) {
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+    }
+    .media-right & {
+        @include min(desktop) {
+            padding-left: calc( calc(100vw - $max-width) / 2);
+        }
+        @include max(desktop) {
+            padding-right: $gutter * 2;
+        }
+        @include max(tablet) {
             padding-left: 5vw;
             padding-right: 5vw;
         }
     }
     .media-full & {
-        // padding-left: $gutter * 2;
-        padding-left: $space-m;
-        padding-right: $gutter;
+        @include min(desktop) {
+            padding-left: calc( calc(100vw - $max-width) / 2);
+        }
+        @include max(desktop) {
+            padding-right: $gutter * 2;
+        }
+        @include max(tablet) {
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
     }
     a {
         @extend .link;
@@ -224,23 +230,22 @@ MEDIA
             @include min(desktop) {
                 padding-left: 0;
             }
-            @include max(desktop) {
+            @include max(tablet) {
                 padding-left: 5vw;
             }
         }
 
         .media-left .mod_tvt_txts {
-            @include min(bigtablet) {
-                padding-left: $gutter;
-            }
             @include max(bigtablet) {
                 padding-left: 5vw;
             }
         }
 
         .media-full .mod_tvt_txts {
-            padding-left: 0;
-            @include max(desktop) {
+            @include min(tablet) {
+                padding-left: 0;
+            } 
+            @include max(tablet) {
                 padding-left: 5vw;
             }
         }
@@ -248,14 +253,40 @@ MEDIA
 
     &.inversed {
         .media-right .mod_tvt_txts {
-            padding-left: $gutter;
+            @include max(desktop) {
+                padding-left: 5vw;
+                padding-right: $gutter;
+            }
+            @include min(desktop) {
+                padding-left: 120px;
+                padding-right: 120px;
+            } 
         }
     
         .media-left .mod_tvt_txts {
-            padding-left: $gutter;
+            @include min(tablet) {
+                padding-left: $gutter * 2;
+                padding-right: 0;
+            }
+            @include min(desktop) {
+                padding-left: 120px;
+                padding-right: 0;
+            } 
+        }
+
+        .media-full .mod_tvt_txts {
+            @include min(desktop) {
+                padding-left: calc( calc(100vw - $max-width) / 2);
+            } 
+            @include max(desktop) {
+                padding-left: 5vw;
+            }
         }
     }
 }
+
+
+
 
 
 .sec-container {
@@ -271,6 +302,7 @@ MEDIA
     .media-right .mod_tvt_txts {
         @include min(bigtablet) {
             padding-left: 120px;
+            padding-right: 120px;
         }
         @include max(bigtablet) {
             padding-left: $space-m;

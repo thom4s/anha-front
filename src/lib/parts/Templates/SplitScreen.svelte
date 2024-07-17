@@ -61,11 +61,15 @@
             }
         }
         :global(.mod_collaborateurs) {
+            @include max(desktop) {
+                padding-left: 5vw;
+                padding-right: 0;
+            }
             @include max(tablet) {
                 padding-left: 5vw;
                 padding-right: 5vw;
             }
-            @include min(tablet) {
+            @include min(desktop) {
                 padding-left: $gutter * 2;
             }
         }

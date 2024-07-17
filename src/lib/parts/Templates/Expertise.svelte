@@ -40,7 +40,7 @@
             rightColVisible = true
         }
 
-        if( $device === 'mobile' ) {
+        if( $device === 'mobile' || $device === 'tablet' ) {
             tl.to(`#${otherSide}`, { backgroundColor: '#F4F2EB', duration: 0});
         }
 
@@ -64,7 +64,7 @@
                 duration: .1,
                 modifiers: {
                     maxWidth: function() {
-                        return $device === 'mobile' ? 'calc(100vw - 30px)' : 'calc(100vw - 120px)';
+                        return $device === 'mobile' || $device === 'tablet' ? 'calc(100vw - 30px)' : 'calc(100vw - 120px)';
                     }
                 }
             });
@@ -74,14 +74,14 @@
             tl.to(`#${side}Contents`, { translate: '-43vw', duration: .1,
                 modifiers: {
                     translate: function() {
-                        return $device === 'mobile' ? 'calc(-50vw + 30px)' : 'calc(-50vw + 120px)';
+                        return $device === 'mobile' || $device === 'tablet' ? 'calc(-50vw + 30px)' : 'calc(-50vw + 120px)';
                     }
                 }
             });
             tl.to(`#${side}Contents`, { maxWidth: '93vw', duration: .1,
                 modifiers: {
                     maxWidth: function() {
-                        return $device === 'mobile' ? 'calc(100vw - 30px)' : 'calc(100vw - 120px)';
+                        return $device === 'mobile' || $device === 'tablet' ? 'calc(100vw - 30px)' : 'calc(100vw - 120px)';
                     }
                 }
             });
@@ -114,7 +114,7 @@
             }
         }
 
-        if( $device === 'mobile' ) {
+        if( $device === 'mobile' || $device === 'tablet') {
             tl.to(`#${otherSide}`, { backgroundColor: '#F8F7F4', duration: 0});
         }
         
@@ -277,11 +277,11 @@
             position: relative; 
 
             &:first-child {
-                @include max(tablet) {
+                @include max(bigtablet) {
                     border-right: 1px solid;
                 }
             }
-            @include max(tablet) {
+            @include max(bigtablet) {
                 background-color: $white;
             }
 
@@ -363,7 +363,7 @@
             height: 100vw;
             top: 0;
 
-            @include max(tablet) {
+            @include max(bigtablet) {
                 display: none;
             }
 
@@ -404,13 +404,16 @@
         }
 
         .btn_title_mobile {
-            @include min(tablet) {
+            @include min(bigtablet) {
                  display: none;
             }
  
             @include max(bigtablet) {
                 padding: $space-xl 0 0 $space-m;
-                margin-bottom: - $space-s;
+            }
+            .right-sections & {
+                text-align: right;
+                padding-right: $gutter;
             }
         }
         .menus_close_btn {
