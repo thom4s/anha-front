@@ -225,7 +225,7 @@ MEDIA
                 padding-left: 0;
             }
             @include max(desktop) {
-                padding-left: 0;
+                padding-left: 5vw;
             }
         }
 
@@ -234,12 +234,15 @@ MEDIA
                 padding-left: $gutter;
             }
             @include max(bigtablet) {
-                padding-left: $space-m;
+                padding-left: 5vw;
             }
         }
 
         .media-full .mod_tvt_txts {
             padding-left: 0;
+            @include max(desktop) {
+                padding-left: 5vw;
+            }
         }
     }
 

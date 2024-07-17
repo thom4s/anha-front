@@ -48,7 +48,7 @@
     }
     .action {
         position: absolute;
-        right: 0;
+        right: 10px;
         top: 0;
     }
     .mod_details {

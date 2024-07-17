@@ -62,8 +62,8 @@
         }
         :global(.mod_collaborateurs) {
             @include max(tablet) {
-                padding-left: $gutter;
-                padding-right: $gutter;
+                padding-left: 5vw;
+                padding-right: 5vw;
             }
             @include min(tablet) {
                 padding-left: $gutter * 2;
