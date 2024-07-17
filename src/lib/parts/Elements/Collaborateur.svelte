@@ -37,13 +37,17 @@
 <style lang="scss">
     .item {
         border-top: 1px solid;
-        padding: $space-m 0;
+        padding-top: $space-m;
         align-items: flex-start;
     }
     .mod_media {
         .inner {
             border-radius: 50%;
             overflow: hidden;
+        }
+        @include min(tablet) {
+            padding-bottom: $space-m;
+
         }
     }
     .action {
@@ -67,7 +71,7 @@
     }
 
     .details_wrapper {
-        max-height: 125px;
+        max-height: 110px;
         overflow: hidden;
         transition: max-height .3s;
 
