@@ -92,7 +92,7 @@ h1, h2, h3, h4, h5 {
     font-weight: $font-r;
     letter-spacing: -0.002em;
     line-height: .9;
-	@include max(tablet) {
+	@include max(bigtablet) {
         font-size: 6.1rem;
     }
     em {
@@ -108,7 +108,7 @@ h1, .h1 { @include h1; }
     font-weight: $font-r;
     letter-spacing: -0.002em;
     line-height: .9;
-	@include max(tablet) {
+	@include max(bigtablet) {
         font-size: 4.5rem;
     }
     em {
@@ -124,7 +124,7 @@ h2, .h2 { @include h2; }
     font-weight: $font-r;
     letter-spacing: -0.002em;
     line-height: .95;
-	@include max(tablet) {
+	@include max(bigtablet) {
         font-size: 3rem;
     }
 }
@@ -140,7 +140,7 @@ h3, .h3 { @include h3; }
     font-style: italic;
     text-decoration: none;
     color: $dark-font;
-	@include max(tablet) {
+	@include max(bigtablet) {
         font-size: 2rem;
     }
 }

@@ -409,7 +409,7 @@
             }
  
             @include max(bigtablet) {
-                padding: $space-xl 0 0 $space-m;
+                padding: $space-xl 0 $space-m $space-m;
             }
             .right-sections & {
                 text-align: right;
