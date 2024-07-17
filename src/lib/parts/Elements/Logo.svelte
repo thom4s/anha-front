@@ -70,7 +70,7 @@
                 line-height: 1.2;
                 font-family: "Gotham";
                 @include max(tablet) {
-                    font-size: 1.2rem;
+                    font-size: 1rem;
                 }
                 @include min(tablet) {
                     font-size: 1.4rem;

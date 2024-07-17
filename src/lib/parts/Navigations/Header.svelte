@@ -137,6 +137,7 @@
         background-color: $light-bg;
         z-index: 9;
         transition: transform .2s;
+        max-width: 100vw;
     }
     
     nav {
