@@ -98,7 +98,7 @@
             padding: $gutter;
         }
         @include min(bigtablet) {
-            padding: $gutter * 2;
+            padding: $gutter * 2 $gutter * 2 240px $gutter * 2;
         }
         .mod_action {
             border-top: 1px solid black;

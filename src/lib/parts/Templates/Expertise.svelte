@@ -161,7 +161,7 @@
 
             <button 
                 id="leftSide" 
-                class="btn h1 left" 
+                class="btn left" 
                 class:active={leftColVisible} 
                 on:click={ () => {
                     if( leftColVisible ) {
@@ -178,7 +178,7 @@
 
             <button 
                 id="rightSide" 
-                class="btn h1 right" 
+                class="btn right" 
                 class:active={rightColVisible} 
                 on:click={() => {
                     if( rightColVisible ) {
@@ -305,6 +305,7 @@
                 display: inline-block;
             }
             .btn_title_clone {
+                font-size: 5rem;
                 top: 5%;
                 opacity: 0;
                 transition: opacity .3s;
@@ -317,10 +318,10 @@
                 }
             }
             &.left .btn_title_clone {
-                left: 0;
+                left: 20px;
             }
             &.right .btn_title_clone {
-                right: 0;
+                right: 30px;
             }
             &.active {
                 background-color: $white;
@@ -407,13 +408,8 @@
             @include min(bigtablet) {
                  display: none;
             }
- 
             @include max(bigtablet) {
-                padding: $space-xl 0 $space-m $space-m;
-            }
-            .right-sections & {
-                text-align: right;
-                padding-right: $gutter;
+                padding: 5vw;
             }
         }
         .menus_close_btn {

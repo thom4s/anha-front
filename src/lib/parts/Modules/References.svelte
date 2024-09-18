@@ -39,7 +39,7 @@
 
 <style lang="scss">
     .module {
-        margin: 180px 0;
+        margin:  $space-wide 0;
         overflow: hidden;
     }
     .marquee-line {

@@ -52,7 +52,7 @@
 
 <style lang="scss">
     .module {
-        margin-top: 180px;
+        margin-top: $space-wide;
         .mod_actions {
             display: flex;
             align-items: flex-start;

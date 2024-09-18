@@ -26,7 +26,7 @@
 
 <style lang="scss">
     .module {
-        margin: 0 0 $space-whide 0;
+        margin: 0 0 $space-wide 0;
     }
     .plyr__video-embed {
         max-height: 50vh;

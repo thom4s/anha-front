@@ -72,8 +72,8 @@
 
 <style lang="scss">
     .module {
-        margin-top: 180px;
-        margin-bottom: 180px;
+        margin-top:  $space-wide;
+        margin-bottom:  $space-wide;
     }
     .swiper-button-prev-out, .swiper-button-next-out {
         cursor: pointer;
