@@ -11,7 +11,6 @@
     $: ( {menuItemsPrimary} = $menusStore)
     $: pathname = $page.url.pathname + '/';
 
-    $: console.log('menuItemsPrimary', menuItemsPrimary)
   // VARIABLES
 
   onMount(() => {
@@ -138,6 +137,10 @@
         transition: transform .2s;
         max-width: 100vw;
         padding: 32px 0;
+
+        @include max(tablet) {
+            padding: 26px 0;
+        }
     }
 
     .container {
@@ -173,7 +176,7 @@
             display:  none;
         }
         @include max(bigtablet) {
-            padding: $space-m 5vw $space-s;
+            padding: 0 5vw;
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
@@ -206,7 +209,6 @@
             right: 0;
             height: 100vh;
             width: calc(95vw);
-            padding-top: $space-s;
             background-color: $beige;
 
             .container {
@@ -251,6 +253,7 @@
             align-items: center;
             justify-content: space-between;
             width: 100%;
+            padding: 26px 0;
         }
         @include min(bigtablet) {
             .menus_close_btn {

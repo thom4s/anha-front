@@ -2,31 +2,29 @@
     import { menusStore } from "$lib/config/website";
     import { page } from '$app/stores';
 	import { createEventDispatcher } from 'svelte';
-    import { onMount } from "svelte";
+    import { afterUpdate } from "svelte";
+    import { device } from "$stores/device";
+
 	const dispatch = createEventDispatcher();
 
     export let menuItems = [];
     let border, menuOuter;
 
     const menuItemClicked = () => {
-        console.log('menuItemClicked')
 		dispatch('menuItemClicked');
     }
 
     $: pathname = $page.url.pathname + '/';
 
-    onMount( () => {
+    afterUpdate( () => {
 
         let menuLinks = menuOuter.querySelectorAll("li");
-        console.log('menuLinks',menuLinks)
 
         for (var i = 0; i < menuLinks.length; i++) {
 
             menuLinks[i].addEventListener("mouseover", function() {
 
-                console.log('hover', this.classList)
-
-                if( ! this.classList.contains('active') ) {
+                if( ! this.classList.contains('active') && $device === "desktop") {
 
                     var itemRect = this.getBoundingClientRect();
                     var menuRect = this.parentNode.getBoundingClientRect();
@@ -103,7 +101,6 @@ ul {
     }
 }
 .active {
-    font-weight: $font-m;
     pointer-events: none;
 
     &:before {

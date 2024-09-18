@@ -9,8 +9,6 @@
     export let flexibleContents = '';
     export const position = '';
 
-
-    $: console.log("Module Projets: ", flexibleContents)
 </script>
 
 

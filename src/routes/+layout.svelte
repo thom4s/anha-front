@@ -5,6 +5,7 @@
     import {width, mobile} from '$lib/stores/device';
 
     import { config, activeLang, menusStore, langsStore } from '$lib/config/website.js'
+	import { beforeNavigate, afterNavigate } from '$app/navigation';
 
     import { fullscreen, fullScreenContent, fullScreenType } from '$stores/fullscreen.js';
     import FullScreen from '$lib/parts/Modules/FullScreen.svelte';
@@ -44,6 +45,10 @@
         $config.twitterUsername = seoConfig.seo.social.twitter.username
     }
 
+    let isLoading = false;
+
+
+
     $: if ($navigating) resetFullscreen();
 
 </script>
@@ -53,6 +58,10 @@
 <Header/>
 
 <HoverCursor />
+
+{#if isLoading}
+	<div class="loader"></div>
+{/if}
 
 <main class="main">
     {#key data.pathname}
@@ -87,3 +96,17 @@
       </style>
    {/if}
 </svelte:head>	
+
+
+<style lang="scss">
+    .loader {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background: $white;
+        z-index: 1;
+        transition: all 1s;
+    }
+</style>

@@ -4,10 +4,7 @@
     import IconClose from '$lib/parts/Svgs/IconClose.svelte';
     import {device} from '$lib/stores/device.js';
 
-
     export let page = {};
-    $: console.log('page', page )
-
 
     $: ( { leftCol, rightCol } = page.contenusSavoirFaire)
     let leftColVisible = false, rightColVisible = false;

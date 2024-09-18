@@ -19,8 +19,6 @@
     let Plyr;
     let plyrLoaded = false;
     
-    $: console.log('player: ', player)
-
     onMount(async () => {
         const module = await import('svelte-plyr');
         Plyr = module.Plyr;
