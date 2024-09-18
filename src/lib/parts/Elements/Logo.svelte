@@ -48,7 +48,7 @@
 
         .brand_logo {
             transition: 0.5s ease-in-out;
-            padding: 15px 0;
+            padding: 0;
             text-decoration: none;
             letter-spacing: .02em;
             color: black;

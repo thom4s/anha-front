@@ -7,6 +7,13 @@
 </script>
 
 <div class="item item-collaborateur grid">
+
+    <button class="action btn_clean" on:click={ () => open = !open }>
+        <span class="icon_outer">
+            <IconArrowRight />
+        </span>
+    </button>
+
     <div class="mod_media s_3column m_1column">
         <div class="square">
             <div class="inner">
@@ -21,11 +28,6 @@
         <p class="no-margin caption">{collab.job}</p>
     </div>
     <div class="mod_details s_12column m_3column" class:open={open}>
-        <button class="action btn_clean" on:click={ () => open = !open }>
-            <span class="icon_outer">
-                <IconArrowRight />
-            </span>
-        </button>
         <div class="details_wrapper"> 
             <p>{@html collab.details}</p>
         </div>
@@ -39,6 +41,7 @@
         border-top: 1px solid;
         padding-top: $space-m;
         align-items: flex-start;
+        position: relative;
     }
     .mod_media {
         .inner {
@@ -49,11 +52,14 @@
     .action {
         position: absolute;
         right: 10px;
-        top: 0;
+        top: 30px;
     }
     .mod_details {
         position: relative;
-        padding-right: $gutter * 2;
+
+        @include min(tablet) {
+            padding-right: $gutter * 2;
+        }
     }
     
     .icon_outer {

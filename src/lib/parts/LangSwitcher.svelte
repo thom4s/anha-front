@@ -34,7 +34,7 @@
 <nav>
     <ul class="fl-center">
         {#each $langsStore as l, index}
-            <li><button class="menu" disabled={l.slug === $activeLang} on:click={ () => switchLang(l.slug)}>{l.name.substring(0,2)}</button></li>
+            <li><button class="menu-link" disabled={l.slug === $activeLang} on:click={ () => switchLang(l.slug)}>{l.name.substring(0,2)}</button></li>
             {#if index === 0}
                 <span>/</span>
             {/if}
@@ -50,7 +50,7 @@ ul {
     padding: 0;
     margin: 0;
 }
-.menu {
+.menu-link {
     background-color: unset;
     border: none;
     cursor: pointer;

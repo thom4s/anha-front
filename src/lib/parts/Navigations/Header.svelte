@@ -19,7 +19,6 @@
 
     const masthead = document.getElementById('masthead');
 
-
         let didScroll;
         let lastScrollTop = 0;
         let delta = 20;
@@ -138,10 +137,7 @@
         z-index: 9;
         transition: transform .2s;
         max-width: 100vw;
-    }
-    
-    nav {
-        padding: 25px 0;
+        padding: 32px 0;
     }
 
     .container {
@@ -228,7 +224,8 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
-            .menu {
+            .menu-link {
+                position: relative;
                 display: inline-block;
                 padding: $space-xs 0;
             }

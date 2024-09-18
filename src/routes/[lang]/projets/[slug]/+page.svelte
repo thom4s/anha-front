@@ -52,7 +52,7 @@
                                     }}
                                 />
                                 
-                                <div class="media_icon">
+                                <div class="godown_icon">
                                     <IconArrowDown />
                                 </div>
 
@@ -127,7 +127,7 @@
                                     }}
                                 />
 
-                                <div class="media_icon">
+                                <div class="godown_icon">
                                     <IconArrowDown />
                                 </div>
 
@@ -288,7 +288,8 @@
     .media_outer {
         position: relative;
     }
-    .media_icon {
+
+    .godown_icon {
         position: absolute;
         bottom: $space-xl;
         left: 0;
@@ -309,7 +310,9 @@
             bottom: $space-xl (+5);
         }
     }
-
+    :global(.godown_icon path) {
+        stroke: white;
+    }
 
     [data-design="couple"] {
         gap: $space-l;

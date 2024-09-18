@@ -265,8 +265,8 @@
         font-family: inherit;
         background: none;
         border: 1px solid $gray;
-        padding: .5em 1em;
-        border-radius: 16px;
+        padding: 7px 15px 7px 15px;
+        border-radius: 20px;
         font-weight: 300;
         cursor: pointer;
         transition: border .3s;
@@ -277,6 +277,7 @@
         &.active {
             background-color: black;
             color: $beige;
+            font-weight: 450;
         }
     }
 
