@@ -7,7 +7,7 @@
 
 <article class="block_page">
 
-    <div class="fl-vcenter gap-m grid">
+    <div class="fl-vcenter grid">
 
         <div class="s_12column m_6column bloc_media_outer">
             <div class="bloc_media">
@@ -33,21 +33,30 @@
 
 
 <style lang="scss"> 
-
+.grid {
+    grid-column-gap: 0;
+}
 img {
     aspect-ratio: 5/4;
 }
 .bloc_texts {
-    max-width: 1040px;
+    //max-width: 1040px;
 
+    @include min(desktop) {
+        padding-right: calc( calc(100vw - $max-width) / 2);
+        padding-left: 120px;
+    }
     @include max(desktop) {
-        padding: $gutter * 2;
+        padding-left: 120px;
+        padding-right: 120px;
     }
     @include max(bigtablet) {
-        padding: $gutter 5vw;
+        padding-left: $gutter * 2;
+        padding-right: $gutter * 2;
     }
-    @include min(desktop) {
-        padding: $gutter * 4;
+    @include max(tablet) {
+        padding-left: 5vw;
+        padding-right: 5vw;
     }
 }
 .bloc_media_outer {

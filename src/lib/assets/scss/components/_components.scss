@@ -1,4 +1,6 @@
 
+@import 'modules';
+
 
 #masthead.out {
     transform: translateY(-110%);
@@ -13,21 +15,3 @@
 
 
 
-// MODULES
-
-.mod_tvt {
-    h1 {
-        margin-bottom: $gutter * 2;
-    }
-    h2 {
-        margin-bottom: $gutter;
-    }
-}
-
-.mod_collaborateurs {
-    .item {
-        img {
-            background-color: $beige;
-        }
-    }
-}

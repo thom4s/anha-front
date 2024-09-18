@@ -69,6 +69,7 @@
         img {
             width: 100% !important;
             max-height: 90vh;
+            aspect-ratio: 3/2;
         }
 
         .wrapper_txt {

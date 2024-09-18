@@ -104,7 +104,7 @@ h1, .h1 { @include h1; }
 
 @mixin h2 {
     font-family: 'Baskervville', sans-serif;
-    font-size: 5.9rem;
+    font-size: 5rem;
     font-weight: $font-r;
     letter-spacing: -0.002em;
     line-height: .9;

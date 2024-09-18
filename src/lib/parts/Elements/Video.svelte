@@ -18,6 +18,8 @@
 
     let Plyr;
     let plyrLoaded = false;
+    
+    $: console.log('player: ', player)
 
     onMount(async () => {
         const module = await import('svelte-plyr');
@@ -29,7 +31,7 @@
 {#if plyrLoaded}
     <div class="media_container">
         <div class="plateforme-plyr">
-            <Plyr bind:player={player} controls={['play-large', 'progress', 'mute', 'volume', 'fullscreen']}>
+            <Plyr bind:player={player} controls={['play-large', 'progress', 'mute', 'volume', 'fullscreen']} autoplay={true} muted={true} loop={true}>
                 <div class="plyr__video-embed">
                     <iframe src={src} allowfullscreen allowtransparency allow="autoplay"></iframe>
                 </div>

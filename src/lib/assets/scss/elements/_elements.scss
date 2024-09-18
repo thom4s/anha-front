@@ -175,7 +175,7 @@ MEDIA
 }
 
 .mod_tvt_txts {
-    max-width: 1040px;
+    //max-width: 1040px;
     
     p { 
         margin-bottom: 0;
@@ -197,8 +197,14 @@ MEDIA
     .media-right & {
         @include min(desktop) {
             padding-left: calc( calc(100vw - $max-width) / 2);
+            padding-right: 120px;
         }
         @include max(desktop) {
+            padding-left: 5vw;
+            padding-right: 120px;
+        }
+        @include max(bigtablet) {
+            padding-left: 5vw;
             padding-right: $gutter * 2;
         }
         @include max(tablet) {
