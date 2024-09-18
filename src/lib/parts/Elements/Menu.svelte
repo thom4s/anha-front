@@ -60,7 +60,7 @@ ul {
             z-index: -1;
             right: 0;
             width: 0;
-            bottom: -3px;
+            bottom: -6px;
             background: #000;
             height: 1px;
             transition-property: width;
@@ -72,7 +72,7 @@ ul {
         &:active:after {
             left: 0;
             right: auto;
-            width: calc(100% - 8px);
+            width: calc(100%);
         }
     }
 
@@ -94,7 +94,7 @@ ul {
         position: absolute;
         left: 0;
         right: 0;
-        bottom: -3px;
+        bottom: -6px;
         height: 1px;
         background-color: black;
     }

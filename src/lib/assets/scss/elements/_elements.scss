@@ -233,7 +233,7 @@ MEDIA
 
     &:not(.inversed) {
         .media-right .mod_tvt_txts {
-            @include min(desktop) {
+            @include min(tablet) {
                 padding-left: 0;
             }
             @include max(tablet) {

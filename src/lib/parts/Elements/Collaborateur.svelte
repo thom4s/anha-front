@@ -45,10 +45,6 @@
             border-radius: 50%;
             overflow: hidden;
         }
-        @include min(tablet) {
-            padding-bottom: $space-m;
-
-        }
     }
     .action {
         position: absolute;
@@ -74,9 +70,10 @@
         max-height: 110px;
         overflow: hidden;
         transition: max-height .3s;
-
+        
         .open & {
             max-height: 100vh;
+            padding-bottom: $space-m;
         }
     }
 </style>

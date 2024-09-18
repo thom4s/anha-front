@@ -1,6 +1,7 @@
 <script lang="ts">
     import PushContact from '../Modules/PushContact.svelte';
     import FlexibleLayouts from '$lib/parts/FlexibleLayouts.svelte';
+
     export let page = {};
     $: ({stages } = page.contenusFlexiblesStaged)
 </script>
@@ -10,6 +11,7 @@
 <article class="">
 
     <h1 class="visualy-hidden">{page.title}</h1>
+
 
         {#if stages }
 
@@ -52,7 +54,7 @@
 
 <style lang="scss">
     article {
-        margin-top: $space-xxl * 2;
+        //margin-top: $space-xxl * 2;
     }
     .inversed {
         & > :first-child {
@@ -77,18 +79,32 @@
     .stage {
         gap: 0;
 
+        &:first-of-type {
+            @include max(tablet) {
+                margin-top: $space-xl;
+            }
+        }
+
         & .sticky {
             @include min(tablet) {
                 height: 90vh;
             }
         }
 
-        & + & {
+        &:first-of-type + & {
+            margin-top: $space-wide;
+            padding-top: $space-wide - 15;
+            background-color: $beige;
+
             .sticky {
                 height: auto;
                 top: 15%;
                 justify-content: flex-start;
             }
+        }
+
+        & + & + & {
+            margin-top: $space-wide;
         }
 
     }
@@ -134,4 +150,6 @@
             margin-bottom: $space-m;
         }
     }
+
+
 </style>

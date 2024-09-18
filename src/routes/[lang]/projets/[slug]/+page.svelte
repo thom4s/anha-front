@@ -2,6 +2,7 @@
     import Arrow from '$lib/parts/Svgs/Arrow.svelte';
     import NotFound from '$lib/parts/Navigations/NotFound.svelte';
     import Image from "$lib/parts/Elements/Image.svelte";
+    import IconArrowDown from '$lib/parts/Svgs/IconArrowDown.svelte';
 
     export let data: { projet: Promise<void>; }
     $: ({projet, prevPage, nextPage} = data)
@@ -51,6 +52,10 @@
                                     }}
                                 />
                                 
+                                <div class="media_icon">
+                                    <IconArrowDown />
+                                </div>
+
                             </div>
 
                             <div class="project_metadata">
@@ -121,6 +126,11 @@
                                         $fullScreenType = 'slide';
                                     }}
                                 />
+
+                                <div class="media_icon">
+                                    <IconArrowDown />
+                                </div>
+
                             </div>
                         
                         </div>
@@ -274,6 +284,32 @@
             } 
         }
     }
+
+    .media_outer {
+        position: relative;
+    }
+    .media_icon {
+        position: absolute;
+        bottom: $space-xl;
+        left: 0;
+        right: 0;
+        text-align: center;
+        animation-name: movingArrow;
+        animation-duration: .5s;
+        animation-direction: alternate;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+    }
+
+    @keyframes movingArrow {
+        from {
+            bottom: $space-xl;
+        }
+        to {
+            bottom: $space-xl (+5);
+        }
+    }
+
 
     [data-design="couple"] {
         gap: $space-l;

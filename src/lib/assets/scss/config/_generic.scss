@@ -174,7 +174,7 @@
 .sticky {
     @include min(tablet) {
         position: sticky;
-        top: 150px;
+        top: 0;
     }
 }
 

@@ -209,7 +209,7 @@
             top: 0;
             right: 0;
             height: 100vh;
-            width: calc(100vw - $space-m + 5px);
+            width: calc(95vw);
             padding-top: $space-s;
             background-color: $beige;
 
