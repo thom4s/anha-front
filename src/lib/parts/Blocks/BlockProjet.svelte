@@ -5,8 +5,6 @@
 
     export let projet = {};
     export const type = '';    
-
-    $: console.log('projet ', projet.informationsProjet)
 </script>
 
 

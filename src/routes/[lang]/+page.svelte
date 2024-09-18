@@ -13,7 +13,7 @@
 
     onMount(() => {
 
-        const down_icon = document.querySelector('.down_icon');
+        const godown_icon = document.querySelector('.godown_icon');
 
         let didScroll;
         let lastScrollTop = 0;
@@ -41,11 +41,11 @@
             
             if( st < 50 ) {
                 //console.log('documentIsScrolling BACKTOTHETOP');
-                down_icon.classList.remove('out');
+                godown_icon.classList.remove('out');
             }
             else {
                 //console.log('documentIsScrolling DOWN');
-                down_icon.classList.add('out');
+                godown_icon.classList.add('out');
             } 
 
             lastScrollTop = st;

@@ -180,6 +180,9 @@ MEDIA
     p { 
         margin-bottom: 0;
     }
+    h2 {
+        margin-top: 0;
+    }
 
     .media-left & {
         @include min(desktop) {
@@ -297,11 +300,12 @@ MEDIA
 
 .sec-container {
     .media-left .mod_tvt_txts {
-        padding-right: 120px;
         @include min(bigtablet) {
             padding-left: 120px;
+            padding-right: 120px;
         }
         @include max(bigtablet) {
+            padding-right: $space-m;
             padding-left: $space-m;
         }
     }

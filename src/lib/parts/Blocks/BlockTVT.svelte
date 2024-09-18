@@ -61,10 +61,6 @@
         img {
             width: 100% !important;
         }
-
-        &:last-child {
-            margin-bottom: 0;
-        }
     }
 
     .media-full {

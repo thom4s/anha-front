@@ -58,13 +58,8 @@
 			return filters.includes(project.informationsProjet.tax_savoirfaire?.nodes[0].name) || filters.includes(project.informationsProjet.tax_secteur?.nodes[0].name)
 		}) : projets.nodes;
 
-    $: console.log('filters', filters)
-
-
 
     // MASONRY 
-
-
     beforeUpdate ( () => {
         //loading = true;
     })

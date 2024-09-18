@@ -2,7 +2,7 @@
     import { menusStore } from "$lib/config/website";
     import { page } from '$app/stores';
 	import { createEventDispatcher } from 'svelte';
-    import { afterUpdate } from "svelte";
+    import { afterUpdate, onMount } from "svelte";
     import { device } from "$stores/device";
 
 	const dispatch = createEventDispatcher();

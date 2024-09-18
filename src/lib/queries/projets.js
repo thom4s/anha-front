@@ -123,7 +123,6 @@ export async function getAllProjets( lang = 'ALL') {
         })
         .then(res => res.json())
         .then(res => {
-            console.log('projets res: ', res)
             return res.data.projets
         });
 

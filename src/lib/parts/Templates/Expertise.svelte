@@ -4,6 +4,8 @@
     import IconClose from '$lib/parts/Svgs/IconClose.svelte';
     import {device} from '$lib/stores/device.js';
 
+    let direction;
+
     export let page = {};
 
     $: ( { leftCol, rightCol } = page.contenusSavoirFaire)
@@ -146,6 +148,19 @@
 
     }
 
+
+    function handler(event) {
+        direction = event.detail.direction;
+        console.log(direction)
+        console.log('rightColVisible', rightColVisible)
+        console.log('leftColVisible', leftColVisible)
+        if( leftColVisible && direction == 'right') {
+            animationOut('leftSide', 'rightSide' )
+        }
+        else if ( rightColVisible && direction == 'left')  {
+            animationOut('rightSide', 'leftSide' )
+        }
+    }
 
 </script>
 
@@ -406,7 +421,7 @@
                  display: none;
             }
             @include max(bigtablet) {
-                padding: 5vw;
+                padding: 60px 30px 15px;
             }
         }
         .menus_close_btn {
