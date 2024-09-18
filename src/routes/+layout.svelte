@@ -59,10 +59,6 @@
 
 <HoverCursor />
 
-{#if isLoading}
-	<div class="loader"></div>
-{/if}
-
 <main class="main">
     {#key data.pathname}
         <div 

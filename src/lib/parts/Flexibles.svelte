@@ -7,8 +7,6 @@
 
     import { register } from 'swiper/element/bundle';
     register();
-    
-    $: console.log('contenusFlexibles: ', contenusFlexibles)
 </script>
 
 

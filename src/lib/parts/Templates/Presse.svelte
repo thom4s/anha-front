@@ -6,9 +6,6 @@
     export let page = {};
     export let posts = [];
 
-    $: console.log('News posts: ', posts)
-
-
 </script>
 
 

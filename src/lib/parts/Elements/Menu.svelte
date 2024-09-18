@@ -2,7 +2,6 @@
     import { menusStore } from "$lib/config/website";
     import { page } from '$app/stores';
 	import { createEventDispatcher } from 'svelte';
-    import { afterUpdate, onMount } from "svelte";
     import { device } from "$stores/device";
 
 	const dispatch = createEventDispatcher();
@@ -16,32 +15,22 @@
 
     $: pathname = $page.url.pathname + '/';
 
-    afterUpdate( () => {
+    const handleIn = event => {
+        if( ! event.target.classList.contains('active') && $device === "desktop") {
 
-        let menuLinks = menuOuter.querySelectorAll("li");
+            let itemRect = event.target.getBoundingClientRect();
+            let menuRect = event.target.parentNode.getBoundingClientRect();
+            let leftPos = itemRect.left - menuRect.left;
+            let width = itemRect.width;
 
-        for (var i = 0; i < menuLinks.length; i++) {
-
-            menuLinks[i].addEventListener("mouseover", function() {
-
-                if( ! this.classList.contains('active') && $device === "desktop") {
-
-                    var itemRect = this.getBoundingClientRect();
-                    var menuRect = this.parentNode.getBoundingClientRect();
-                    var leftPos = itemRect.left - menuRect.left;
-                    var width = itemRect.width;
-
-                    border.style.transform = "translateX(" + leftPos + "px)";
-                    border.style.width = width + "px";
-                }
-
-            });
-
-            menuLinks[i].addEventListener("mouseout", function() {
-                border.style.width = '0px';
-            });
+            border.style.transform = "translateX(" + leftPos + "px)";
+            border.style.width = width + "px";
         }
-    })
+    }
+
+    const handleOut = () => {
+        border.style.width = '0px';
+    }
 
 </script>
 
@@ -50,7 +39,7 @@
     <ul class="">
         {#key menuItems}
             {#each menuItems.nodes as item}
-                <li class:active={pathname == item.path}>
+                <li class:active={pathname == item.path} on:mouseenter={ handleIn } on:mouseleave={ handleOut }>
                     <a href="{item.path}" data-text="{item.label}" class="menu-link"on:click={ () => menuItemClicked() }>{item.label}</a>
                 </li>
             {/each}
@@ -80,6 +69,7 @@ ul {
 
     li {
         position: relative;
+        display: inline-block;
     }
 
     a {

@@ -18,8 +18,6 @@
     let prevButton;
     let nextButton;
 
-    $: console.log(post.title, post.informationsNews);
-
     onMount(async () => {
         register();
 
@@ -27,11 +25,6 @@
 
         if (swiperContainer) swiperContainer.initialize();
     });
-
-    $: console.log('prev', prevButton);
-    $: console.log('next', nextButton);
-
-    $: console.log('swipContainer', swiperContainer);
 </script>
 
 <article class="block_post" class:module={module} transition:fade={{ duration: 200 }}>
