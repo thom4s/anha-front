@@ -238,6 +238,7 @@ MEDIA
         .media-right .mod_tvt_txts {
             @include min(tablet) {
                 padding-left: 0;
+                padding-right: $gutter * 2;;
             }
             @include max(tablet) {
                 padding-left: 5vw;
@@ -245,8 +246,9 @@ MEDIA
         }
 
         .media-left .mod_tvt_txts {
-            @include max(bigtablet) {
-                padding-left: 5vw;
+            @include min(tablet) {
+                padding-right: $gutter * 2;;
+                padding-left: $gutter * 2;
             }
         }
 
@@ -262,23 +264,15 @@ MEDIA
 
     &.inversed {
         .media-right .mod_tvt_txts {
-            @include max(desktop) {
-                padding-left: 5vw;
-                padding-right: $gutter;
-            }
-            @include min(desktop) {
-                padding-left: 120px;
-                padding-right: 120px;
+            @include min(tablet) {
+                padding-left: $gutter * 2;
+                padding-right: $gutter * 2;
             } 
         }
     
         .media-left .mod_tvt_txts {
             @include min(tablet) {
                 padding-left: $gutter * 2;
-                padding-right: 0;
-            }
-            @include min(desktop) {
-                padding-left: 120px;
                 padding-right: 0;
             } 
         }
