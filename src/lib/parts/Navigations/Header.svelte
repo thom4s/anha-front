@@ -91,7 +91,7 @@
 
     </div>
 
-    <div class="menusContainer" class:menuIsVisible>
+    <div class="menusContainer menuOverlay" class:menuIsVisible>
 
         <div class="container" >
 
@@ -196,7 +196,7 @@
     }
 
 
-    :global(.menusContainer) {
+    :global(.menuOverlay) {
 
         z-index: 999;
 

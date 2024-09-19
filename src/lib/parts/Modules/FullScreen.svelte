@@ -75,7 +75,7 @@
         right: 0;
         bottom: 0;
         background-color: rgba($white, .99);
-        z-index: 9;
+        z-index: 10;
     }
 
     .container {

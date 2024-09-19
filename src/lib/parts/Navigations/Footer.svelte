@@ -27,6 +27,9 @@
     footer {
         margin-top: $gutter;
         margin-bottom: $gutter * 2;
+        position: relative;
+        z-index: 9;
+
         @include max(bigtablet) {
             margin-top: $gutter * 1.5;
         }

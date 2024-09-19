@@ -8,7 +8,7 @@
     import { Masonry } from "svelte-bricks";
     import { fly } from "svelte/transition";
 
-    let [minColWidth, maxColWidth, gap] = [300, 450, 30]
+    let [minColWidth, maxColWidth, gap] = [340, 450, 30]
     let width, height
 
     export let page = {};
@@ -87,7 +87,7 @@
             </button>
         </div>
 
-        <div class="menusContainer s_12column" class:menuIsVisible>
+        <div class="menuOverlay s_12column" class:menuIsVisible>
 
             <div class="btn_outer">
                 <button class="btn_clean fl-vcenter gap-s" on:click={ () => menuIsVisible = false }>
@@ -225,7 +225,7 @@
             column-gap: 0;
         }
     }
-    .menusContainer {
+    .menuOverlay {
 
         @include max(bigtablet) {
             right: auto;

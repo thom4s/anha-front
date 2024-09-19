@@ -47,7 +47,18 @@
 
     let isLoading = false;
 
+    $: console.log( 'isLoading: ', isLoading );
 
+    beforeNavigate( () => {
+        isLoading = true;
+    }) 
+
+
+    afterNavigate( () => {
+        setTimeout( () => {
+            isLoading = false;
+        }, 500)
+    })
 
     $: if ($navigating) resetFullscreen();
 
@@ -58,6 +69,11 @@
 <Header/>
 
 <HoverCursor />
+
+{#if isLoading}
+	<div class="loader" in:fade={{ duration: 200 }} 
+    out:fade={{ duration: 200 }}></div>
+{/if}
 
 <main class="main">
     {#key data.pathname}
@@ -102,7 +118,7 @@
         left: 0;
         bottom: 0;
         background: $white;
-        z-index: 1;
+        z-index: 8;
         transition: all 1s;
     }
 </style>
