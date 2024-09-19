@@ -6,7 +6,7 @@
     let open = false;
 </script>
 
-<div class="item item-collaborateur grid">
+<div class="item item-collaborateur grid" class:open={open}>
 
     <button class="action btn_clean" on:click={ () => open = !open }>
         <span class="icon_outer">
@@ -27,7 +27,7 @@
         <p class="mb-xxsmall">{collab.name}</p>
         <p class="no-margin caption">{collab.job}</p>
     </div>
-    <div class="mod_details s_12column m_3column" class:open={open}>
+    <div class="mod_details s_12column m_3column">
         <div class="details_wrapper"> 
             <p>{@html collab.details}</p>
         </div>
@@ -51,6 +51,7 @@
     }
     .action {
         position: absolute;
+        z-index: 1;
         right: 10px;
         top: 30px;
     }

@@ -3,6 +3,7 @@
     import NotFound from '$lib/parts/Navigations/NotFound.svelte';
     import Image from "$lib/parts/Elements/Image.svelte";
     import IconArrowDown from '$lib/parts/Svgs/IconArrowDown.svelte';
+    import { onMount } from 'svelte';
 
     export let data: { projet: Promise<void>; }
     $: ({projet, prevPage, nextPage} = data)
@@ -14,6 +15,50 @@
 
     // PARRALAX
     let parallax = false;
+
+    onMount(() => {
+
+        const godown_icon = document.querySelector('.godown_icon');
+
+        let didScroll;
+        let lastScrollTop = 0;
+        let delta = 20;
+
+        const documentIsScrolling = function () {
+            didScroll = true;
+
+            // Handle menu
+            setInterval(function() {
+                if (didScroll) {
+                    handleScrollForMenu();
+                    didScroll = false;
+                }
+            }, 250);
+
+        }
+
+        const handleScrollForMenu = function () {
+            var st = window.scrollY;
+
+            // Make sure they scroll more than delta
+            if(Math.abs(lastScrollTop - st) <= delta)
+                return;
+            
+            if( st < 50 ) {
+                //console.log('documentIsScrolling BACKTOTHETOP');
+                godown_icon.classList.remove('out');
+            }
+            else {
+                //console.log('documentIsScrolling DOWN');
+                godown_icon.classList.add('out');
+            } 
+
+            lastScrollTop = st;
+        }
+
+        document.addEventListener("scroll", documentIsScrolling, false);
+
+    });
 
 
 </script>
@@ -51,10 +96,6 @@
                                         $fullScreenType = 'image';
                                     }}
                                 />
-                                
-                                <div class="godown_icon">
-                                    <IconArrowDown />
-                                </div>
 
                             </div>
 
@@ -310,6 +351,11 @@
             bottom: $space-xl (+5);
         }
     }
+
+    :global(.godown_icon.out) {
+        opacity: 0;
+    }
+    
     :global(.godown_icon path) {
         stroke: white;
     }

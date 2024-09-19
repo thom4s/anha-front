@@ -173,13 +173,13 @@
         .half.media {
             @include min(tablet) {
                 width: 50%;
-                flex: 0 0 50%;
+                flex: 1 1 50%;
             }
         }
         .half.texts {
             @include min(tablet) {
                 width: 50%;
-                flex: 0 0 50%;
+                flex: 1 1 50%;
             }
         }
 
@@ -260,11 +260,6 @@
     .link {
         align-self: flex-start;
     }
-
-    // img:hover {
-    //     cursor: zoom-in;
-    //     cursor: url('$lib/assets/svg/arrowfull.svg'), auto;
-    // }
 
     .bloc_place {
         text-align: right;

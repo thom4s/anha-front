@@ -318,7 +318,7 @@
             }
             .btn_title_clone {
                 font-size: 5rem;
-                top: 5%;
+                top: 150px;
                 opacity: 0;
                 transition: opacity .3s;
                 position: absolute;
