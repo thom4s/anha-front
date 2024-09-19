@@ -21,55 +21,72 @@
     
     // MENU MOBILE
     let menuIsVisible = false;
-    let filterOne = true, filterTwo = true;
 
     // FILTERS
     let filters = [];
+    let filtersSecteur = [], filtersSavoirfaire = [], filterSecteur = true, filterSavoirfaire = true, tax = '';
 
-    const filter = (e) => {
+    const filter = (e, tax) => {
         loading = true;
 
         setTimeout( () => {
-            filters = [e.target.getAttribute('data-term')];
-        }, 500)
+            if( tax === 'secteur' ) {
+                filtersSecteur = [e.target.getAttribute('data-term')];
+            }
+            else if ( tax === 'savoirfaire') {
+                filtersSavoirfaire = [e.target.getAttribute('data-term')];
+            }
+        }, 300)
 
         setTimeout( () => {
             loading = false;
-        }, 1000)
+        }, 600)
 
         menuIsVisible = false;
     }
-    const reset = (e) => {
+    const reset = (e, tax) => {
         loading = true;
 
         setTimeout( () => {
-            filters = [];
-        }, 500)
+            if( tax === 'secteur' ) {
+                filtersSecteur = [];
+            }
+            else if ( tax === 'savoirfaire') {
+                filtersSavoirfaire = [];
+            }
+        }, 300)
 
         setTimeout( () => {
             loading = false;
-        }, 1000)
+        }, 600)
 
         menuIsVisible = false
     }
 
-    $: visibleProjets = filters.length > 0 ?
+    $: visibleProjets = filtersSavoirfaire.length !== 0 || filtersSecteur.length !== 0 ?
         projets.nodes.filter( project => {
-			return filters.includes(project.informationsProjet.tax_savoirfaire?.nodes[0].name) || filters.includes(project.informationsProjet.tax_secteur?.nodes[0].name)
+
+            if(filtersSavoirfaire.length !== 0 && filtersSecteur.length !== 0 ) {
+                return filtersSavoirfaire.includes(project.informationsProjet.tax_savoirfaire?.nodes[0].name) && filtersSecteur.includes(project.informationsProjet.tax_secteur?.nodes[0].name)
+            }
+            else if(filtersSavoirfaire.length !== 0 && filtersSecteur.length === 0 ) {
+                return filtersSavoirfaire.includes(project.informationsProjet.tax_savoirfaire?.nodes[0].name)
+            }
+            else if(filtersSecteur.length !== 0 && filtersSavoirfaire.length === 0 ) {
+                return filtersSecteur.includes(project.informationsProjet.tax_secteur?.nodes[0].name)
+            }
+
 		}) : projets.nodes;
 
-
+0
     // MASONRY 
-    beforeUpdate ( () => {
-        //loading = true;
-    })
-
     afterUpdate ( () => {
         setTimeout( () => {
             loading = false;
-        }, 1000)
+        }, 600)
     }) 
 
+    $: console.log( 'filtersSavoirfaire', filtersSavoirfaire, filtersSavoirfaire.length, 'filtersSecteur', filtersSecteur, filtersSecteur.length  )
 
 
 </script>
@@ -98,42 +115,42 @@
 
             <div class="filters sticky">
 
-                <div bind:this={filterOne} class="filterGroup mb-small" class:open={filterOne}>
+                <div bind:this={filterSecteur} class="filterGroup mb-small" class:open={filterSecteur}>
                     <span 
                         class="caption filterLabel" 
                         on:click={ () => {
-                            filterOne = !filterOne
+                            filterSecteur = !filterSecteur
                         }}
                     >
                         Filtrer par secteur <IconArrowRight />
                     </span>
 
-                    {#if filterOne }
+                    {#if filterSecteur }
                         <div transition:fly={{ duration: 200 }}>
-                            <button on:click={ reset } data-term="" class="caption filterItem" class:active={filters.length === 0}>Tous les secteurs</button>
+                            <button on:click={ e => reset(e, 'secteur') } data-term="" class="caption filterItem" class:active={ filtersSecteur.length === 0}>Tous les secteurs</button>
                             {#each secteurs.nodes as t }
-                                <button on:click={ (e) => { loading = true; filter(e) } } data-term="{t.name}" class="caption filterItem" class:active={filters.includes(t.name)}>{t.name}</button>
+                                <button on:click={ (e) => { loading = true; filter(e, 'secteur'); } } data-term="{t.name}" class="caption filterItem" class:active={filtersSecteur.includes(t.name)}>{t.name}</button>
                             {/each}
                         </div>
                     {/if}
                 </div>
 
-                <div bind:this={filterTwo} class="filterGroup" class:open={filterTwo}>
+                <div bind:this={filterSavoirfaire} class="filterGroup" class:open={filterSavoirfaire}>
                     <span 
                         class="caption filterLabel"
                         on:click={ () => {
-                            filterTwo = !filterTwo
+                            filterSavoirfaire = !filterSavoirfaire
                         }}
                     >
                         Filtrer par savoir-faire 
                         <IconArrowRight />
                     </span>
 
-                    {#if filterTwo }
+                    {#if filterSavoirfaire }
                     <div transition:fly={{ duration: 200 }}>
-                            <button on:click={ reset } data-term="" class="caption filterItem" class:active={filters.length === 0}>Tous les savoir-faire</button>
+                            <button on:click={ e => reset(e, 'savoirfaire' ) } data-term="" class="caption filterItem" class:active={ filtersSavoirfaire.length === 0}>Tous les savoir-faire</button>
                             {#each savoirfaires.nodes as t }
-                                <button on:click={ (e) => { loading = true; filter(e) } } data-term="{t.name}" class="caption filterItem" class:active={filters.includes(t.name)}>{t.name}</button>
+                                <button on:click={ (e) => { loading = true; filter(e, 'savoirfaire'); } } data-term="{t.name}" class="caption filterItem" class:active={filtersSavoirfaire.includes(t.name)}>{t.name}</button>
                             {/each}
                         </div>
                     {/if}

@@ -49,7 +49,7 @@
                     {#if content.nodes}
                         {#each content.nodes as img }
                             <swiper-slide class="swiper-slide">
-                                <img src="{img.sourceUrl}" alt="">
+                                <img src="{img.sourceUrl}" alt="{img.caption}">
                             </swiper-slide>
                         {/each}
                     {:else}
