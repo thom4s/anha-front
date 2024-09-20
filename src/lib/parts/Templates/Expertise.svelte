@@ -318,10 +318,11 @@
             }
             .btn_title_clone {
                 font-size: 5rem;
-                top: 150px;
+                font-style: normal;
+                top: 135px;
                 opacity: 0;
-                transition: opacity .3s;
-                position: absolute;
+                transition: opacity .3s, top .3s;
+                position: fixed;
                 text-orientation: mixed;
                 writing-mode: vertical-rl;
                 transform: rotate(180deg);
@@ -354,6 +355,8 @@
                 transition: 0.2s;
             }
         }
+
+
 
     .sec-container {
         display: flex;
@@ -457,5 +460,10 @@
         }
         
 
+    :global(.out + .main) {
+        .btn_title_clone {
+            top: 30px;
+        }
+    }
 
 </style>

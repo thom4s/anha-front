@@ -170,7 +170,7 @@ MEDIA
     img,
     .media_outer {
         width: 100%;
-        aspect-ratio: 3/2;
+        aspect-ratio: 5/4;
     }
 }
 
@@ -256,6 +256,9 @@ MEDIA
             @include min(tablet) {
                 padding-left: 0;
             } 
+            @include min(destkop) {
+                padding-right: 120px;
+            } 
             @include max(tablet) {
                 padding-left: 5vw;
             }
@@ -278,10 +281,11 @@ MEDIA
         }
 
         .media-full .mod_tvt_txts {
-            @include min(desktop) {
-                padding-left: calc( calc(100vw - $max-width) / 2);
+            @include min(bigtablet) {
+                padding-left: 60px;
+                padding-right: 120px;
             } 
-            @include max(desktop) {
+            @include max(bigtablet) {
                 padding-left: 5vw;
             }
         }
@@ -294,27 +298,37 @@ MEDIA
 
 .sec-container {
     .media-left .mod_tvt_txts {
-        @include min(bigtablet) {
-            padding-left: 120px;
-            padding-right: 120px;
-        }
         @include max(bigtablet) {
             padding-right: $space-m;
             padding-left: $space-m;
         }
-    }
-    .media-right .mod_tvt_txts {
         @include min(bigtablet) {
             padding-left: 120px;
             padding-right: 120px;
         }
+        @include min(desktop) {
+            padding-left: 230px;
+            padding-right: 230px;
+        }
+
+    }
+    .media-right .mod_tvt_txts {
         @include max(bigtablet) {
             padding-left: $space-m;
+        }
+        @include min(bigtablet) {
+            padding-left: 120px;
+            padding-right: 120px;
+        }
+        @include min(desktop) {
+            padding-left: 230px;
+            padding-right: 230px;
         }
     }
     .media-full .mod_tvt_txts {
         @include min(bigtablet) {
-            padding: 0 $space-l * 2;
+            padding: 0 60px;
+            max-width: 50%;
         }
         @include max(bigtablet) {
             padding: 0 $space-m;
@@ -376,4 +390,14 @@ SWIPER
 .swiper-button-disabled {
     opacity: .5;
     pointer-events: none;
+}
+
+
+.godown_icon {
+    svg {
+        filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.9));
+    }
+    path {
+        stroke: white;
+    }
 }

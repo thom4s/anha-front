@@ -68,8 +68,6 @@
 
 <Header/>
 
-<HoverCursor />
-
 {#if isLoading}
 	<div class="loader" in:fade={{ duration: 200 }} 
     out:fade={{ duration: 200 }}></div>
@@ -94,6 +92,8 @@
             content={$fullScreenContent} />
     {/if}
 {/key}
+
+<HoverCursor />
 
 <Footer />
 

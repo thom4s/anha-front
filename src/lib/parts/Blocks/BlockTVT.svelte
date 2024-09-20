@@ -63,20 +63,19 @@
         }
     }
 
-    .media-full {
-        img {
-            width: 100% !important;
-            max-height: 90vh;
-            aspect-ratio: 3/2;
+    :global(.media-full img) {
+        width: 100% !important;
+        @include min(bigtablet) {
+            max-height: 80vh;
         }
+    }
 
-        .wrapper_txt {
-            @include min(tablet) {
-                padding-bottom: $space-xl;
-            }
-            @include max(tablet) {
-                padding-bottom: $space-m;
-            }
+    :global(.media-full .wrapper_txt) {
+        @include min(tablet) {
+            padding-bottom: $space-xl;
+        }
+        @include max(tablet) {
+            padding-bottom: $space-m;
         }
     }
     .media-left {

@@ -10,10 +10,9 @@
     }
     $: ({page} = data)
 
+    let godown_icon;
 
     onMount(() => {
-
-        const godown_icon = document.querySelector('.godown_icon');
 
         let didScroll;
         let lastScrollTop = 0;
@@ -35,6 +34,8 @@
         const handleScrollForMenu = function () {
             var st = window.scrollY;
 
+            if( !godown_icon ) return;
+             
             // Make sure they scroll more than delta
             if(Math.abs(lastScrollTop - st) <= delta)
                 return;
@@ -62,7 +63,7 @@
 <div class="template-home">
 
 
-    <div class="godown_icon">
+    <div class="godown_icon" binf:this={godown_icon}>
         <IconArrowDown />
     </div>
 
@@ -87,9 +88,15 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        //background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.35) 100%);
         transition: opacity .5s;
         opacity: 1;
+
+        animation-name: movingArrow;
+        animation-duration: .5s;
+        animation-direction: alternate;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+
     }
 
 
@@ -99,21 +106,11 @@
 
     @keyframes movingArrow {
         from {
-            bottom: $space-xl;
+            bottom: 0;
         }
         to {
-            bottom: $space-xl (+5);
+            bottom: 10px;
         }
     }
 
-    :global(svg) {
-        animation-name: movingArrow;
-        animation-duration: .5s;
-        animation-direction: alternate;
-        animation-iteration-count: infinite;
-        animation-timing-function: ease-in-out;
-    }
-    :global(.godown_icon path) {
-        stroke: black;
-    }
 </style>

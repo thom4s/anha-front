@@ -43,18 +43,20 @@
                     init={true}
                     navigation={true}
                     pagination={true}
-                    loop={true}
+                    loop={false}
 
                 >
                     {#if content.nodes}
                         {#each content.nodes as img }
                             <swiper-slide class="swiper-slide">
+                                <p class="bopy">{img.caption}</p>
                                 <img src="{img.sourceUrl}" alt="{img.caption}">
                             </swiper-slide>
                         {/each}
                     {:else}
                         {#each content as src }
                             <swiper-slide class="swiper-slide">
+                                <p class="bopy">{src}</p>
                                 <img src="{src}" alt="">
                             </swiper-slide>
                         {/each}
@@ -97,36 +99,30 @@
     }
     .swiper-slide{
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-self: center;
+        gap: 60px;
+        text-align: center;
+        max-height: 80vh;
+        margin-top: - 10vh;
     }
     img {
         object-fit: contain;
-        // max-width: 80vw;
-        max-height: 90vh;
         aspect-ratio: 5/4;
+        max-height: 75vh;
     }
     .btn_clean {
         width: 30px;
         height: 30px;
     }
 
-    .swiper-utils {
-        position: absolute;
-        bottom: $space-l;
-    }
-    .swiper-pagination {
-        position: absolute;
-        bottom: $gutter;
-    }
-
-
     swiper-container {
         --swiper-theme-color: #ababab;
         --swiper-navigation-size: 22px;
         --swiper-navigation-color: $gray;
         --swiper-navigation-top-offset: auto;
-        --swiper-navigation-sides-offset: 30vw;
+        --swiper-navigation-sides-offset: 13vw;
         --swiper-pagination-color: black;
         --swiper-pagination-bullet-border-radius: 6px;
         --swiper-pagination-bullet-horizontal-gap: 4px;
@@ -157,14 +153,15 @@
     }
 
     swiper-container::part(pagination) {
-        bottom: -5vh;
+        position: fixed;
+        bottom: 5vh;
     }
 
     swiper-container::part(button-prev),
     swiper-container::part(button-next) {
         z-index: 999;
-        bottom: -5vh;
+        bottom: 5vh;
+        position: fixed;
     }
-
 
 </style>

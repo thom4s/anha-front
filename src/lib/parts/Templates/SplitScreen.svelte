@@ -114,18 +114,18 @@
         }
     }
     .stage_txt {
-        max-width: 1040px;
+        //max-width: 1040px;
 
         .stage_left & {
             @include min(desktop) {
-                padding-left:  calc( calc( 100vw - $max-width ) / 2 );
-                padding-right: 120px;
+                padding-left:  230px;
+                padding-right: 230px;
             }
         }
         .inversed & {
             @include min(desktop) {
-                padding-left:  120px;
-                padding-right: calc( calc( 100vw - $max-width ) / 2 );
+                padding-left:  230px;
+                padding-right: 230px;
             }
         }
 

@@ -332,7 +332,7 @@
 
     .godown_icon {
         position: absolute;
-        bottom: $space-xl;
+        bottom: 65px;
         left: 0;
         right: 0;
         text-align: center;
@@ -343,12 +343,16 @@
         animation-timing-function: ease-in-out;
     }
 
+    :global(.godown_icon.out) {
+        opacity: 0;
+    }
+
     @keyframes movingArrow {
         from {
-            bottom: $space-xl;
+            bottom: 65px;
         }
         to {
-            bottom: $space-xl (+5);
+            bottom: 70px;
         }
     }
 
@@ -356,9 +360,6 @@
         opacity: 0;
     }
     
-    :global(.godown_icon path) {
-        stroke: white;
-    }
 
     [data-design="couple"] {
         gap: $space-l;
