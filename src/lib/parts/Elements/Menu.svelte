@@ -21,7 +21,7 @@
             let itemRect = event.target.getBoundingClientRect();
             let menuRect = event.target.parentNode.getBoundingClientRect();
             let leftPos = itemRect.left - menuRect.left;
-            let width = itemRect.width;
+            let width = itemRect.width - 5;
 
             border.style.transform = "translateX(" + leftPos + "px)";
             border.style.width = width + "px";
@@ -113,7 +113,7 @@ ul {
         content: '';
         position: absolute;
         left: 0;
-        right: 0;
+        right: 5px;
         bottom: -4px;
         height: 1px;
         background-color: black;
