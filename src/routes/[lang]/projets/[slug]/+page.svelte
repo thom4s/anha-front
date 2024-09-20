@@ -331,11 +331,12 @@
     }
 
     .godown_icon {
-        position: absolute;
+        position: fixed;
         bottom: 65px;
-        left: 0;
+        left: 50%;
         right: 0;
         text-align: center;
+        transition: opacity .3s;
         animation-name: movingArrow;
         animation-duration: .5s;
         animation-direction: alternate;

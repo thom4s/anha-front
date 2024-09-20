@@ -20,20 +20,16 @@
                 <div class="grid stage" class:inversed={stage.positionsticky == 'right' } >
 
                     <div class="s_12column m_6column stage_left stage_sticky">
-
                         <div class="sticky fl-hcenter fl-column gap-l">
                             <div class="stage_txt">{@html stage.stickyContent}</div>
                         </div>
-
                     </div>
 
                     <div class="s_12column m_6column stage_right stage_contents">
 
                         {#each stage.contenusFlexibles as layout}
                             {#if layout && layout.__typename }
-
                                 <FlexibleLayouts {layout} />
-
                             {/if}
                         {/each}
 
@@ -95,6 +91,10 @@
             margin-top: $space-wide;
             padding-top: $space-wide - 15;
             background-color: $beige;
+
+            :global(.mod_collaborateurs) {
+                margin-bottom: $space-xxl;
+            }
 
             .sticky {
                 height: auto;

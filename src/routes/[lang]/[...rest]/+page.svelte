@@ -23,7 +23,6 @@
 <div class="template-page">
     {#if page}
 
-
             {#if page?.template?.templateName === 'Projets'}
                 <Projets {page} {projets} {savoirfaires} {secteurs} />
                 

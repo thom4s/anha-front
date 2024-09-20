@@ -3,6 +3,7 @@
     import PushContact from '../Modules/PushContact.svelte';
     import IconClose from '$lib/parts/Svgs/IconClose.svelte';
     import {device} from '$lib/stores/device.js';
+    import inView from '$actions/inView';
 
     let direction;
 
@@ -150,20 +151,6 @@
 
     }
 
-
-    function handler(event) {
-        direction = event.detail.direction;
-        console.log(direction)
-        console.log('rightColVisible', rightColVisible)
-        console.log('leftColVisible', leftColVisible)
-        if( leftColVisible && direction == 'right') {
-            animationOut('leftSide', 'rightSide' )
-        }
-        else if ( rightColVisible && direction == 'left')  {
-            animationOut('rightSide', 'leftSide' )
-        }
-    }
-
 </script>
 
 
@@ -269,10 +256,16 @@
 
     .btn-container {
         display: flex;
-        height: 100vh;
         width: 100%;
         position: sticky;
         top: 0;
+
+        @include max(bigtablet) {
+            height: calc(100vh - 90px);
+        }
+        @include min(bigtablet) {
+            height: calc(100vh - 105px);
+        }
     }
         .btn {
             border: none;   
@@ -285,7 +278,6 @@
             display: block;
             width: 50%;
             height: 100%;
-            font-size: 9.5rem;
             letter-spacing: -0.02em;
             text-align: center;
             cursor: pointer;
@@ -298,7 +290,12 @@
             }
             @include max(bigtablet) {
                 background-color: $white;
+                font-size: 8rem;
             }
+            @include min(bigtablet) {
+                font-size: 9.5rem;
+            }
+            
 
             .btn_title {
                 @include max(bigtablet) {
@@ -365,6 +362,14 @@
         display: flex;
         margin-top: -100vh;
         overflow: hidden;
+
+        @include max(bigtablet) {
+            margin-top: calc(-100vh + 90px);
+        }
+        @include min(bigtablet) {
+            margin-top: calc(-100vh + 105px);
+        }
+
     }
         .left-sections, .right-sections {
             z-index: -1;
@@ -442,7 +447,7 @@
 
             &.left {
                 @include max(bigtablet) {
-                    left: 40px;
+                    left: 35px;
                 }
                 @include min(bigtablet) {
                     left: 130px;
@@ -450,7 +455,7 @@
             }
             &.right {
                 @include max(bigtablet) {
-                    right: 40px;
+                    right: 35px;
                 }
                 @include min(bigtablet) {
                     right: 130px;
