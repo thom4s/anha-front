@@ -79,6 +79,22 @@ ul {
         justify-content: space-between;
         line-height: 1;
         position: relative;
+
+        &::after {
+                content: attr(data-text);
+                content: attr(data-text) / "";
+                height: 0;
+                visibility: hidden;
+                overflow: hidden;
+                user-select: none;
+                pointer-events: none;
+                font-weight: 900;
+        }
+
+        &:hover {
+            font-weight: 500;
+        }
+
     }
 
     @include max(bigtablet) {
@@ -101,6 +117,9 @@ ul {
         bottom: -4px;
         height: 1px;
         background-color: black;
+    }
+    a {
+        font-weight: 500;
     }
 }
 

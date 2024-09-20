@@ -79,7 +79,12 @@ body {
 }
 
 main {
-    margin-top: 105px;
+    @include max(bigtablet) {
+        margin-top: 90px;
+    }
+    @include min(bigtablet) {
+        margin-top: 105px;
+    }
 }
 
 h1, h2, h3, h4, h5 {

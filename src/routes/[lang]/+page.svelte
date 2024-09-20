@@ -12,6 +12,8 @@
 
     let godown_icon;
 
+    $: console.log('godown_icon', godown_icon)
+
     onMount(() => {
 
         let didScroll;
@@ -35,7 +37,7 @@
             var st = window.scrollY;
 
             if( !godown_icon ) return;
-             
+
             // Make sure they scroll more than delta
             if(Math.abs(lastScrollTop - st) <= delta)
                 return;
@@ -63,7 +65,7 @@
 <div class="template-home">
 
 
-    <div class="godown_icon" binf:this={godown_icon}>
+    <div class="godown_icon" bind:this={godown_icon}>
         <IconArrowDown />
     </div>
 
@@ -109,7 +111,7 @@
             bottom: 0;
         }
         to {
-            bottom: 10px;
+            bottom: 8px;
         }
     }
 

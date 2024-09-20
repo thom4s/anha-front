@@ -89,6 +89,7 @@
         // DISPLAY CONTENT
         tl.to(`#${side}Contents .section_inner`, { opacity: 1, duration: .5, delay: .2 });
         tl.to(`#${side} .btn_title_clone`, { opacity: 1, duration: .1 }, "<");
+        tl.to(`.menus_close_btn`, { opacity: 1, duration: .5 }, "<");
 
         // START
         if (tl.progress() < 1) {
@@ -120,6 +121,7 @@
         // HIDE CONTENT
         tl.to(`#${side}Contents .section_inner`, { opacity: 0, duration: .5, delay: .2 });
         tl.to(`#${side} .btn_title_clone`, { opacity: 0, duration: .5 }, "<");
+        tl.to(`.menus_close_btn`, { opacity: 0, duration: .5 }, "<");
 
         // MOVE CONTENT OUT
         if( side === 'rightSide') {
@@ -208,19 +210,28 @@
         </div>
 
 
+
+        <button 
+            class="btn_clean menus_close_btn"
+            class:left={leftColVisible}
+            class:right={rightColVisible}
+            on:click={ () => {
+                if( leftColVisible ) {
+                    animationOut('leftSide', 'rightSide' )
+                }
+                else if ( rightColVisible ) {
+                    animationOut('rightSide', 'leftSide')
+                }
+            } }
+        >
+            <IconClose />
+        </button>
+        
+        
         <div class="sec-container">
             <div id="rightSideContents" class="right-sections" class:active={rightColVisible}>
 
                 <div class="section_inner">
-                    <button 
-                        on:click={ () => {
-                            animationOut('rightSide', 'leftSide')
-                        } }
-                        class="btn_clean menus_close_btn"
-                        class:active={rightColVisible}
-                    >
-                        <IconClose />
-                    </button>
                     <div class="btn_title_mobile fl-column">
                         <span class="caption ">{rightCol.titre}</span>
                     </div>
@@ -231,14 +242,6 @@
             <div id="leftSideContents" class="left-sections" class:active={leftColVisible}>
 
                 <div class="section_inner">
-                    <button 
-                        class="btn_clean menus_close_btn"
-                        on:click={ () => {
-                            animationOut('leftSide', 'rightSide' )
-                        } }
-                    >
-                        <IconClose />
-                    </button>
                     <div class="btn_title_mobile fl-column">
                         <span class="caption ">{leftCol.titre}</span>
                     </div>
@@ -428,40 +431,49 @@
             }
         }
         .menus_close_btn {
-            position: absolute;
-            top: 10px;
+            position: fixed;
+            z-index: 8;
+            opacity: 0;
+            transition: top .3s, opacity .3s;
 
-            @include min(bigtablet) {
-                width: 30px;
-                height: 30px;
+            &.active {
+                opacity: 1;
+            }
+
+            &.left {
+                @include max(bigtablet) {
+                    left: 40px;
+                }
+                @include min(bigtablet) {
+                    left: 130px;
+                }
+            }
+            &.right {
+                @include max(bigtablet) {
+                    right: 40px;
+                }
+                @include min(bigtablet) {
+                    right: 130px;
+                }
             }
             @include max(bigtablet) {
                 width: 20px;
                 height: 20px;
+                top: 100px;
             }
-            .right-sections & {
-                @include min(bigtablet) {
-                    right: 10px;
-                }
-                @include max(bigtablet) {
-                    right: 10px;
-                }
-                
-            }
-            .left-sections & {
-                @include min(bigtablet) {
-                    left: 10px;
-                }
-                @include max(bigtablet) {
-                    left: 10px;
-                }
-                
+            @include min(bigtablet) {
+                width: 30px;
+                height: 30px;
+                top: 120px;
             }
         }
         
 
     :global(.out + .main) {
         .btn_title_clone {
+            top: 30px;
+        }
+        .menus_close_btn {
             top: 30px;
         }
     }

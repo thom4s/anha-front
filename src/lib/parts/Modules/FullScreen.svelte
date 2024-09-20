@@ -49,14 +49,14 @@
                     {#if content.nodes}
                         {#each content.nodes as img }
                             <swiper-slide class="swiper-slide">
-                                <p class="bopy">{img.caption}</p>
+                                <p class="body">{img.caption}</p>
                                 <img src="{img.sourceUrl}" alt="{img.caption}">
                             </swiper-slide>
                         {/each}
                     {:else}
                         {#each content as src }
                             <swiper-slide class="swiper-slide">
-                                <p class="bopy">{src}</p>
+                                <p class="body">{src}</p>
                                 <img src="{src}" alt="">
                             </swiper-slide>
                         {/each}
@@ -91,13 +91,17 @@
         z-index: 99;
         color: white;
     }
+    .btn_clean {
+        width: 30px;
+        height: 30px;
+    }
 
     swiper-container {
         width: 100%;
         display: flex;
         align-items: center;
     }
-    .swiper-slide{
+    .swiper-slide {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -106,16 +110,25 @@
         text-align: center;
         max-height: 80vh;
         margin-top: - 10vh;
+
+        .body {
+            opacity: 0;
+            transition: opacity .3s;
+            transition-delay: 200ms;
+            transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
     }
+    :global(.swiper-slide-active .body) {
+        opacity: 1 !important;
+    }
+
     img {
         object-fit: contain;
         aspect-ratio: 5/4;
         max-height: 75vh;
     }
-    .btn_clean {
-        width: 30px;
-        height: 30px;
-    }
+
+
 
     swiper-container {
         --swiper-theme-color: #ababab;
