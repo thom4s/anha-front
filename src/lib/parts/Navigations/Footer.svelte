@@ -25,11 +25,15 @@
 
 <style lang="scss">
     footer {
-        margin-top: $gutter;
         margin-bottom: $gutter * 2;
         position: relative;
         z-index: 9;
+        background-color: $white;
+        padding-top: $space-l;
 
+        @include min(bigtablet) {
+            margin-top: $gutter;
+        }
         @include max(bigtablet) {
             margin-top: $gutter * 1.5;
         }

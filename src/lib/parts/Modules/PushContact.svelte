@@ -19,7 +19,7 @@
 
 </script>
 
-<section class="module" class:mb-xxlarge={!smallContact}>
+<section class="module mod_contact" class:mb-xxlarge={!smallContact}>
 
     <div class="grid container">
 
@@ -53,6 +53,11 @@
 <style lang="scss">
     .module {
         margin-top: $space-wide;
+        position: relative;
+        z-index: 9;
+        background-color: $white;
+        padding-top: $space-l;
+
         .mod_actions {
             display: flex;
             align-items: flex-start;
