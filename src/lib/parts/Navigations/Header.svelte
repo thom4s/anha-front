@@ -96,8 +96,10 @@
         <div class="container" >
 
             <div class="logo_group">
-                <Logo />
 
+                <Logo 
+                    on:logoClicked={ () => menuIsVisible = false } />
+            
                 <button on:click={ () => menuIsVisible = false } 
                     class="btn_clean menus_close_btn">
                     <IconClose />

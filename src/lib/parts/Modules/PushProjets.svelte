@@ -97,7 +97,7 @@
             width: 30%;
         }
         @include max(tablet) {
-            width: 85%;
+            width: 80%;
         }
         @include min(desktop) {
             width: calc( calc( $max-width - $space-m * 3) / 4);

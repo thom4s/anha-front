@@ -40,7 +40,7 @@
         {#key menuItems}
             {#each menuItems.nodes as item}
                 <li class:active={pathname == item.path} on:mouseenter={ handleIn } on:mouseleave={ handleOut }>
-                    <a href="{item.path}" data-text="{item.label}" class="menu-link"on:click={ () => menuItemClicked() }>{item.label}</a>
+                    <a href="{item.path}" data-text="{item.label}" class="menu-link" on:click={ () => menuItemClicked() }>{item.label}</a>
                 </li>
             {/each}
         {/key}

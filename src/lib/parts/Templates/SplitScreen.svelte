@@ -90,6 +90,7 @@
         &:first-of-type + & {
             margin-top: $space-wide;
             padding-top: $space-wide - 15;
+            padding-bottom: $space-wide - 15;
             background-color: $beige;
 
             :global(.mod_collaborateurs) {
@@ -151,5 +152,10 @@
         }
     }
 
+    .stage_contents {
+        :global(.module:last-child) {
+            margin-bottom: 0;
+        }
+    }
 
 </style>
