@@ -312,8 +312,11 @@ const string_tvt = `
 	img_ratio
 	visuel {
 		node {
-			id
-			sourceUrl
+					caption
+					altText
+					sizes
+					srcSet
+					sourceUrl
 		}
 	}
 `
@@ -419,9 +422,11 @@ export const groupeBlocTitreVisuel_query_string = `
 
 		visuel {
 			node {
-				sourceUrl
-				srcSet
-				title
+					caption
+					altText
+					sizes
+					srcSet
+					sourceUrl
 			}
 		}
 `
@@ -463,7 +468,9 @@ export const savoirfaire_query_string = `
 			chapo
 			visuel {
 				node {
+					caption
 					altText
+					sizes
 					srcSet
 					sourceUrl
 				}
@@ -483,7 +490,9 @@ export const savoirfaire_query_string = `
 			chapo
 			visuel {
 				node {
+					caption
 					altText
+					sizes
 					srcSet
 					sourceUrl
 				}

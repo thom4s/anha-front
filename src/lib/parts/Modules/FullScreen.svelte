@@ -11,6 +11,8 @@
     export let type = $fullScreenType;
     export let fullscreen = '';
 
+    $: console.log('type', type)
+    $: console.log('content', content)
 
     // CLOSE WHEN 'ESCAPE' PRESSED
     onMount(() => {
@@ -30,7 +32,11 @@
             </button>  
 
             {#if type === 'image'}
-                <img src="{content}" alt="">
+                <div>
+                    <div class="body">{#if src.caption }{@html src.caption}{/if}</div>
+                    <img src="{content.sourceUrl}" alt="{content.altText} | Anha - From Design to Manufacture">
+                </div>
+
 
             {:else if type === 'video'}
                 {@html content}
@@ -49,15 +55,15 @@
                     {#if content.nodes}
                         {#each content.nodes as img }
                             <swiper-slide class="swiper-slide">
-                                <p class="body">{img.caption}</p>
-                                <img src="{img.sourceUrl}" alt="{img.caption}">
+                                <div class="body">{@html img.caption}</div>
+                                <img src="{img.sourceUrl}" alt="{img.altText} | Anha - From Design to Manufacture">
                             </swiper-slide>
                         {/each}
                     {:else}
                         {#each content as src }
                             <swiper-slide class="swiper-slide">
-                                <p class="body">{src}</p>
-                                <img src="{src}" alt="">
+                                <div class="body">{#if src.caption }{@html src.caption}{/if}</div>
+                                <img src="{src.sourceUrl}" alt="{src.altText} | Anha - From Design to Manufacture">
                             </swiper-slide>
                         {/each}
                     {/if}

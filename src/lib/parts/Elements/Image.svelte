@@ -12,7 +12,7 @@
     let imgElement
 
     if( includeThis && ! $fullScreenContent.includes(node.sourceUrl)) {
-        $fullScreenContent = [... $fullScreenContent, node.sourceUrl]
+        $fullScreenContent = [... $fullScreenContent, node]
     }
 
     // DISPATCH ON CLICK
@@ -33,6 +33,8 @@
             })
         }
     })
+
+    $: console.log('node', node)
 
 </script>
 

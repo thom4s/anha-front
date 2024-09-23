@@ -91,7 +91,10 @@
                         on:imageClicked={ () => {
                             $fullscreen = true;
                             $fullScreenType = 'image';
-                            $fullScreenContent = post.featuredImage?.node.sourceUrl;
+                            $fullScreenContent = {
+                                sourceUrl: post.featuredImage?.node.sourceUrl, 
+                                caption: post.featuredImage?.node.caption
+                            };
                         }}/>
                 {/if}
             </div>

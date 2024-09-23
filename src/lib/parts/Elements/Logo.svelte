@@ -18,13 +18,13 @@
 {#if $page.url.pathname === '/fr' || $page.url.pathname === '/en' }
     <h1 class="logo_container no-margin">
         <a href="/{$activeLang}" class="brand_logo fl-center gap-s" on:click={ () => logoClicked() }>
-            <img src="{logo_nobaseline}" alt="logo" />
+            <img src="{logo_nobaseline}" alt="Logo Anha - From Design to Manufacture" />
             <p class="tagline">Design <br>to Manufacture</p>
         </a>
     </h1>
     {:else}
     <a href="/{$activeLang}" class="brand_logo fl-center gap-s" on:click={ () => logoClicked() }>
-        <img src="{logo_nobaseline}" alt="logo"/>
+        <img src="{logo_nobaseline}" alt="Logo Anha - From Design to Manufacture"/>
         <p class="tagline">Design <br>to Manufacture</p>
     </a>
 {/if}
