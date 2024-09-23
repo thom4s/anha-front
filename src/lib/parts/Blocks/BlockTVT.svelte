@@ -8,8 +8,6 @@
     export let parallax = true;
 
     import Image from "$lib/parts/Elements/Image.svelte";
-    $: console.log('visuel', visuel)
-
 
 </script>
 

@@ -34,8 +34,6 @@
         }
     })
 
-    $: console.log('node', node)
-
 </script>
 
 

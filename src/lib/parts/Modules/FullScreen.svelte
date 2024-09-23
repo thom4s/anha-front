@@ -11,9 +11,6 @@
     export let type = $fullScreenType;
     export let fullscreen = '';
 
-    $: console.log('type', type)
-    $: console.log('content', content)
-
     // CLOSE WHEN 'ESCAPE' PRESSED
     onMount(() => {
         document.addEventListener('keydown', (e) => {
