@@ -17,6 +17,9 @@
             if (e.key === 'Escape') closeFullscreen()
         });
     });
+
+    $: console.log('type', type)
+    $: console.log('content', content)
     
 </script>
 
@@ -29,8 +32,8 @@
             </button>  
 
             {#if type === 'image'}
-                <div>
-                    <div class="body">{#if src.caption }{@html src.caption}{/if}</div>
+                <div class="image_container">
+                    <div class="body txt-center">{#if content.caption }{@html content.caption}{/if}</div>
                     <img src="{content.sourceUrl}" alt="{content.altText} | Anha - From Design to Manufacture">
                 </div>
 
@@ -87,6 +90,12 @@
         height: 100%;
     } 
 
+    .image_container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
     button {
         position: absolute;
         top: 20px;

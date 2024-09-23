@@ -39,7 +39,7 @@
 
             {#if plateforme[0] === 'hosted' }
                 <Plyr bind:player={player} controls={['play-large', 'progress', 'mute', 'volume', 'fullscreen']} loop={true}>
-                    <video id="player" playsinline>
+                    <video id="player" playsinline preload="true">
                         <source src="{src}" type="video/mp4" />
                     </video>
                 </Plyr>

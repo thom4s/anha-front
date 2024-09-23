@@ -34,6 +34,9 @@
             margin-bottom: $space-wide;
         }
     }
+    .vid_container {
+        aspect-ratio: 16/9;
+    }
     .plyr__video-embed {
         max-height: 50vh;
     }

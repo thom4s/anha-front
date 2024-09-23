@@ -93,7 +93,8 @@
                             $fullScreenType = 'image';
                             $fullScreenContent = {
                                 sourceUrl: post.featuredImage?.node.sourceUrl, 
-                                caption: post.featuredImage?.node.caption
+                                caption: post.featuredImage?.node.caption,
+                                altText: post.featuredImage?.node.altText
                             };
                         }}/>
                 {/if}
