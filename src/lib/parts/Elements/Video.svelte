@@ -12,6 +12,8 @@
         src = `https://www.youtube.com/embed/${videoId}?iv_load_policy=3&modestbranding=1&playsinline=1&showinfo=0&rel=0&enablejsapi=1`;
     } else if (plateforme[0] === 'vimeo') {
         src = `https://player.vimeo.com/video/${videoId}?loop=true&autoplay=1&muted=true&amp;byline=false&amp;portrait=false&amp;title=false&amp;speed=true&amp;transparent=0&amp;gesture=media`;
+    } else if (plateforme[0] === 'hosted' ) {
+        src = videoId
     }
 
     const dispatch = createEventDispatcher();
@@ -34,11 +36,22 @@
 {#if plyrLoaded}
     <div class="media_container">
         <div class="plateforme-plyr">
-            <Plyr bind:player={player} controls={['play-large', 'progress', 'mute', 'volume', 'fullscreen']} loop={true}>
-                <div class="plyr__video-embed">
-                    <iframe src={src} allowfullscreen allowtransparency allow="autoplay"></iframe>
-                </div>
-            </Plyr>
+
+            {#if plateforme[0] === 'hosted' }
+                <Plyr bind:player={player} controls={['play-large', 'progress', 'mute', 'volume', 'fullscreen']} loop={true}>
+                    <video id="player" playsinline>
+                        <source src="{src}" type="video/mp4" />
+                    </video>
+                </Plyr>
+
+            {:else}
+
+                <Plyr bind:player={player} controls={['play-large', 'progress', 'mute', 'volume', 'fullscreen']} loop={true}>
+                    <div class="plyr__video-embed">
+                        <iframe src={src} allowfullscreen allowtransparency allow="autoplay"></iframe>
+                    </div>
+                </Plyr>
+            {/if}
         </div>
     </div>
 {/if} 
@@ -62,8 +75,8 @@
         cursor: url('$lib/assets/svg/arrowfull.svg'), auto;
     }
 
-    :global(.plyr__controls) {
-        opacity: .1;
+    :global(.plyr__controls, .plyr__control) {
+        opacity: 0 !important;
     }
     :global(.plyr__controls:hover) {
         opacity: .7;
