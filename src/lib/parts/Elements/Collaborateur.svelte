@@ -65,11 +65,11 @@
     
     .icon_outer {
         display: inline-block;
-        transform: rotate(-90deg);
+        transform: rotate(90deg);
         transition: transform .3s;
     
         .open & {
-            transform: rotate(90deg);
+            transform: rotate(-90deg);
         }
     }
 

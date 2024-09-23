@@ -26,7 +26,13 @@
 
 <style lang="scss">
     .module {
-        margin: 0 0 $space-wide 0;
+
+        @include max(bigtablet) {
+            margin-bottom: $space-xl;
+        }
+        @include min(bigtablet) {
+            margin-bottom: $space-wide;
+        }
     }
     .plyr__video-embed {
         max-height: 50vh;

@@ -5,7 +5,7 @@
 
 <article class="">
     
-    <div class=" grid mb-xxlarge">
+    <div class="grid mb-xxlarge">
 
         <div class="stage_left s_12column m_6column">
             <div class="stage_txt">
@@ -39,6 +39,8 @@
 <style lang="scss">
     .grid {
         align-items: center;
+        column-gap: 0;
+
         @include max(tablet) {
             @include container;
             column-gap: 0;
@@ -61,8 +63,8 @@
     .stage_txt {
         
         @include min(desktop) {
-            padding-right:  calc( calc( 100vw - $max-width ) / 2 );
-            padding-left: calc( calc( 100vw - $max-width ) / 2 );
+            padding-right: 240px;
+            padding-left: 240px;
         }
         @include max(desktop) {
             padding-right: 5vw;

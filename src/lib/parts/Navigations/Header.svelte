@@ -77,6 +77,17 @@
 
 </script>
 
+
+<svelte:head>
+    {#if menuIsVisible}
+        <style>
+            body {
+                overflow: hidden;
+            }
+        </style>
+    {/if}
+</svelte:head>	
+
 <header id="masthead" class="at-top" class:home={$page.url.pathname === '/fr' || $page.url.pathname === '/en'}>
 
     <div class="mobileContainer">

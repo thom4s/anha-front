@@ -90,7 +90,7 @@
         // DISPLAY CONTENT
         tl.to(`#${side}Contents .section_inner`, { opacity: 1, duration: .5, delay: .2 });
         tl.to(`#${side} .btn_title_clone`, { opacity: 1, duration: .1 }, "<");
-        tl.to(`.menus_close_btn`, { opacity: 1, duration: .5 }, "<");
+        tl.to(`.panel_close_btn`, { opacity: 1, duration: .5 }, "<");
 
         // START
         if (tl.progress() < 1) {
@@ -122,7 +122,7 @@
         // HIDE CONTENT
         tl.to(`#${side}Contents .section_inner`, { opacity: 0, duration: .5, delay: .2 });
         tl.to(`#${side} .btn_title_clone`, { opacity: 0, duration: .5 }, "<");
-        tl.to(`.menus_close_btn`, { opacity: 0, duration: .5 }, "<");
+        tl.to(`.panel_close_btn`, { opacity: 0, duration: .5 }, "<");
 
         // MOVE CONTENT OUT
         if( side === 'rightSide') {
@@ -199,7 +199,7 @@
 
 
         <button 
-            class="btn_clean menus_close_btn"
+            class="btn_clean panel_close_btn"
             class:left={leftColVisible}
             class:right={rightColVisible}
             on:click={ () => {
@@ -435,7 +435,7 @@
                 padding: 60px 30px 15px;
             }
         }
-        .menus_close_btn {
+        .panel_close_btn {
             position: fixed;
             z-index: 8;
             opacity: 0;
@@ -478,7 +478,7 @@
         .btn_title_clone {
             top: 30px;
         }
-        .menus_close_btn {
+        .panel_close_btn {
             top: 30px;
         }
     }

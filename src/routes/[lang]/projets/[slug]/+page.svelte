@@ -342,6 +342,10 @@
         animation-direction: alternate;
         animation-iteration-count: infinite;
         animation-timing-function: ease-in-out;
+
+        @include max(bigtablet) {
+            display: none;
+        }
     }
 
     :global(.godown_icon.out) {
