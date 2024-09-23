@@ -47,8 +47,6 @@
 
     let isLoading = false;
 
-    $: console.log( 'isLoading: ', isLoading );
-
     beforeNavigate( () => {
         isLoading = true;
     }) 

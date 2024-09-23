@@ -3,10 +3,6 @@
     import { goto } from "$app/navigation";
     import { page } from "$app/stores";
     import { getTranslation } from "$lib/queries/pages";
-    import { invalidateAll  } from "$app/navigation";
-
-    //$: console.log('LangSwitcher activeLang: ', $activeLang)
-    //$: console.log('page: ', $page)
 
     const switchLang = async ( lg ) => {
         console.log( 'switchLang: ', lg )
@@ -44,7 +40,6 @@
 
 
 <style lang="scss">
-
 ul {
     list-style: none;
     padding: 0;
@@ -58,5 +53,4 @@ ul {
 button:disabled {
     font-weight: bold;
 }
-
 </style>

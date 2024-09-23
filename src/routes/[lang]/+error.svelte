@@ -3,13 +3,6 @@
     import NotFound from '$lib/parts/Navigations/NotFound.svelte';
 </script>
 
-
 <NotFound />
 
-
 <PushContact />
-
-
-<style lang="scss">
-
-</style>

@@ -12,8 +12,6 @@
 
     let godown_icon;
 
-    $: console.log('godown_icon', godown_icon)
-
     onMount(() => {
 
         let didScroll;

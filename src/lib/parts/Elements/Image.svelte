@@ -15,8 +15,6 @@
         $fullScreenContent = [... $fullScreenContent, node.sourceUrl]
     }
 
-    // $: console.log('navigating', $navigating)
-
     // DISPATCH ON CLICK
     import { createEventDispatcher } from 'svelte';
     const dispatch = createEventDispatcher();

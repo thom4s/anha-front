@@ -13,9 +13,6 @@
 	import OpenGraph from './OpenGraph.svelte';
 	import SchemaOrg from './SchemaOrg.svelte';
 
-	//$: console.log('SEO INDEX $page: ', $page)
-
-
 	const {
 		author,
 		entity,

@@ -86,8 +86,6 @@
         }, 600)
     }) 
 
-    $: console.log( 'filtersSavoirfaire', filtersSavoirfaire, filtersSavoirfaire.length, 'filtersSecteur', filtersSecteur, filtersSecteur.length  )
-
 
 </script>
 
@@ -188,7 +186,7 @@
 <style lang="scss">
 
     :global(div.masonry) {
-    justify-content: flex-start;
+        justify-content: flex-start;
     }
     :global(div.masonry div.col) {
         row-gap: $space-xl !important;
@@ -213,11 +211,6 @@
         &.loading {
             opacity: 0.2;
         }
-    }
-
-    .item_container {
-        position: relative;
-        padding-bottom: $space-l;
     }
     
     .sticky {

@@ -1,12 +1,6 @@
 <script lang="ts">
     export let data;
-
     $: ({accueil, adn, seoConfig} = data)
-
-
-    $: console.log( 'Accueil: ', accueil)
-    $: console.log( 'adn: ', adn)
-    $: console.log( 'seoConfig: ', seoConfig)
 </script>
 
 
