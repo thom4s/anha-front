@@ -301,7 +301,7 @@
             .btn_title {
                 @include max(bigtablet) {
                     writing-mode: vertical-rl;
-                    transform: rotate(180deg);
+                    transform: rotate(180deg) translateY(40px);
                 }
             }
 
