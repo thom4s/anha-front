@@ -37,13 +37,18 @@
 
 <nav bind:this={menuOuter} class="menu-outer">
     <ul class="">
-        {#key menuItems}
-            {#each menuItems.nodes as item}
-                <li class:active={pathname == item.path} on:mouseenter={ handleIn } on:mouseleave={ handleOut }>
-                    <a href="{item.path}" data-text="{item.label}" class="menu-link" on:click={ () => menuItemClicked() }>{item.label}</a>
-                </li>
-            {/each}
-        {/key}
+        {#await menuItems}
+            
+        {:then menuItems }
+
+            {#key menuItems}
+                {#each menuItems.nodes as item}
+                    <li class:active={pathname == item.path} on:mouseenter={ handleIn } on:mouseleave={ handleOut }>
+                        <a href="{item.path}" data-text="{item.label}" class="menu-link" on:click={ () => menuItemClicked() }>{item.label}</a>
+                    </li>
+                {/each}
+            {/key}
+        {/await}
 
         <div bind:this={border} class="border"></div>
 
