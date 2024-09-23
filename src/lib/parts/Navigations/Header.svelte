@@ -149,9 +149,11 @@
         z-index: 9;
         transition: transform .2s;
         max-width: 100vw;
-        padding: 32px 0;
 
-        @include max(tablet) {
+        @include min(bigtablet) {
+            padding: 32px 0;
+        }
+        @include max(bigtablet) {
             padding: 26px 0;
         }
     }

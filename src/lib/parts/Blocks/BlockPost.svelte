@@ -52,12 +52,7 @@
                                 nextEl: nextButton,
                                 prevEl: prevButton
                             }}
-                            pagination={{
-                                clickable: true,
-                                dynamicBullets: true,
-                                dynamicMainBullets: 4
-
-                            }}
+                            pagination={false}
                             loop="true"
                             init={false}
                         >
@@ -105,12 +100,13 @@
         <div class="half texts">
 
             <div class="bloc_texts ">
-                <div class="fl-justify fl-vtop">  
+
+                <div class="fl-justify fl-vtop text_upper">  
                     <div class="caption bloc_date">{post.informationsNews?.date}</div>
                     <div class="caption bloc_place">{@html post.informationsNews?.lieu}</div>
                 </div>
                 
-                <div class="fl-column-start gap-s">  
+                <div class="fl-column-start gap-s text_center">  
                     <h3 class="mb-small" class:h2={module}>{@html post.title}</h3>
 
                     {#if post.content }
@@ -126,21 +122,22 @@
                     {/if}
                 </div>
 
-                {#if module }
-                    <div class="fl-justify vbot gap-s">
-                        <p class="caption txt-left">Retrouvez tous nos événements sur nos réseaux sociaux</p>
-                        <SocialLinks />
-                    </div>
 
-                {:else}
-                    {#if post.informationsNews?.lien }
-                        <a class="link" href="{post.informationsNews?.lien}">
-                            {post.informationsNews?.labelDuLien}
-                        </a>
+                <div class="text_lower">
+                    {#if module }
+                        <div class="fl-justify vbot gap-s">
+                            <p class="caption txt-left">Retrouvez tous nos événements sur nos réseaux sociaux</p>
+                            <SocialLinks />
+                        </div>
+
                     {:else}
-                        <span></span>
+                        {#if post.informationsNews?.lien }
+                            <a class="link" href="{post.informationsNews?.lien}">
+                                {post.informationsNews?.labelDuLien}
+                            </a>
+                        {/if}
                     {/if}
-                {/if}
+                </div>
                 
             </div>
         </div>
@@ -249,6 +246,17 @@
             --swiper-pagination-bottom: 15px
             
         }
+    }
+
+    .text_lower,
+    .text_upper {
+        min-height: 100px;
+        flex: 0 0 auto;
+    }
+    .text_lower {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
     }
 
     .block_inner {

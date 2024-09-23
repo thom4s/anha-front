@@ -63,10 +63,13 @@ ul {
     padding: 0;
     position: relative;
 
-    @include max(tablet) {
+    @include max(bigtablet) {
         gap: 40px;
     }
-
+    @include min(bigtablet) {
+        gap: 30px;
+    }
+    
     li {
         position: relative;
         display: inline-block;
