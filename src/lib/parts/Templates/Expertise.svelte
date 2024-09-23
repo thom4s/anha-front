@@ -148,6 +148,7 @@
         } else {
             tl.restart();
         }
+        window.scrollTo(0,0);
 
     }
 
