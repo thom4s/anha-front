@@ -83,7 +83,7 @@
                     </div>
 
                 {:else}
-
+ 
                     <Image 
                         node={post.featuredImage?.node} 
                         hoverTarget={true}
