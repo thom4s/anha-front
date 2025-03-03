@@ -62,10 +62,16 @@
 
 <div class="template-home">
 
-
     <div class="godown_icon" bind:this={godown_icon}>
         <IconArrowDown />
     </div>
+
+
+    {#if page.content }
+        <section class="module mod_tvt container">
+            <div>{@html page.content}</div>
+        </section>
+    {/if}
 
     {#if page.contenusFlexibles?.contenusFlexibles }
         <Flexibles contenusFlexibles={page.contenusFlexibles?.contenusFlexibles}/>
@@ -114,6 +120,11 @@
         to {
             bottom: 8px;
         }
+    }
+
+    .module {
+        margin-top: calc(180px * 2);
+        margin-bottom: calc(180px * 2);
     }
 
 </style>
