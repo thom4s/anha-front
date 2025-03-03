@@ -68,7 +68,7 @@
 
 
     {#if page.content }
-        <section class="module mod_tvt container">
+        <section class="module mod_bigtypo container body">
             <div>{@html page.content}</div>
         </section>
     {/if}
@@ -122,9 +122,22 @@
         }
     }
 
-    .module {
-        margin-top: calc(180px * 2);
-        margin-bottom: calc(180px * 2);
+    .mod_bigtypo {
+
+        @include max(bigtablet) {
+            margin-top: 150px;
+            margin-bottom: 150px;
+        }
+        @include min(bigtablet) {
+            margin-top: 300px;
+            margin-bottom: 300px;
+        }
+        h2 {
+            line-height: 1.2;
+        }
+        :global(h2) {
+            line-height: 1.2;
+        }
     }
 
 </style>
