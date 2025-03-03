@@ -125,18 +125,24 @@
     .mod_bigtypo {
 
         @include max(bigtablet) {
-            margin-top: 150px;
-            margin-bottom: 150px;
+            margin-top: calc($space-xxl * 2);
+            margin-bottom: calc($space-xxl * 2);
         }
         @include min(bigtablet) {
-            margin-top: 300px;
-            margin-bottom: 300px;
+            margin-top: calc($space-wide * 2);
+            margin-bottom: calc($space-wide * 2);
         }
         h2 {
             line-height: 1.2;
         }
         :global(h2) {
             line-height: 1.2;
+            margin: 0;
+
+            @include min(bigtablet) {
+                font-size: 6rem;
+            }
+            
         }
     }
 
