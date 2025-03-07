@@ -106,8 +106,16 @@
             <div class="bloc_texts ">
 
                 <div class="fl-justify fl-vtop text_upper">  
-                    <div class="caption bloc_date">{post.informationsNews?.date}</div>
-                    <div class="caption bloc_place">{@html post.informationsNews?.lieu}</div>
+                    <div class="caption bloc_date">
+                        {#if post.informationsNews?.date }
+                            {post.informationsNews?.date}
+                        {/if}
+                    </div>
+                    <div class="caption bloc_place">
+                        {#if post.informationsNews?.lieu }
+                            {@html post.informationsNews?.lieu}
+                        {/if}
+                    </div>
                 </div>
                 
                 <div class="fl-column-start gap-s text_center">  
