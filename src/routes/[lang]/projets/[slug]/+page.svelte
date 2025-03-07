@@ -101,10 +101,12 @@
 
                             <div class="project_metadata">
 
-                                <p>
-                                    <span>Date</span>
-                                    <span class="caption">{@html projet.informationsProjet.meta_date}</span>
-                                </p>
+                                {#if projet.informationsProjet.meta_date}
+                                    <p>
+                                        <span>Date</span>
+                                        <span class="caption">{@html projet.informationsProjet.meta_date}</span>
+                                    </p>
+                                {/if}
 
                                 {#if projet.informationsProjet.tax_secteur}
                                     {#each projet.informationsProjet.tax_secteur.nodes as node}
@@ -135,7 +137,9 @@
                             </div>
 
                             <div class="project_content">
-                                {@html projet.content}
+                                {#if projet.content}
+                                    {@html projet.content}
+                                {/if}
                             </div>
 
                             <div class="s_hide m_show project_navigation fl-justify">

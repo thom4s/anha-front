@@ -194,10 +194,10 @@
 
     .container {
         @include min(tablet) {
-            margin-top: $space-l + 5;
+            margin-top: $space-xxl;
         }
         @include max(tablet) {
-            margin-top: $space-m;
+            margin-top: $space-l;
         }
         
     }
@@ -224,7 +224,7 @@
     .filtersContainer {
         position: relative;
         z-index: 1;
-        margin-top: $space-xl;
+        margin-top: $space-xxl;
         
         &.menuIsVisible {
             z-index: 10;
