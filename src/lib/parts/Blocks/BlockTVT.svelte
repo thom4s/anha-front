@@ -23,24 +23,24 @@
         </div>
     {/if}
 
-    <div class="wrapper_media">
-        <div class="mod_tvt_media">
-
-            <Image 
-                node={visuel?.node} 
-                fullscreened={true}
-                hoverTarget={true}
-                includeThis={true}
-                ratio="{ratio}"
-                parallax={false}
-                on:imageClicked={ () => {
-                    $fullscreen = true;
-                    $fullScreenType = 'slide';
-                }}
-            />
-
+    {#if visuel?.node }
+        <div class="wrapper_media">
+            <div class="mod_tvt_media">
+                <Image 
+                    node={visuel?.node} 
+                    fullscreened={true}
+                    hoverTarget={true}
+                    includeThis={true}
+                    ratio="{ratio}"
+                    parallax={false}
+                    on:imageClicked={ () => {
+                        $fullscreen = true;
+                        $fullScreenType = 'slide';
+                    }}
+                />
+            </div>
         </div>
-    </div>
+    {/if}
 
 </section>
 
@@ -127,6 +127,10 @@
             }
         }
 
+    }
+
+    .mod_tvt_txts {
+        max-width: 800px;
     }
 
 </style>
