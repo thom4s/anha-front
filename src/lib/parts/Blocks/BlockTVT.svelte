@@ -130,7 +130,7 @@
     }
 
     .mod_tvt_txts {
-        max-width: 800px;
+        //max-width: 800px;
     }
 
 </style>
