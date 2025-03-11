@@ -25,12 +25,6 @@ export async function getTranslation( uri, lang ) {
               uri
             }
           }
-          ... on Collaboration {
-            id
-            translation(language: ${lang.toUpperCase()}) {
-              uri
-            }
-          }
           ... on Post {
             id
             translation(language: ${lang.toUpperCase()}) {
