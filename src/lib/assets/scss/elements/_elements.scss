@@ -254,6 +254,8 @@ MEDIA
         }
 
         .media-full .mod_tvt_txts {
+            max-width: 900px;
+
             @include min(tablet) {
                 padding-left: 0;
             } 
@@ -282,6 +284,7 @@ MEDIA
         }
 
         .media-full .mod_tvt_txts {
+            max-width: 900px;
             @include min(bigtablet) {
                 padding-left: 60px;
                 padding-right: 120px;
