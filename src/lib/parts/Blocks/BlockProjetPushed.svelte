@@ -18,6 +18,8 @@
                 {#each projet.informationsProjet.tax_client?.nodes as node}
                     <div class="caption">{node.name}</div>
                 {/each}
+            {:else}
+                <span></span>
             {/if}
 
             <h3 class="block_title h3 no-margin fl-vcenter gap-s">
@@ -37,8 +39,9 @@
                 {/if}
 
                 {#if projet.informationsProjet?.tax_savoirfaire }
-                    {#each projet.informationsProjet.tax_savoirfaire.nodes as node}
-                        <span class="caption">{node.name}</span>
+                    {#each projet.informationsProjet.tax_savoirfaire.nodes as node, i}
+                        {#if i > 0 } - {/if}
+                        <span class="caption"> {node.name} </span>
                     {/each}
                 {/if}
 
