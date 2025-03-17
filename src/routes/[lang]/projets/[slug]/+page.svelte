@@ -109,21 +109,25 @@
                                 {/if}
 
                                 {#if projet.informationsProjet.tax_secteur}
-                                    {#each projet.informationsProjet.tax_secteur.nodes as node}
                                         <p>
                                             <span>Secteur</span>
-                                            <span class="caption">{node.name}</span>
+                                            <span>
+                                                {#each projet.informationsProjet.tax_secteur.nodes as node}
+                                                    <span class="caption"> {node.name} </span>
+                                                {/each}
+                                            </span>
                                         </p>
-                                    {/each}
                                 {/if}
                                 
                                 {#if projet.informationsProjet.tax_savoirfaire}
-                                    {#each projet.informationsProjet.tax_savoirfaire.nodes as node}
-                                        <p>
-                                            <span>Savoir Faire</span>
-                                            <span class="caption">{node.name}</span>
-                                        </p>
-                                    {/each}
+                                    <p>
+                                        <span>Savoir Faire</span>
+                                        <span>
+                                            {#each projet.informationsProjet.tax_savoirfaire.nodes as node}
+                                                <span class="caption"> {node.name} </span>
+                                            {/each}
+                                        </span>
+                                    </p>
                                 {/if}
 
                                 {#if projet.informationsProjet.tax_materiau}
