@@ -112,7 +112,8 @@
                                         <p>
                                             <span>Secteur</span>
                                             <span>
-                                                {#each projet.informationsProjet.tax_secteur.nodes as node}
+                                                {#each projet.informationsProjet.tax_secteur.nodes as node, i}
+                                                    {#if i > 0 } - {/if}
                                                     <span class="caption"> {node.name} </span>
                                                 {/each}
                                             </span>
@@ -123,7 +124,8 @@
                                     <p>
                                         <span>Savoir Faire</span>
                                         <span>
-                                            {#each projet.informationsProjet.tax_savoirfaire.nodes as node}
+                                            {#each projet.informationsProjet.tax_savoirfaire.nodes as node, i}
+                                                {#if i > 0 } - {/if}
                                                 <span class="caption"> {node.name} </span>
                                             {/each}
                                         </span>
