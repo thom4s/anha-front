@@ -189,11 +189,9 @@
                         {#if projet.informationsProjet.visuels }
                             {#each projet.informationsProjet.visuels as v}
                                 
-                                <div class="projet_media_item" data-design="{v.design}" data-ratio="{v.ratio}">
-
-                                    {#if v.visuel }
+                                {#if v.visuel }
+                                    <div class="projet_media_item" data-design="{v.design}" data-ratio="{v.ratio}">
                                         {#each v.visuel.nodes as node}
-
                                             <div class="media_outer">
                                                 <Image 
                                                     node={node}
@@ -207,10 +205,9 @@
                                                     }}
                                                 />
                                             </div> 
-
                                         {/each}
-                                    {/if}
-                                </div>
+                                    </div>
+                                {/if}
 
                             {/each}
                         {/if}
