@@ -191,24 +191,25 @@
                                 
                                 <div class="projet_media_item" data-design="{v.design}" data-ratio="{v.ratio}">
 
-                                    {#each v.visuel.nodes as node}
+                                    {#if v.visuel }
+                                        {#each v.visuel.nodes as node}
 
-                                        <div class="media_outer">
-                                            <Image 
-                                                node={node}
-                                                {parallax} 
-                                                fullscreened={true}
-                                                includeThis={true}
-                                                hoverTarget={true}
-                                                on:imageClicked={ () => {
-                                                    $fullscreen = true;
-                                                    $fullScreenType = 'slide';
-                                                }}
-                                            />
-                                        </div> 
+                                            <div class="media_outer">
+                                                <Image 
+                                                    node={node}
+                                                    {parallax} 
+                                                    fullscreened={true}
+                                                    includeThis={true}
+                                                    hoverTarget={true}
+                                                    on:imageClicked={ () => {
+                                                        $fullscreen = true;
+                                                        $fullScreenType = 'slide';
+                                                    }}
+                                                />
+                                            </div> 
 
-                                    {/each}
-
+                                        {/each}
+                                    {/if}
                                 </div>
 
                             {/each}
