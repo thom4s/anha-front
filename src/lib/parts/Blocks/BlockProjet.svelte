@@ -11,7 +11,7 @@
 <article class="block bloc_projet" transition:fade={{ duration: 200 }}>
     <a class="fl-column-space gap-xs" href="{projet.uri}">
 
-        <div class="fl-column-space gap-s">
+        <div class="fl-column center gap-s overlay">
             <!-- {#if projet.informationsProjet?.tax_client }
                 {#each projet.informationsProjet.tax_client?.nodes as node}
                     <div class="caption">{node.name}</div>
@@ -66,11 +66,8 @@
 <style lang="scss">
 
     .bloc_projet:hover {
-        .h3 {
-            font-style: italic;
-        }
         :global(img) {
-            transform: scale(1.06);
+            transform: scale(1.03);
         }
     }
 
@@ -86,8 +83,29 @@
             aspect-ratio: 5/4;
         }
     }
+    .overlay {
+        position: absolute;
+        z-index: 99;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(255,255,255,.85);
+        transition: opacity 0.5s ease-out;
+        opacity: 0;
+    }
     a {
         text-decoration: none;
         color: inherit;
+        position: relative;
+
+        &:hover {
+            .overlay {
+                opacity: 1;
+            }
+        }
     }
 </style>
