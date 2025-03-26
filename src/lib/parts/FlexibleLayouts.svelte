@@ -38,7 +38,10 @@
     layout.__typename === 'ContenusFlexiblesStagedStagesContenusFlexiblesPushprojetsLayout' 
     ||  layout.__typename === `ContenusSavoirFaireLeftColContenusFlexiblesPushprojetsLayout`
     ||  layout.__typename === `ContenusSavoirFaireRightColContenusFlexiblesPushprojetsLayout` }
-    <section class="module mod_pushprojects">
+
+    <PushProjets titre={layout.titre} pages={layout.projets?.nodes} label={layout.label} link="{layout.link}" />
+
+    <!-- <section class="module mod_pushprojects">
         <div class="mod_title">
             <h2 class="h2">{@html layout.titre}</h2>
         </div>
@@ -54,7 +57,7 @@
         <div class="mod_action">
             <a class="link" href="{layout.link?.nodes[0].uri}">{@html layout.label}</a>
         </div>
-    </section>
+    </section> -->
     
 {:else if layout.__typename === 'ContenusFlexiblesContenusFlexiblesReferencesLayout'}
     <References titre={layout.titre} ligneLogos={layout.ligneLogos} />
