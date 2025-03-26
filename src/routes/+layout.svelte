@@ -115,8 +115,8 @@
         right: 0;
         left: 0;
         bottom: 0;
-        background: $white;
+        background: rbga($white, .8);
         z-index: 8;
-        transition: all 1s;
+        transition: all .3s;
     }
 </style>
