@@ -99,7 +99,7 @@
 		</style>
 	{/if}
 </svelte:head>
-
+ 
 <style lang="scss">
 	.loader {
 		position: fixed;
