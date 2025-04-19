@@ -148,14 +148,14 @@
                                 {/if}
                             </div>
 
-                            <div class="s_hide m_show project_navigation fl-justify">
+                            <!-- <div class="s_hide m_show project_navigation fl-justify">
                                 {#if prevPage }
                                     <a href="{prevPage.node.uri}" class="link fl-vcenter gap-xs"><Arrow left={true} /> {prevPage.node.title}</a>
                                 {/if}
                                 {#if nextPage }
                                     <a href="{nextPage.node.uri}" class="link fl-vcenter gap-xs">{nextPage.node.title} <Arrow /> </a>
                                 {/if}
-                            </div>
+                            </div> -->
                         </div>
 
                     </div>
