@@ -29,7 +29,9 @@
     </div>
     <div class="mod_details s_12column m_3column">
         <div class="details_wrapper"> 
-            <p>{@html collab.details}</p>
+            {#if collab.details }
+                <p>{@html collab.details}</p>
+            {/if}
         </div>
     </div>
 
