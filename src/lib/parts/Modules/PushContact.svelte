@@ -52,7 +52,7 @@
 
 <style lang="scss">
     .module {
-        margin-top: $space-wide;
+        margin-top: $space-large;
         position: relative;
         z-index: 9;
         background-color: $white;
