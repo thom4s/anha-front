@@ -41,11 +41,12 @@
 <style lang="scss">
     .item {
         border-top: 1px solid;
-        padding-top: $space-m;
+        padding-top: $space-s;
         align-items: flex-start;
         position: relative;
     }
     .mod_media {
+        margin-bottom: $space-xs;
         .inner {
             border-radius: 50%;
             overflow: hidden;
