@@ -26,7 +26,7 @@
         <div class="s_12column m_6column mod_titles">
 
             {#if title }
-                <h2 class="mod_title h1 mb-medium" transition:fade={{ duration: 200 }}>{@html title}</h2>
+                <h2 class="mod_title h1 mb-0" transition:fade={{ duration: 200 }}>{@html title}</h2>
             {/if}
 
             {#if !smallContact }
@@ -52,7 +52,7 @@
 
 <style lang="scss">
     .module {
-        margin-top: $space-large;
+        margin-top: $space-wide;
         position: relative;
         z-index: 9;
         background-color: $white;
