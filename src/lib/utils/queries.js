@@ -195,6 +195,7 @@ export const pushNews_query_string = `
 					id
 					link
 					title
+					content
 					informationsNews {
 						date
 						fieldGroupName
