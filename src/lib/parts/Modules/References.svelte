@@ -5,16 +5,7 @@
     export const titre = '';
     export let ligneLogos = [];
 
-    const options1 = {
-        direction: "right",
-        speed: 30,
-        onHover: "none"
-    };
-    const options2 = {
-        direction: "left",
-        speed: 50,
-        onHover: "none"
-    };
+    console.log('ligneLogos', ligneLogos[0].logos)
 </script>
 
 
@@ -25,7 +16,7 @@
         <div class="logos">
             {#each ligneLogos as ligne, i }
                 <div class="marquee-container">
-                    <Marqueeck options={ (i & 1) ? { direction: "right" } : { direction: "left" } } class="marquee-line" {options1} >
+                    <Marqueeck options={ (i & 1) ? { direction: "right", speed: 25, onHover: "none" } : { direction: "left", speed: 25, onHover: "none" } } class="marquee-line" >
                         {#each ligne.logos.nodes as logo }
                             <Image node={logo} />
                         {/each}
