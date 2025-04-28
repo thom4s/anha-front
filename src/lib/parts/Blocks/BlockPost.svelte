@@ -119,10 +119,12 @@
                 </div>
                 
                 <div class="fl-column-start gap-s text_center">  
-                    <h3 class="mb-small" class:h2={module}>{@html post.title}</h3>
+                    <h3 class="mb-medium" class:h2={module}>{@html post.title}</h3>
 
                     {#if post.content }
-                        <div class="body">{@html post.content}</div>
+                        <div class="mb-medium"> 
+                            <div class="body">{@html post.content}</div>
+                        </div>
                     {/if}
                     
                     {#if module }
