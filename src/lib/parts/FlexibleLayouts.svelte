@@ -25,10 +25,10 @@
     <PushContact smallContact titre={layout.titre} text={layout.text} labelDuBouton={layout.labelDuBouton}/>
 
 {:else if layout.__typename === 'ContenusFlexiblesContenusFlexiblesPushnewsLayout'}
-    <PushNews titre={layout.titre} pages={layout.news?.nodes}/>
+    <PushNews layout={layout} titre={layout.titre} pages={layout.news?.nodes} design={layout.design}/>
 
 {:else if layout.__typename === 'ContenusFlexiblesContenusFlexiblesPushpagesLayout'}
-    <PushPages titre={layout.titre} pages={layout.pages?.nodes}/>
+    <PushPages titre={layout.titre} pages={layout.pages?.nodes} design={layout.design} />
 
 {:else if 
     layout.__typename === 'ContenusFlexiblesContenusFlexiblesPushprojetsLayout' }

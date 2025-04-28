@@ -1,6 +1,7 @@
 <script>
     import BlockPage from "$lib/parts/Blocks/BlockPage.svelte";
     export const titre = '';
+    export const design = 'left';
     export let pages = [];
 </script>
 

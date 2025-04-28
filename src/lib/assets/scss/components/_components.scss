@@ -12,6 +12,22 @@
     border-top: 1px solid;
     padding: $space-m 0;
 }
+.mod_pushnews {
+
+    &.start-left {
+        .block_post:nth-child(even) .block_inner {
+            flex-direction: row-reverse;
+        }
+    }
+    &.start-right {
+        .block_post:nth-child(odd) .block_inner {
+            flex-direction: row-reverse;
+        }
+    }
+
+    .block_post + .block_post {
+        margin-top: $space-l;
+    }
 
 
-
+} 

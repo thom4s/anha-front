@@ -185,6 +185,7 @@ export const pushNews_query_string = `
 	... on ContenusFlexiblesContenusFlexiblesPushnewsLayout {
 		__typename
 		titre
+		design
 		news {
 			nodes {
 				uri

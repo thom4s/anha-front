@@ -49,13 +49,13 @@
 
 	beforeNavigate(() => {
 		isLoading = true;
-		console.log('beforeNavigate');
+		//console.log('beforeNavigate');
 	});
 
 	afterNavigate(() => {
 		setTimeout(() => {
 			isLoading = false;
-			console.log('afterNavigate');
+			//console.log('afterNavigate');
 		}, 500);
 	});
 
