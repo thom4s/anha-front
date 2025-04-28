@@ -15,8 +15,8 @@ export async function load( {params} ) {
 
     if( page?.template?.templateName === 'Projets') {
       projets = await getAllProjets(params.lang);
-      secteurs = await getAllTerms('secteurs');
-      savoirfaires = await getAllTerms('savoirfaires');
+      secteurs = await getAllTerms('secteurs', params.lang);
+      savoirfaires = await getAllTerms('savoirfaires', params.lang);
     }
 
     if( page?.template?.templateName === 'Actualités') {
