@@ -146,7 +146,8 @@
 
                     {:else}
                         {#if post.informationsNews?.lien }
-                            <a class="link" href="{post.informationsNews?.lien}">
+                            <a class="link" href="{post.informationsNews?.lien}"
+                            target="_blank">
                                 {post.informationsNews?.labelDuLien}
                             </a>
                         {/if}
