@@ -264,7 +264,7 @@
 
     .text_lower,
     .text_upper {
-        min-height: 100px;
+        min-height: 50px;
         flex: 0 0 auto;
     }
     .text_lower {
