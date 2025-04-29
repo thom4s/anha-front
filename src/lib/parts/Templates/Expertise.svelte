@@ -316,6 +316,7 @@
                 transition: all .3s;
                 z-index: 1;
                 display: inline-block;
+                color: black;
             }
             .btn_title_clone {
                 font-size: 5rem;
