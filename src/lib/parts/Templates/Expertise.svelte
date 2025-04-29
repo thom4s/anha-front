@@ -286,7 +286,7 @@
 
             &:first-child {
                 @include max(bigtablet) {
-                    border-right: 1px solid;
+                    border-right: 1px solid black;
                 }
             }
             @include max(bigtablet) {

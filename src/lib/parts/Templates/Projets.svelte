@@ -8,7 +8,7 @@
     import { Masonry } from "svelte-bricks";
     import { fly } from "svelte/transition";
 
-    let [minColWidth, maxColWidth, gap] = [340, 450, 30]
+    let [minColWidth, maxColWidth, gap] = [300, 460, 30]
     let width, height
 
     export let page = {};
