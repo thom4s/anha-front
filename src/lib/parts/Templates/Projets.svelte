@@ -275,6 +275,7 @@
         font-weight: 300;
         cursor: pointer;
         transition: border .3s;
+        color: black;
 
         &:hover {
             border-color: $black;
