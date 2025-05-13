@@ -10,7 +10,9 @@
         let pathname = $page.url.pathname
         pathname = pathname.replace('fr/', '');
         pathname = pathname.replace('en/', '');
-    
+        
+        console.log( 'pathname: ', pathname )
+
         $activeLang = lg;
         const pageTranslated = await getTranslation(pathname, lg )
         console.log( 'pageTranslated: ', pageTranslated?.translation )
@@ -20,7 +22,12 @@
         }
         else {
             if (pageTranslated.translation.uri !== null) {
-                goto( pageTranslated.translation.uri, { invalidateAll: true } )
+                if( pageTranslated.translation.uri === '/en/homepage/') {
+                    goto( '/en', { invalidateAll: true } )
+                }
+                else {
+                    goto( pageTranslated.translation.uri, { invalidateAll: true } )
+                }
             }
         }
     }

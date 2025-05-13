@@ -4,8 +4,6 @@
 
     export const titre = '';
     export let ligneLogos = [];
-
-    console.log('ligneLogos', ligneLogos[0].logos)
 </script>
 
 
