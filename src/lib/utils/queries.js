@@ -172,7 +172,7 @@ export const references_query_string = `
 		__typename
 		titre
 		ligneLogos {
-			logos {
+			logos(first: 100) {
 				nodes {
 					sourceUrl(size: MEDIUM)
 				}
