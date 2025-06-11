@@ -3,6 +3,7 @@
 	import PushContact from "$lib/parts/Modules/PushContact.svelte";
     import IconFilters from '$lib/parts/Svgs/IconFilters.svelte';
     import IconArrowRight from '$lib/parts/Svgs/IconArrowRight.svelte';
+    import { activeLang } from "$lib/config/website";
 
     import { afterUpdate, beforeUpdate } from "svelte";
     import { Masonry } from "svelte-bricks";
@@ -125,7 +126,7 @@
 
                     {#if filterSecteur }
                         <div transition:fly={{ duration: 200 }}>
-                            <button on:click={ e => reset(e, 'secteur') } data-term="" class="caption filterItem" class:active={ filtersSecteur.length === 0}>Tous les secteurs</button>
+                            <button on:click={ e => reset(e, 'secteur') } data-term="" class="caption filterItem" class:active={ filtersSecteur.length === 0}>{ $activeLang === "fr" ? "Tous les secteurs" : "All sector of activity"}</button>
                             {#each secteurs.nodes as t }
                                 <button on:click={ (e) => { loading = true; filter(e, 'secteur'); } } data-term="{t.name}" class="caption filterItem" class:active={filtersSecteur.includes(t.name)}>{t.name}</button>
                             {/each}
@@ -146,7 +147,7 @@
 
                     {#if filterSavoirfaire }
                     <div transition:fly={{ duration: 200 }}>
-                            <button on:click={ e => reset(e, 'savoirfaire' ) } data-term="" class="caption filterItem" class:active={ filtersSavoirfaire.length === 0}>Tous les savoir-faire</button>
+                            <button on:click={ e => reset(e, 'savoirfaire' ) } data-term="" class="caption filterItem" class:active={ filtersSavoirfaire.length === 0}>{ $activeLang === "fr" ? "Tous les savoir-faire" : "All knowledge"}</button>
                             {#each savoirfaires.nodes as t }
                                 <button on:click={ (e) => { loading = true; filter(e, 'savoirfaire'); } } data-term="{t.name}" class="caption filterItem" class:active={filtersSavoirfaire.includes(t.name)}>{t.name}</button>
                             {/each}
