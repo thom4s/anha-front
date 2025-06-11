@@ -2,6 +2,7 @@
     import { onMount } from "svelte";
     import { getPushContactContents } from '$lib/queries/options.js';
     import { fade } from 'svelte/transition';
+    import { activeLang } from "$lib/config/website";
 
     import Form from "$lib/parts/Forms/Form.svelte";
 
@@ -9,8 +10,16 @@
 
     onMount( async () => {
         contents = await getPushContactContents();
-        title = contents.titre
-        label = contents.label
+
+        if($activeLang == 'en') {
+            title = contents.titleEN
+            label = contents.labelEN
+        }
+        else {
+            title = contents.title
+            label = contents.label
+        }
+
         text = contents.text
         lien = contents.lien
     })

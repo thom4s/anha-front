@@ -134,7 +134,9 @@ export async function getPushContactContents( ) {
                             fieldGroupName
                             label
                             text
-                            titre
+                            labelEN
+                            titleEN
+                            title
                             lien {
                                 url
                             }
