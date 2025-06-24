@@ -1,6 +1,7 @@
 <script>
     import { onMount, tick } from 'svelte';
     import { fullscreen, fullScreenContent, fullScreenType } from '$stores/fullscreen.js';
+    import { activeLang } from "$lib/config/website";
 
     import SocialLinks from '../Navigations/SocialLinks.svelte';
     import Image from "../Elements/Image.svelte";
@@ -140,7 +141,12 @@
                 <div class="text_lower">
                     {#if module }
                         <div class="fl-justify vbot gap-s">
-                            <p class="caption txt-left">Retrouvez tous nos événements sur nos réseaux sociaux</p>
+                            <p class="caption txt-left">
+                                
+                                { $activeLang === "fr" ? "Retrouvez tous nos événements sur nos réseaux sociaux" : "Find all our events on our social networks"}
+                            
+                            </p>
+
                             <SocialLinks />
                         </div>
 

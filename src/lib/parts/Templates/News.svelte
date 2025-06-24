@@ -3,6 +3,7 @@
     import PushContact from "$lib/parts/Modules/PushContact.svelte";
     import SocialLinks from "$lib/parts/Navigations/SocialLinks.svelte"
 	import LoadMore from "$lib/parts/Navigations/LoadMore.svelte";
+    import { activeLang } from "$lib/config/website";
 
     export let page = {};
     export let posts = [];
@@ -21,7 +22,9 @@
                 <div class="sticky fl-column-space gap-xs">
                     <div class="">
                         <div class="mb-small">
-                            <p>Retrouvez tous nos événements sur nos réseaux sociaux</p>
+                            <p>
+                                { $activeLang === "fr" ? "Retrouvez tous nos événements sur nos réseaux sociaux" : "Find all our events on our social networks"}
+                            </p>
                         </div>
                         <SocialLinks />
                     </div>
