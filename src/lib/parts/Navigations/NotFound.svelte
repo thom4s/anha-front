@@ -1,6 +1,7 @@
 <script>
     import notfound from '$lib/assets/notfound.png';
-    import PushContact from '../Modules/PushContact.svelte';
+    import { activeLang } from "$lib/config/website";
+
 </script>
 
 <article class="">
@@ -20,8 +21,10 @@
                 </div>
 
                 <div class="page_actions mb-small">
-                    <p>Vous ne trouvez pas ce que vous cherchez ?<br>
-                        Essayez donc ceci :</p>
+                    <p>
+                        { $activeLang === "fr" ? "Vous ne trouvez pas ce que vous cherchez ?" : "You can't fin what you're looking for?"}
+                        <br>
+                        { $activeLang === "fr" ? "Essayez donc ceci :" : "Try this:"}</p>
                 </div>
 
                 <div class="page_actions fl-column-start gap-xs">
@@ -34,7 +37,6 @@
     </div>
 </article>
 
-<PushContact />
 
 <style lang="scss">
     .grid {
