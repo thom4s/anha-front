@@ -10,7 +10,9 @@
 
         <div class="stage_left s_12column m_6column">
             <div class="stage_txt">
-                <h1 class="h1">La page que vous cherchez <em>n’existe pas</em>.</h1>
+                <h1 class="h1">
+                    { $activeLang === "fr" ? "La page que vous cherchez n’existe pas." : "The page you're looking for does not exist."}
+                </h1>
             </div>
         </div>
 
@@ -28,8 +30,8 @@
                 </div>
 
                 <div class="page_actions fl-column-start gap-xs">
-                    <a href="/fr/projets" class="link">Découvrez nos projets</a>
-                    <a href="/fr/contact" class="link">Contactez nous</a>
+                    <a href="/fr/projets" class="link">{ $activeLang === "fr" ? "Découvrez nos projets" : "Explore our work"}</a>
+                    <a href="/fr/contact" class="link">{ $activeLang === "fr" ? "Contactez nous" : "Contact us"}</a>
                 </div>
 
             </div>
