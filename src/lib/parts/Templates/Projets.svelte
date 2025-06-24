@@ -68,13 +68,13 @@
         projets.nodes.filter( project => {
 
             if(filtersSavoirfaire.length !== 0 && filtersSecteur.length !== 0 ) {
-                return filtersSavoirfaire.includes(project.informationsProjet.tax_savoirfaire?.nodes[0].name) && filtersSecteur.includes(project.informationsProjet.tax_secteur?.nodes[0].name)
+                return ( filtersSavoirfaire.includes(project.informationsProjet.tax_savoirfaire?.nodes[0].name) || filtersSavoirfaire.includes(project.informationsProjet.tax_savoirfaire?.nodes[1]?.name) ) && ( filtersSecteur.includes(project.informationsProjet.tax_secteur?.nodes[0].name) || filtersSecteur.includes(project.informationsProjet.tax_secteur?.nodes[1]?.name) )
             }
             else if(filtersSavoirfaire.length !== 0 && filtersSecteur.length === 0 ) {
-                return filtersSavoirfaire.includes(project.informationsProjet.tax_savoirfaire?.nodes[0].name)
+                return filtersSavoirfaire.includes(project.informationsProjet.tax_savoirfaire?.nodes[0].name) || filtersSavoirfaire.includes(project.informationsProjet.tax_savoirfaire?.nodes[1]?.name)
             }
             else if(filtersSecteur.length !== 0 && filtersSavoirfaire.length === 0 ) {
-                return filtersSecteur.includes(project.informationsProjet.tax_secteur?.nodes[0].name)
+                return filtersSecteur.includes(project.informationsProjet.tax_secteur?.nodes[0].name) || filtersSecteur.includes(project.informationsProjet.tax_secteur?.nodes[1]?.name)
             }
 
 		}) : projets.nodes;
@@ -86,7 +86,6 @@
             loading = false;
         }, 600)
     }) 
-
 
 </script>
 
