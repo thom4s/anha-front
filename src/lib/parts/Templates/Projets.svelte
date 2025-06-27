@@ -19,6 +19,8 @@
 
     let allItems, grid, loading = true;
 
+    $: console.log(projets.nodes);
+
     
     // MENU MOBILE
     let menuIsVisible = false;
