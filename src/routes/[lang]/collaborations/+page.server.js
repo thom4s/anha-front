@@ -2,6 +2,8 @@
 import { getAllCollaborations } from "$lib/queries/collaborations"
 import { getPageBySlug } from "$lib/queries/pages"
 import { formProcess } from '$lib/utils/utils.js'
+import { fail } from '@sveltejs/kit'
+
 
 export async function load( ) {
 
@@ -20,9 +22,17 @@ export const actions = {
 
 	contact: async ({request}) => {
 
+	    let { firstname, lastname, adresse, codepostal, ville, telephone, mail, message } = Object.fromEntries(await request.formData());
+
+        if (!firstname || !lastname || !mail ) {
+            return fail(400, { firstname, missing: true })
+        }
+        
         const response = formProcess(request)    
 
-        //console.log(response);
-
+        return { 
+            success: true,
+            response
+        }
 	},
 };

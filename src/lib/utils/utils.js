@@ -44,9 +44,7 @@ const formsParams = await getFormsParams();
 
 export async function formProcess ( request ) {
 
-	let { firstname, lastname, adresse, codepostal, ville, telephone, mail, message } = 
-  
-  Object.fromEntries(await request.formData());
+	let { firstname, lastname, adresse, codepostal, ville, telephone, mail, message } = Object.fromEntries(await request.formData());
 
       if( !validateEmail(mail) ) {
         throw new Error('email is not ok');

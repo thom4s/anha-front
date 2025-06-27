@@ -8,7 +8,16 @@
 
     let loading = false; 
     let error = false; 
+    let success = false; 
     let msg = false; 
+
+    let firstname = '';
+
+    $: {
+        if(firstname === '' ) {
+
+        }
+    }
 </script>
 
 <form 
@@ -16,6 +25,7 @@
     action="?/contact"
     class:loading={loading}
     use:enhance={() => {
+
         loading = true;
 
         return async ({ result, update }) => {
@@ -28,14 +38,17 @@
 
             } else {
                 await applyAction(result);
-
+                msg = "Merci pour votre message ! "
+                error = false;
+                success = true;
                 update({ reset: true });
             }
+
             loading = false;
         };
     }}>
 
-        <Input type="text" placeholder="Nom" name="firstname" size="half" required={true} />
+        <Input type="text" placeholder="Nom" name="firstname" size="half" value="{firstname}" required={true} />
         <Input type="text" placeholder="Prénom" name="lastname" size="half" required={true} />
 
         <Input type="text" placeholder="Adresse" name="adresse" size="full" required={false}/>
@@ -58,6 +71,9 @@
 	{#if error}
 		<p class="error">{@html msg}</p>
 	{/if}
+	{#if success}
+		<p class="success">{@html msg}</p>
+	{/if}
 
 
 <style lang="scss">
@@ -76,6 +92,11 @@
         color: red;
         padding: 10px 0;
         font-weight: 500;
+    }
+    .success {
+        color: blue;
+        padding: 10px 0;
+        font-weight: 500; 
     }
     .loading {
         opacity: .5;
