@@ -278,6 +278,9 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
+        @include max(tablet) {
+            display: none;
+        }
     }
 
     .block_inner {

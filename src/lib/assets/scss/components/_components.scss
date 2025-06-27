@@ -14,20 +14,29 @@
 }
 .mod_pushnews {
 
+    .block_inner {
+        @include max(tablet) {
+            flex-direction: column;
+        }
+    }
+
+
     &.start-left {
         .block_post:nth-child(even) .block_inner {
-            flex-direction: row-reverse;
+            @include min(tablet) {
+                flex-direction: row-reverse;
+            }
         }
     }
     &.start-right {
         .block_post:nth-child(odd) .block_inner {
-            flex-direction: row-reverse;
+            @include min(tablet) {
+                flex-direction: row-reverse;
+            }
         }
     }
 
     .block_post + .block_post {
-        margin-top: $space-l;
+        margin-top: $space-xxl;
     }
-
-
 } 
