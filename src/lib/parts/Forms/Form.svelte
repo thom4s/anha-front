@@ -7,6 +7,8 @@
 	import Checkbox from '$lib/parts/Forms/Checkbox.svelte';
 
     let loading = false; 
+    let error = false; 
+    let msg = false; 
 </script>
 
 <form 
@@ -17,10 +19,17 @@
         loading = true;
 
         return async ({ result, update }) => {
-            if (result.type === 'redirect') {
-                goto(result.location);
+
+            console.log('result', result)
+
+            if (result.type === 'error') {
+                error = true;
+                msg = "Il y a un problème avec l'envoi du mail. <br>Vérifiez les informations du formulaires : format de l'adresse mail, etc."
+
             } else {
                 await applyAction(result);
+
+                update({ reset: true });
             }
             loading = false;
         };
@@ -31,8 +40,8 @@
 
         <Input type="text" placeholder="Adresse" name="adresse" size="full" required={false}/>
 
-        <Input type="text" placeholder="Code postal" name="code postal" size="half" required={false}/>
-        <Input type="text" placeholder="Ville" name="Ville" size="half" required={true}/>
+        <Input type="text" placeholder="Code postal" name="codepostal" size="half" required={false}/>
+        <Input type="text" placeholder="Ville" name="ville" size="half" required={true}/>
 
         <Input type="text" placeholder="Téléphone" name="telephone" size="half" required={true}/>
         <Input type="email" placeholder="e-mail" name="mail" size="half" required={true}/>
@@ -42,7 +51,14 @@
         <Checkbox label="J’accepte que mes données soient récupérées pour le traitement de ma demande." name="acceptance" />
 
         <Input type="submit" value="Envoyer" />
+ 
 </form>
+
+
+	{#if error}
+		<p class="error">{@html msg}</p>
+	{/if}
+
 
 <style lang="scss">
     form {
@@ -56,7 +72,11 @@
     // :global(input[type="submit"]) {
     //     width: unset !important;
     // }
-
+    .error {
+        color: red;
+        padding: 10px 0;
+        font-weight: 500;
+    }
     .loading {
         opacity: .5;
     }

@@ -6,6 +6,14 @@ export default function (title) {
 	return `${title} – Anha`;
 }
 
+export const validateEmail = (email) => {
+  return String(email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+};
+
 
 /** Dispatch event on click outside of node */
 export function clickOutside(node) {
@@ -30,31 +38,67 @@ export function clickOutside(node) {
 
 import nodemailer from 'nodemailer';
 import { getFormsParams } from '$lib/queries/options.js';
+import { error } from '@sveltejs/kit';
   
 const formsParams = await getFormsParams();
 
 export async function formProcess ( request ) {
 
-	let { name, mail, message } = Object.fromEntries(await request.formData());
-        const emailHtml = `<html><p>Hello ${name} - ${mail}</p><p>${message}</html>`;
+	let { firstname, lastname, adresse, codepostal, ville, telephone, mail, message } = 
+  
+  Object.fromEntries(await request.formData());
 
-        const smtpParams = {
-          host: formsParams.smtp.host,
-          port: parseInt(formsParams.smtp.port),
-          secure: true,
-          auth: {
-            user: formsParams.smtp.authUser,
-            pass: formsParams.smtp.authPass
-          }
+      if( !validateEmail(mail) ) {
+        throw new Error('email is not ok');
+      }
+
+      const smtpParams = {
+        host: formsParams.smtp.host,
+        port: parseInt(formsParams.smtp.port),
+        secure: true,
+        auth: {
+          user: formsParams.smtp.authUser,
+          pass: formsParams.smtp.authPass
         }
+      }
 
-        const options = {
-          from: 'hello@thomasflorentin.net',
-          to: 'hello@thomasflorentin.net',
-          subject: 'hello world',
-          text: "Plaintext version of the message",
-          html: emailHtml
+      const emailHtml = `<html>
+        <p>Bonjour</p>
+        <p>Vous avez reçu un nouveau messsage envoyé à partir du formulaire de contact du site internet.</p>
+        <p> ${firstname} ${lastname} - ${mail} - ${telephone}</p>
+        <p> ${adresse}, ${codepostal} ${ville}</p>
+        <p>${message}</p>
+        <p>Bonne journée. <br>Anha.fr</p>
+      </html>`;
+
+      const emailHtmlSender = `<html><p>Bonjour ${firstname} ${lastname}</p>
+        <p>Nous avons bien reçu votre message. Nous y répondrons dans les plus brefs délais.</p>
+        <p> Voici vos informations :</p>
+        <p> ${firstname} ${lastname} - ${mail} - ${telephone}</p>
+        <p> ${adresse}, ${codepostal} ${ville}</p>
+        <p>Voici votre message : <br> ${message}</p>
+        <p>Bonne journée. <br>Anha.fr</p>
+      </html>`;
+
+      const options = {
+        from: 'info@cms.anha.fr',
+        to: 'info@cms.anha.fr',
+        subject: 'Vous avez un nouveau message du site internet',
+        text: emailHtml,
+        html: emailHtml
+      };
+
+      const optionsSender = {
+          from: 'info@cms.anha.fr',
+          to: mail,
+          subject: 'Merci pour votre message',
+          text: emailHtmlSender,
+          html: emailHtmlSender
         };
+
+    
+
+    try {
 
         const transporter = nodemailer.createTransport(smtpParams);
 
@@ -66,8 +110,13 @@ export async function formProcess ( request ) {
           }
         });
 
-        transporter.sendMail(options);
+      transporter.sendMail(options);
+      transporter.sendMail(optionsSender);
 
-        return true;
+    } catch (err) {
+      console.error("Error while sending mail", err);
+    }
+
+    return true;
 
 }

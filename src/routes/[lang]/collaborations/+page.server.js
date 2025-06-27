@@ -20,7 +20,9 @@ export const actions = {
 
 	contact: async ({request}) => {
 
-     return formProcess(request)    
+        const response = formProcess(request)    
+
+        //console.log(response);
 
 	},
 };
