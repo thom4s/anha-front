@@ -32,6 +32,8 @@
     const filter = (e, tax) => {
         loading = true;
 
+        console.log(e.target.getAttribute('data-term'), tax);
+
         setTimeout( () => {
             if( tax === 'secteur' ) {
                 filtersSecteur = [e.target.getAttribute('data-term')];
