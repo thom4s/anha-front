@@ -8,7 +8,7 @@
 
 <div class="item item-collaborateur grid" class:open={open}>
 
-    <button class="action btn_clean" on:click={ () => open = !open }>
+    <button class="action btn_clean"  aria-label="En savoir plus sur {collab.name}" on:click={ () => open = !open }>
         <span class="icon_outer">
             <IconArrowRight />
         </span>
