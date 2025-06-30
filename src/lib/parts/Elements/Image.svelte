@@ -9,6 +9,7 @@
     export let fullscreened = false
     export let includeThis = false
     export let ratio = 'verticale';
+    export let size = 'full';
     let imgElement
 
     if( includeThis && ! $fullScreenContent.includes(node.sourceUrl)) {
@@ -34,11 +35,16 @@
         }
     })
 
+
+    console.log(node)
+
 </script>
 
 
 <div class="media_container" data-ratio="{ratio}">
     <img 
+        loading="lazy"
+
         src="{node?.sourceUrl}" 
         alt="{ node?.caption }"
         srcset="{node?.srcSet}"

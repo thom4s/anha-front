@@ -19,7 +19,7 @@
         <div class="stage_right s_12column m_6column fl-center">
             <div>
                 <div class="mb-large">
-                    <img src="{notfound}" alt="We are lost...">
+                    <img loading="lazy" src="{notfound}" alt="We are lost...">
                 </div>
 
                 <div class="page_actions mb-small">

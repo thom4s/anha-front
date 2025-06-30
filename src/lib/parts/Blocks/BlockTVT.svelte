@@ -33,6 +33,7 @@
                     includeThis={true}
                     ratio="{ratio}"
                     parallax={false}
+                    size="medium"
                     on:imageClicked={ () => {
                         $fullscreen = true;
                         $fullScreenType = 'slide';
