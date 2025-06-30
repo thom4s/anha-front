@@ -66,13 +66,6 @@
         <IconArrowDown />
     </div>
 
-
-    {#if page.content }
-        <section class="module mod_bigtypo container body">
-            <div>{@html page.content}</div>
-        </section>
-    {/if}
-
     {#if page.contenusFlexibles?.contenusFlexibles }
         <Flexibles contenusFlexibles={page.contenusFlexibles?.contenusFlexibles}/>
     {/if}
@@ -119,30 +112,6 @@
         }
         to {
             bottom: 8px;
-        }
-    }
-
-    .mod_bigtypo {
-
-        @include max(bigtablet) {
-            margin-top: calc($space-xxl * 2);
-            margin-bottom: calc($space-xxl * 2);
-        }
-        @include min(bigtablet) {
-            margin-top: calc($space-wide * 2);
-            margin-bottom: calc($space-wide * 2);
-        }
-        h2 {
-            line-height: 1.2;
-        }
-        :global(h2) {
-            line-height: 1.2;
-            margin: 0;
-
-            @include min(bigtablet) {
-                font-size: 6rem;
-            }
-            
         }
     }
 

@@ -305,6 +305,17 @@ export const Stagedvideo_query_string = `
 `
 
 
+// BLOC Big Typo
+
+export const bigtypo_query_string = `
+	... on ContenusFlexiblesContenusFlexiblesBigtypoLayout {
+		__typename
+		content
+	}
+`
+
+
+
 // BLOC TITRE VISUEL TEXTE
 
 const string_tvt = `
@@ -387,6 +398,7 @@ export const flexibleContents_query_string = `
 			${references_query_string}
 			${richtext_query_string}
 			${video_query_string}
+			${bigtypo_query_string}
 			${BlocTitreVisuelTexte_query_string}
 			${hpCover_Query_string}
 		}

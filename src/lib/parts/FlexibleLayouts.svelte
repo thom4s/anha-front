@@ -11,12 +11,13 @@
     import BlockProjetPushed from '$lib/parts/Blocks/BlockProjetPushed.svelte';
     import BlockCollaborateur from '$lib/parts/Blocks/BlockCollaborateur.svelte';
     import HPCover from '$lib/parts/Modules/HPCover.svelte';
+    import Bigtypo from '$lib/parts/Modules/Bigtypo.svelte';
 
     export let layout = '';
     export let smallContact = false;
     export let prefix = '';
 
-//$:console.log('layout: ', layout)
+$:console.log('layout: ', layout)
 </script>
 
 
@@ -73,6 +74,10 @@
 
 {:else if layout.__typename === 'ContenusFlexiblesContenusFlexiblesVideoLayout'}
     <Video titre={layout.titre} videoId={layout.video} plateforme={layout.plateforme}/>
+
+
+{:else if layout.__typename === 'ContenusFlexiblesContenusFlexiblesBigtypoLayout'}
+    <Bigtypo content={layout.content}/>
 
 
 {:else if 
