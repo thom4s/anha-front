@@ -115,7 +115,7 @@ export const featuredImage_fields_string = `
 			altText
 			sizes
 			srcSet
-			sourceUrl(size: MEDIUM_LARGE)
+			sourceUrl
 		}
 	}
 `
@@ -325,11 +325,11 @@ const string_tvt = `
 	img_ratio
 	visuel {
 		node {
-					caption
-					altText
-					sizes
-					srcSet
-					sourceUrl(size: MEDIUM_LARGE)
+			caption
+			altText
+			sizes
+			srcSet
+			sourceUrl(size: MEDIUM_LARGE)
 		}
 	}
 `
