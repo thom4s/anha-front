@@ -14,7 +14,7 @@
         <div class="logos">
             {#each ligneLogos as ligne, i }
                 <div class="marquee-container">
-                    <Marqueeck options={ (i & 1) ? { direction: "right", speed: 25, onHover: "none" } : { direction: "left", speed: 25, onHover: "none" } } class="marquee-line" >
+                    <Marqueeck options={ (i & 1) ? { direction: "right", speed: 50, onHover: "none" } : { direction: "left", speed: 50, onHover: "none" } } class="marquee-line" >
                         {#each ligne.logos.nodes as logo }
                             <Image node={logo} />
                         {/each}
