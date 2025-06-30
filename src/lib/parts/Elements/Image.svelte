@@ -40,7 +40,7 @@
 <div class="media_container" data-ratio="{ratio}">
     <img 
         src="{node?.sourceUrl}" 
-        alt="{ node?.caption.replace(/<\/?[^>]+(>|$)/g, "") }"
+        alt="{ node?.caption }"
         srcset="{node?.srcSet}"
         sizes="{node?.sizes}" 
         bind:this={imgElement}
