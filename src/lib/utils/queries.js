@@ -115,7 +115,7 @@ export const featuredImage_fields_string = `
 			altText
 			sizes
 			srcSet
-			sourceUrl(size: MEDIUM_LARGE)
+			sourceUrl(size: MEDIUM)
 		}
 	}
 `
