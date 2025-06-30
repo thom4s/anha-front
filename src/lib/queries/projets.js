@@ -8,8 +8,6 @@ import { seo_query_string, contentType_fields_string, basic_fields_string, taxon
 
 export async function getProjetBySlug( slug = '' ) {
     
-    console.log('slug: ', slug)
-
     const query = `
         {
             projet(id: "${slug}", idType: SLUG) {
@@ -63,9 +61,6 @@ export async function getAdjacentProject( databaseId = '', direction = '' ) {
             return res.data.projets
         });
 
-    console.log('currentProject: ', currentProject)
-
-
     const query_two = `
         {
             projets(after: "${currentProject.edges[0].cursor}", ${direction}: 1, where: {language: ${currentProject.edges[0].node.language.slug.toUpperCase()}}) {
@@ -80,7 +75,6 @@ export async function getAdjacentProject( databaseId = '', direction = '' ) {
             }
         }
     `
-    console.log('query_two: ', query_two)
 
     const adjacentProject = await fetch(PUBLIC_API_URL, {
         method: 'POST',
@@ -92,8 +86,6 @@ export async function getAdjacentProject( databaseId = '', direction = '' ) {
             console.log('adjacentProject res: ', res)
             return res.data.projets.edges[0]
         });
-
-    console.log('adjacentProject: ', adjacentProject)
 
 
     return adjacentProject;

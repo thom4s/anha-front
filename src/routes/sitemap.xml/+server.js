@@ -20,7 +20,7 @@ export async function GET() {
 
 
 	const allPosts = await getAllPosts();
-	console.log(allPosts)
+
 	const news = allPosts.edges.map(
 		(news) => `\t<url>
 		<loc>${new URL(news.node.uri, PUBLIC_CANONICAL_ORIGIN).href}</loc>

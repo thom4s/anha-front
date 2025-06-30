@@ -30,7 +30,7 @@
 
         return async ({ result, update }) => {
 
-            console.log('result', result)
+            //console.log('result', result)
 
             if (result.type === 'error') {
                 error = true;

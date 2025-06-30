@@ -97,6 +97,9 @@ h1, h2, h3, h4, h5 {
     font-weight: $font-r;
     letter-spacing: -0.002em;
     line-height: .9;
+    hyphens: auto;
+    hyphenate-limit-chars: 12;
+
 	@include max(bigtablet) {
         font-size: 6.1rem;
     }

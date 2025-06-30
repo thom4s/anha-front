@@ -20,7 +20,7 @@
 
     const animationIn = ( side, otherSide ) => { 
 
-        console.log('animationIn: ', side, otherSide, $device)
+        //console.log('animationIn: ', side, otherSide, $device)
         let tl = gsap.timeline({onComplete: tlComplete});
 
         window.scrollTo({
@@ -30,7 +30,7 @@
         });
 
         function tlComplete() {
-            console.log("the tl is complete");
+            //console.log("the tl is complete");
         }
 
         if( side === 'leftSide' ) {
@@ -102,11 +102,11 @@
 
     const animationOut = ( side, otherSide ) => { 
 
-        console.log('animationIn: ', side)
+        // console.log('animationIn: ', side)
         let tl = gsap.timeline({onComplete: tlComplete});
 
         function tlComplete() {
-            console.log("the tl is complete");
+            // console.log("the tl is complete");
             if( side === 'leftSide' ) {
                 leftColVisible = false
             }

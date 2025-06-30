@@ -17,9 +17,6 @@
             if (e.key === 'Escape') closeFullscreen()
         });
     });
-
-    $: console.log('type', type)
-    $: console.log('content', content)
     
 </script>
 

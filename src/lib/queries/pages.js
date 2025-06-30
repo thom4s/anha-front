@@ -42,7 +42,7 @@ export async function getTranslation( uri, lang ) {
         })
         .then(res => res.json())
         .then(res => {
-            console.log('getTranslation res: ', res)
+            //console.log('getTranslation res: ', res)
             return res.data.nodeByUri
         });
     
