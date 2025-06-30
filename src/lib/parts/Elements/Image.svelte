@@ -9,8 +9,7 @@
     export let fullscreened = false
     export let includeThis = false
     export let ratio = 'verticale';
-    export let size = 'full';
-    let imgElement
+    let imgElement, sourceUrl;
 
     if( includeThis && ! $fullScreenContent.includes(node.sourceUrl)) {
         $fullScreenContent = [... $fullScreenContent, node]
@@ -35,9 +34,6 @@
         }
     })
 
-
-    console.log(node)
-
 </script>
 
 
@@ -45,7 +41,7 @@
     <img 
         loading="lazy"
 
-        src="{node?.sourceUrl}" 
+        src="{node?.sourceUrl}"
         alt="{ node?.caption }"
         srcset="{node?.srcSet}"
         sizes="{node?.sizes}" 

@@ -115,7 +115,7 @@ export const featuredImage_fields_string = `
 			altText
 			sizes
 			srcSet
-			sourceUrl
+			sourceUrl(size: MEDIUM_LARGE)
 		}
 	}
 `
@@ -329,7 +329,7 @@ const string_tvt = `
 					altText
 					sizes
 					srcSet
-					sourceUrl
+					sourceUrl(size: MEDIUM_LARGE)
 		}
 	}
 `
@@ -357,7 +357,7 @@ const string_collabs = `
 		details
 		photo {
 			node {
-				sourceUrl
+				sourceUrl(size: MEDIUM)
 			}
 		}
 	}

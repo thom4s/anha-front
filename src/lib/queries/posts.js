@@ -63,7 +63,7 @@ export async function getAllPosts( lang = 'fr', length = 10 ) {
                                     plateforme
                                     galery {
                                         nodes {
-                                            sourceUrl
+                                            sourceUrl(size: MEDIUM_LARGE)
                                             srcSet
                                         }
                                     }
