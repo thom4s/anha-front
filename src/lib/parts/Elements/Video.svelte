@@ -11,7 +11,8 @@
     if (plateforme[0] === 'youtube') {
         src = `https://www.youtube.com/embed/${videoId}?iv_load_policy=3&modestbranding=1&playsinline=1&showinfo=0&rel=0&enablejsapi=1`;
     } else if (plateforme[0] === 'vimeo') {
-        src = `https://player.vimeo.com/video/${videoId}?loop=true&autoplay=1&muted=true&amp;byline=false&amp;portrait=false&amp;title=false&amp;speed=true&amp;transparent=0&amp;gesture=media`;
+        src = `https://player.vimeo.com/video/${videoId}&loop=true&autoplay=1&muted=true&amp;byline=false&amp;portrait=false&amp;title=false&amp;speed=true&amp;transparent=0&amp;gesture=media`;
+
     } else if (plateforme[0] === 'hosted' ) {
         src = videoId
     }
