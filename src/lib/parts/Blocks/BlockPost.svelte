@@ -123,7 +123,7 @@
                     <h3 class="mb-medium" class:h2={module}>{@html post.title}</h3>
 
                     {#if post.content }
-                        <div class="mb-medium"> 
+                        <div class=""> 
                             <div class="body">{@html post.content}</div>
                         </div>
                     {/if}
