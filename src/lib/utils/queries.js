@@ -115,7 +115,7 @@ export const featuredImage_fields_string = `
 			altText
 			sizes
 			srcSet
-			sourceUrl(size: MEDIUM)
+			sourceUrl
 		}
 	}
 `
@@ -174,7 +174,7 @@ export const references_query_string = `
 		ligneLogos {
 			logos(first: 100) {
 				nodes {
-					sourceUrl(size: MEDIUM)
+					sourceUrl(size: MEDIUM_LARGE)
 				}
 			}
 		}
