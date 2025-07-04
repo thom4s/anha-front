@@ -271,16 +271,15 @@
 
     .text_lower,
     .text_upper {
-        min-height: 50px;
+        @include min(tablet) {
+            min-height: 50px;
+        }
         flex: 0 0 auto;
     }
     .text_lower {
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
-        @include max(tablet) {
-            display: none;
-        }
     }
 
     .block_inner {
