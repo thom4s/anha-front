@@ -72,13 +72,25 @@
         projets.nodes.filter( project => {
 
             if(filtersSavoirfaire.length !== 0 && filtersSecteur.length !== 0 ) {
-                return ( filtersSavoirfaire.includes(project.informationsProjet.tax_savoirfaire?.nodes[0]?.name) || filtersSavoirfaire.includes(project.informationsProjet.tax_savoirfaire?.nodes[1]?.name) ) && ( filtersSecteur.includes(project.informationsProjet.tax_secteur?.nodes[0]?.name) || filtersSecteur.includes(project.informationsProjet.tax_secteur?.nodes[1]?.name) )
+                return ( 
+                    filtersSavoirfaire.includes(project.informationsProjet.tax_savoirfaire?.nodes[0]?.name) 
+                    || filtersSavoirfaire.includes(project.informationsProjet.tax_savoirfaire?.nodes[1]?.name) 
+                    || filtersSavoirfaire.includes(project.informationsProjet.tax_savoirfaire?.nodes[2]?.name)
+                ) && ( 
+                    filtersSecteur.includes(project.informationsProjet.tax_secteur?.nodes[0]?.name) 
+                    || filtersSecteur.includes(project.informationsProjet.tax_secteur?.nodes[1]?.name) 
+                    || filtersSecteur.includes(project.informationsProjet.tax_secteur?.nodes[2]?.name) 
+                )
             }
             else if(filtersSavoirfaire.length !== 0 && filtersSecteur.length === 0 ) {
-                return filtersSavoirfaire.includes(project.informationsProjet.tax_savoirfaire?.nodes[0]?.name) || filtersSavoirfaire.includes(project.informationsProjet.tax_savoirfaire?.nodes[1]?.name)
+                return filtersSavoirfaire.includes(project.informationsProjet.tax_savoirfaire?.nodes[0]?.name) 
+                    || filtersSavoirfaire.includes(project.informationsProjet.tax_savoirfaire?.nodes[1]?.name) 
+                    || filtersSavoirfaire.includes(project.informationsProjet.tax_savoirfaire?.nodes[2]?.name) 
             }
             else if(filtersSecteur.length !== 0 && filtersSavoirfaire.length === 0 ) {
-                return filtersSecteur.includes(project.informationsProjet.tax_secteur?.nodes[0]?.name) || filtersSecteur.includes(project.informationsProjet.tax_secteur?.nodes[1]?.name)
+                return filtersSecteur.includes( project.informationsProjet.tax_secteur?.nodes[0]?.name) 
+                    || filtersSecteur.includes(project.informationsProjet.tax_secteur?.nodes[1]?.name) 
+                    || filtersSecteur.includes(project.informationsProjet.tax_secteur?.nodes[2]?.name) 
             }
 
 		}) : projets.nodes;
