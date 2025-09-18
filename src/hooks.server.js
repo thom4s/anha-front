@@ -19,7 +19,16 @@ export const handle = async ({ event, resolve }) => {
     }
 
 	if ( event.url.pathname === '/parfumerie.html')
-		return redirect('/fr', '');
+		return redirect('/fr/projets', '');
+
+	if ( event.url.pathname === '/lifestyle.html')
+		return redirect('/fr/projets', '');
+
+	if ( event.url.pathname === '/epicerie-fine.html')
+		return redirect('/fr/projets', '');
+
+	if ( event.url.pathname === '/retail.html')
+		return redirect('/fr/projets', '');
 
 	if ( event.url.pathname === '/')
 		return redirect('/fr', '');
