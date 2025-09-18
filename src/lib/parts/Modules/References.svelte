@@ -68,7 +68,7 @@
         display: flex;
         justify-content: space-around;
         min-width: 100%;
-        animation: scroll 40s linear infinite;
+        animation: scroll 60s linear infinite;
     }
 
 
