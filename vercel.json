@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/parfumerie.html",
+      "destination": "/",
+      "permanent": true
+    }
+  ]
+}
