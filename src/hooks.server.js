@@ -18,6 +18,9 @@ export const handle = async ({ event, resolve }) => {
         event.locals.currentLang = 'fr';
     }
 
+	if ( event.url.pathname === '/parfumerie.html')
+		return redirect('/fr', '');
+
 	if ( event.url.pathname === '/')
 		return redirect('/fr', '');
 
