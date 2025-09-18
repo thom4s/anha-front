@@ -41,12 +41,7 @@
         margin:  $space-wide 0;
         overflow: hidden;
     }
-    .marquee-line {
-        display: flex;
-        gap: 20px;
-        margin: 0;
-        padding: 0;
-    }
+
     .marquee-container {
         border-top: 1px solid $dark-font;
         padding: $space-s 0;
@@ -59,16 +54,23 @@
         display: flex;
         overflow: hidden;
         user-select: none;
-        justify-content: flex-start;
+        justify-content: space-between;
     }
 
     .marquee__content {
         list-style: none;
+        padding: 0 20px;
+        margin: 0;
+        gap: 20px;
         flex-shrink: 0;
         display: flex;
-        justify-content: space-around;
-        min-width: 100%;
+        align-items: center;
+        min-width: 100vw;
         animation: scroll 60s linear infinite;
+
+        li {
+            flex: 0 0 auto;
+        }
     }
 
 
