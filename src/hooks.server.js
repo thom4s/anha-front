@@ -34,8 +34,8 @@ export const handle = async ({ event, resolve }) => {
 	// 	return redirect('/fr', '');
 
 
-	console.log(`🔥 THE PAGE IS READY, I'M SENDING THE RESPONSE`)
+	// console.log(`🔥 THE PAGE IS READY, I'M SENDING THE RESPONSE`)
 
-	const response = await resolve(event);
-	return response;
+	// const response = await resolve(event);
+	// return response;
 };
