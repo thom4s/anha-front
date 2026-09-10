@@ -4,7 +4,7 @@ import { getAllTerms } from "$lib/queries/taxonomies"
 import { getAllPosts } from "$lib/queries/posts"
 import { getAllPressArticles } from "$lib/queries/press"
 
-import { formProcess } from '$lib/utils/utils.js'
+//import { formProcess } from '$lib/utils/utils.js'
 
 
 export async function load( {params} ) {
@@ -48,9 +48,9 @@ export async function load( {params} ) {
 
 export const actions = {
 
-	contact: async ({request}) => {
+	// contact: async ({request}) => {
 
-     //return formProcess(request)    
+  //    return formProcess(request)    
 
-	},
+	// },
 };

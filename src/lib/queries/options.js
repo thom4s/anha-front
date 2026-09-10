@@ -61,37 +61,37 @@ export async function getMenuItems( lang = 'fr', id = '') {
 }
 
 
-export async function getFormsParams( ) {
+// export async function getFormsParams( ) {
     
-    const options = await fetch(PUBLIC_API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            query: `
-            {
-                optionsDuSite {
-                    formulaireDeContact {
-                        smtp {
-                            authPass
-                            authUser
-                            host
-                            port
-                            secure
-                        }
-                    }
-                }
-            }
-            `
-            }),
-        })
-        .then(res => res.json())
-        .then(res => {
-            if( ! res.data ) return
-            return res.data.optionsDuSite.formulaireDeContact
-        });
+//     const options = await fetch(PUBLIC_API_URL, {
+//         method: 'POST',
+//         headers: { 'Content-Type': 'application/json' },
+//         body: JSON.stringify({
+//             query: `
+//             {
+//                 optionsDuSite {
+//                     formulaireDeContact {
+//                         smtp {
+//                             authPass
+//                             authUser
+//                             host
+//                             port
+//                             secure
+//                         }
+//                     }
+//                 }
+//             }
+//             `
+//             }),
+//         })
+//         .then(res => res.json())
+//         .then(res => {
+//             if( ! res.data ) return
+//             return res.data.optionsDuSite.formulaireDeContact
+//         });
 
-    return options;
-}
+//     return options;
+// }
 
 export async function getSocialLinks( ) {
     

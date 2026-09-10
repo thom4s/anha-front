@@ -20,19 +20,19 @@ export async function load( ) {
 
 export const actions = {
 
-	contact: async ({request}) => {
+	// contact: async ({request}) => {
 
-	    let { firstname, lastname, adresse, codepostal, ville, telephone, mail, message } = Object.fromEntries(await request.formData());
+	//     let { firstname, lastname, adresse, codepostal, ville, telephone, mail, message } = Object.fromEntries(await request.formData());
 
-        if (!firstname || !lastname || !mail ) {
-            return fail(400, { firstname, missing: true })
-        }
+    //     if (!firstname || !lastname || !mail ) {
+    //         return fail(400, { firstname, missing: true })
+    //     }
         
-        const response = formProcess(request)    
+    //     const response = formProcess(request)    
 
-        return { 
-            success: true,
-            response
-        }
-	},
+    //     return { 
+    //         success: true,
+    //         response
+    //     }
+	// },
 };
