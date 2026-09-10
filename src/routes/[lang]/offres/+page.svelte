@@ -24,7 +24,7 @@
                 <BlockPost {post} type="offres"/>
             {/each}
         </div>
-    
+     
         <div class="s_6column">
 
             <h2>Postuler</h2>
