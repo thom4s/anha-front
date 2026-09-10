@@ -3,7 +3,7 @@ import { getAllProjets } from '$lib/queries/projets';
 import { getAllPages } from '$lib/queries/pages';
 import { getAllPosts } from '$lib/queries/posts';
 
-export const prerender = true;
+export const prerender = false;
 
 // Array returned from GitHub API can be empty.
 

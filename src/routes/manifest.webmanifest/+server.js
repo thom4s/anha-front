@@ -1,6 +1,6 @@
 import { config } from '$lib/config/website';
 
-export const prerender = true;
+export const prerender = false;
 
 /** @type {import('./$types').RequestHandler} */
 export const GET = function get({ setHeaders }) {
