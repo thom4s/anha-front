@@ -28,7 +28,7 @@
         <div class="s_6column">
 
             <h2>Postuler</h2>
-
+   
             <!-- <Form /> -->
 
         </div>
