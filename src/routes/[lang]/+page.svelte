@@ -5,10 +5,10 @@
     import IconArrowDown from '$lib/parts/Svgs/IconArrowDown.svelte';
     import { onMount } from "svelte";
 
-    export let data: {
-        page: Promise<void>;
-    }
-    $: ({page} = data)
+    // export let data: {
+    //     page: Promise<void>;
+    // }
+    // $: ({page} = data)
 
     let godown_icon;
 
@@ -66,9 +66,9 @@
         <IconArrowDown />
     </div>
 
-    {#if page.contenusFlexibles?.contenusFlexibles }
+    <!-- {#if page.contenusFlexibles?.contenusFlexibles }
         <Flexibles contenusFlexibles={page.contenusFlexibles?.contenusFlexibles}/>
-    {/if}
+    {/if} -->
 
 </div>
 
