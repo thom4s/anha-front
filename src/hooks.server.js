@@ -12,26 +12,26 @@ export const handle = async ({ event, resolve }) => {
 	console.log(`📣 NEW REQUEST IS BEING MADE FROM ${event.url.pathname}`)
 	console.log('hooks.server.ts')
 
-    const currentLang = event.cookies.get('currentLang')
+    // const currentLang = event.cookies.get('currentLang')
 
-    if (currentLang) {
-        event.locals.currentLang = 'fr';
-    }
+    // if (currentLang) {
+    //     event.locals.currentLang = 'fr';
+    // }
 
-	if ( event.url.pathname === '/parfumerie.html')
-		return redirect('/fr/projets', '');
+	// if ( event.url.pathname === '/parfumerie.html')
+	// 	return redirect('/fr/projets', '');
 
-	if ( event.url.pathname === '/lifestyle.html')
-		return redirect('/fr/projets', '');
+	// if ( event.url.pathname === '/lifestyle.html')
+	// 	return redirect('/fr/projets', '');
 
-	if ( event.url.pathname === '/epicerie-fine.html')
-		return redirect('/fr/projets', '');
+	// if ( event.url.pathname === '/epicerie-fine.html')
+	// 	return redirect('/fr/projets', '');
 
-	if ( event.url.pathname === '/retail.html')
-		return redirect('/fr/projets', '');
+	// if ( event.url.pathname === '/retail.html')
+	// 	return redirect('/fr/projets', '');
 
-	if ( event.url.pathname === '/')
-		return redirect('/fr', '');
+	// if ( event.url.pathname === '/')
+	// 	return redirect('/fr', '');
 
 
 	console.log(`🔥 THE PAGE IS READY, I'M SENDING THE RESPONSE`)
