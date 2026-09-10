@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Form from '$lib/parts/Forms/Form.svelte';
+    //import Form from '$lib/parts/Forms/Form.svelte';
 
     import BlockPost from "$lib/parts/Blocks/BlockPost.svelte";
 
@@ -29,7 +29,7 @@
 
             <h2>Postuler</h2>
 
-            <Form />
+            <!-- <Form /> -->
 
         </div>
     </div>  

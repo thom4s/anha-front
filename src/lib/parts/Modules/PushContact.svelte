@@ -4,7 +4,7 @@
     import { fade } from 'svelte/transition';
     import { activeLang } from "$lib/config/website";
 
-    import Form from "$lib/parts/Forms/Form.svelte";
+    //import Form from "$lib/parts/Forms/Form.svelte";
 
     let contents, title, label, text, lien;
 
@@ -50,7 +50,7 @@
                 <a class="btn dark" href="{lien?.url}">{label}</a>
     
             {:else}
-                <Form />
+                <!-- <Form /> -->
 
             {/if}
         

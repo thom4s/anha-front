@@ -50,7 +50,7 @@ export const actions = {
 
 	contact: async ({request}) => {
 
-     return formProcess(request)    
+     //return formProcess(request)    
 
 	},
 };

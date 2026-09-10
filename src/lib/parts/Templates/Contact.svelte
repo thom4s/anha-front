@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Form from "$lib/parts/Forms/Form.svelte";
+    //import Form from "$lib/parts/Forms/Form.svelte";
     
     export let page = {};
 
@@ -16,7 +16,7 @@
         </div>
 
         <div class="s_12column m_9column">
-            <Form />
+            <!-- <Form /> -->
         </div>
     </div>
 
