@@ -63,7 +63,15 @@ export async function getSeoSchema( ) {
             `
             }),
         })
-        .then(res => res.json())
+        .then(async res => {
+            const contentType = res.headers.get('content-type') || '';
+            if (!res.ok || !contentType.includes('application/json')) {
+                const text = await res.text();
+                console.log(`DEBUG getSeoSchema status=${res.status} content-type=${contentType} body_start=${text.slice(0, 300)}`);
+                return JSON.parse(text);
+            }
+            return res.json();
+        })
         .then(res => {
             return res.data
         });
