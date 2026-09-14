@@ -81,7 +81,19 @@ async function getSeoSchemaFetch( ) {
             `
             }),
         })
-        .then(res => res.json())
+        .then(async res => {
+            const text = await res.text();
+            try {
+                return JSON.parse(text);
+            } catch (e) {
+                console.log('DEBUG getSeoSchema non-json response', JSON.stringify({
+                    status: res.status,
+                    contentType: res.headers.get('content-type'),
+                    body: text.slice(0, 500)
+                }));
+                throw e;
+            }
+        })
         .then(res => {
             return res.data
         });
