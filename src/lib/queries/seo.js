@@ -3,7 +3,25 @@ import { PUBLIC_API_URL } from "$env/static/public";
 
 
 export async function getSeoSchema( ) {
-    
+
+    try {
+        return await getSeoSchemaFetch();
+    } catch (err) {
+        console.log('DEBUG getSeoSchema fetch error', JSON.stringify({
+            message: err?.message,
+            code: err?.cause?.code,
+            errno: err?.cause?.errno,
+            syscall: err?.cause?.syscall,
+            address: err?.cause?.address,
+            port: err?.cause?.port,
+            name: err?.cause?.name
+        }));
+        throw err;
+    }
+}
+
+async function getSeoSchemaFetch( ) {
+
     const seoConfig = await fetch(PUBLIC_API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -63,15 +81,7 @@ export async function getSeoSchema( ) {
             `
             }),
         })
-        .then(async res => {
-            const contentType = res.headers.get('content-type') || '';
-            if (!res.ok || !contentType.includes('application/json')) {
-                const text = await res.text();
-                console.log(`DEBUG getSeoSchema status=${res.status} content-type=${contentType} body_start=${text.slice(0, 300)}`);
-                return JSON.parse(text);
-            }
-            return res.json();
-        })
+        .then(res => res.json())
         .then(res => {
             return res.data
         });
